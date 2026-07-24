@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account API Endpoints API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: API Endpoints
+paths:
+  /api/customers/{customerId}/merchant/{clientId}/provider/{complianceProvider}/companyDocuments:
+    get:
+      tags:
+      - API Endpoints
+      summary: Get KYB Documents Per Company
+      description: Retrieves KYB documents for a specified client and compliance provider.
+      operationId: getKYBDocumentsPerCompany
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of KYB documents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KYXDocument'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+  /customers/{customerId}/merchant/{clientId}/document/download:
+    get:
+      tags:
+      - API Endpoints
+      summary: Get Pre-Signed URL for Document Download
+      description: Retrieves a pre-signed URL for downloading a document.
+      operationId: getPreSignedUrlDownloadDocument
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentKey
+        description: 'The key of the document to download. For example: the key can be retrieved from the company KYB documents endpoint.'
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Pre-signed URL for document download
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDownloadPreSignedUrl'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    KYXDocument:
+      type: object
+      properties:
+        id:
+          type: string
+        documentName:
+          type: string
+        documentStatus:
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+        documentURL:
+          type: string
+          deprecated: true
+        documentType:
+          type: string
+        rejectReason:
+          type: string
+        key:
+          type: string
+        externalDocumentId:
+          type: string
+        userId:
+          type: string
+        errorMessage:
+          type: string
+        available:
+          type: boolean
+        date:
+          type: string
+          format: date-time
+    ResponseDownloadPreSignedUrl:
+      type: object
+      properties:
+        preSignedUrl:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

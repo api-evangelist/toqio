@@ -1,0 +1,1288 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Beneficiary API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Beneficiary
+paths:
+  /customers/{customerId}/clients/{clientId}/beneficiaries:
+    post:
+      tags:
+      - Beneficiary
+      summary: Create a new beneficiary
+      description: ''
+      operationId: createBeneficiary
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SavePersonalAccountRequest'
+        required: true
+      responses:
+        '200':
+          description: Beneficiary created successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkViewPersonalAccountResponse'
+        '404':
+          description: ERROR_CLIENT_NOT_FOUND
+    get:
+      tags:
+      - Beneficiary
+      summary: Find Beneficiary
+      description: Deprecated
+      operationId: findBeneficiary
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountBankDetailsRequest
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/AccountBankDetailsRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkViewPersonalAccountsResponse'
+        '404':
+          description: Beneficiary not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomException'
+  /customers/{customerId}/clients/{clientId}/beneficiaries/{accountId}:
+    delete:
+      tags:
+      - Beneficiary
+      summary: Delete Beneficiary
+      description: ''
+      operationId: deleteBeneficiary
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVoidResponse'
+        '404':
+          description: CUSTOMER_NOT_FOUND
+    put:
+      tags:
+      - Beneficiary
+      summary: Update Beneficiary
+      description: 'Updates an existing beneficiary. Profile fields (name, address and visibility) can be edited. Bank-account detail fields are immutable: they are captured at creation and marked read-only on the update request body, so any value supplied for them is ignored and the stored value is preserved before the request is forwarded to the provider.'
+      operationId: updateBeneficiary
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePersonalAccountRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkViewPersonalAccountResponse'
+        '404':
+          description: CUSTOMER_NOT_FOUND
+  /customers/{customerId}/clients/{clientId}/account/{accountId}/beneficiaries/{beneficiaryId}:
+    get:
+      tags:
+      - Beneficiary
+      summary: Get Beneficiary
+      description: ''
+      operationId: getBeneficiary
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: beneficiaryId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkViewPersonalAccountResponse'
+        '404':
+          description: Beneficiary not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentNotFoundException'
+  /customers/{customerId}/clients/{clientId}/beneficiaries/filters:
+    post:
+      tags:
+      - Beneficiary
+      summary: Get Beneficiary Filters
+      description: Returns the available filters for beneficiary operations (payments, beneficiary listing, and beneficiary creation). The response includes the permitted asset types (currencies) and countries based on the source account characteristics. This allows the client to filter beneficiaries by supported currencies and countries according to the integration's business rules.
+      operationId: getBeneficiaryFilters
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BeneficiaryFilterRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkBeneficiaryFilterResponse'
+        '404':
+          description: ' CUSTOMER_NOT_FOUND'
+  /customers/{customerId}/clients/{clientId}/beneficiaries/search:
+    post:
+      tags:
+      - Beneficiary
+      summary: Search Beneficiaries
+      description: Deprecated
+      operationId: searchBeneficiaries
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountBankDetailsRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToqioHttpOkViewPersonalAccountResponse'
+        '400':
+          description: Invalid request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomException'
+  /customers/{customerId}/clients/{clientId}/beneficiaries/verify:
+    post:
+      tags:
+      - Beneficiary
+      summary: Verify beneficiary for a client
+      description: Verifies beneficiary information for a client before proceeding with a payment. This endpoint validates beneficiary details and returns verification status.
+      operationId: verifyBeneficiaryCompany
+      parameters:
+      - name: customerId
+        in: path
+        description: Unique identifier of the customer
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Unique identifier of the company
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Beneficiary verification request containing source account, payment type, and beneficiary details. This object extends AdditionalParams and can include additional custom validation parameters.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyBeneficiaryRequest'
+            examples:
+              standardPropertiesOnly:
+                summary: Request with standard properties only
+                description: Basic verification request with only the standard required fields
+                value:
+                  sourceAccountId: acc-12345
+                  paymentType: PAYMENT_TYPE_EU_SEPA_INSTANT
+                  beneficiaryId: ben-67890
+              withAdditionalProperties:
+                summary: Request with additional custom properties
+                description: Verification request including additional custom validation parameters beyond standard fields
+                value:
+                  sourceAccountId: acc-12345
+                  paymentType: PAYMENT_TYPE_EU_SEPA_INSTANT
+                  beneficiaryId: ben-67890
+                  _comment: '--- Additional Custom Properties Below (dynamic based on system config) ---'
+                  complianceCheckLevel: ENHANCED
+                  sanctionsScreening: true
+                  pepCheck: true
+                  fraudCheckEnabled: true
+                  riskScore: 85.5
+                  verificationMethod: AUTOMATED
+      responses:
+        '200':
+          description: Beneficiary verification completed successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVerifyBeneficiaryResponse'
+              examples:
+                matched:
+                  summary: Beneficiary fully matched
+                  description: Response when beneficiary details are fully matched and payment can proceed
+                  value:
+                    data:
+                      status: MATCHED
+                      reasonCode: FULL_MATCH
+                      reasonDescription: All beneficiary details matched successfully
+                      allowProceedPayment: true
+                    code: '200'
+                    message: Beneficiary verified
+                    httpStatus: 200
+                    requestId: req-987654
+                    date: '2025-11-14T10:30:00Z'
+                partiallyMatched:
+                  summary: Beneficiary partially matched
+                  description: Response when some beneficiary details matched but not all
+                  value:
+                    data:
+                      status: PARTIALLY_MATCHED
+                      reasonCode: NAME_MISMATCH
+                      reasonDescription: Beneficiary account matched but name differs slightly
+                      allowProceedPayment: true
+                    code: '200'
+                    message: Beneficiary partially verified
+                    httpStatus: 200
+                    requestId: req-987654
+                    date: '2025-11-14T10:30:00Z'
+                withAdditionalProperties:
+                  summary: Response with additional custom properties
+                  description: Verification response including additional custom verification data
+                  value:
+                    data:
+                      status: MATCHED
+                      reasonCode: FULL_MATCH
+                      reasonDescription: All beneficiary details matched successfully
+                      allowProceedPayment: true
+                      _comment: '--- Additional Custom Properties Below (dynamic based on system config) ---'
+                      verificationId: verify-xyz123
+                      verificationTimestamp: '2025-11-14T10:30:00Z'
+                      matchScore: 98.5
+                      complianceStatus: CLEARED
+                      sanctionsMatch: false
+                      pepMatch: false
+                      fraudRiskLevel: LOW
+                      verificationProvider: PROVIDER_A
+                      additionalChecksPerformed:
+                      - SANCTIONS
+                      - PEP
+                      - FRAUD
+                      expiryTimestamp: '2025-11-14T11:30:00Z'
+                    code: '200'
+                    message: Beneficiary verified
+                    httpStatus: 200
+                    requestId: req-987654
+                    date: '2025-11-14T10:30:00Z'
+        '404':
+          description: ' CUSTOMER_NOT_FOUND'
+components:
+  schemas:
+    ViewPersonalAccountResponse:
+      type: object
+      properties:
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        iban:
+          type: string
+        bicSwift:
+          type: string
+        bank:
+          type: string
+        bsbCode:
+          type: string
+        routingNumber:
+          type: string
+        caRoutingNumber:
+          type: string
+        accountNumber:
+          type: string
+        clabe:
+          type: string
+        aba:
+          type: string
+          deprecated: true
+        cnaps:
+          type: string
+        ifsc:
+          type: string
+        bankCode:
+          type: string
+          deprecated: true
+        branchCode:
+          type: string
+          deprecated: true
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        assetType:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        addressStreet:
+          type: string
+        addressPostalCode:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        bankCountry:
+          type: string
+        id:
+          type: string
+        userId:
+          type: string
+        companyId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        visible:
+          type: boolean
+        bankingProviderBeneficiaryId:
+          type: string
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        sourceAccount:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        fullName:
+          type: string
+        nameOrFullName:
+          type: string
+        fullAddress:
+          type: string
+        addressLine:
+          type: string
+    ToqioHttpOkVerifyBeneficiaryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/VerifyBeneficiaryResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-11-01T00:00:00.000Z'
+    VerifyBeneficiaryResponse:
+      type: object
+      description: Response containing the result of beneficiary verification. This object extends AdditionalParams and may include additional verification metadata and custom validation results beyond the standard properties.
+      required:
+      - status
+      properties:
+        status:
+          type: string
+          description: Verification status indicating the result of the beneficiary check - STANDARD PROPERTY
+          enum:
+          - MATCHED
+          - PARTIALLY_MATCHED
+          - NOT_MATCHED
+          - NOT_APPLIED
+          - UNAVAILABLE
+          x-enum-descriptions:
+            MATCHED: Beneficiary details fully matched - verification successful
+            PARTIALLY_MATCHED: Beneficiary details partially matched - some discrepancies found but may proceed
+            NOT_MATCHED: Beneficiary details do not match - verification failed
+            NOT_APPLIED: Verification was not applied or not required for this transaction
+            UNAVAILABLE: Verification service unavailable at this time
+          example: MATCHED
+        reasonCode:
+          type: string
+          description: Code indicating the specific reason for the verification result - STANDARD PROPERTY
+          example: FULL_MATCH
+        reasonDescription:
+          type: string
+          description: Human-readable description explaining the verification result - STANDARD PROPERTY
+          example: All beneficiary details matched successfully
+        allowProceedPayment:
+          type: boolean
+          description: Flag indicating whether the payment can proceed based on verification results - STANDARD PROPERTY
+          example: true
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number
+        - type: boolean
+        - type: object
+        - type: array
+        description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic properties based on your system configuration. Common examples include: verificationId (string), verificationTimestamp (string/datetime), matchScore (number), complianceStatus (string), sanctionsMatch (boolean), pepMatch (boolean), fraudRiskLevel (string), verificationProvider (string), additionalChecksPerformed (array), expiryTimestamp (string/datetime), and any other custom verification metadata defined in your system.'
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    DocumentNotFoundException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    ToqioHttpOkViewPersonalAccountResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ViewPersonalAccountResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    BeneficiaryFilterRequest:
+      type: object
+      properties:
+        sourceAccountId:
+          type: string
+          description: Unique identifier of the source account. This field allows integrations to filter beneficiaries based on the specific source account, particularly useful for deposit accounts that cannot perform foreign exchange transactions. If not provided, the filter behaves as usual without account-specific restrictions.
+        sourceAssetType:
+          type: string
+          description: The asset type (currency) of the source account from which payments will be made
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        canSeeFxPayments:
+          type: boolean
+          description: Indicates whether the customer can perform foreign exchange (FX) payments
+        accountCountry:
+          type: string
+          description: The country of the account, used to determine beneficiary creation restrictions based on regional regulations
+          enum:
+          - EU
+          - UK
+          - EU_UK
+        ownAccount:
+          type: boolean
+          description: Indicates whether the filter is for the customer's own accounts (true) or for external beneficiaries (false)
+      required:
+      - canSeeFxPayments
+      - ownAccount
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    AccountBankDetailsRequest:
+      type: object
+      properties:
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        iban:
+          type: string
+        bicSwift:
+          type: string
+        bank:
+          type: string
+        bsbCode:
+          type: string
+        routingNumber:
+          type: string
+        caRoutingNumber:
+          type: string
+        accountNumber:
+          type: string
+        clabe:
+          type: string
+        aba:
+          type: string
+          deprecated: true
+        cnaps:
+          type: string
+        ifsc:
+          type: string
+        bankCode:
+          type: string
+          deprecated: true
+        branchCode:
+          type: string
+          deprecated: true
+    UpdatePersonalAccountRequest:
+      type: object
+      description: 'Request body for the Update Beneficiary operation. Identical to SavePersonalAccountRequest except that all bank-account detail fields are read-only: they are captured at creation and cannot be modified on update. Any value supplied for a read-only field is ignored and the stored value is preserved before forwarding to the provider.'
+      properties:
+        ukAccountNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        ukSortCode:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        iban:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        bicSwift:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        bank:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        bsbCode:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        routingNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        caRoutingNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        accountNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        clabe:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        aba:
+          type: string
+          readOnly: true
+          deprecated: true
+          description: Immutable. Set at creation and ignored on update.
+        cnaps:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        ifsc:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        bankCode:
+          type: string
+          readOnly: true
+          deprecated: true
+          description: Immutable. Set at creation and ignored on update.
+        branchCode:
+          type: string
+          readOnly: true
+          deprecated: true
+          description: Immutable. Set at creation and ignored on update.
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        assetType:
+          type: string
+          readOnly: true
+          description: Immutable. Currency / asset type, set at creation and ignored on update.
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        addressStreet:
+          type: string
+        addressPostalCode:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        bankCountry:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        id:
+          type: string
+        userId:
+          type: string
+        companyId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        visible:
+          type: boolean
+        bankingProviderBeneficiaryId:
+          type: string
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        sourceAccount:
+          type: string
+    BeneficiaryFilterResponse:
+      type: object
+      properties:
+        assetTypes:
+          type: array
+          description: List of asset types (currencies) that are allowed for payments or beneficiary selection based on the source account characteristics and business rules
+          items:
+            type: string
+            enum:
+            - aud
+            - chf
+            - cad
+            - sek
+            - usd
+            - nok
+            - jpy
+            - nzd
+            - gold
+            - gbp
+            - eur
+            - czk
+            - dkk
+            - huf
+            - pln
+            - ron
+            - ils
+            - rub
+            - bhd
+            - sar
+            - bgn
+            - kes
+            - sgd
+            - kwd
+            - zar
+            - cny
+            - myr
+            - hrk
+            - mxn
+            - thb
+            - try
+            - omr
+            - ugx
+            - hkd
+            - php
+            - aed
+            - inr
+            - qar
+            - idr
+            - points
+        countries:
+          type: array
+          description: List of countries where beneficiaries can be created, based on the integration's supported regions and business rules
+          items:
+            $ref: '#/components/schemas/CountryResponse'
+    ToqioHttpOkBeneficiaryFilterResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/BeneficiaryFilterResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2025-08-01T00:00:00.000Z'
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    VerifyBeneficiaryRequest:
+      description: Request payload for verifying beneficiary information. This object extends AdditionalParams, allowing you to pass additional custom validation parameters specific to your system configuration (e.g., compliance check levels, fraud detection settings, verification methods).
+      type: object
+      required:
+      - sourceAccountId
+      - paymentType
+      - beneficiaryId
+      properties:
+        sourceAccountId:
+          type: string
+          description: Unique identifier of the source account from which the payment will be made - STANDARD PROPERTY
+        paymentType:
+          type: string
+          description: Type of payment to be made - STANDARD PROPERTY
+          enum:
+          - PAYMENT_TYPE_GLOBAL_SWIFT
+          - PAYMENT_TYPE_UK_BACS
+          - PAYMENT_TYPE_EU_SEPA_TARGET2
+          - PAYMENT_TYPE_UK_CHAPS
+          - PAYMENT_TYPE_EU_SEPA_STEP2
+          - PAYMENT_TYPE_VIRTUAL_DEBIT_CARD_DEBIT
+          - PAYMENT_TYPE_INTER_LEDGER
+          - PAYMENT_TYPE_UK_FASTERPAYMENTS
+          - PAYMENT_TYPE_UK_FASTERPAYMENTS_POO
+          - PAYMENT_TYPE_FX
+          - PAYMENT_TYPE_CARD
+          - PAYMENT_TYPE_CARD_RESERVE
+          - PAYMENT_TYPE_CARD_FX
+          - PAYMENT_TYPE_EU_SEPA_INSTANT
+          - PAYMENT_TYPE_AU_NPP
+          - PAYMENT_TYPE_EU_TARGET2
+          - PAYMENT_TYPE_AU_DE
+          - PAYMENT_TYPE_US_ACH
+          - PAYMENT_TYPE_SG_FAST
+          - PAYMENT_TYPE_US_WIRES
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+          - SEPA
+          - TARGET2
+          - DIRECT_DEBIT_OUTBOUND
+        beneficiaryId:
+          type: string
+          description: Unique identifier of the beneficiary to be verified - STANDARD PROPERTY
+      additionalProperties:
+        oneOf:
+        - type: string
+        - type: number
+        - type: boolean
+        - type: object
+        - type: array
+        description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic properties based on your system configuration. Common examples include: complianceCheckLevel (string), sanctionsScreening (boolean), pepCheck (boolean), fraudCheckEnabled (boolean), riskScore (number), verificationMethod (string), and any other custom validation parameters defined in your system.'
+    SavePersonalAccountRequest:
+      type: object
+      properties:
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        iban:
+          type: string
+        bicSwift:
+          type: string
+        bank:
+          type: string
+        bsbCode:
+          type: string
+        routingNumber:
+          type: string
+        caRoutingNumber:
+          type: string
+        accountNumber:
+          type: string
+        clabe:
+          type: string
+        aba:
+          type: string
+          deprecated: true
+        cnaps:
+          type: string
+        ifsc:
+          type: string
+        bankCode:
+          type: string
+          deprecated: true
+        branchCode:
+          type: string
+          deprecated: true
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        assetType:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        addressStreet:
+          type: string
+        addressPostalCode:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        bankCountry:
+          type: string
+        id:
+          type: string
+        userId:
+          type: string
+        companyId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        visible:
+          type: boolean
+        bankingProviderBeneficiaryId:
+          type: string
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        sourceAccount:
+          type: string
+    ToqioHttpOkViewPersonalAccountsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewPersonalAccountResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    CountryResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Two-letter country code
+          example: GB
+        isoCode:
+          type: string
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        prefix:
+          type: string
+        iban:
+          type: boolean
+        sendMoney:
+          type: boolean
+        sepa:
+          type: boolean
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

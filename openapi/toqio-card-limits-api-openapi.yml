@@ -1,0 +1,663 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Card Limits API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Card Limits
+paths:
+  /customers/{customerId}/availableCardLimits:
+    get:
+      tags:
+      - Card Limits
+      summary: Get available card limit types
+      description: 'Retrieves the list of available card limit types configured in the system. Use this endpoint to discover which custom limits can be set when creating or updating cards.
+
+
+        **Business Context**: Called to dynamically discover which limit fields are available for configuration. This allows the frontend UI to adapt to different banking provider capabilities and custom limit configurations.
+
+
+        **Note**: The response includes all supported limit types, but the integration is not required to return all of them. Only return the limits that are actually configured in your system. Any limit not included in the response will be interpreted as null and ignored.'
+      operationId: getAvailableCardLimits
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      responses:
+        '200':
+          description: Available card limits retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseAvailableCardLimitsResponse'
+              example:
+                data:
+                  transactionLimit:
+                    canEdit: true
+                    optional: false
+                  dailyLimit:
+                    canEdit: true
+                    optional: false
+                  monthlyLimit:
+                    canEdit: true
+                    optional: false
+                  lifetimeLimit:
+                    canEdit: true
+                    optional: true
+                  purchasesDailyLimit:
+                    canEdit: true
+                    optional: true
+                  purchasesMonthlyLimit:
+                    canEdit: true
+                    optional: true
+                  atmDailyLimit:
+                    canEdit: true
+                    optional: true
+                  atmMonthlyLimit:
+                    canEdit: true
+                    optional: true
+                  atmOperationsLimit:
+                    canEdit: true
+                    optional: true
+                  purchasesOperationsLimit:
+                    canEdit: true
+                    optional: true
+                code: '200'
+                message: Available card limits retrieved successfully
+                httpStatus: 200
+                requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                date: 1736935800000
+  /customers/{customerId}/cards/type/{cardType}/clientType/{clientType}/limits/{currency}:
+    get:
+      tags:
+      - Card Limits
+      summary: Get card limit constraints (min/max values)
+      description: 'Retrieves the minimum and maximum allowed values for card limits based on card type, client type, and currency. This endpoint returns standard limit constraints and may include additional custom limit constraints configured in your system.
+
+
+        **Business Context**: Called when displaying the card issuance form or limit update form in the frontend to show users the allowable range for each limit type. Helps validate user input before submission.'
+      operationId: getCardLimitsMinMax
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: cardType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - DEBIT
+          - CREDIT
+          - PREPAID
+        example: DEBIT
+      - name: clientType
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        example: BUSINESS
+      - name: currency
+        in: path
+        required: true
+        schema:
+          type: string
+        example: EUR
+      - name: merchant
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Optional merchant identifier for merchant-specific limits
+      responses:
+        '200':
+          description: Card limit constraints retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseCardLimitsMinMaxResponse'
+              examples:
+                standard:
+                  summary: Standard properties only
+                  value:
+                    data:
+                      provider: MODULR
+                      currency: EUR
+                      minDailyLimit: 100
+                      maxDailyLimit: 5000
+                      minMonthlyLimit: 500
+                      maxMonthlyLimit: 20000
+                      minTransactionLimit: 10
+                      maxTransactionLimit: 2000
+                      minLifetimeSpendLimit: 1000
+                      maxLifetimeSpendLimit: 100000
+                    code: '200'
+                    message: Card limit constraints retrieved successfully
+                    httpStatus: 200
+                    requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                    date: 1736935800000
+                withCustomLimits:
+                  summary: With additional custom limit constraints
+                  value:
+                    data:
+                      provider: MODULR
+                      currency: EUR
+                      minDailyLimit: 100
+                      maxDailyLimit: 5000
+                      minMonthlyLimit: 500
+                      maxMonthlyLimit: 20000
+                      minTransactionLimit: 10
+                      maxTransactionLimit: 2000
+                      minLifetimeSpendLimit: 1000
+                      maxLifetimeSpendLimit: 100000
+                      minPurchasesDailyLimit: 50
+                      maxPurchasesDailyLimit: 3000
+                      minAtmDailyLimit: 50
+                      maxAtmDailyLimit: 1000
+                      minAtmOperationsLimit: 1
+                      maxAtmOperationsLimit: 10
+                    code: '200'
+                    message: Card limit constraints retrieved successfully
+                    httpStatus: 200
+                    requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                    date: 1736935800000
+  /customers/{customerId}/cards/{cardId}/update:
+    put:
+      tags:
+      - Card Limits
+      summary: Update card details and limits
+      description: "Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.\n\n**Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.\n\n**Important**: \n- This endpoint extends AdditionalParams, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover which custom limits are available in your system.\n- To update card alias, use the dedicated endpoint PUT /customers/{customerId}/cards/{cardId}/alias instead."
+      operationId: updateCard
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - $ref: '#/components/parameters/cardId'
+      requestBody:
+        $ref: '#/components/requestBodies/UpdateCardRequest'
+      responses:
+        '200':
+          description: Card updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseCardResponse'
+              example:
+                data:
+                  id: card-abc123
+                  token: tok_card_xyz789
+                  status: ACTIVE
+                  provider: MODULR
+                  nameOnCard: John Doe
+                  truncatedPan: '4321'
+                  expiryDate: 12/27
+                  spend: 2500
+                  limit: 5000
+                code: '200'
+                message: Card updated successfully
+                httpStatus: 200
+                requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                date: 1736935800000
+components:
+  schemas:
+    ToqioResponseAvailableCardLimitsResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AvailableCardLimitsResponse'
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Available card limits retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+    EncryptedSecurityCode:
+      type: object
+      description: RSA-encrypted security verification
+      properties:
+        encryptedSecurityCode:
+          type: string
+          description: RSA-encrypted security code
+        iv:
+          type: string
+          description: Initialization vector
+        tag:
+          type: string
+          description: Authentication tag
+    CardOTP:
+      type: object
+      description: OTP information for card operations
+      properties:
+        baasOTP:
+          type: string
+          description: Banking-as-a-Service OTP code
+        operationId:
+          type: string
+          description: Unique operation identifier
+        userId:
+          type: string
+          description: User identifier
+        cardTokenRequest:
+          $ref: '#/components/schemas/CardTokenRequest'
+    Address:
+      type: object
+      properties:
+        addressStreet:
+          type: string
+          description: Street name
+        addressNumber:
+          type: string
+          description: Street number
+        addressCity:
+          type: string
+          description: City
+        addressRegion:
+          type: string
+          description: State/Region/County
+        addressPostalCode:
+          type: string
+          description: Postal/ZIP code
+        addressIsoCountry:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+        addressRefinement:
+          type: string
+          description: Additional address details (apt, suite, etc.)
+    UpdateCardRequest:
+      allOf:
+      - $ref: '#/components/schemas/LimitFields'
+      - type: object
+        properties:
+          alias:
+            type: string
+            maxLength: 25
+            description: 'Friendly name/alias for the card (max 25 characters) - STANDARD PROPERTY. **DEPRECATED**: Use PUT /customers/{customerId}/cards/{cardId}/alias endpoint instead.'
+            deprecated: true
+          currency:
+            type: string
+            description: Currency code (ISO 4217) - STANDARD PROPERTY
+          clientType:
+            type: string
+            enum:
+            - BUSINESS
+            - CONSUMER
+            description: Type of client - STANDARD PROPERTY
+          cardOTP:
+            $ref: '#/components/schemas/CardOTP'
+      description: Request to update card details. Extends LimitFields with AdditionalParams support, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover available custom limits.
+      additionalProperties: true
+    ToqioResponseCardResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CardResponse'
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+          example: INFO
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card operation completed successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        debugTrace:
+          type: string
+          description: Debug trace information (only present on errors)
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+        errorOrigin:
+          type: string
+          description: Origin of error if applicable (only present on errors)
+    LimitFields:
+      type: object
+      description: Base limit fields that can be set on cards. This extends AdditionalParams, allowing additional custom limit properties.
+      properties:
+        cardLimitDaily:
+          type: integer
+          format: int32
+          description: Daily spending limit - STANDARD PROPERTY
+        cardLimitMonthly:
+          type: integer
+          format: int32
+          description: Monthly spending limit - STANDARD PROPERTY
+        cardLimitTransaction:
+          type: number
+          description: Per-transaction spending limit - STANDARD PROPERTY
+        lifetimeSpendLimit:
+          type: number
+          format: double
+          description: Total lifetime spending limit - STANDARD PROPERTY
+        cardMinLimitTransaction:
+          type: number
+          format: double
+          description: Minimum transaction limit - STANDARD PROPERTY
+        cardMinLimitTransactionForPhysicalBusiness:
+          type: number
+          format: double
+          description: Minimum transaction limit for physical business cards - STANDARD PROPERTY
+      additionalProperties:
+        oneOf:
+        - type: number
+        - type: integer
+        - type: string
+        description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic limit properties based on system configuration. Common examples: purchasesDailyLimit, purchasesMonthlyLimit, atmDailyLimit, atmMonthlyLimit, atmOperationsLimit, purchasesOperationsLimit, and any other custom limits configured in your system.'
+    AvailableCardLimitData:
+      type: object
+      description: Configuration data for a specific card limit type
+      properties:
+        canEdit:
+          type: boolean
+          description: Indicates if this limit can be edited by the user
+        optional:
+          type: boolean
+          description: Indicates if this limit is optional or required
+    CardTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Activation token
+        securityCode:
+          $ref: '#/components/schemas/EncryptedSecurityCode'
+    CardLimitsMinMaxResponse:
+      allOf:
+      - type: object
+        required:
+        - provider
+        - currency
+        properties:
+          provider:
+            type: string
+            description: Banking provider - STANDARD PROPERTY
+          currency:
+            type: string
+            description: Currency code - STANDARD PROPERTY
+          minDailyLimit:
+            type: number
+            format: double
+            description: Minimum daily limit - STANDARD PROPERTY
+          maxDailyLimit:
+            type: number
+            format: double
+            description: Maximum daily limit - STANDARD PROPERTY
+          minMonthlyLimit:
+            type: number
+            format: double
+            description: Minimum monthly limit - STANDARD PROPERTY
+          maxMonthlyLimit:
+            type: number
+            format: double
+            description: Maximum monthly limit - STANDARD PROPERTY
+          minTransactionLimit:
+            type: number
+            format: double
+            description: Minimum per-transaction limit - STANDARD PROPERTY
+          maxTransactionLimit:
+            type: number
+            format: double
+            description: Maximum per-transaction limit - STANDARD PROPERTY
+          minLifetimeSpendLimit:
+            type: number
+            format: double
+            description: Minimum lifetime limit - STANDARD PROPERTY
+          maxLifetimeSpendLimit:
+            type: number
+            format: double
+            description: Maximum lifetime limit - STANDARD PROPERTY
+      additionalProperties:
+        oneOf:
+        - type: number
+        - type: integer
+        description: 'ADDITIONAL CUSTOM PROPERTIES: min/max constraints for custom limit types configured in your system'
+    AvailableCardLimitsResponse:
+      type: object
+      description: Available card limit types and their configuration
+      properties:
+        transactionLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        dailyLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        monthlyLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        lifetimeLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        purchasesDailyLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        purchasesMonthlyLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        atmDailyLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        atmMonthlyLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        atmOperationsLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+        purchasesOperationsLimit:
+          $ref: '#/components/schemas/AvailableCardLimitData'
+    CardResponse:
+      type: object
+      description: Card details response
+      properties:
+        id:
+          type: string
+          description: Unique card identifier
+        token:
+          type: string
+          description: Card security token
+        status:
+          type: string
+          description: Current card status
+          enum:
+          - PENDING
+          - ACTIVE
+          - SUSPENDED
+          - CANCELLED
+          - CLOSED
+        fundingType:
+          type: string
+          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+        provider:
+          type: string
+          description: Banking provider name
+        nameOnCard:
+          type: string
+          description: Cardholder name on the card
+        truncatedPan:
+          type: string
+          description: Last 4 digits of PAN
+        expiryDate:
+          type: string
+          description: Card expiry date (MM/YY)
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/Address'
+        cardDeliveryMethod:
+          type: string
+          description: Card delivery method
+        spend:
+          type: number
+          format: double
+          description: Total amount spent
+        limit:
+          type: number
+          format: double
+          description: Current spending limit
+        cardProgramme:
+          type: string
+          description: Card programme/tier
+        externalId:
+          type: string
+          description: External system identifier
+        showCustomCardDesign:
+          type: boolean
+          description: Whether custom design is enabled
+        activationCodeLength:
+          type: integer
+          description: Length of activation code
+    ToqioResponseCardLimitsMinMaxResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/CardLimitsMinMaxResponse'
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card limits retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+  parameters:
+    customerId:
+      name: customerId
+      in: path
+      description: Unique identifier of the customer
+      required: true
+      schema:
+        type: string
+      example: cust-123
+    cardId:
+      name: cardId
+      in: path
+      description: Unique identifier of the card
+      required: true
+      schema:
+        type: string
+      example: card-abc123
+  requestBodies:
+    UpdateCardRequest:
+      description: Card update request containing the card details to be updated. This object extends AdditionalParams, allowing you to pass any custom card limits that are defined in your system. To discover available custom limits, use the GET /customers/{customerId}/availableCardLimits endpoint.
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateCardRequest'
+          examples:
+            standardUpdate:
+              summary: Update standard limits
+              value:
+                cardLimitDaily: 1500
+                cardLimitMonthly: 7000
+                cardLimitTransaction: 750
+                currency: EUR
+                clientType: BUSINESS
+            withCustomLimits:
+              summary: Update with custom limit fields
+              value:
+                cardLimitDaily: 1500
+                cardLimitMonthly: 7000
+                cardLimitTransaction: 750
+                currency: EUR
+                clientType: BUSINESS
+                lifetimeSpendLimit: 75000
+                purchasesDailyLimit: 1000
+                atmDailyLimit: 500
+                atmOperationsLimit: 5
+                purchasesOperationsLimit: 20
+            withOTP:
+              summary: Update requiring OTP verification
+              value:
+                cardLimitDaily: 2000
+                cardLimitMonthly: 10000
+                currency: EUR
+                clientType: BUSINESS
+                cardOTP:
+                  baasOTP: '123456'
+                  operationId: op-update-789
+                  userId: user-456
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

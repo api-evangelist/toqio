@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Delete Account API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Delete Account
+paths:
+  /customers/{customerId}/accounts/{accountId}/merchant/{clientId}/status/{accountStatus}:
+    delete:
+      tags:
+      - Delete Account
+      summary: Allows cancelling or removing a specified account. A cancelled account remains visible in the UI, while a removed account is no longer shown
+      description: Allows to cancel or delete a given account
+      operationId: deleteAccountStatusViaAPIUsingDELETE
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: accountId
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: accountStatus
+        in: path
+        description: CANCELLED or DELETED
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - clientCredentials: []
+      deprecated: false
+components:
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

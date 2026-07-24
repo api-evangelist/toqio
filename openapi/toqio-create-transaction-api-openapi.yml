@@ -1,0 +1,717 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Create transaction API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Create transaction
+paths:
+  /customers/{customerId}/transactions:
+    post:
+      tags:
+      - Create transaction
+      summary: Create Transaction
+      description: Issues a payment on behalf of a client. Supports internal transfers, SEPA, SWIFT, UK Faster Payments and FX payments depending on the source account provider and currency. The bank payment scheme is required (except for FX); call the bankPaymentSchemes endpoint first to discover which schemes are available for the chosen source/beneficiary pair.
+      operationId: createTransactionUsingPOST
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: issuePayment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssuePaymentDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewTransactionDetailDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+components:
+  schemas:
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        id:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
+          type: string
+        fileUrl:
+          type: string
+        id:
+          type: string
+        invoiceId:
+          type: string
+        key:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+    ViewTransactionDetailDTO:
+      title: ViewTransactionDetailDTO
+      type: object
+      properties:
+        address:
+          type: string
+        balance:
+          type: number
+          format: double
+        bankPaymentScheme:
+          $ref: '#/components/schemas/BankPaymentScheme'
+        baseCurrency:
+          type: string
+        baseTotal:
+          type: number
+          format: double
+        beneficiaryCurrencyAmount:
+          type: number
+          format: double
+        billable:
+          type: boolean
+        billedTxId:
+          type: string
+        billingTx:
+          type: boolean
+        canDownloadPaymentStatement:
+          type: boolean
+        card:
+          type: string
+        categoryCode:
+          type: string
+        categoryLabel:
+          $ref: '#/components/schemas/TranslateLabel'
+        charityPayment:
+          type: boolean
+        concept:
+          type: string
+        country:
+          type: string
+        currency:
+          type: string
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+        destinationAccount:
+          $ref: '#/components/schemas/TxAccount'
+        destinationAccountInfo:
+          type: string
+        destinationAccountType:
+          type: string
+          enum:
+          - SA
+          - BI
+          - I
+          - CD
+          - RA
+          - BA
+          - CRA
+        directDebit:
+          type: boolean
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        group:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+        hasComments:
+          type: boolean
+        id:
+          type: string
+        inClosedPeriod:
+          type: boolean
+        integrityOk:
+          type: boolean
+        invoice:
+          type: boolean
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceDataDTO'
+        isBaseTotalEdited:
+          type: boolean
+        isTotalWithoutVatEdited:
+          type: boolean
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+        localDate:
+          type: string
+        manualTransaction:
+          type: boolean
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        payType:
+          type: string
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+        profileImage:
+          type: string
+        reference:
+          type: string
+        refund:
+          type: boolean
+        sourceAccount:
+          $ref: '#/components/schemas/TxAccount'
+        sourceAccountInfo:
+          type: string
+        sourceAccountType:
+          type: string
+          enum:
+          - SA
+          - BI
+          - I
+          - CD
+          - RA
+          - BA
+          - CRA
+        status:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - PENDING_APPROVAL
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        syncExpense:
+          type: string
+          enum:
+          - UNSYNCED
+          - SYNCING
+          - SYNCED
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagDTO'
+        timeZone:
+          type: string
+        total:
+          type: number
+          format: double
+        totalWithoutVat:
+          type: number
+          format: double
+        transactionNumber:
+          type: string
+        txTitle:
+          type: string
+        type:
+          type: string
+          enum:
+          - EXPENSE
+          - PAYMENT
+          - PURCHASE
+          - TAX
+          - INBOUND
+        unreadComment:
+          type: integer
+          format: int32
+        userId:
+          type: string
+        userName:
+          type: string
+        vatPercentage:
+          type: number
+          format: double
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
+    TxAccount:
+      title: TxAccount
+      type: object
+      properties:
+        accountAlias:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        ifsc:
+          type: string
+        name:
+          type: string
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
+    TagDTO:
+      title: TagDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
+          type: string
+          description: Tag name
+          example: My tag
+    BankPaymentScheme:
+      title: BankPaymentScheme
+      type: object
+      additionalProperties: true
+      properties:
+        code:
+          type: string
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        name:
+          type: string
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        cif:
+          type: string
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
+        id:
+          type: string
+        invoiceDate:
+          type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    AccountDetailsDTO:
+      title: AccountDetailsDTO
+      description: This object is REQUIRED if beneficiaryAccountId is empty
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bankCountry:
+          type: string
+        bicSwift:
+          type: string
+        firstName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        iban:
+          type: string
+        lastName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        name:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is COMPANY.
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+    TransferConfigDTO:
+      title: TransferConfigDTO
+      type: object
+      properties:
+        endDate:
+          type: string
+          format: date-time
+        repeatCount:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          format: date-time
+        timeInterval:
+          type: integer
+          format: int32
+        unit:
+          type: string
+          enum:
+          - MILLISECOND
+          - SECOND
+          - MINUTE
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+    IssuePaymentDTO:
+      title: IssuePaymentDTO
+      required:
+      - amount
+      - concept
+      - sourceAccountId
+      - companyId
+      type: object
+      properties:
+        advancedInvoiceId:
+          type: string
+          description: If the payment is related to an advanced invoice, the id of it.
+        amount:
+          type: number
+          format: double
+        bankPaymentScheme:
+          type: string
+          description: For Railsr customers this field is REQUIRED except for FX payments. Accepted codes vary by provider and currency; call GET /customers/{customerId}/clients/{clientId}/provider/{provider}/transactions/bankPaymentSchemes to obtain the schemes available for a given source/beneficiary pair.
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        beneficiaryAccount:
+          $ref: '#/components/schemas/AccountDetailsDTO'
+        beneficiaryAccountId:
+          description: This field is REQUIRED if beneficiaryAccount object is empty.
+          type: string
+        beneficiaryAssetType:
+          type: string
+        billing:
+          type: boolean
+          description: Indicates if a payment is a billing fee
+          default: false
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+          description: This field is REQUIRED if beneficiaryAccountId is empty.
+        companyId:
+          type: string
+          description: Client ID assgined by TOQIO system
+        concept:
+          pattern: ^[a-zA-Z0-9\s]{1,18}$
+          type: string
+          description: Reference to be used for the Payment. If your provider is Railsbank , Min 1 to max 18 characters; If your provider is Modulr, Min 1 to max 18 characters that are not all the same (up to 140 characters for currencies other than GBP).
+        currency:
+          type: string
+        emails:
+          type: string
+          description: list of emails separated by comma
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        frequency:
+          type: string
+          enum:
+          - CUSTOM
+          - LAST_DAY_OF_MONTH
+          - WEEKLY
+          - EVERY_OTHER_WEEK
+          - MONTHLY
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        reason:
+          type: string
+        reference:
+          type: string
+          description: for FX payments
+        sourceAccountId:
+          type: string
+        transferConfig:
+          $ref: '#/components/schemas/TransferConfigDTO'
+        triggerType:
+          type: string
+          enum:
+          - IMMEDIATELY
+          - ONCE_FUTURE_DATE
+          - RECURRING
+        txFee:
+          type: number
+          format: double
+        userId:
+          type: string
+    TranslateLabel:
+      title: TranslateLabel
+      type: object
+      properties:
+        de:
+          type: string
+        en:
+          type: string
+        es:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

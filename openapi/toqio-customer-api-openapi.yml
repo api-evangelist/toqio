@@ -1,0 +1,698 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Customer API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Customer
+paths:
+  /customers:
+    post:
+      tags:
+      - Customer
+      summary: Create Customer
+      description: ''
+      operationId: createCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveCustomerRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkViewCustomerBaseResponse'
+        '400':
+          description: Bad request
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomException'
+  /customers/{customerId}:
+    get:
+      tags:
+      - Customer
+      summary: Find Customer
+      description: ''
+      operationId: findCustomer
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkViewCustomerBaseResponse'
+        '404':
+          description: CUSTOMER_NOT_FOUND
+  /customers/{customerId}/assetTypes:
+    get:
+      tags:
+      - Customer
+      summary: Get Asset Types
+      description: ''
+      operationId: getAssetTypes
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkAssetTypeResponse'
+        '404':
+          description: Bank not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentNotFoundException'
+  /customers/{customerId}/currencies:
+    get:
+      tags:
+      - Customer
+      summary: Get available currencies for a customer
+      description: ''
+      operationId: getBillingCurrencies
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Currencies retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkAssetTypeResponse'
+        '404':
+          description: Bank not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentNotFoundException'
+  /customers/{customerId}/capability:
+    get:
+      tags:
+      - Customer
+      summary: Get capabilities
+      description: ''
+      operationId: getCapabilities
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Capabilities retrieved successfully
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkCapabilityResponse'
+        '404':
+          description: CUSTOMER_NOT_FOUND
+  /customers/{customerId}/connectionStatus:
+    get:
+      tags:
+      - Customer
+      summary: Get customer connection status
+      description: ''
+      operationId: getCustomerConnectionStatus
+      parameters:
+      - name: customerId
+        in: path
+        description: The ID of the customer
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkCustomerConnectionStatusResponse'
+        '404':
+          description: CUSTOMER_NOT_FOUND
+  /customers/{customerId}/partnerProducts:
+    get:
+      tags:
+      - Customer
+      summary: Get Partner Products
+      description: ''
+      operationId: getPartnerProducts
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: countryCode
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: clientId
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToqioHttpOkPartnerProductResponse'
+        '404':
+          description: Bank not found
+components:
+  schemas:
+    ToqioHttpOkAssetTypeResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    PartnerProductResponse:
+      type: object
+      properties:
+        code:
+          type: string
+        assetType:
+          deprecated: true
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        assetTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - aud
+            - chf
+            - cad
+            - sek
+            - usd
+            - nok
+            - jpy
+            - nzd
+            - gold
+            - gbp
+            - eur
+            - czk
+            - dkk
+            - huf
+            - pln
+            - ron
+            - ils
+            - rub
+            - bhd
+            - sar
+            - bgn
+            - kes
+            - sgd
+            - kwd
+            - zar
+            - cny
+            - myr
+            - hrk
+            - mxn
+            - thb
+            - try
+            - omr
+            - ugx
+            - hkd
+            - php
+            - aed
+            - inr
+            - qar
+            - idr
+            - points
+        label:
+          $ref: '#/components/schemas/I18nLabel'
+        holderBank:
+          type: string
+        holderBankAddress:
+          type: string
+        holderBankSWIFT:
+          type: string
+        correspondentBank:
+          type: string
+        correspondentBankAddress:
+          type: string
+        correspondentBankSWIFT:
+          type: string
+        schemes:
+          type: array
+          items:
+            type: string
+            enum:
+            - SEPA
+            - SEPA_INSTANT
+            - INTERLEDGER
+            - SWIFT
+            - UK_FASTER_PAYMENTS
+            - CHAPS
+            - FX
+            - BACS
+            - TARGET2
+            - SPEI
+            - AUS_PAY_NET
+            - EFT
+            - NCS
+            - CERTIS
+            - STRAKSCLEARING_INSTANT
+            - INTRADAGCLEARING
+            - CHATS
+            - GIRO_ZRT
+            - IMPS
+            - NEFT
+            - SKN
+            - IBG
+            - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+            - PESONET
+            - ELIXIR
+            - TRANSFOND_SENT_ACH
+            - FAST
+            - INTERNAL_TRANSFER
+            - RIX
+            - FEDACH
+            - FEDWIRE
+            - CHIPS
+      required:
+      - code
+      - assetType
+      - label
+      - schemes
+    Capability:
+      type: object
+      properties:
+        hasOwnOTP:
+          type: boolean
+        canResendOTP:
+          type: boolean
+        canRetrievePan:
+          type: boolean
+        allowSixMonthsStatements:
+          type: boolean
+        allowVirtualCards:
+          type: boolean
+        allowEditBeneficiaries:
+          type: boolean
+        hasSecurityQuestions:
+          type: boolean
+        hasPhysicalCardVerificationNumber:
+          type: boolean
+        hasMeaWalletConfig:
+          type: boolean
+        hasBusinessCode:
+          type: boolean
+        hasToCreateEndUserKYC:
+          type: boolean
+        canCancelAccounts:
+          type: boolean
+        canRemoveAccounts:
+          type: boolean
+        hasAccountPurposes:
+          type: boolean
+        hasExpectedVolume:
+          type: boolean
+        needAccountSignature:
+          type: boolean
+        canRunCompliance:
+          type: boolean
+          description: Indicates if the bank needs to run compliance checks before creating an account
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    PaymentProvider:
+      deprecated: true
+      type: object
+      properties:
+        customerId:
+          type: string
+        paymentProviderType:
+          type: string
+        key:
+          type: string
+        loginId:
+          type: string
+        hmacKey:
+          type: string
+    SaveCustomerRequest:
+      required:
+      - id
+      - apiKey
+      type: object
+      properties:
+        id:
+          type: string
+        apiKey:
+          type: string
+        providerConfigId:
+          type: string
+          deprecated: true
+        provider:
+          type: string
+        paymentProvider:
+          $ref: '#/components/schemas/PaymentProvider'
+          deprecated: true
+        commercialName:
+          type: string
+        availableCurrencies:
+          type: array
+          items:
+            type: string
+    ToqioHttpOkCapabilityResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Capability'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkViewCustomerBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ViewCustomerBaseResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    ToqioHttpOkPartnerProductResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerProductResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ViewCustomerBaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        apiKey:
+          type: string
+        provider:
+          type: string
+        superCustomerId:
+          type: string
+        paymentProvider:
+          $ref: '#/components/schemas/PaymentProvider'
+        commercialName:
+          type: string
+        availableCurrencies:
+          type: array
+          items:
+            type: string
+    DocumentNotFoundException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    ToqioHttpOkCustomerConnectionStatusResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          enum:
+          - CONNECTED
+          - FAILED
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

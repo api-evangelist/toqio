@@ -1,0 +1,646 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Beneficiary actions API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Beneficiary actions
+paths:
+  /customers/{customerId}/clients/{clientId}/beneficiaries:
+    post:
+      tags:
+      - Beneficiary actions
+      summary: Create beneficiary
+      description: Creates a new beneficiary for the given client. The beneficiary can be either external (identified by account details such as IBAN/account number plus bank details) or internal (linked to another Toqio account). Once created the beneficiary can be used as the destination of a payment via the Create Transaction endpoint.
+      operationId: createBeneficiaryUsingPOST
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Beneficiary details to create
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveBeneficiaryViaAPI'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewBeneficiaryDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+    get:
+      tags:
+      - Beneficiary actions
+      summary: Get beneficiaries
+      description: 'Returns the list of beneficiaries registered for a client. All filter query parameters (accountId, sourceCurrency, visible) are optional: omit them to retrieve every beneficiary the client can pay; pass them to narrow the result to a specific source account or currency. By default only visible (non-hidden) beneficiaries are returned — pass visible=ALL or visible=FALSE to include or restrict to hidden ones.'
+      operationId: getBeneficiariesUsingGET
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: query
+        description: Optional. Filter beneficiaries reachable from this source account ID.
+        required: false
+        explode: false
+        schema:
+          type: string
+      - name: sourceCurrency
+        in: query
+        description: Optional. Filter beneficiaries reachable when sending from this currency (ISO 4217 code).
+        required: false
+        explode: false
+        schema:
+          type: string
+      - name: visible
+        in: query
+        description: Filter the list of beneficiaries based on their visibility status. If set to TRUE, only visible beneficiaries are returned. If set to FALSE, only hidden beneficiaries are returned. If set to ALL, all beneficiaries, both visible and hidden, are returned. If the parameter is left empty, only visible beneficiaries are returned by default.
+        required: false
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ViewBeneficiaryDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/beneficiaries/{beneficiaryId}:
+    delete:
+      tags:
+      - Beneficiary actions
+      summary: Delete beneficiary
+      description: Removes a beneficiary from the client's address book. The beneficiary is logically deleted and will no longer appear in Get Beneficiaries; historical transactions that referenced it remain unaffected.
+      operationId: deleteBeneficiaryUsingDELETE
+      parameters:
+      - name: beneficiaryId
+        in: path
+        description: beneficiaryId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+      security:
+      - clientCredentials: []
+    get:
+      tags:
+      - Beneficiary actions
+      summary: Get beneficiary
+      description: Returns the full detail of a single beneficiary by identifier, including bank account details, address, asset type and visibility flags.
+      operationId: getBeneficiaryUsingGET
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: beneficiaryId
+        in: path
+        description: beneficiaryId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewBeneficiaryDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+    put:
+      tags:
+      - Beneficiary actions
+      summary: Update beneficiary
+      description: 'Updates the details of an existing beneficiary. Only profile fields (name, address, city, postal code, country and visibility) can be edited. Bank account details captured at creation (currency/asset type, bank country, IBAN, account numbers, sort/routing codes, BIC/SWIFT and the Currencycloud-specific identifiers) are immutable: they are marked read-only and any value supplied for them is ignored, the stored value is preserved. To change bank details, delete the beneficiary and create a new one.'
+      operationId: updateBeneficiaryUsingPUT
+      parameters:
+      - name: beneficiaryId
+        in: path
+        description: beneficiaryId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Beneficiary fields to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBeneficiaryViaAPI'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewBeneficiaryDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/beneficiaries/{accountId}/internal:
+    post:
+      tags:
+      - Beneficiary actions
+      summary: Get or create internal beneficiary
+      description: Returns the internal beneficiary pointing to the given Toqio account, creating it on the fly if one does not yet exist. Internal beneficiaries are used for transfers between two accounts that both live on Toqio (intra-platform payments) and avoid duplicating bank details across the address book.
+      operationId: getInternalBeneficiaryUsingPOST
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        description: Id of the internal account for which you want to obtain the corresponding beneficiary
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewBeneficiaryDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+components:
+  schemas:
+    UpdateBeneficiaryViaAPI:
+      title: UpdateBeneficiaryViaAPI
+      type: object
+      description: 'Request body for the Update Beneficiary operation. Identical to SaveBeneficiaryViaAPI except that all bank-account detail fields are read-only: they are captured at creation and cannot be modified on update. Any value supplied for a read-only field is ignored and the stored value is preserved.'
+      properties:
+        companyId:
+          type: string
+          description: The id of the client
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
+        assetType:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bank:
+          type: string
+          readOnly: true
+          description: Immutable. Name of the beneficiary bank, set at creation and ignored on update.
+        bankCountry:
+          type: string
+          readOnly: true
+          description: Immutable. Country of the beneficiary bank, set at creation and ignored on update.
+        bicSwift:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        accountNumber:
+          type: string
+          readOnly: true
+          description: Immutable. For US, Australian and Canadian accounts. Set at creation and ignored on update.
+        bsbCode:
+          type: string
+          readOnly: true
+          description: Immutable. Just for Australian accounts. Set at creation and ignored on update.
+        caRoutingNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Just for Canadian accounts. Set at creation and ignored on update.
+        iban:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        routingNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Just for US accounts. Set at creation and ignored on update.
+        clabe:
+          type: string
+          readOnly: true
+          description: Immutable. Mexican CLABE (18 digits), required for Mexican accounts (bankCountry MX). Set at creation and ignored on update.
+        ifsc:
+          type: string
+          readOnly: true
+          description: Immutable. Indian IFSC code, required for Indian accounts (bankCountry IN). Set at creation and ignored on update.
+        cnaps:
+          type: string
+          readOnly: true
+          description: Immutable. Chinese CNAPS code for Chinese accounts (bankCountry CN). Set at creation and ignored on update.
+        ukAccountNumber:
+          pattern: ^(\d){7,8}$
+          type: string
+          readOnly: true
+          description: Immutable. Just for UK accounts. Set at creation and ignored on update.
+        ukSortCode:
+          pattern: ^[0-9]{6}$
+          type: string
+          readOnly: true
+          description: Immutable. Just for UK accounts. Set at creation and ignored on update.
+        firstName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        lastName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        name:
+          maxLength: 60
+          type: string
+          description: required if type is COMPANY
+        visible:
+          type: boolean
+          description: allows a user to display or not a beneficiary. True by default
+          default: true
+          example: true
+    ViewBeneficiaryDTO:
+      title: ViewBeneficiaryDTO
+      type: object
+      properties:
+        id:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bank:
+          type: string
+        bankCountry:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        iban:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        companyId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        firstName:
+          type: string
+          description: If type is PERSON
+        lastName:
+          type: string
+          description: If type is PERSON
+        fullName:
+          type: string
+        name:
+          type: string
+          description: If type is COMPANY
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        aba:
+          type: string
+          description: This field only affects Currencycloud user
+        clabe:
+          type: string
+          description: This field only affects Currencycloud user
+        ifsc:
+          type: string
+          description: This field only affects Currencycloud user
+        cnaps:
+          type: string
+          description: This field only affects Currencycloud user
+    SaveBeneficiaryViaAPI:
+      title: SaveBeneficiaryViaAPI
+      required:
+      - addressIsoCountry
+      - bankCountry
+      type: object
+      properties:
+        companyId:
+          type: string
+          description: The id of the client
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
+        assetType:
+          type: string
+          description: The asset of the beneficiary
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bank:
+          type: string
+          description: Name of the beneficiary bank
+        bankCountry:
+          type: string
+          description: Country of the beneficiary bank
+        bicSwift:
+          type: string
+        accountNumber:
+          type: string
+          description: For US, Australian and Canadian accounts
+        bsbCode:
+          type: string
+          description: Just for Australian accounts
+        caRoutingNumber:
+          type: string
+          description: Just for Canadian accounts
+        iban:
+          type: string
+        routingNumber:
+          type: string
+          description: Just for US accounts
+        clabe:
+          type: string
+          description: Mexican CLABE (18 digits). Required for Mexican accounts (bankCountry MX)
+        ifsc:
+          type: string
+          description: Indian IFSC code. Required for Indian accounts (bankCountry IN)
+        cnaps:
+          type: string
+          description: Chinese CNAPS code. For Chinese accounts (bankCountry CN)
+        ukAccountNumber:
+          pattern: ^(\d){7,8}$
+          type: string
+          description: Just for UK accounts
+        ukSortCode:
+          pattern: ^[0-9]{6}$
+          type: string
+          description: Just for UK accounts
+        firstName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        lastName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        name:
+          maxLength: 60
+          type: string
+          description: required if type is COMPANY
+        visible:
+          type: boolean
+          description: allows a user to display or not a beneficiary. True by default
+          default: true
+          example: true
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

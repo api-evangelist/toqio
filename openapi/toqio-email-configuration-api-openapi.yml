@@ -1,0 +1,200 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Email Configuration API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Email Configuration
+paths:
+  /iam/api/customers/{customerId}/email/configuration:
+    post:
+      tags:
+      - Email Configuration
+      summary: Add a new email configuration
+      description: ''
+      operationId: createEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailConfiguration
+        in: query
+        description: ''
+        schema:
+          $ref: '#/components/schemas/EmailConfigurationDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+    delete:
+      tags:
+      - Email Configuration
+      summary: Deleting an existing email configuration
+      description: ''
+      operationId: deleteEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailType
+        in: query
+        description: ''
+        required: false
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid url
+        '404':
+          description: Email Configuration not found
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+    get:
+      tags:
+      - Email Configuration
+      summary: Retrieving data of an existing email configuration
+      description: ''
+      operationId: getEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailType
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid url
+        '404':
+          description: Email Configuration not found
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+    put:
+      tags:
+      - Email Configuration
+      summary: Edit an email configuration
+      description: ''
+      operationId: updateEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailConfiguration
+        in: query
+        description: ''
+        schema:
+          $ref: '#/components/schemas/EmailConfigurationDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+components:
+  schemas:
+    EmailConfigurationDTO:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: ''
+        type:
+          type: string
+          description: ''
+        sender:
+          type: string
+          description: ''
+      xml:
+        name: '##default'
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

@@ -1,0 +1,548 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account User API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: User
+paths:
+  /customers/{customerId}/clients/{clientId}/users/{userId}:
+    get:
+      tags:
+      - User
+      summary: Get user
+      description: Allows to get the details of a given user
+      operationId: getUserUsingGET
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: userId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      accountId:
+                        type: string
+                      assetType:
+                        type: string
+                        enum:
+                        - GBP
+                        - EUR
+                      bicSwift:
+                        type: string
+                      iban:
+                        type: string
+                      ukAccountNumber:
+                        type: string
+                      ukSortCode:
+                        type: string
+                    title: Account
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  advancePaymentAccount:
+                    type: string
+                  birthDate:
+                    type: string
+                    example: yyyy-MM-dd
+                  cards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        alias:
+                          type: string
+                        id:
+                          type: string
+                        product:
+                          type: string
+                          enum:
+                          - DEBIT
+                          - CREDIT
+                        status:
+                          type: string
+                          enum:
+                          - ACTIVE
+                          - INACTIVE
+                          - ACTIVATING
+                          - AWAITING
+                          - FAILED
+                          - SUSPENDED
+                          - CANCELLED
+                        type:
+                          type: string
+                          enum:
+                          - PHYSICAL
+                          - VIRTUAL
+                      title: TeamCardListItemDTO
+                  city:
+                    type: string
+                  country:
+                    type: string
+                  email:
+                    type: string
+                  enabled:
+                    type: boolean
+                  firstName:
+                    type: string
+                  fullName:
+                    type: string
+                  id:
+                    type: string
+                  intercomURL:
+                    type: string
+                  intnlPhoneNumber:
+                    type: string
+                  kycStatus:
+                    type: string
+                    enum:
+                    - AWAITING_RESPONSE
+                    - REFERRED
+                    - COMPLETE
+                    - PENDING_EXTERNAL_APPROVAL
+                    - ACCEPT
+                    - DECLINE
+                    - CLOSE
+                    - REFQUE
+                    - STADEC
+                    - STACLR
+                  lastName:
+                    type: string
+                  locale:
+                    type: string
+                  middleName:
+                    type: string
+                  monthlyExpenditure:
+                    type: number
+                    format: double
+                  onboarded:
+                    type: boolean
+                  onboardedAt:
+                    type: string
+                    format: date-time
+                  onboardingStatus:
+                    type: string
+                  personalIdentityNumber:
+                    type: string
+                  phoneCountry:
+                    type: string
+                  phoneNumber:
+                    type: string
+                  postalCode:
+                    type: string
+                  profileImage:
+                    type: string
+                  role:
+                    type: string
+                  tncVersion:
+                    type: object
+                    properties:
+                      dateUpdated:
+                        type: string
+                        format: date-time
+                      version:
+                        type: string
+                    title: TNCVersion
+                  username:
+                    type: string
+                  permissions:
+                    type: array
+                    items:
+                      type: string
+                  metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Key→value map.<br/> • Must be an object<br/> • Cannot be a primitive
+                title: TeamUserAdminDTO
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/clients/{clientId}/users/create:
+    post:
+      tags:
+      - User
+      summary: Create user
+      description: 'Allows to create a user under a client '
+      operationId: inviteUser
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInviteDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+      security:
+      - clientCredentials: []
+components:
+  schemas:
+    UserInviteDTO:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      - phoneNumber
+      - phoneCountry
+      - role
+      - birthDate
+      - address
+      - city
+      - postalCode
+      - country
+      - sendInvite
+      properties:
+        firstName:
+          type: string
+          description: Minimum required informatiom to create a user.
+        lastName:
+          type: string
+          description: Minimum required informatiom to create a user.
+        email:
+          type: string
+        phoneNumber:
+          type: string
+          description: You MUST add a mobile phone. By adding a landline the request will be rejected.
+        phoneCountry:
+          type: string
+          description: You MUST add the country prefix. We will send an OTP SMS message when the user is setting up the credentials.
+        consultancy:
+          type: string
+        role:
+          type: string
+          enum:
+          - ROLE_DIRECTOR
+          - ROLE_COMPANY_ADMIN
+          - ROLE_EMPLOYEE
+          - ROLE_ACCOUNTANT
+          - ROLE_OWNER
+          - ROLE_BENEFICIARY
+          - ROLE_AGENT
+          description: 'SME roles: ROLE_DIRECTOR, ROLE_COMPANY_ADMIN, ROLE_EMPLOYEE, ROLE_ACCOUNTANT and ROLE_AGENT; Consumer roles: ROLE_OWNER and ROLE_BENEFICIARY.'
+        birthDate:
+          type: string
+          description: Minimum required informatiom to create a user.
+        country:
+          type: string
+        postalCode:
+          type: string
+        address:
+          maxLength: 1000
+          minLength: 0
+          type: string
+          description: Minimum required informatiom to create a user.
+        address2:
+          maxLength: 1000
+          minLength: 0
+          type: string
+          description: Minimum required informatiom to create a user.
+        city:
+          type: string
+        cardType:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+        cardDeliveryName:
+          type: string
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        nameOnCard:
+          type: string
+        otp:
+          type: string
+        personalIdentityNumber:
+          type: string
+        documentType:
+          type: string
+        documentNumber:
+          type: string
+        tin:
+          maxLength: 11
+          minLength: 0
+          type: string
+        documentIssueDate:
+          type: string
+        sendInvite:
+          type: boolean
+          description: When the 'sendInvite' parameter is set to 'true', the newly created user will receive an email invitation to set up their credentials. If 'sendInvite' is set to 'false', no email will be sent. If 'sendInvite' is left empty, the system will automatically set it to 'true' by default.
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Key→value map.<br/> • Must be an object<br/> • Cannot be a primitive
+      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. All the DIRECTORS of the company MUST be added and will be required to do a KYC validation process by sending a live photo of their personal documentation and a selfie or a video, depending on the legislationCountry selection (e.g., if legislationCountry is UK this will be a selfie, if legislationCountry ES it will be a video). These DIRECTORS, in addition to the main user created in the OnboardingUserDTO, will go through this process to be reviewed in our compliance partner (overrideCompliance false) OR just saved to collect the information provided (overrideCompliance true AND runKYC true).
+    Firebase:
+      type: object
+      properties:
+        registrationToken:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        alias:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        phoneCountry:
+          type: string
+        intnlPhoneNumber:
+          type: string
+        onboardedAt:
+          type: string
+          format: date-time
+        companyId:
+          type: string
+        externalId:
+          type: string
+        username:
+          type: string
+        address:
+          type: string
+        postalCode:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        profileImage:
+          type: string
+        enabled:
+          type: boolean
+        firebase:
+          $ref: '#/components/schemas/Firebase'
+        locale:
+          type: string
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        twoFactorAuthEnabled:
+          type: boolean
+        onboardingStatus:
+          type: string
+          enum:
+          - INCOMPLETE
+          - NOT_ONBOARDING
+          - PENDING_KYC_RESULT
+          - PENDING_KYB_RESULTS
+          - PENDING_KYC_DOCUMENTS
+          - PENDING_KYB_DATA
+          - PENDING_KYB
+          - PENDING_ACCOUNT
+          - COMPLETED
+          - DECLINED
+          - PENDING_USER_INFO
+          - PENDING_KYC
+          - REJECTED_FROM_QUARANTINE
+          - PENDING_ACCOUNT_VALIDATION
+          - REJECTED
+        tncVersion:
+          $ref: '#/components/schemas/TNCVersion'
+        birthDate:
+          type: string
+        balanceCurrency:
+          type: string
+        idNumber:
+          type: string
+        personalAccountCurrency:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - GOLDBLOC
+          - USD
+          - NOK
+          - WHISKY
+          - JPY
+          - NZD
+          - GOLD
+          - CZK
+          - DKK
+          - HUF
+          - PLN
+          - RON
+          - ILS
+          - RUB
+          - BHD
+          - SAR
+          - BGN
+          - KES
+          - SGD
+          - KWD
+          - ZAR
+          - CNH
+          - MYR
+          - HRK
+          - MXN
+          - THB
+          - TRY
+          - OMR
+          - UGX
+          - HKD
+          - PHP
+          - AED
+          - INR
+          - QAR
+          - IDR
+        documentNumber:
+          type: string
+        documentExpirationDate:
+          type: string
+          format: date-time
+        documentIssuerCountry:
+          type: string
+        documentType:
+          type: string
+        appointmentDate:
+          type: string
+        otpChannel:
+          type: string
+        tin:
+          maxLength: 11
+          minLength: 0
+          type: string
+        enforceTwoFactorAuth:
+          type: boolean
+        areSecurityQuestionsAnswered:
+          type: boolean
+        documentIssueDate:
+          type: string
+        businessCode:
+          type: string
+        email:
+          type: string
+    PushSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        pendingActions:
+          type: boolean
+        suggestions:
+          type: boolean
+    CardAddress:
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressNumber:
+          type: string
+        addressPostalCode:
+          type: string
+        addressRefinement:
+          type: string
+        addressRegion:
+          type: string
+        addressStreet:
+          type: string
+    TNCVersion:
+      type: object
+      properties:
+        dateUpdated:
+          type: string
+          format: date-time
+        version:
+          type: string
+      title: TNCVersion
+    NotificationSettings:
+      type: object
+      properties:
+        push:
+          $ref: '#/components/schemas/PushSettings'
+        email:
+          type: boolean
+        commercial:
+          type: boolean
+        thirdParties:
+          type: boolean
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

@@ -1,0 +1,970 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Manage requests API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Manage requests
+paths:
+  /customers/{customerId}/revenue/{id}/merchant/{merchantId}/status:
+    put:
+      tags:
+      - Manage requests
+      summary: Update request status
+      operationId: changeStatus_1
+      description: 'This endpoint allows customers to modify the status of a selected payment request. Customers can update the status of a request to reflect its current state. Currently the system supports the following status: PAID, UNPAID, REJECTED, NOT_SENT.'
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: merchantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - PAID
+          - UNPAID
+          - REJECTED
+          - NOT_SENT
+      responses:
+        '200':
+          description: OK
+  /customers/{customerId}/revenue:
+    get:
+      tags:
+      - Manage requests
+      summary: Get request details
+      operationId: getRevenueDetails_1
+      description: This endpoint allows customers to retrieve detailed information about a specific request by its unique request ID. The response will include the status of the request, available options for the request, the option that was selected (if applicable), and detailed line data associated with the request.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        description: ID of the request
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewRevenueDTO'
+    post:
+      tags:
+      - Manage requests
+      summary: Send payment request to merchants
+      operationId: saveAndSendNotification_1
+      description: This endpoint allows customers to send out payment requests to all the merchants included in a previously validated collection file. Each merchant in the collection will receive a request for payment based on the details provided in the validated invoice data. Once the request is sent, merchants will receive these payment requests via email and through their notification centre in the portal.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevenueCollectionRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/RevenueCollectionResponseDTO'
+  /customers/{customerId}/revenue/filters:
+    get:
+      tags:
+      - Manage requests
+      summary: Get requests
+      operationId: getRevenueFilters_1
+      description: This endpoint returns a list of requests based on the filters used
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: filter
+        in: query
+        required: true
+        schema:
+          $ref: '#/components/schemas/RevenueFilter'
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ViewRevenueDTO'
+  /customers/{customerId}/revenue/{id}/pay:
+    put:
+      tags:
+      - Manage requests
+      summary: Pay payment request
+      operationId: payRevenue
+      description: 'This endpoint allows merchants to make immediate payments for invoice payment requests. When the endpoint is called, the system will generate an immediate payment from the merchant''s selected source account to the previously added receiver account, which was set up by the customer for receiving invoice payments. Once the payment is made successfully, the status of the corresponding request will be updated to PAID. '
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RevenueCollectionPayRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewTransactionDetailDTO'
+  /customers/{customerId}/revenue/validate:
+    post:
+      tags:
+      - Manage requests
+      summary: Validate collection data
+      operationId: validateAndConvertFile_1
+      description: Validate a collection of unpaid invoice requests before they are sent to merchants. A collection represents a group of requests, each containing basic details about unpaid invoices.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - file
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ViewRevenueReduceDTO'
+components:
+  schemas:
+    TransactionFileDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        extension:
+          type: string
+        key:
+          type: string
+        name:
+          type: string
+        fileUrl:
+          type: string
+        mime:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+        invoiceId:
+          type: string
+    EncryptedSecurityCodeDTO:
+      type: object
+      properties:
+        userId:
+          type: string
+        encData:
+          type: string
+        encAesKey:
+          type: string
+        iv:
+          type: string
+        tag:
+          type: string
+    InstallmentsPayOption:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/RevenuePayOption'
+      - type: object
+        properties:
+          numberOfInstallments:
+            type: integer
+            format: int32
+          installmentFrequency:
+            type: string
+            enum:
+            - MONTHLY
+            - WEEKLY
+            - BIWEEKLY
+    ViewRevenueReduceDTO:
+      required:
+      - clientId
+      - clientName
+      - invoiceAmount
+      - invoiceCurrency
+      - invoiceDueDate
+      - invoiceIssueDate
+      - invoiceNumber
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientName:
+          type: string
+        invoiceNumber:
+          type: string
+        invoiceAmount:
+          type: number
+          format: double
+        invoiceCurrency:
+          type: string
+        invoiceIssueDate:
+          type: string
+          format: date-time
+        invoiceDueDate:
+          type: string
+          format: date-time
+        lineNumber:
+          type: integer
+          format: int32
+        lineErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueError'
+    InvoiceDataDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        hasInvoice:
+          type: boolean
+        supplier:
+          type: string
+        amount:
+          type: number
+          format: double
+        invoiceNumber:
+          type: string
+        cif:
+          type: string
+        postalCode:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+        isTotalWithoutVatEdited:
+          type: boolean
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        invoiceDate:
+          type: string
+        dueDate:
+          type: string
+        discountPercentage:
+          type: number
+          format: double
+        discountAmount:
+          type: number
+          format: double
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+    TranslateLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    RevenueCollectionRequestDTO:
+      required:
+      - name
+      - revenueCollection
+      type: object
+      properties:
+        name:
+          type: string
+        paymentOptions:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/RevenuePayOption'
+            - $ref: '#/components/schemas/FullAmountPayOption'
+            - $ref: '#/components/schemas/InstallmentsPayOption'
+        revenueCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewRevenueReduceDTO'
+    FullAmountPayOption:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/RevenuePayOption'
+      - type: object
+        properties:
+          discount:
+            type: number
+            format: double
+    ViewTransactionDetailDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        transactionNumber:
+          type: string
+        txTitle:
+          type: string
+        invoice:
+          type: boolean
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceDataDTO'
+        address:
+          type: string
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+        currency:
+          type: string
+        baseCurrency:
+          type: string
+        total:
+          type: number
+          format: double
+        baseTotal:
+          type: number
+          format: double
+        totalWithoutVat:
+          type: number
+          format: double
+        date:
+          type: string
+          format: date-time
+        executionDate:
+          type: string
+          format: date-time
+        localDate:
+          type: string
+        timeZone:
+          type: string
+        status:
+          type: string
+          enum:
+          - FAILED
+          - WITHHELD
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - PENDING_APPROVAL
+        type:
+          type: string
+          enum:
+          - EXPENSE
+          - PAYMENT
+          - PURCHASE
+          - TAX
+          - INBOUND
+        group:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+        payType:
+          type: string
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+          - OUTBOUND_BANK_TRANSFER_DIRECT_DEBIT
+        card:
+          type: string
+        description:
+          type: string
+        categoryCode:
+          type: string
+        categoryLabel:
+          $ref: '#/components/schemas/TranslateLabel'
+        vatPercentage:
+          type: number
+          format: double
+        billable:
+          type: boolean
+        isBaseTotalEdited:
+          type: boolean
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagDTO'
+        unreadComment:
+          type: integer
+          format: int32
+        hasComments:
+          type: boolean
+        userName:
+          type: string
+        userId:
+          type: string
+        profileImage:
+          type: string
+        concept:
+          type: string
+        sourceAccount:
+          $ref: '#/components/schemas/TxAccount'
+        manualTransaction:
+          type: boolean
+        sourceAccountType:
+          type: string
+          enum:
+          - SA
+          - BI
+          - I
+          - CD
+          - RA
+          - BA
+          - CRA
+        sourceAccountInfo:
+          type: string
+        destinationAccountType:
+          type: string
+          enum:
+          - SA
+          - BI
+          - I
+          - CD
+          - RA
+          - BA
+          - CRA
+        destinationAccountInfo:
+          type: string
+        balance:
+          type: number
+          format: double
+        syncExpense:
+          type: string
+          enum:
+          - UNSYNCED
+          - SYNCING
+          - SYNCED
+        refund:
+          type: boolean
+        isTotalWithoutVatEdited:
+          type: boolean
+        inClosedPeriod:
+          type: boolean
+        country:
+          type: string
+        integrityOk:
+          type: boolean
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        charityPayment:
+          type: boolean
+        beneficiaryCurrencyAmount:
+          type: number
+          format: double
+        bankPaymentScheme:
+          type: string
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        canDownloadPaymentStatement:
+          type: boolean
+        reference:
+          type: string
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        billingTx:
+          type: boolean
+        billedTxId:
+          type: string
+        directDebit:
+          type: boolean
+          deprecated: true
+        payable:
+          type: boolean
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          $ref: '#/components/schemas/PaymentProviderDetailsDTO'
+        corePaymentType:
+          type: string
+          enum:
+          - payment-type-Global-SWIFT
+          - payment-type-UK-BACS
+          - payment-type-EU-SEPA-Target2
+          - payment-type-UK-Chaps
+          - payment-type-EU-SEPA-Step2
+          - payment-type-virtual-debit-card-debit
+          - payment-type-inter-ledger
+          - payment-type-UK-FasterPayments
+          - payment-type-fx
+          - payment-type-card
+          - payment-type-card-reserve
+          - payment-type-EU-SEPA-Instant
+          - payment-type-AU-NPP
+          - payment-type-EU-Target2
+          - payment-type-AU-DE
+          - payment-type-US-ACH
+          - payment-type-SG-FAST
+          - payment-type-US-Wires
+          - SPEI
+          - AUS-PAY-NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING-Instant
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN-INTERBANK-CLEARING-SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - INTERNAL-TRANSFER
+          - RIX
+          - CHIPS
+          - SEPA
+          - TARGET2
+          - DIRECT_DEBIT_OUTBOUND
+        hasFailedTransactionMonitoring:
+          type: boolean
+        ledgerType:
+          type: string
+        dynamicFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicFields'
+        internal:
+          type: boolean
+    InvoiceLineDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+    RevenueFilter:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - PAID
+          - UNPAID
+          - REJECTED
+          - NOT_SENT
+        merchantId:
+          type: string
+        collectionId:
+          type: string
+        collectionName:
+          type: string
+        amount:
+          type: number
+          format: double
+        fromInvoiceIssueDate:
+          type: string
+          format: date
+        toInvoiceIssueDate:
+          type: string
+          format: date
+        fromInvoiceDueDate:
+          type: string
+          format: date
+        toInvoiceDueDate:
+          type: string
+          format: date
+    RevenueCollectionPayRequestDTO:
+      required:
+      - sourceAccountId
+      type: object
+      properties:
+        sourceAccountId:
+          type: string
+        currency:
+          type: string
+        securityCode:
+          $ref: '#/components/schemas/EncryptedSecurityCodeDTO'
+        paymentOption:
+          oneOf:
+          - $ref: '#/components/schemas/RevenuePayOption'
+          - $ref: '#/components/schemas/FullAmountPayOption'
+          - $ref: '#/components/schemas/InstallmentsPayOption'
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        superCustomerId:
+          type: string
+        companyId:
+          type: string
+        userId:
+          type: string
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+    RevenueCollectionResponseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        clientsFail:
+          type: array
+          items:
+            type: string
+    RevenueError:
+      type: object
+      properties:
+        field:
+          type: string
+        errorType:
+          type: string
+          enum:
+          - INVALID_CLIENT_ID
+          - INVALID_CLIENT_NAME
+          - INVALID_CURRENCY
+          - EMPY_TEST
+          - ERROR_FORMAT
+    ViewRevenueDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        group:
+          $ref: '#/components/schemas/RevenueCollection'
+        status:
+          type: string
+          enum:
+          - PAID
+          - UNPAID
+          - REJECTED
+          - NOT_SENT
+        clientId:
+          type: string
+        clientName:
+          type: string
+        invoiceNumber:
+          type: string
+        invoiceAmount:
+          type: number
+          format: double
+        invoiceCurrency:
+          type: string
+        invoiceIssueDate:
+          type: string
+          format: date-time
+        invoiceDueDate:
+          type: string
+          format: date-time
+        selectedOption:
+          oneOf:
+          - $ref: '#/components/schemas/RevenuePayOption'
+          - $ref: '#/components/schemas/FullAmountPayOption'
+          - $ref: '#/components/schemas/InstallmentsPayOption'
+    RevenuePayOption:
+      required:
+      - type
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+    DynamicFields:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: object
+          additionalProperties:
+            type: string
+        valueId:
+          type: string
+        value:
+          type: string
+    TxAccount:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - gbp
+          - eur
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - points
+          - nok
+          - jpy
+          - sgd
+          - nzd
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+        name:
+          type: string
+        fullName:
+          type: string
+        iban:
+          type: string
+        bicSwift:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        addressStreet:
+          type: string
+        addressPostalCode:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        accountAlias:
+          type: string
+        assetFlag:
+          type: string
+        accountNumber:
+          type: string
+        caRoutingNumber:
+          type: string
+        routingNumber:
+          type: string
+        bsbCode:
+          type: string
+        bankCountry:
+          type: string
+        bankingProvider:
+          type: string
+        ledgerType:
+          type: string
+    TagDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    RevenueCollection:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        customerId:
+          type: string
+        paymentConfigurator:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/RevenuePayOption'
+            - $ref: '#/components/schemas/FullAmountPayOption'
+            - $ref: '#/components/schemas/InstallmentsPayOption'
+    PaymentProviderDetailsDTO:
+      type: object
+      properties:
+        shortReference:
+          type: string
+        internalReference:
+          type: string
+        paymentId:
+          type: string
+        conversionId:
+          type: string
+        rate:
+          type: number
+          format: double
+        settlementDate:
+          type: string
+          format: date-time
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

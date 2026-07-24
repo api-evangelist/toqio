@@ -1,0 +1,213 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Receive request payment API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Receive request payment
+paths:
+  /customers/{customerId}/revenue/account:
+    post:
+      tags:
+      - Receive request payment
+      summary: Add payment account details
+      operationId: createCustomerAccount_1
+      description: This endpoint allows customers to add their bank account information for receiving invoice payments. Each customer can add one account per currency, ensuring that payments are routed to the appropriate account based on the currency of the transaction.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerAccountDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CustomerAccountDTO'
+  /customers/{customerId}/revenue/accounts:
+    get:
+      tags:
+      - Receive request payment
+      summary: Get payment accounts
+      operationId: getRevenueAccounts_1
+      description: This endpoint allows customers to retrieve a list of their bank account details that have been added for receiving invoice payments. Customers can view the accounts associated with different currencies.
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerAccountDTO'
+components:
+  schemas:
+    CustomerAccountDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        customerId:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - gbp
+          - eur
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - points
+          - nok
+          - jpy
+          - sgd
+          - nzd
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+        bankCountry:
+          type: string
+        iban:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        bicSwift:
+          type: string
+        bank:
+          type: string
+        accountType:
+          type: string
+          enum:
+          - REVENUE
+    CreateCustomerAccountDTO:
+      type: object
+      properties:
+        ukAccountNumber:
+          pattern: ^(\d){7,8}$
+          type: string
+        ukSortCode:
+          pattern: \D{6}$
+          type: string
+        iban:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - gbp
+          - eur
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - points
+          - nok
+          - jpy
+          - sgd
+          - nzd
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+        bankCountry:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

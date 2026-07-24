@@ -1,0 +1,1108 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Account
+paths:
+  /customers/{customerId}/clients/{clientId}/accounts:
+    post:
+      tags:
+      - Account
+      summary: Create account
+      description: ''
+      operationId: createAccount
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueLedgerBaseRequest'
+        required: true
+      responses:
+        '200':
+          description: Account successfully created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkAccountBaseResponse'
+        '400':
+          description: BAD_REQUEST
+        '403':
+          description: INVALID_ACCOUNT_PRODUCT_CODE_COUNTRY
+        '404':
+          description: ERROR_CLIENT_NOT_FOUND
+        '500':
+          description: INVALID_CLIENT_CONFIGURATION
+    get:
+      tags:
+      - Account
+      summary: Get accounts
+      description: ''
+      operationId: getAccounts
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of account successfully retrieved
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToqioHttpOkAccountsBaseResponse'
+        '400':
+          description: BAD_REQUEST
+        '404':
+          description: BANK_NOT_FOUND
+        '500':
+          description: INVALID_CLIENT_CONFIGURATION
+  /customers/{customerId}/clients/{clientId}/accounts/{accountId}:
+    delete:
+      tags:
+      - Account
+      summary: Delete account
+      description: ''
+      operationId: deleteAccount
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account successfully deleted
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVoidResponse'
+        '400':
+          description: BAD_REQUEST
+        '404':
+          description: ACCOUNT_CLIENT_NOT_FOUND
+        '417':
+          description: ERROR_CLOSING_ACCOUNT
+        '500':
+          description: ERROR_CLOSING_ACCOUNT
+    get:
+      tags:
+      - Account
+      summary: Get account
+      description: ''
+      operationId: getAccount
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Account details successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkAccountBaseResponse'
+        '400':
+          description: BAD_REQUEST
+        '404':
+          description: ERROR_CLIENT_NOT_FOUND
+        '500':
+          description: INVALID_CLIENT_CONFIGURATION
+    put:
+      tags:
+      - Account
+      summary: Update account
+      description: ''
+      operationId: updateAccount
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountBaseRequest'
+        required: true
+      responses:
+        '200':
+          description: Account details successfully updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkAccountBaseResponse'
+        '400':
+          description: BAD_REQUEST
+        '404':
+          description: ACCOUNT_NOT_FOUND_FOR_CLIENT
+        '500':
+          description: FUNCTION_NOT_IMPLEMENTED_YET
+  /customers/{customerId}/clients/{clientId}/accounts/{accountId}/bankStatement:
+    post:
+      tags:
+      - Account
+      summary: Find account transaction list statement
+      description: ''
+      operationId: findAccountTransactionListStatement
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DateRange'
+        required: true
+      responses:
+        '200':
+          description: List of account transactions successfully retrieved
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToqioHttpOkStatementTransactionDTOFromBankResponse'
+        '400':
+          description: BAD_REQUEST
+        '404':
+          description: ACCOUNT_NOT_FOUND
+  /customers/{customerId}/clients/{clientId}/accounts/{accountId}/bankStatementOtp:
+    post:
+      tags:
+      - Account
+      summary: Find account transaction list statement
+      description: ''
+      operationId: findAccountTransactionListStatement_1
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankStatementSendData'
+        required: true
+      responses:
+        '200':
+          description: List of account transactions successfully retrieved
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToqioHttpOkStatementTransactionDTOFromBankResponse'
+        '404':
+          description: ACCOUNT_NOT_FOUND
+  /customers/{customerId}/merchants/{merchantId}/accounts/{accountId}/certificates/ownership:
+    get:
+      tags:
+      - Account
+      summary: Get account ownership certificate
+      operationId: getAccountOwnershipCertificate
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: merchantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: String encoded in base 64 that represents the PDF
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkStringResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+  /customers/{customerId}/accounts/{accountId}/dynamicBalances:
+    get:
+      tags:
+      - Account
+      summary: Get Dynamic Account Balances
+      description: 'Retrieves dynamic balance entries for a specific ledger account. The balances returned by this endpoint REPLACE the standard balance display in the Toqio platform. Instead of showing the default two balance fields, the platform will display exactly what the connector returns here. This allows complete customization of which balances are shown (e.g., available balance, pending balance, reserved amounts, etc.) and how they are labeled. IMPORTANT: If the connector returns an empty array or no response, no balances will be displayed to the end user. For detailed implementation guidance, see the [Dynamic Balance in Ledger Apps](https://platform.toq.io/reference/dynamic-balance-in-ledger-apps) documentation.'
+      operationId: getDynamicAccountBalances
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        description: Unique identifier of the customer in the Toqio platform. This ID is used to identify which customer's account balances are being requested.
+        schema:
+          type: string
+        example: customer_123
+      - name: accountId
+        in: path
+        required: true
+        description: Unique identifier of the ledger account for which dynamic balances are being requested. This is the account ID from your connector's system.
+        schema:
+          type: string
+        example: acc_456
+      responses:
+        '200':
+          description: Successfully retrieved dynamic account balances. Returns an array of balance entries. If one balance is returned, one will be displayed. If two or more balances are returned, only the first two will be displayed. If an empty array is returned, no balances will be shown to the user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkDynamicAccountBalancesResponse'
+        '400':
+          description: BAD_REQUEST - The request parameters are invalid or malformed
+        '404':
+          description: ACCOUNT_NOT_FOUND - The specified account ID does not exist in the connector's system
+        '500':
+          description: INTERNAL_SERVER_ERROR - An unexpected error occurred while calculating or retrieving the dynamic balances
+  /customers/{customerId}/accounts/{accountId}/payment-options:
+    get:
+      tags:
+      - Account
+      summary: Get Payment Options
+      description: 'Returns the payment options available for a specific source account. This endpoint is called by the Integration Hub before initiating a payment flow, so the frontend can determine how the user should select the destination beneficiary.
+
+
+        The main purpose of this endpoint is to communicate the **beneficiary selection mode**, which controls what kind of beneficiaries the user is allowed to choose as the destination of a payment originating from this account.
+
+
+        The connector must evaluate the source account (identified by `accountId`) and return the appropriate selection mode based on its own business rules, account type, regulatory constraints, or any other criteria relevant to the provider.
+
+
+        ### Beneficiary Selection Modes
+
+
+        The response contains a single field `beneficiarySelectionMode` which must be one of the following values:
+
+
+        - **`ANY_BENEFICIARY_ANY_PROVIDER`**: No restrictions. The user can select any beneficiary from any BaaS provider. This is the most permissive mode and should be used when there are no limitations on who can receive payments from this account.
+
+
+        - **`MERCHANT_ACCOUNTS_ANY_PROVIDER`**: The user can only select beneficiaries that correspond to the merchant''s own Toqio accounts, but those accounts can be held at any BaaS provider. Use this mode when payments from this account must stay within the merchant''s own accounts but can cross provider boundaries.
+
+
+        - **`MERCHANT_ACCOUNTS_SAME_PROVIDER`**: The user can only select beneficiaries that correspond to the merchant''s own Toqio accounts AND those accounts must be held at the same BaaS provider as the source account. This is the most restrictive mode and should be used when payments must stay within the same provider''s infrastructure (e.g., for instant internal transfers or regulatory reasons).
+
+
+        ### How the Frontend Uses This
+
+
+        The Toqio frontend calls this endpoint through the Integration Hub before displaying the beneficiary selection step in the payment flow. Based on the returned mode, the frontend will filter the list of available beneficiaries accordingly, preventing the user from selecting an invalid destination.
+
+
+        ### Error Handling / Fallback Behavior
+
+
+        If this endpoint returns **any error** (4xx, 5xx, timeout, connection refused, etc.), the Integration Hub will treat it as if the connector returned `ANY_BENEFICIARY_ANY_PROVIDER`. This means the user will see all beneficiaries without restrictions. This fallback applies regardless of the specific error code or message. Connectors that do not wish to restrict beneficiary selection can simply not implement this endpoint at all.'
+      operationId: getPaymentOptions
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        description: Unique identifier of the customer in the Toqio platform. This is the customer who owns the source account and is initiating the payment flow.
+        schema:
+          type: string
+        example: customer_123
+      - name: accountId
+        in: path
+        required: true
+        description: Unique identifier of the source account from which the payment will be made. The connector should evaluate this account to determine which beneficiary selection mode applies.
+        schema:
+          type: string
+        example: acc_456
+      responses:
+        '200':
+          description: Successfully retrieved payment options for the specified account. The response contains the beneficiary selection mode that the frontend will use to filter the beneficiary list in the payment flow.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkPaymentOptionsResponse'
+              example:
+                code: OK
+                errorSeverity: NONE
+                message: Ok
+                httpStatus: 200
+                requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                date: '2024-08-01T00:00:00.000Z'
+                data:
+                  beneficiarySelectionMode: MERCHANT_ACCOUNTS_ANY_PROVIDER
+        '404':
+          description: The specified customerId or accountId does not exist in the connector's system. Any error response will cause the Integration Hub to default to ANY_BENEFICIARY_ANY_PROVIDER.
+components:
+  schemas:
+    ToqioHttpOkAccountBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/AccountBaseResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    PaymentOptionsResponse:
+      type: object
+      description: Contains the payment options for a specific source account. Currently, the only option is the beneficiary selection mode, which determines what kind of beneficiaries the user can choose as the destination when making a payment from this account.
+      properties:
+        beneficiarySelectionMode:
+          $ref: '#/components/schemas/BeneficiarySelectionMode'
+      required:
+      - beneficiarySelectionMode
+    ToqioHttpOkStringResponse:
+      type: object
+      properties:
+        data:
+          type: string
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkDynamicAccountBalancesResponse:
+      type: object
+      description: Standard Toqio API response wrapper containing an array of dynamic account balance entries.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/DynamicAccountBalanceResponse'
+          description: Array of dynamic balance entries. Each entry represents a different calculated balance for the account (e.g., available balance, pending balance, reserved balance). The order of entries is preserved as returned by the connector.
+        code:
+          type: string
+          example: OK
+          description: Response status code
+        errorSeverity:
+          type: string
+          example: NONE
+          description: Error severity level
+        message:
+          type: string
+          example: Ok
+          description: Response message
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+          description: HTTP status code
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+          description: Unique identifier for this request
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+          description: Timestamp of the response
+    UpdateAccountBaseRequest:
+      type: object
+      properties:
+        alias:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        postalCode:
+          type: string
+        status:
+          type: string
+          enum:
+          - CLOSED
+          - ACTIVE
+          - PENDING
+          - HIDE
+          - QUARANTINE
+          - FAILED
+          - SUSPENDED
+      required:
+      - city
+      - address
+      - postalCode
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    IssueLedgerBaseRequest:
+      type: object
+      required:
+      - name
+      - clientId
+      - address
+      - city
+      - postalCode
+      - assetType
+      - countryCode
+      - alias
+      - signUpRequest
+      - partnerProduct
+      - readOnly
+      properties:
+        name:
+          type: string
+        clientId:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        postalCode:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        partnerProduct:
+          type: string
+        readOnly:
+          type: boolean
+        countryCode:
+          type: string
+        alias:
+          type: string
+        legislationCountry:
+          type: string
+        signUpRequest:
+          $ref: '#/components/schemas/SignUpRequest'
+    BankStatementSendData:
+      type: object
+      properties:
+        userId:
+          type: string
+        OTPBaas:
+          type: string
+        operationId:
+          type: string
+        dateRange:
+          $ref: '#/components/schemas/DateRange'
+    ToqioHttpOkAccountsBaseResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccountBaseResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    SignUpRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        cif:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+        partnerProduct:
+          type: string
+          enum:
+          - Railsbank-Direct-Debit-1
+          - Railsbank-KYC-5
+          - PayrNet-Multi-CCY-1
+          - Goldbloc-Conversion-1
+          - Railsbank-AML-Screening-1
+          - Onfido-IDV-1
+          - Railsbank-Debit-Card-1
+          - Railsbank-Debit-Card-2
+          - Railsbank-Virtual-1
+          - Railsbank-Identity-and-Verification-Service-1
+          - ExampleBank-Direct-Debit-1
+          - PayrNet-FX-1
+          - Railsbank-Debit-Card-3
+          - Railsbank-Credit-Card-1
+          - Railsbank-Conversion-1
+          - Banking-EU-1
+          - ExampleBank-EUR-1
+          - ExampleBank-FX-1
+          - ExampleBank-GBP-1
+          - ExampleBank-GBP-2
+          - PayrNet-EUR-1
+          - PayrNet-EUR-3
+          - PayrNet-GBP-1
+          - PayrNet-GBP-2
+          - PFS-EUR
+          - MODULR-GBP
+          - MODULR-EUR
+          - CLEARBANK_GBP
+          - CLEARBANK_EUR
+          - CLEARBANK_CHF
+          - CLEARBANK_CZK
+          - CLEARBANK_DKK
+          - CLEARBANK_HUF
+          - CLEARBANK_NOK
+          - CLEARBANK_PLN
+          - CLEARBANK_RON
+          - CLEARBANK_SEK
+          - CLEARBANK_USD
+          - Railsbank-USD-Credit-1
+          - Railsbank-KYC-1
+          - Railsbank-KYC-2
+          - Railsbank-Rewards-1
+          - LOOMIS_EUR
+        countryCode:
+          type: string
+        postalCode:
+          type: string
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        subOrganisationType:
+          type: string
+          enum:
+          - SOLE_TRADER
+          - LIMITED
+          - PARTNERSHIP
+          - CHARITY
+          - PUBLIC_LIMITED
+          - ASSOCIATION
+          - SUPPORT_GROUP
+          - NON_REG_PARTNERSHIP
+          - NOT_YET_REGISTERED
+      required:
+      - id
+      - email
+      - endUserId
+      - registrationDate
+    BeneficiarySelectionMode:
+      type: string
+      description: 'Defines the restrictions on which beneficiaries a user can select as the destination of a payment originating from a specific source account. The connector returns this value based on its own business rules, account type, or regulatory constraints.
+
+
+        - `ANY_BENEFICIARY_ANY_PROVIDER`: No restrictions. The user can select any beneficiary across any BaaS provider. This is the default behavior if the connector does not implement the payment-options endpoint.
+
+        - `MERCHANT_ACCOUNTS_ANY_PROVIDER`: Only the merchant''s own Toqio accounts can be selected as destination, regardless of which BaaS provider holds them. Payments must stay within the merchant''s own accounts but can cross provider boundaries.
+
+        - `MERCHANT_ACCOUNTS_SAME_PROVIDER`: Only the merchant''s own Toqio accounts held at the same BaaS provider as the source account can be selected. This is the most restrictive mode — payments must stay within the same provider''s infrastructure.'
+      enum:
+      - ANY_BENEFICIARY_ANY_PROVIDER
+      - MERCHANT_ACCOUNTS_ANY_PROVIDER
+      - MERCHANT_ACCOUNTS_SAME_PROVIDER
+    ToqioHttpOkPaymentOptionsResponse:
+      type: object
+      description: Standard Toqio API response wrapper containing the payment options for a source account.
+      properties:
+        data:
+          $ref: '#/components/schemas/PaymentOptionsResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    StatementTransactionDTOFromBank:
+      type: object
+      properties:
+        balance:
+          type: number
+          format: double
+          description: a double with two decimals
+          pattern: ^-?\d+\.\d{2}$
+        date:
+          type: string
+          format: date-time
+          description: The date and time the transaction was settled and included in the account balance (yyyy-MM-dd'T'HH:mm:ss.SSS'Z').
+        transactionNumber:
+          type: string
+      required:
+      - balance
+      - date
+      - transactionNumber
+    DynamicAccountBalanceResponse:
+      type: object
+      description: A single balance entry that will be displayed to the end user.
+      properties:
+        title:
+          allOf:
+          - $ref: '#/components/schemas/I18nLabel'
+          description: Internationalized label for the balance entry. Provide clear, descriptive text in all supported languages (e.g., 'Available Balance', 'Pending Balance', 'Reserved Funds').
+        amount:
+          type: number
+          format: double
+          description: The calculated balance amount. This represents the numeric value of the dynamic balance. Can be positive or negative depending on your balance calculation logic.
+          example: 1234.56
+        currency:
+          type: string
+          description: Currency code for the balance amount in ISO 4217 format (e.g., EUR, USD, GBP). Should match the account's currency.
+          example: EUR
+        tooltipInformation:
+          allOf:
+          - $ref: '#/components/schemas/I18nLabel'
+          description: Internationalized tooltip text providing additional context or explanation about this balance. Use this to help users understand what the balance represents.
+      required:
+      - title
+      - amount
+      - currency
+    SignUpResponse:
+      type: object
+      properties:
+        sendQuarantinedEmail:
+          type: boolean
+        sendKycCheckEmail:
+          type: boolean
+        kycCheckEmailMessage:
+          type: string
+      required:
+      - sendQuarantinedEmail
+      - sendKycCheckEmail
+      - kycCheckEmailMessage
+    ToqioHttpOkStatementTransactionDTOFromBankResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatementTransactionDTOFromBank'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    DateRange:
+      type: object
+      properties:
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+    AccountBaseResponse:
+      type: object
+      properties:
+        accountId:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        iban:
+          type: string
+        bicSwiftForSEPA:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+          enum:
+          - CLOSED
+          - ACTIVE
+          - PENDING
+          - HIDE
+          - QUARANTINE
+          - FAILED
+          - SUSPENDED
+        totalBalance:
+          type: number
+          format: double
+        availableBalance:
+          type: number
+          format: double
+        countryCode:
+          type: string
+        holderName:
+          type: string
+        holderAddress:
+          type: string
+          deprecated: true
+        holderAddressObj:
+          type: object
+          properties:
+            address:
+              type: string
+            address2:
+              type: string
+            city:
+              type: string
+            postalCode:
+              type: string
+            country:
+              type: string
+        alias:
+          type: string
+        address:
+          type: string
+          deprecated: true
+        address2:
+          type: string
+          deprecated: true
+        city:
+          type: string
+          deprecated: true
+        postalCode:
+          type: string
+          deprecated: true
+        bicSwiftForSWIFT:
+          type: string
+        correspondentBank:
+          type: string
+        correspondentBankAddress:
+          type: string
+        correspondentBankSWIFT:
+          type: string
+        holderBank:
+          type: string
+        holderBankAddress:
+          type: string
+        internationalEnabled:
+          type: boolean
+        partnerProduct:
+          type: string
+        wireRoutingNumber:
+          type: string
+        achRoutingNumber:
+          type: string
+        signUpResponse:
+          $ref: '#/components/schemas/SignUpResponse'
+        accountCanIssueCards:
+          type: boolean
+      required:
+      - accountId
+      - ukAccountNumber
+      - ukSortCode
+      - iban
+      - bicSwiftForSEPA
+      - bicSwiftForSWIFT
+      - assetType
+      - createdAt
+      - status
+      - totalBalance
+      - availableBalance
+      - countryCode
+      - HolderAddress
+      - alias
+      - correspondentBank
+      - correspondentBankAddress
+      - correspondentBankSWIFT
+      - holderBank
+      - holderBankAddress
+      - internationalEnabled
+      - partnerProduct
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

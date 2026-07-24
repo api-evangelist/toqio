@@ -1,0 +1,1648 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Transaction API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Transaction
+paths:
+  /customers/{customerId}/transactions:
+    get:
+      tags:
+      - Transaction
+      summary: Fetch transactions
+      operationId: fetchTransactions
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToqioHttpOkFetchAllTransactionsInSpecifiedTimeRangeResponse'
+        '404':
+          description: FUNCTION_NOT_IMPLEMENTED_YET
+    post:
+      tags:
+      - Transaction
+      summary: Save Transfer
+      description: ''
+      operationId: saveTransfer
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveTransferBaseRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkSyncTransactionResponse'
+        '404':
+          description: ERROR_ACCOUNT_NOT_FOUND
+        '500':
+          description: INVALID_REMOTE_ACCOUNT_CONFIGURATION
+  /customers/{customerId}/transactions/bankPaymentSchemes:
+    post:
+      tags:
+      - Transaction
+      summary: Get bank payment schemes
+      description: ''
+      operationId: getBankPaymentSchemes
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankPaymentSchemeRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkBankPaymentSchemeResponse'
+        '404':
+          description: BANK_NOT_FOUND
+        '500':
+          description: INTERNAL_SERVER_ERROR
+  /customers/{customerId}/ledgerType/{ledgerType}/bankStatement/footer/{locale}:
+    get:
+      tags:
+      - Transaction
+      summary: Get bank statement footer
+      description: Returns the footer text for a customer's bank statement based, ledger type, and locale.
+      operationId: getBankStatementFooter
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID
+        required: true
+        schema:
+          type: string
+      - name: ledgerType
+        in: path
+        description: Ledger type (regular, acquiring, lending, pos, insurance, deposit, credit)
+        required: true
+        schema:
+          type: string
+      - name: locale
+        in: path
+        description: Locale in the format language_COUNTRY (e.g., es-ES, en-US)
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation - footer text returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkStringResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+  /customers/{customerId}/transactions/{transactionId}/dynamicButton:
+    get:
+      tags:
+      - Transaction
+      summary: Get Dynamic Button configuration
+      operationId: getDynamicButtonConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DynamicButtonConfiguration'
+        '501':
+          description: FUNCTION_NOT_IMPLEMENTED_YET
+  /customers/{customerId}/transactions/fx/quote:
+    put:
+      tags:
+      - Transaction
+      summary: Get quote for currency pair
+      description: ''
+      operationId: getQuoteForCurrencyPair
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkQuoteCurrencyPairResponse'
+        '500':
+          description: FUNCTION_NOT_IMPLEMENTED_YET
+  /customers/{customerId}/transactions/{transactionId}/status:
+    get:
+      tags:
+      - Transaction
+      summary: Get Transaction Status
+      operationId: getTransactionStatus
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkPairResponse'
+        '404':
+          description: Document Not Found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentNotFoundException'
+  /customers/{customerId}/transactions/sync:
+    get:
+      tags:
+      - Transaction
+      summary: Sync Transactions
+      description: Deprecated
+      operationId: syncTransactions
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkIntegerResponse'
+        '404':
+          description: Customer not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentNotFoundException'
+  /syncTxStatus:
+    get:
+      tags:
+      - Transaction
+      summary: Sync Transaction Status
+      description: Deprecated
+      operationId: syncTransactionStatus
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVoidResponse'
+  /customers/{customerId}/transactions/syncStatus:
+    get:
+      tags:
+      - Transaction
+      summary: Sync Transaction Status
+      description: Deprecated
+      operationId: syncTransactionStatus_1
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkIntegerResponse'
+        '400':
+          description: Invalid configuration
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/InvalidConfigurationException'
+        '404':
+          description: Customer not found
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DocumentNotFoundException'
+        '501':
+          description: Not implemented
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/NotImplementedException'
+components:
+  schemas:
+    ToqioHttpOkStringResponse:
+      type: object
+      properties:
+        data:
+          type: string
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkFetchAllTransactionsInSpecifiedTimeRangeResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FetchAllTransactionsInSpecifiedTimeRangeResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    Iban:
+      type: object
+      properties:
+        iban:
+          type: string
+    InvalidConfigurationException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    PairStringToqioTransactionStatus:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        key:
+          type: string
+        left:
+          type: string
+        right:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+    Payer:
+      type: object
+      description: This class encapsulates all the necessary details about the payer (the user doing the transaction), for transaction processing. The payer object is used only in FX transactions (beneficiaryAssetType field not equals currency field) if the payment is external (not between own accounts)
+      properties:
+        companyOrganisationType:
+          type: string
+          description: Type of organization for the company.
+          enum:
+          - SOLE_TRADER
+          - LIMITED
+          - PARTNERSHIP
+          - CHARITY
+          - PUBLIC_LIMITED
+          - ASSOCIATION
+          - SUPPORT_GROUP
+          - NON_REG_PARTNERSHIP
+          - NOT_YET_REGISTERED
+          - REGISTERED
+          - NON_REGISTERED
+        companyType:
+          description: 'Type of the company. Possible values: `BUSINESS`, `CONSUMER`.'
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        companyName:
+          description: Name of the company. This field stores the official name of the company of the user that makes the payment.
+          type: string
+        companyCreatedAt:
+          description: Date when the company was created. This field represents the date on which the company was created in the system.
+          type: string
+          format: date-time
+        companyNumber:
+          description: Identification number of the company. This field stores the unique identifier assigned to the company, such as a registration number.
+          type: string
+        firstName:
+          description: First name of the payer. This field stores the first name of the user who is making the payment.
+          type: string
+        lastName:
+          description: Last name of the payer. This field stores the last name of the user who is making the payment.
+          type: string
+        city:
+          description: City of the payer. This field stores the city where the user resides.
+          type: string
+        address:
+          description: Address of the payer. This field stores the street address of the user.
+          type: string
+        postalCode:
+          description: Postal code of the payer. This field stores the postal code of the user's address.
+          type: string
+        country:
+          description: Country of the payer. This field stores the country where the user resides.
+          type: string
+        dateOfBirth:
+          description: Date of birth of the payer. This field stores the date of birth of the user who is making the payment.
+          type: string
+        identificationType:
+          description: Type of identification of the payer. This field specifies the type of identification document provided by the payer, such as PASSPORT, IDENTITY_CARD, ID, DNI, etc.
+          type: string
+        identificationValue:
+          description: Value of the identification of the payer. This field stores the unique value or number of the identification document provided by the payer.
+          type: string
+    BeneficiaryBankPaymentScheme:
+      type: object
+      properties:
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        iban:
+          type: string
+        bicSwift:
+          type: string
+        bank:
+          type: string
+        bsbCode:
+          type: string
+        routingNumber:
+          type: string
+        caRoutingNumber:
+          type: string
+        accountNumber:
+          type: string
+        clabe:
+          type: string
+        aba:
+          type: string
+          deprecated: true
+        cnaps:
+          type: string
+        ifsc:
+          type: string
+        bankCode:
+          type: string
+          deprecated: true
+        branchCode:
+          type: string
+          deprecated: true
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        assetType:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        addressStreet:
+          type: string
+        addressPostalCode:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        bankCountry:
+          type: string
+        id:
+          type: string
+        userId:
+          type: string
+        companyId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        visible:
+          type: boolean
+        bankingProviderBeneficiaryId:
+          type: string
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        sourceAccount:
+          type: string
+        customerId:
+          type: string
+        fullName:
+          type: string
+        nameOrFullName:
+          type: string
+        fullAddress:
+          type: string
+        addressLine:
+          type: string
+    TranslateLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        zh:
+          type: string
+    QuoteRequest:
+      type: object
+      properties:
+        sourceCurrency:
+          type: string
+        beneficiaryCurrency:
+          type: string
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        amount:
+          type: number
+          format: double
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    PaymentProviderDetails:
+      type: object
+      properties:
+        shortReference:
+          type: string
+        internalReference:
+          type: string
+        paymentId:
+          type: string
+        conversionId:
+          type: string
+        settlementDate:
+          type: string
+          format: date-time
+        rate:
+          type: number
+          format: double
+    Sender:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bic:
+          type: string
+        id:
+          type: string
+        issuer:
+          type: string
+        name:
+          type: string
+        scheme:
+          type: string
+        birth_city:
+          type: string
+        birth_country:
+          type: string
+        birth_date:
+          type: string
+        birth_province:
+          type: string
+        scheme_proprietary:
+          type: string
+    Invoice:
+      type: object
+      properties:
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        document_id:
+          type: string
+    Receiver:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bic:
+          type: string
+        id:
+          type: string
+        issuer:
+          type: string
+        name:
+          type: string
+        scheme:
+          type: string
+        birth_city:
+          type: string
+        birth_country:
+          type: string
+        birth_date:
+          type: string
+        birth_province:
+          type: string
+        scheme_proprietary:
+          type: string
+    QuoteCurrencyPairResponse:
+      type: object
+      properties:
+        sourceCurrencyAmount:
+          type: number
+          format: double
+        beneficiaryCurrencyAmount:
+          type: number
+          format: double
+        beneficiaryCurrency:
+          type: string
+        sourceCurrency:
+          type: string
+        fxRate:
+          type: number
+          format: double
+    UltimateSender:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bic:
+          type: string
+        id:
+          type: string
+        issuer:
+          type: string
+        name:
+          type: string
+        scheme:
+          type: string
+        birth_city:
+          type: string
+        birth_country:
+          type: string
+        birth_date:
+          type: string
+        birth_province:
+          type: string
+        scheme_proprietary:
+          type: string
+    DocumentNotFoundException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    BankPaymentSchemeRequest:
+      type: object
+      properties:
+        sourceAccountId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        beneficiary:
+          $ref: '#/components/schemas/BeneficiaryBankPaymentScheme'
+        amount:
+          type: number
+          format: double
+        clientId:
+          type: string
+        isFxTransaction:
+          type: boolean
+        areOwnAccounts:
+          type: boolean
+        canSeeFxPayments:
+          type: boolean
+    SyncTransactionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        failureReason:
+          type: string
+        corePaymentType:
+          type: string
+          enum:
+          - payment-type-Global-SWIFT
+          - payment-type-UK-BACS
+          - payment-type-EU-SEPA-Target2
+          - payment-type-UK-Chaps
+          - payment-type-EU-SEPA-Step2
+          - payment-type-virtual-debit-card-debit
+          - payment-type-inter-ledger
+          - payment-type-UK-FasterPayments
+          - payment-type-fx
+          - payment-type-card
+          - payment-type-card-reserve
+          - payment-type-EU-SEPA-Instant
+          - payment-type-AU-NPP
+          - payment-type-EU-Target2
+          - payment-type-AU-DE
+          - payment-type-US-ACH
+          - payment-type-SG-FAST
+          - payment-type-US-Wires
+          - SPEI
+          - AUS-PAY-NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING-Instant
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN-INTERBANK-CLEARING-SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL-TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+          - SEPA
+          - TARGET2
+          - DIRECT_DEBIT_OUTBOUND
+        cardTransactionType:
+          type: string
+          enum:
+          - Purchase
+          - Withdrawal
+          - Adjustment Credit
+          - Purchase with Cashback
+          - Account Funding
+          - Quasi cash
+          - Cash Advance
+          - Unique MCC Transaction
+          - Adjustment Debit
+          - Purchase Return/Refund
+          - Deposit
+          - Card Load
+          - Card Unload
+          - Check Deposit
+          - Original Credit
+          - Payment Transaction
+          - Account Verification
+        balance:
+          type: number
+          format: double
+        date:
+          type: string
+          format: date-time
+        baseTotal:
+          type: number
+          format: double
+        paymentProviderDetails:
+          $ref: '#/components/schemas/PaymentProviderDetails'
+    FetchAllTransactionsInSpecifiedTimeRangeResponse:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/Invoice'
+        reason:
+          type: string
+        reference:
+          type: string
+        additional_info:
+          type: string
+        amount_beneficiary_account:
+          type: number
+          format: double
+        amount_ledger_from:
+          type: number
+          format: double
+        amount_local_currency:
+          type: number
+          format: double
+        asset_class:
+          type: string
+          enum:
+          - commodity
+          - currency
+        asset_type:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        beneficiary_account_id:
+          type: string
+        beneficiary_id:
+          type: string
+        card_currency:
+          type: string
+        card_entry_method:
+          type: string
+        card_expiry_date:
+          type: string
+        card_rules_breached:
+          type: array
+          items:
+            type: string
+        card_transaction_type:
+          type: string
+          enum:
+          - Purchase
+          - Withdrawal
+          - Adjustment Credit
+          - Purchase with Cashback
+          - Account Funding
+          - Quasi cash
+          - Cash Advance
+          - Unique MCC Transaction
+          - Adjustment Debit
+          - Purchase Return/Refund
+          - Deposit
+          - Card Load
+          - Card Unload
+          - Check Deposit
+          - Original Credit
+          - Payment Transaction
+          - Account Verification
+        card_used:
+          type: string
+        conversion_date:
+          type: string
+        conversion_rate:
+          type: number
+          format: double
+        created_at:
+          type: string
+          format: date-time
+        daily_unique_refence:
+          type: string
+        failure_reasons:
+          type: array
+          items:
+            type: string
+            enum:
+            - declined-by-compliance-firewall
+            - card-not-active
+            - insufficient-funds
+            - partner-error
+            - card-rules-breached
+            - contact-support
+            - fx-issue
+        fixed_side:
+          type: string
+          enum:
+          - beneficiary
+          - sender
+        ledger_from_id:
+          type: string
+        ledger_to_id:
+          type: string
+        mcc_description:
+          type: string
+        merchant_category_code:
+          type: string
+        merchant_details:
+          type: string
+        merchant_id:
+          type: string
+        merchantbank_id:
+          type: string
+        missing_data:
+          type: array
+          items:
+            type: string
+        partner_product:
+          type: string
+          enum:
+          - Railsbank-Direct-Debit-1
+          - Railsbank-KYC-5
+          - PayrNet-Multi-CCY-1
+          - Goldbloc-Conversion-1
+          - Railsbank-AML-Screening-1
+          - Onfido-IDV-1
+          - Railsbank-Debit-Card-1
+          - Railsbank-Debit-Card-2
+          - Railsbank-Virtual-1
+          - Railsbank-Identity-and-Verification-Service-1
+          - ExampleBank-Direct-Debit-1
+          - PayrNet-FX-1
+          - Railsbank-Debit-Card-3
+          - Railsbank-Credit-Card-1
+          - Railsbank-Conversion-1
+          - Banking-EU-1
+          - ExampleBank-EUR-1
+          - ExampleBank-FX-1
+          - ExampleBank-GBP-1
+          - ExampleBank-GBP-2
+          - PayrNet-EUR-1
+          - PayrNet-EUR-3
+          - PayrNet-GBP-1
+          - PayrNet-GBP-2
+          - PFS-EUR
+          - MODULR-GBP
+          - MODULR-EUR
+          - CLEARBANK_GBP
+          - CLEARBANK_EUR
+          - CLEARBANK_CHF
+          - CLEARBANK_CZK
+          - CLEARBANK_DKK
+          - CLEARBANK_HUF
+          - CLEARBANK_NOK
+          - CLEARBANK_PLN
+          - CLEARBANK_RON
+          - CLEARBANK_SEK
+          - CLEARBANK_USD
+          - Railsbank-USD-Credit-1
+          - Railsbank-KYC-1
+          - Railsbank-KYC-2
+          - Railsbank-Rewards-1
+          - LOOMIS_EUR
+        partner_product_fx:
+          type: string
+          enum:
+          - PayrNet-FX-1
+        payment_info:
+          type: object
+          additionalProperties:
+            type: object
+        payment_method:
+          type: string
+          enum:
+          - swift
+          - local
+        payment_type:
+          type: string
+          enum:
+          - payment-type-Global-SWIFT
+          - payment-type-UK-BACS
+          - payment-type-EU-SEPA-Target2
+          - payment-type-UK-Chaps
+          - payment-type-EU-SEPA-Step2
+          - payment-type-virtual-debit-card-debit
+          - payment-type-inter-ledger
+          - payment-type-UK-FasterPayments
+          - payment-type-fx
+          - payment-type-card
+          - payment-type-card-reserve
+          - payment-type-EU-SEPA-Instant
+          - payment-type-AU-NPP
+          - payment-type-EU-Target2
+          - payment-type-AU-DE
+          - payment-type-US-ACH
+          - payment-type-SG-FAST
+          - payment-type-US-Wires
+          - SPEI
+          - AUS-PAY-NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING-Instant
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN-INTERBANK-CLEARING-SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL-TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+          - SEPA
+          - TARGET2
+          - DIRECT_DEBIT_OUTBOUND
+        point_of_sale_country_code:
+          type: string
+        point_of_sale_info:
+          type: string
+        point_of_sale_reference:
+          type: string
+        receipt_id:
+          type: string
+        rejection_reasons:
+          type: array
+          items:
+            type: string
+        return_info:
+          type: object
+          additionalProperties:
+            type: object
+        settlement_date:
+          type: string
+        swift_charge_bearer:
+          type: string
+          enum:
+          - charge-bearer-creditor
+          - charge-bearer-shared
+          - charge-bearer-service-level
+          - charge-bearer-debtor
+        swift_service_level:
+          type: string
+          enum:
+          - service-level-urgent-payment
+          - service-level-urgent-payment-net-settlement
+          - service-level-book-transacion
+          - service-level-eba-priority-service
+          - service-level-sepa
+          - service-level-non-urgent-priority-payment
+          - service-level-same-day-value
+          - service-level-non-urgent-payment
+        transaction_audit_number:
+          type: string
+        transaction_currency:
+          type: string
+        transaction_fee:
+          type: number
+          format: double
+        transaction_id:
+          type: string
+        transaction_info:
+          $ref: '#/components/schemas/TransactionInfo'
+        transaction_meta:
+          type: object
+          additionalProperties:
+            type: object
+        transaction_printout:
+          type: object
+          additionalProperties:
+            type: object
+        transaction_status:
+          type: string
+        transaction_type:
+          type: string
+          enum:
+          - transaction-type-send
+          - transaction-type-inter-ledger
+          - transaction-type-manual-credit
+          - transaction-type-manual-debit
+          - transaction-type-inter-ledger-omnibus
+          - transaction-type-receive
+          - transaction-type-virtual-debit-card-debit
+          - transaction-type-fx
+          - transaction-type-card-receive
+          - transaction-type-card-reserve
+          - transaction-type-outstanding-balance-repayment
+          - transaction-type-debit-payment-send
+          - transaction-type-debit-send
+          - transaction-type-card-send
+        event_group_id:
+          type: string
+        event_group_created_at:
+          type: string
+          format: date-time
+    Address:
+      type: object
+      properties:
+        country:
+          type: string
+        lines:
+          type: string
+    SaveTransferBaseRequest:
+      required:
+      - amount
+      - beneficiaryAccountId
+      - currency
+      - sourceAccountId
+      type: object
+      properties:
+        sourceAccountId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        concept:
+          type: string
+        userId:
+          type: string
+        companyId:
+          type: string
+        fixedSide:
+          type: string
+          enum:
+          - beneficiary
+          - sender
+        reference:
+          type: string
+        bankPaymentScheme:
+          type: string
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        billing:
+          type: boolean
+        billingCode:
+          type: string
+        advancedInvoiceId:
+          type: string
+        purposeCode:
+          type: string
+        isFxTransaction:
+          type: boolean
+        assetType:
+          type: string
+        areOwnAccounts:
+          type: boolean
+        payer:
+          $ref: '#/components/schemas/Payer'
+        baseAmount:
+          type: number
+          format: double
+        operationId:
+          type: string
+        baasOTP:
+          type: string
+        payType:
+          type: string
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+          - OUTBOUND_BANK_TRANSFER_DIRECT_DEBIT
+        isExpense:
+          type: boolean
+    ToqioHttpOkPairResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PairStringToqioTransactionStatus'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkSyncTransactionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SyncTransactionResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    UltimateReceiver:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bic:
+          type: string
+        id:
+          type: string
+        issuer:
+          type: string
+        name:
+          type: string
+        scheme:
+          type: string
+        birth_city:
+          type: string
+        birth_country:
+          type: string
+        birth_date:
+          type: string
+        birth_province:
+          type: string
+        scheme_proprietary:
+          type: string
+    TransactionInfo:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+        purpose:
+          type: string
+        receiver:
+          $ref: '#/components/schemas/Receiver'
+        sender:
+          $ref: '#/components/schemas/Sender'
+        charge_bearer:
+          type: string
+        clearing_system:
+          type: string
+        clearing_system_proprietary:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        end_to_end_id:
+          type: string
+        instructed_agent:
+          $ref: '#/components/schemas/Bic'
+        instructing_agent:
+          $ref: '#/components/schemas/Bic'
+        instruction_id:
+          type: string
+        local_instrument:
+          type: string
+        local_instrument_proprietary:
+          type: string
+        message_id:
+          type: string
+        message_schema:
+          type: string
+        purpose_category:
+          type: string
+        purpose_category_proprietary:
+          type: string
+        receiver_account:
+          $ref: '#/components/schemas/Iban'
+        receiver_agent:
+          $ref: '#/components/schemas/Bic'
+        remittance_information_unstructured:
+          type: string
+        sender_account:
+          $ref: '#/components/schemas/SenderAccount'
+        sender_agent:
+          $ref: '#/components/schemas/Bic'
+        service_level:
+          type: string
+        settlement_account:
+          $ref: '#/components/schemas/Iban'
+        settlement_date:
+          type: string
+        settlement_method:
+          type: string
+        transaction_id:
+          type: string
+        ultimate_receiver:
+          $ref: '#/components/schemas/UltimateReceiver'
+        ultimate_sender:
+          $ref: '#/components/schemas/UltimateSender'
+    ToqioHttpOkBankPaymentSchemeResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BankPaymentSchemeExtended'
+    Bic:
+      type: object
+      properties:
+        bic:
+          type: string
+    BankPaymentSchemeExtended:
+      type: object
+      properties:
+        code:
+          type: string
+    DynamicButtonConfiguration:
+      type: object
+      properties:
+        marketplaceKey:
+          type: string
+        texts:
+          $ref: '#/components/schemas/TranslateLabel'
+      required:
+      - marketplaceKey
+      - texts
+    ToqioHttpOkQuoteCurrencyPairResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/QuoteCurrencyPairResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkIntegerResponse:
+      type: object
+      properties:
+        data:
+          type: integer
+          format: int32
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    SenderAccount:
+      type: object
+      properties:
+        iban:
+          type: string
+        bic:
+          type: string
+        uk_account_number:
+          type: string
+        uk_sort_code:
+          type: string
+    NotImplementedException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

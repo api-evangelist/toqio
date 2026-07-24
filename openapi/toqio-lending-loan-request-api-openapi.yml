@@ -1,0 +1,369 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Lending - Loan - Request API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Lending - Loan - Request
+paths:
+  /customers/{customerId}/lending/requests:
+    post:
+      tags:
+      - Lending - Loan - Request
+      summary: Create a lending request
+      description: ''
+      operationId: createLendingRequest
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: lendingRequestRequest
+        in: query
+        description: Lending request request. Cannot be null.
+        required: true
+        schema:
+          $ref: '#/components/schemas/LendingRequestBaseRequest'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LendingRequestBaseRequest'
+        required: true
+      responses:
+        '200':
+          description: Lending request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkLendingRequestBaseResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+  /customers/{customerId}/lending/requests/{lendingRequestId}:
+    get:
+      tags:
+      - Lending - Loan - Request
+      summary: Get a lending request
+      description: ''
+      operationId: getLendingRequest
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: lendingRequestId
+        in: path
+        description: Lending request ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Lending request retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkLendingRequestBaseResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+    put:
+      tags:
+      - Lending - Loan - Request
+      summary: Update a lending request
+      description: ''
+      operationId: updateLendingRequest
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: lendingRequestId
+        in: path
+        description: Lending request ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: lendingRequestRequest
+        in: query
+        description: Lending request request. Cannot be null.
+        required: true
+        schema:
+          $ref: '#/components/schemas/LendingRequestBaseRequest'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LendingRequestBaseRequest'
+        required: true
+      responses:
+        '200':
+          description: Lending request updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkLendingRequestBaseResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /customers/{customerId}/lending/requests/find:
+    post:
+      tags:
+      - Lending - Loan - Request
+      summary: Get lending requests by filter
+      description: ''
+      operationId: getLendingRequestsByFilter
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: lendingRequestFilter
+        in: query
+        description: Lending request filter. Cannot be null.
+        required: true
+        schema:
+          $ref: '#/components/schemas/LendingRequestFilter'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LendingRequestFilter'
+        required: true
+      responses:
+        '200':
+          description: Lending requests retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkLendingRequestBaseResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    ToqioHttpOkLendingRequestBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LendingRequestBaseRequest'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    LendingRequestFilter:
+      type: object
+      properties:
+        productType:
+          type: string
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        status:
+          type: string
+          enum:
+          - CREATED
+          - SUBMITTED
+          - APPROVED
+          - REJECTED
+          - MORE_INFORMATION_REQUIRED
+          - CANCELLED
+          - LOAN_OFFER_PROVIDED
+          - LOAN_OFFER_ACCEPTED
+          - LOAN_OFFER_CANCELLED
+          - CONTRACT_SIGNED
+        merchantId:
+          type: string
+    LoanInformation:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currencyISOCode:
+          type: string
+        purpose:
+          type: string
+        maturity:
+          type: integer
+          format: int32
+        productType:
+          type: string
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+        preferredRepaymentTerms:
+          type: number
+          format: double
+    SignificantPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        type:
+          type: string
+          enum:
+          - DIRECTOR
+          - SHAREHOLDER
+          - BENEFICIAL_OWNER
+        address:
+          type: string
+        dateOfBirth:
+          type: string
+        emailAddress:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Phone'
+        nationality:
+          type: string
+        documentNumber:
+          type: string
+    Phone:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        countryISOCode:
+          type: string
+        intnlPhoneNumber:
+          type: string
+    AccountInformation:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        currencyISOCode:
+          type: string
+        accountNumber:
+          type: string
+        sortCode:
+          type: string
+        iban:
+          type: string
+        bic:
+          type: string
+    MerchantInformation:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        countryISOCode:
+          type: string
+        registeredAddress:
+          type: string
+        monthsTrading:
+          type: string
+        keyContactName:
+          type: string
+        keyContactPhoneNumber:
+          $ref: '#/components/schemas/Phone'
+        keyContactEmailAddress:
+          type: string
+        significantPeople:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignificantPerson'
+        sales:
+          $ref: '#/components/schemas/Document'
+    Document:
+      type: object
+      properties:
+        base64:
+          type: string
+        name:
+          type: string
+    LendingRequestBaseRequest:
+      type: object
+      properties:
+        creditCheckPermission:
+          type: boolean
+        dataPrivacyConsent:
+          type: boolean
+        loan:
+          $ref: '#/components/schemas/LoanInformation'
+        account:
+          $ref: '#/components/schemas/AccountInformation'
+        merchant:
+          $ref: '#/components/schemas/MerchantInformation'
+        submissionDate:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

@@ -1,0 +1,364 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Card Details API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Card Details
+paths:
+  /customers/{customerId}/cards/{cardId}/image/url:
+    get:
+      tags:
+      - Card Details
+      summary: Get card image URL
+      description: 'Retrieves the URL for the card''s visual design image.
+
+
+        **Business Context**: Used to display card artwork in the frontend application. Returns the URL of the card image that can be rendered in the UI.'
+      operationId: getCardImageUrl
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - $ref: '#/components/parameters/cardId'
+      responses:
+        '200':
+          description: Card image URL retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseString'
+              example:
+                data: https://cdn.provider.com/card-designs/corporate-blue-123.png
+                code: '200'
+                message: Card image URL retrieved successfully
+                httpStatus: 200
+                requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                date: 1736935800000
+  /customers/{customerId}/cards/image/url:
+    get:
+      tags:
+      - Card Details
+      summary: Get card image URL by template
+      description: 'Retrieves the card image URL based on the customer''s default card template/design.
+
+
+        **Business Context**: Used to show the default card design before a card is issued, helping users preview what their card will look like.'
+      operationId: getCardImageUrlByTemplate
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      responses:
+        '200':
+          description: Template card image URL retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseString'
+  /customers/{customerId}/cards/{cardId}/settings:
+    get:
+      tags:
+      - Card Details
+      summary: Get card settings
+      description: 'Retrieves configuration settings for a specific card from the banking provider.
+
+
+        **Business Context**: Used to retrieve provider-specific card configuration and capabilities.'
+      operationId: getCardSettings
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - $ref: '#/components/parameters/cardId'
+      responses:
+        '200':
+          description: Card settings retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseCardSettingsResponse'
+  /customers/{customerId}/cards/{cardId}/pan:
+    post:
+      tags:
+      - Card Details
+      summary: Get card PAN (Primary Account Number)
+      description: 'Retrieves sensitive card details including PAN, CVV, and expiry date. Requires security verification (encrypted security code).
+
+
+        **Business Context**: Called when user needs to view full card details. Security code is encrypted using RSA public key before transmission. Supports both standard encryption and MEA Wallet wrapped key encryption.'
+      operationId: getPan
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - $ref: '#/components/parameters/cardId'
+      requestBody:
+        description: Security parameters for PAN retrieval (encrypted security code)
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                encryptedSecurityCode:
+                  type: string
+                  description: RSA-encrypted security code
+                wrappedKey:
+                  type: string
+                  description: MEA Wallet wrapped key (if using MEA Wallet encryption)
+                iv:
+                  type: string
+                  description: Initialization vector for encryption
+                tag:
+                  type: string
+                  description: Authentication tag for encryption
+              required:
+              - encryptedSecurityCode
+      responses:
+        '200':
+          description: PAN retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponseCardPanResponse'
+        '401':
+          description: Unauthorized - Invalid security code
+  /customers/{customerId}/cards/{cardId}/pin:
+    get:
+      tags:
+      - Card Details
+      summary: Get card PIN
+      description: 'Retrieves the card PIN number. Requires elevated security permissions.
+
+
+        **Business Context**: Used when cardholder needs to retrieve their PIN for ATM or POS transactions.'
+      operationId: getPin
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - $ref: '#/components/parameters/cardId'
+      responses:
+        '200':
+          description: PIN retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioResponsePinResponse'
+  /customers/{customerId}/cards/{cardId}/pin/async:
+    get:
+      tags:
+      - Card Details
+      summary: Get card PIN asynchronously (POC only)
+      description: Asynchronous PIN retrieval endpoint for proof-of-concept testing only. Not for production use.
+      operationId: getPinAsync
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - $ref: '#/components/parameters/cardId'
+      responses:
+        '202':
+          description: PIN retrieval initiated
+components:
+  schemas:
+    ToqioResponseString:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Response data as string
+          example: https://cdn.provider.com/resource
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Resource retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+    ToqioResponsePinResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            pin:
+              type: string
+              description: Card PIN
+              example: '1234'
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card PIN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+    ToqioResponseCardSettingsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: Card settings from provider
+          additionalProperties: true
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card settings retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+    ToqioResponseCardPanResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Full card number
+              example: '4111111111111111'
+            cvv:
+              type: string
+              description: CVV security code
+              example: '123'
+            expiryDate:
+              type: string
+              description: Expiry date
+              example: 12/27
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card PAN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+  parameters:
+    customerId:
+      name: customerId
+      in: path
+      description: Unique identifier of the customer
+      required: true
+      schema:
+        type: string
+      example: cust-123
+    cardId:
+      name: cardId
+      in: path
+      description: Unique identifier of the card
+      required: true
+      schema:
+        type: string
+      example: card-abc123
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

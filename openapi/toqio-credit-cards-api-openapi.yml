@@ -1,0 +1,367 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Credit Cards API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Credit Cards
+paths:
+  /customers/{customerId}/cards/accounts/{accountId}/scheduledPayment/{scheduledPaymentId}/cancel:
+    post:
+      tags:
+      - Credit Cards
+      summary: Cancel scheduled payment
+      description: 'Cancels a previously scheduled credit card payment.
+
+
+        **Business Context**: Allows users to cancel scheduled payments before they are executed.'
+      operationId: cancelScheduledPayment
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: scheduledPaymentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scheduled payment cancelled successfully
+  /customers/{customerId}/cards/account/{accountId}/companies/{companyId}/creditStatements:
+    get:
+      tags:
+      - Credit Cards
+      summary: Fetch credit card statements
+      description: 'Retrieves credit card billing statements.
+
+
+        **Business Context**: Allows users to view their credit card statements showing transactions, payments, and balance information.'
+      operationId: fetchCreditStatement
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit statement retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/CreditStatementResponse'
+  /customers/{customerId}/cards/account/{accountId}/company/{companyId}/creditDetails:
+    get:
+      tags:
+      - Credit Cards
+      summary: Get credit card details
+      description: 'Retrieves detailed credit card account information including balance, available credit, and payment status.
+
+
+        **Business Context**: Displays current credit card account status in the frontend application.'
+      operationId: getCreditDetails
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Credit details retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/CreditDetailsRequest'
+  /customers/{customerId}/cards/client/{clientId}/partnerToken:
+    get:
+      tags:
+      - Credit Cards
+      summary: Get partner token
+      description: 'Retrieves a partner integration token for credit card operations.
+
+
+        **Business Context**: Used when integrating with third-party services for credit card account linking and payments.'
+      operationId: getPartnerToken
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Partner token retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PartnerTokenResponse'
+  /customers/{customerId}/cards/accounts/{accountId}/external-accounts:
+    get:
+      tags:
+      - Credit Cards
+      summary: Get linked external accounts
+      description: 'Retrieves the list of external bank accounts linked to a credit card account for payment purposes.
+
+
+        **Business Context**: Used in credit card management to display in the frontend which external accounts can be used to pay off the credit card balance.'
+      operationId: linkedExternalAccounts
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: External accounts retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ExternalAccountsResponse'
+  /customers/{customerId}/cards/account/{accountId}/linkExternalAccount:
+    post:
+      tags:
+      - Credit Cards
+      summary: Link external account
+      description: 'Links an external bank account to a credit card account for payment purposes.
+
+
+        **Business Context**: Allows users to add external bank accounts that can be used to make payments on their credit card balance.'
+      operationId: linkExternalAccount
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExternalAccountLinkBodyRequest'
+      responses:
+        '200':
+          description: External account linked successfully
+  /customers/{customerId}/cards/account/{accountId}/company/{companyId}/creditDetails/{externalAccountId}:
+    delete:
+      tags:
+      - Credit Cards
+      summary: Remove linked external account
+      description: 'Removes a linked external account from a credit card.
+
+
+        **Business Context**: Allows users to unlink external bank accounts that are no longer needed for credit card payments.'
+      operationId: removeLinkedExternalAccount
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: companyId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: externalAccountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: External account removed successfully
+  /customers/{customerId}/cards/accounts/{accountId}/payments/schedule/autopay:
+    post:
+      tags:
+      - Credit Cards
+      summary: Schedule autopay
+      description: 'Sets up automatic recurring payments for a credit card account.
+
+
+        **Business Context**: Enables automatic payment of credit card balance (minimum payment, full balance, or fixed amount) on a recurring schedule.'
+      operationId: scheduleAutoPay
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduleAutopayRequest'
+      responses:
+        '200':
+          description: Autopay scheduled successfully
+  /customers/{customerId}/cards/accounts/{accountId}/scheduledCreditPayments:
+    get:
+      tags:
+      - Credit Cards
+      summary: Get scheduled credit payments
+      description: 'Retrieves all scheduled payments for a credit card account.
+
+
+        **Business Context**: Shows users their upcoming scheduled payments including one-time payments and autopay schedules.'
+      operationId: scheduledCreditPayments
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scheduled payments retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ScheduledCreditPaymentsResponse'
+  /customers/{customerId}/cards/accounts/{accountId}/schedule:
+    post:
+      tags:
+      - Credit Cards
+      summary: Schedule credit card payment
+      description: 'Schedules a one-time payment for a credit card account.
+
+
+        **Business Context**: Allows users to schedule a future payment from a linked external account to their credit card balance.'
+      operationId: schedulePaymentCard
+      parameters:
+      - $ref: '#/components/parameters/customerId'
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SchedulePaymentCardRequest'
+      responses:
+        '200':
+          description: Payment scheduled successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ScheduledCreditPaymentIdResponse'
+components:
+  schemas:
+    CreditStatementResponse:
+      type: object
+      description: Credit card billing statement
+    CreditDetailsRequest:
+      type: object
+      description: Credit card account details
+    ScheduledCreditPaymentIdResponse:
+      type: object
+      description: Scheduled payment identifier
+    SchedulePaymentCardRequest:
+      type: object
+      description: Request to schedule credit card payment
+    ScheduleAutopayRequest:
+      type: object
+      description: Request to set up automatic payments
+    ExternalAccountsResponse:
+      type: object
+      description: External bank account linked to credit card
+    ExternalAccountLinkBodyRequest:
+      type: object
+      description: Request to link external account
+    PartnerTokenResponse:
+      type: object
+      description: Partner integration token
+    ScheduledCreditPaymentsResponse:
+      type: object
+      description: Scheduled credit card payment
+  parameters:
+    customerId:
+      name: customerId
+      in: path
+      description: Unique identifier of the customer
+      required: true
+      schema:
+        type: string
+      example: cust-123
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

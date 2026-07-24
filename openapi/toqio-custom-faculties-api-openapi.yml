@@ -1,0 +1,127 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Custom Faculties API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Custom Faculties
+paths:
+  /customers/{customerId}/marketplaces/{marketplaceKey}/custom/faculties:
+    get:
+      tags:
+      - Custom Faculties
+      summary: Get Custom Faculties
+      operationId: getCustomFaculties
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      - name: marketplaceKey
+        in: path
+        description: marketplaceKey
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                example:
+                  CUSTOM_FACULTY_1: true
+                  CUSTOM_FACULTY_2: false
+                  CUSTOM_FACULTY_3: true
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - clientCredentials: []
+      deprecated: false
+    put:
+      tags:
+      - Custom Faculties
+      summary: Update Custom faculties
+      operationId: updateCustomFaculties
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: marketplaceKey
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+              example:
+                CUSTOM_FACULTY_1: true
+                CUSTOM_FACULTY_2: false
+                CUSTOM_FACULTY_3: true
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Missmatching params needed
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Custom Ledger Type not found
+      security:
+      - clientCredentials: []
+      deprecated: false
+components:
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

@@ -1,0 +1,352 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Custom Notifications API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Custom Notifications
+paths:
+  /webhooks/integration/{integration}/webhooktype/{type}:
+    post:
+      tags:
+      - Custom Notifications
+      summary: Send custom notifications
+      description: ''
+      operationId: sendUserCenterNotification
+      parameters:
+      - name: integration
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - USER_CENTER_NOTIFICATION
+          - ADMIN_CENTER_NOTIFICATION
+          - PUSH_NOTIFICATION
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomNotification'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      security:
+      - clientCredentials: []
+  /notifications/errors:
+    post:
+      tags:
+      - Custom Notifications
+      summary: Notify custom notification errors
+      operationId: notifyCustomNotificationErrors
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomNotification_2'
+        required: true
+      responses:
+        '200':
+          description: Errors notified
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVoidResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+  /notifications/email/send:
+    post:
+      tags:
+      - Custom Notifications
+      summary: Send Email Notification
+      operationId: sendEmailNotification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailNotification'
+        required: true
+      responses:
+        '200':
+          description: Email notification sent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVoidResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    CustomNotification_2:
+      type: object
+      properties:
+        externalId:
+          type: string
+        titleI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        messageI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        externalType:
+          type: string
+        receivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Receivers'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomNotificationError'
+    CustomNotificationError:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - 100 CONTINUE
+          - 101 SWITCHING_PROTOCOLS
+          - 102 PROCESSING
+          - 103 EARLY_HINTS
+          - 103 CHECKPOINT
+          - 200 OK
+          - 201 CREATED
+          - 202 ACCEPTED
+          - 203 NON_AUTHORITATIVE_INFORMATION
+          - 204 NO_CONTENT
+          - 205 RESET_CONTENT
+          - 206 PARTIAL_CONTENT
+          - 207 MULTI_STATUS
+          - 208 ALREADY_REPORTED
+          - 226 IM_USED
+          - 300 MULTIPLE_CHOICES
+          - 301 MOVED_PERMANENTLY
+          - 302 FOUND
+          - 302 MOVED_TEMPORARILY
+          - 303 SEE_OTHER
+          - 304 NOT_MODIFIED
+          - 305 USE_PROXY
+          - 307 TEMPORARY_REDIRECT
+          - 308 PERMANENT_REDIRECT
+          - 400 BAD_REQUEST
+          - 401 UNAUTHORIZED
+          - 402 PAYMENT_REQUIRED
+          - 403 FORBIDDEN
+          - 404 NOT_FOUND
+          - 405 METHOD_NOT_ALLOWED
+          - 406 NOT_ACCEPTABLE
+          - 407 PROXY_AUTHENTICATION_REQUIRED
+          - 408 REQUEST_TIMEOUT
+          - 409 CONFLICT
+          - 410 GONE
+          - 411 LENGTH_REQUIRED
+          - 412 PRECONDITION_FAILED
+          - 413 PAYLOAD_TOO_LARGE
+          - 413 REQUEST_ENTITY_TOO_LARGE
+          - 414 URI_TOO_LONG
+          - 414 REQUEST_URI_TOO_LONG
+          - 415 UNSUPPORTED_MEDIA_TYPE
+          - 416 REQUESTED_RANGE_NOT_SATISFIABLE
+          - 417 EXPECTATION_FAILED
+          - 418 I_AM_A_TEAPOT
+          - 419 INSUFFICIENT_SPACE_ON_RESOURCE
+          - 420 METHOD_FAILURE
+          - 421 DESTINATION_LOCKED
+          - 422 UNPROCESSABLE_ENTITY
+          - 423 LOCKED
+          - 424 FAILED_DEPENDENCY
+          - 425 TOO_EARLY
+          - 426 UPGRADE_REQUIRED
+          - 428 PRECONDITION_REQUIRED
+          - 429 TOO_MANY_REQUESTS
+          - 431 REQUEST_HEADER_FIELDS_TOO_LARGE
+          - 451 UNAVAILABLE_FOR_LEGAL_REASONS
+          - 500 INTERNAL_SERVER_ERROR
+          - 501 NOT_IMPLEMENTED
+          - 502 BAD_GATEWAY
+          - 503 SERVICE_UNAVAILABLE
+          - 504 GATEWAY_TIMEOUT
+          - 505 HTTP_VERSION_NOT_SUPPORTED
+          - 506 VARIANT_ALSO_NEGOTIATES
+          - 507 INSUFFICIENT_STORAGE
+          - 508 LOOP_DETECTED
+          - 509 BANDWIDTH_LIMIT_EXCEEDED
+          - 510 NOT_EXTENDED
+          - 511 NETWORK_AUTHENTICATION_REQUIRED
+    Attachment:
+      type: object
+      properties:
+        name:
+          type: string
+        mime:
+          type: string
+        data:
+          type: string
+          format: byte
+    EmailConfigurationDTO:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: ''
+        type:
+          type: string
+          description: ''
+        sender:
+          type: string
+          description: ''
+      xml:
+        name: '##default'
+    CustomNotification:
+      type: object
+      properties:
+        externalId:
+          type: string
+        titleI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        messageI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        externalType:
+          type: string
+        receivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Receivers'
+    Notification:
+      type: object
+      properties:
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+        receiver:
+          type: string
+        subject:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    Receivers:
+      type: object
+      properties:
+        merchantId:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
+    EmailNotification:
+      type: object
+      properties:
+        type:
+          type: string
+        customerId:
+          type: string
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Notification'
+    TranslateLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        zh:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

@@ -1,0 +1,207 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Lending - Loan - Offer API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Lending - Loan - Offer
+paths:
+  /customers/{customerId}/lending/loans/offers/{loanOfferId}/accept:
+    put:
+      tags:
+      - Lending - Loan - Offer
+      summary: Accept a loan offer
+      description: ''
+      operationId: acceptLoanOffer
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: loanOfferId
+        in: path
+        description: Loan offer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loan offer accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkLoanOfferResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+  /customers/{customerId}/lending/loans/offers/{loanOfferId}:
+    get:
+      tags:
+      - Lending - Loan - Offer
+      summary: Get a loan offer
+      description: ''
+      operationId: getLoanOffer
+      parameters:
+      - name: customerId
+        in: path
+        description: Customer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      - name: loanOfferId
+        in: path
+        description: Loan offer ID. Cannot be null or empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loan offer retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkLoanOfferResponse'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    RepaymentTerms:
+      type: object
+      properties:
+        basisPoint:
+          type: number
+          format: double
+        estimatedDays:
+          type: integer
+          format: int32
+        thresholdAmount:
+          type: number
+          format: double
+        thresholdDuration:
+          type: integer
+          format: int32
+        startsAt:
+          type: string
+    LoanOfferResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        productType:
+          type: string
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        fundingAmount:
+          type: number
+          format: double
+        currencyISOCode:
+          type: string
+        loanFee:
+          $ref: '#/components/schemas/LoanFee'
+        rateType:
+          type: string
+          enum:
+          - FIXED
+        originalAmount:
+          type: number
+          format: double
+        totalAnnualExpense:
+          type: number
+          format: double
+        offerExpiryDate:
+          type: string
+        lendingRequestId:
+          type: string
+        status:
+          type: string
+          enum:
+          - PROVIDED
+          - ACCEPTED
+          - CANCELLED
+        interestRate:
+          type: number
+          format: double
+        maturity:
+          type: integer
+          format: int32
+        monthlyRepayment:
+          type: number
+          format: double
+        repaymentTerms:
+          $ref: '#/components/schemas/RepaymentTerms'
+        thresholdAmountReached:
+          type: number
+          format: double
+    ToqioHttpOkLoanOfferResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LoanOfferResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    LoanFee:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currencyISOCode:
+          type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

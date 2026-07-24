@@ -1,0 +1,1029 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Card actions API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Card actions
+paths:
+  /api/customers/{customerId}/cards/{cardId}/activate:
+    put:
+      tags:
+      - Card actions
+      summary: Activate card
+      description: Activates (unfreezes) a previously suspended card so it can be used again for transactions. The request body must include the card activation token issued during card delivery.
+      operationId: activateCard
+      parameters:
+      - name: cardId
+        in: path
+        description: card identification number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Card activation token
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardTokenDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiCardDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /api/customers/{customerId}/cards/{cardId}:
+    delete:
+      tags:
+      - Card actions
+      summary: Cancel card
+      description: Endpoint that allows to cancel a card. Once it's cancelled, can't be reactivated again
+      operationId: cancelCard
+      parameters:
+      - name: cardId
+        in: path
+        description: card identification number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customer identification number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiCardDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+    get:
+      tags:
+      - Card actions
+      summary: Get card
+      description: Endpoint that allows to get the card details
+      operationId: getCard
+      parameters:
+      - name: cardId
+        in: path
+        description: card identification number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customer identification number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiCardDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /api/customers/{customerId}/clients/{clientId}/cards:
+    get:
+      tags:
+      - Card actions
+      summary: Get cards by client
+      description: Returns the cards issued to a client, optionally filtered by status, type, funding type, product, account, alias, holder details or creation date. Use this endpoint to power card management views or to reconcile a given client's card portfolio.
+      operationId: getCardsByClient
+      parameters:
+      - name: accountId
+        in: query
+        description: Filter by Bank Account ID.
+        example: 5c3efbeb-b292-42ae-98c2-2a50a7829d05
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: alias
+        in: query
+        description: Filter by card alias
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Filter by client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: createdAt
+        in: query
+        description: Filter by creation date
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: customer
+        in: query
+        description: Filter by customer
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: firstName
+        in: query
+        description: Filter by First Name
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: lastName
+        in: query
+        description: Filter by last name
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: freezeReason
+        in: query
+        description: Reason for freezing a card
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - CARD_FROZEN_BY_OWNER
+          - CARD_FROZEN_BY_DIRECTOR
+          - CARD_FROZEN_BY_ADMIN
+          - CARD_CANCELLED
+          - COMPANY_FROZEN
+          - COMPANY_REJECTED
+          - USER_DISABLED
+          - CUSTOMER_REJECTED
+      - name: product
+        in: query
+        description: Deprecated. Use `fundingType` instead. Filter by product type.
+        required: false
+        deprecated: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - DEBIT
+          - CREDIT
+      - name: fundingType
+        in: query
+        description: Filter by funding type. Extensible; current supported values are DEBIT and CREDIT.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - DEBIT
+          - CREDIT
+      - name: status
+        in: query
+        description: Filter by card status
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ACTIVATING
+          - AWAITING
+          - FAILED
+          - SUSPENDED
+          - CANCELLED
+      - name: type
+        in: query
+        description: Filter by the type of the card
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+      - name: user
+        in: query
+        description: Filter by user ID
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiCardDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /api/customers/{customerId}/cards:
+    post:
+      tags:
+      - Card actions
+      summary: Issue card
+      description: Endpoint that allows to issue a physical or virtual card
+      operationId: issueCardUsingPOST
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueCardViaAPIDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewCardDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /api/customers/{customerId}/cards/{cardId}/suspend:
+    put:
+      tags:
+      - Card actions
+      summary: Suspend card
+      description: Suspend the card. This action can be revert (unfreeze card)
+      operationId: suspendCard
+      parameters:
+      - name: cardId
+        in: path
+        description: card identification number
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: freezeReasonDTO
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreezeReasonDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ApiCardDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /api/customers/{customerId}/clients/{clientId}/card/{cardId}:
+    put:
+      tags:
+      - Card actions
+      operationId: updateCard
+      summary: Update card
+      description: Allows to update some properties of the card, like the limits. For both virtual and physical cards
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cardId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCardDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewCardDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - clientCredentials: []
+      deprecated: false
+  /api/customers/{customerId}/clients/{clientId}/card/{cardId}/updateAlias:
+    put:
+      tags:
+      - Card actions
+      summary: Update card alias
+      description: Allows to update the alias of a given card
+      operationId: updateCardAliasUsingPUT
+      parameters:
+      - name: cardId
+        in: path
+        description: cardId
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        example: 5c3efbeb-b292-42ae-98c2-2a50a7829d05
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: New card alias
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - alias
+              properties:
+                alias:
+                  type: string
+                  maximum: 25
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewCardDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - clientCredentials: []
+      deprecated: false
+components:
+  schemas:
+    SecurityQuestionDTO:
+      type: object
+      description: Users must answer at least one question. Answers are case sensitive
+      properties:
+        cityParentsMet:
+          type: string
+          description: In which city did your parents meet?
+        favoriteChildhoodFriend:
+          type: string
+          description: Who was your favorite childhood friend?
+        firstCar:
+          type: string
+          description: What was your first car?
+        firstPetName:
+          type: string
+          description: What was the name of your first pet?
+        maternalGrandmotherMaidenName:
+          type: string
+          description: What is your maternal grandmother maiden name?
+      title: SecurityQuestionDTO
+    CardTokenDTO:
+      title: CardTokenDTO
+      type: object
+      properties:
+        code:
+          type: string
+          description: This field is only required for Railsr Customers
+        securityCode:
+          type: string
+    IssueCardViaAPIDTO:
+      title: IssueCardViaAPIDTO
+      required:
+      - accountId
+      - companyId
+      - userId
+      - nameOnCard
+      type: object
+      properties:
+        accountId:
+          type: string
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        cardDeliveryName:
+          maxLength: 50
+          type: string
+          description: Delivery name for shipping the physical card
+        companyId:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+        email:
+          type: string
+        fundingType:
+          type: string
+          description: Funding type of the card. Defaults to DEBIT when omitted. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+          default: DEBIT
+        nameOnCard:
+          maxLength: 20
+          pattern: 0-9a-zA-Z\s
+          type: string
+          description: Card holder name
+        physical:
+          type: boolean
+          description: true if its a physical card, false if virtual
+        telephone:
+          type: string
+        userId:
+          type: string
+          description: User to whom the card will be created for
+        cardProgramme:
+          type: string
+          description: The card programme to issue the card against
+        cardDesign:
+          type: string
+          description: Card design that will be used when it's issued
+        cardLimitDaily:
+          type: integer
+          description: Maximum daily limit for Railsr customers. Can be configured in GBP or EUR. Required.
+          example: 1000
+        cardLimitMonthly:
+          type: integer
+          description: Maximum monthly limit for Railsr customers. Can be configured in GBP or EUR. Required.
+          example: 50000
+        cardLimitTransaction:
+          type: integer
+          description: Maximum transaction limit for Railsr and Modulr customers. Can be configured in GBP or EUR. For Railsr is required.
+          example: 100
+        cardMinLimitTransaction:
+          type: integer
+          description: Maximum limit of the card per transaction. Can be configured in GBP or EUR. Available for Modulr users.
+          example: '1000'
+        lifetimeSpendLimit:
+          type: integer
+          description: Maximum limit of the lifetime of the cards. Once the limit is reached, the card can't be used. Can be configured in GBP or EUR. Only available for Modulr clients. Required.
+          example: '10000'
+        cardLimitPurchasesDaily:
+          description: Maximum purchases daily limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitPurchasesMonthly:
+          description: Maximum purchases monthly limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitATMDaily:
+          description: Maximum ATM daily limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitATMMonthly:
+          description: Maximum ATM monthly limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitATMOperations:
+          description: Maximum ATM operations limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitPurchasesOperations:
+          description: Maximum purchases operations limit for Loomis customers
+          type: integer
+          example: 100
+        securityQuestions:
+          description: Security questions that Modulr users will need to answer before issuing a card. Users must answer at least one question. Answers are case sensitive.
+          $ref: '#/components/schemas/SecurityQuestionDTO'
+        billingAccountId:
+          type: string
+          description: Identifier of the alternative billing account used to deduct card issuance fees if the card-linked account has insufficient funds. This field is required only when a billing model is enabled. The billing account must have sufficient funds available and match the currency of the card being issued.
+    ApiCardDTO:
+      title: ApiCardDTO
+      type: object
+      properties:
+        accountId:
+          type: string
+        alias:
+          type: string
+        cancelled:
+          type: boolean
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        cardDeliveryMethodEnum:
+          type: string
+          enum:
+          - STANDARD_FIRST_CLASS
+          - INTERNATIONAL_MAIL
+          - DHL
+          - COURIER
+        cardLimitDaily:
+          type: integer
+          format: int32
+        cardLimitMonthly:
+          type: integer
+          format: int32
+        cardLimitTransaction:
+          type: integer
+          format: int32
+        cardMinLimitTransaction:
+          type: integer
+          format: int32
+        cardMinLimitTransactionForPhysicalBusiness:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        expiryDate:
+          type: string
+        freezeReason:
+          type: string
+          enum:
+          - CARD_FROZEN_BY_OWNER
+          - CARD_FROZEN_BY_DIRECTOR
+          - CARD_FROZEN_BY_ADMIN
+          - CARD_CANCELLED
+          - COMPANY_FROZEN
+          - COMPANY_REJECTED
+          - USER_DISABLED
+          - CUSTOMER_REJECTED
+        fundingType:
+          type: string
+          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+        id:
+          type: string
+        lifetimeSpendLimit:
+          type: integer
+          format: int32
+        name:
+          type: string
+        nameOnCard:
+          type: string
+        spend:
+          type: number
+          format: double
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ACTIVATING
+          - AWAITING
+          - FAILED
+          - SUSPENDED
+          - CANCELLED
+        token:
+          type: string
+          example: '1234567'
+        truncatedPan:
+          type: string
+          description: Last 4 digits of the card.
+        type:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+        userId:
+          type: string
+        cardProgramme:
+          type: string
+        cardDesign:
+          type: string
+    CardMask:
+      title: CardMask
+      type: object
+      properties:
+        maxX:
+          type: integer
+          format: int32
+        maxY:
+          type: integer
+          format: int32
+        minX:
+          type: integer
+          format: int32
+        minY:
+          type: integer
+          format: int32
+    AccountSummaryDTO:
+      title: AccountSummaryDTO
+      type: object
+      properties:
+        accountLine:
+          type: string
+        alias:
+          type: string
+        assetFlag:
+          type: string
+        assetSymbol:
+          type: string
+        assetType:
+          type: string
+        bicSwift:
+          type: string
+        iban:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+    ViewCardDTO:
+      title: ViewCardDTO
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountSummaryDTO'
+        alias:
+          type: string
+        authentication:
+          $ref: '#/components/schemas/AuthenticationResponse'
+        cancelled:
+          type: boolean
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        cardDeliveryMethodEnum:
+          type: string
+          enum:
+          - STANDARD_FIRST_CLASS
+          - INTERNATIONAL_MAIL
+          - DHL
+          - COURIER
+        cardLimitDaily:
+          type: integer
+          format: int32
+        cardLimitMonthly:
+          type: integer
+          format: int32
+        cardLimitTransaction:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        design:
+          $ref: '#/components/schemas/CardDesignDTO'
+        expiryDate:
+          type: string
+        freezeReason:
+          type: string
+          enum:
+          - CARD_FROZEN_BY_OWNER
+          - CARD_FROZEN_BY_DIRECTOR
+          - CARD_FROZEN_BY_ADMIN
+          - CARD_CANCELLED
+          - COMPANY_FROZEN
+          - COMPANY_REJECTED
+          - USER_DISABLED
+          - CUSTOMER_REJECTED
+        id:
+          type: string
+        lifetimeSpendLimit:
+          type: integer
+          format: double
+        name:
+          type: string
+        nameOnCard:
+          type: string
+        product:
+          type: string
+          description: Deprecated. Use `fundingType` instead.
+          deprecated: true
+          enum:
+          - DEBIT
+          - CREDIT
+        fundingType:
+          type: string
+          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+        profileImage:
+          type: string
+        provider:
+          type: string
+          enum:
+          - RAILSBANK
+          - MEA
+          - PFS
+          - MODULR
+        scale:
+          type: integer
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ACTIVATING
+          - AWAITING
+          - FAILED
+          - SUSPENDED
+          - CANCELLED
+        token:
+          type: string
+          example: '1234567'
+        externalId:
+          type: string
+          description: Card ID returned by the banking provider
+        truncatedPan:
+          type: string
+        type:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+        userId:
+          type: string
+        cardProgramme:
+          type: string
+        cardDesign:
+          type: string
+    UpdateCardDTO:
+      title: Update card
+      type: object
+      properties:
+        lifetimeSpendLimit:
+          description: Lifetime limit of the card. Only apply to Modulr cards.
+          type: number
+          example: 100
+        cardLimitTransaction:
+          description: Limit per transaction of a card
+          type: integer
+          example: 100
+        cardLimitMonthly:
+          description: Monthly limit of a card
+          type: integer
+          example: 5000
+        cardLimitDaily:
+          description: Daily limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesDaily:
+          description: Purchases daily limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesMonthly:
+          description: Purchases monthly limit of a card
+          type: integer
+          example: 100
+        cardLimitATMDaily:
+          description: ATM daily limit of a card
+          type: integer
+          example: 100
+        cardLimitATMMonthly:
+          description: ATM monthly limit of a card
+          type: integer
+          example: 100
+        cardLimitATMOperations:
+          description: ATM operations limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesOperations:
+          description: Purchases operations limit of a card
+          type: integer
+          example: 100
+    CardAddress:
+      title: CardAddress
+      description: Required for physical cards. Physical card will be shipped to this address.
+      type: object
+      properties:
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressNumber:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressRefinement:
+          maxLength: 1000
+          type: string
+        addressRegion:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
+    FreezeReasonDTO:
+      title: FreezeReasonDTO
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+          enum:
+          - CARD_FROZEN_BY_OWNER
+          - CARD_FROZEN_BY_DIRECTOR
+          - CARD_FROZEN_BY_ADMIN
+          - CARD_CANCELLED
+          - COMPANY_FROZEN
+          - COMPANY_REJECTED
+          - USER_DISABLED
+          - CUSTOMER_REJECTED
+    CardDesignDTO:
+      title: CardDesignDTO
+      type: object
+      properties:
+        cardNumber:
+          $ref: '#/components/schemas/CardMask'
+        cvv:
+          $ref: '#/components/schemas/CardMask'
+        expiration:
+          $ref: '#/components/schemas/CardMask'
+        nameOnCard:
+          $ref: '#/components/schemas/CardMask'
+        templateUrl:
+          type: string
+        textColor:
+          type: string
+        token:
+          $ref: '#/components/schemas/CardMask'
+    AuthenticationResponse:
+      type: object
+      description: Only available for Modulr users.
+      properties:
+        knowledgeBaseStatus:
+          type: string
+          enum:
+          - NOT_ENROLLED
+          - ENROLLED
+          - UNENROLLED
+        otpSmsStatus:
+          type: string
+          enum:
+          - NOT_ENROLLED
+          - ENROLLED
+          - UNENROLLED
+      title: AuthenticationResponse
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

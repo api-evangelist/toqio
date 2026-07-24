@@ -1,0 +1,878 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Compliance API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Compliance
+paths:
+  /iam/api/customers/{customerId}/merchant/{clientId}/provider/{complianceProvider}/document/{documentKey}:
+    delete:
+      tags:
+      - Compliance
+      summary: Deletes a merchants KYB document
+      description: This endpoint will delete a KYB document previously uploaded through the platform or using pre-signed URL endpoint
+      operationId: deleteKybDocumentByKey
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: The compliance provider the document is associated with
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: documentKey
+        in: path
+        description: documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: documentId
+        in: query
+        description: If the document was uploaded through the platform, a documentId is returned. This documentId is required to delete the document
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteKYBDocumentDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /iam/api/customers/{customerId}/merchant/{clientId}/provider/{complianceProvider}/complianceStatuses:
+    get:
+      tags:
+      - Compliance
+      summary: Get compliance statuses for a company
+      description: This endpoint allows to get compliance statuses for a company
+      operationId: getComplianceBlocksStatusesPerProvider
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: The compliance provider the the action is associated with
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceResponseDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+    put:
+      tags:
+      - Compliance
+      summary: Update compliance statuses for a company
+      description: This endpoint allows to update compliance statuses for a company
+      operationId: updateComplianceBlocksStatusesPerProvider
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: The compliance provider the the action is associated with
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: updateCompanyKybDocumentsDTO
+        in: query
+        description: List of documents to update
+        required: true
+        explode: false
+        schema:
+          $ref: '#/components/schemas/UpdateComplianceDTO'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComplianceStatusDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /iam/api/customers/{customerId}/merchant/{clientId}/provider/{complianceProvider}/updateComplianceStatus:
+    put:
+      tags:
+      - Compliance
+      summary: Updates the compliance status of a client
+      description: This endpoint updates the compliance status of a client
+      operationId: updateClientComplianceStatus
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: The compliance provider the the action is associated with
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceStatusUpdateDTO
+        in: query
+        description: Object with the statuses to be updated
+        required: true
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ComplianceStatusUpdateDTO'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /iam/api/customers/{customerId}/merchant/{clientId}/kybDocuments/status:
+    put:
+      tags:
+      - Compliance
+      summary: Update company kyb document status
+      description: This endpoint allows to update company kyb document status
+      operationId: updateCompanyKybDocumentsStatus
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: updateCompanyKybDocumentsDTO
+        in: query
+        description: List of documents to update
+        required: true
+        explode: false
+        schema:
+          $ref: '#/components/schemas/UpdateCompanyKyxDocumentsDTO'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /iam/api/customers/{customerId}/merchant/${clientId}/shareholders/${shareholderId}/documents/status:
+    put:
+      tags:
+      - Compliance
+      summary: Update shareholder document status
+      description: This endpoint allows to update the shareholder document status
+      operationId: updateShareholderDocumentStatus
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: shareholderId
+        in: path
+        description: Toqios shareholder ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: updateShareholderDocuments
+        in: query
+        description: List of documents to update
+        required: true
+        explode: false
+        schema:
+          $ref: '#/components/schemas/UpdateShareholderDocumentDTO'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /iam/api/customers/{customerId}/merchant/{clientId}/user/{userId}/provider/{complianceProvider}/updateComplianceStatus:
+    put:
+      tags:
+      - Compliance
+      summary: Updates the compliance status of a user or shareholder
+      description: This endpoint updates the compliance status of a user or shareholder
+      operationId: updateUserComplianceStatus
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: Toqios user ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: The compliance provider the the action is associated with
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceStatusUpdateDTO
+        in: query
+        description: Object with the statuses to be updated
+        required: true
+        explode: false
+        schema:
+          $ref: '#/components/schemas/ComplianceUserStatusUpdateDTO'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /iam/api/customers/{customerId}/merchant/{clientId}/users/{userId}/provider/{complianceProvider}/documents/status:
+    put:
+      tags:
+      - Compliance
+      summary: Update user document status
+      description: This endpoint allows to update the user document status
+      operationId: updateUserDocumentStatus
+      parameters:
+      - name: customerId
+        in: path
+        description: Toqios customer ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: Toqios client ID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: Toqios user ID
+        required: true
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: The compliance provider the the action is associated with
+        required: true
+        explode: false
+        schema:
+          type: string
+      - name: userDocumentsDTO
+        in: query
+        description: List of documents to update
+        required: true
+        explode: false
+        schema:
+          $ref: '#/components/schemas/UpdateUserDocumentsDTO'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+components:
+  schemas:
+    UpdateShareholderDocumentDTO:
+      title: UpdateShareholderDocumentDTO
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: external id of the identification document
+        frontSideDocStatus:
+          type: string
+          description: front status of the identification document
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        backSideDocStatus:
+          type: string
+          description: back status of the identification document
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        errorMessage:
+          type: string
+          description: errorMessage of the identification document
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
+    StatusDocumentDTO:
+      title: StatusDocumentDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: id of the document
+        externalId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        errorMessage:
+          type: string
+    UpdateUserDocumentsDTO:
+      title: UpdateUserDocumentsDTO
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
+    ComplianceResponseDTO:
+      title: ComplianceResponseDTO
+      type: object
+      properties:
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        userProfileStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        pendingTasks:
+          type: object
+          properties:
+            pendingSupportingDocuments:
+              type: array
+              items:
+                type: string
+            directorsPendingVerification:
+              type: array
+              items:
+                type: string
+            pendingBusinessDetails:
+              type: array
+              items:
+                type: string
+    UpdateCompanyKyxDocumentsDTO:
+      title: UpdateCompanyKyxDocumentsDTO
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
+    ComplianceStatusUpdateDTO:
+      title: ComplianceStatusUpdateDTO
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        accountId:
+          type: integer
+        directors:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectorDTO'
+        finalisedManually:
+          type: boolean
+        clientId:
+          type: string
+          description: Client id
+    DeleteKYBDocumentDTO:
+      type: object
+      properties:
+        deleteDocumentMessage:
+          type: string
+          description: Message indicating if the document was deleted successfully
+    ComplianceUserStatusUpdateDTO:
+      title: ComplianceUserStatusUpdateDTO
+      type: object
+      properties:
+        userId:
+          type: string
+          description: user id
+        customerId:
+          type: string
+          description: customer id
+        clientId:
+          type: string
+          description: client id
+        status:
+          type: string
+          description: user compliance status
+          nullable: false
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    UpdateComplianceDTO:
+      type: object
+      properties:
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    DirectorDTO:
+      title: DirectorDTO
+      type: object
+      properties:
+        userId:
+          type: string
+          description: User id
+        status:
+          type: string
+          description: User compliance status
+          nullable: false
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    ComplianceStatusDTO:
+      type: object
+      properties:
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct

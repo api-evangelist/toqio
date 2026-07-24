@@ -1,0 +1,299 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage client accounts
+  version: v1.0.0
+  title: Accounts Account Products API
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+tags:
+- name: Products
+paths:
+  /customers/{customerId}/products/changes:
+    post:
+      tags:
+      - Products
+      summary: Notify product changes for a customer
+      description: 'This endpoint is called by Integration Hub to notify downstream banking provider systems about product changes that occurred in the Wallet system. The endpoint should be implemented by third-party banking providers to receive and process product change notifications.
+
+
+        When this endpoint is called, it indicates that products associated with a customer have been modified in the Wallet system and need to be synchronized in the banking provider''s system. The notification can contain:
+
+
+        - **Products to upsert**: A list of products that should be created if they don''t exist, or updated if they already exist in the provider''s system. Each product contains complete information including account details, balances, status, and metadata.
+
+
+        - **Products to delete**: A list of product IDs that should be removed from the provider''s system. These are products that have been deleted or deactivated in the Wallet and should no longer be accessible.
+
+
+        The provider system receiving this notification should:
+
+        1. Validate that the customerId corresponds to an existing customer in their system
+
+        2. Process all product upserts by creating new products or updating existing ones based on the product ID
+
+        3. Process all product deletions by removing or deactivating the specified products
+
+        4. Return a successful response (HTTP 200) if all operations completed successfully
+
+        5. Return an error response (HTTP 400/404) if validation fails or operations cannot be completed
+
+
+        The endpoint is idempotent - calling it multiple times with the same data should produce the same result. Product upserts should use the product ID as the unique identifier to determine whether to create or update.
+
+
+        This is a critical synchronization point to ensure consistency between Toqio and the integration products catalog for each customer.'
+      operationId: notifyProductChanges
+      parameters:
+      - name: customerId
+        in: path
+        description: The unique identifier of the customer in the banking provider's system. This ID must correspond to an existing customer record. All product changes in the request will be associated with this customer.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: The product change notification containing products to create/update (upsert) and/or product IDs to delete. At least one of the arrays (products or deleteProductIds) should be provided, though both can be included in a single request.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductChangeNotificationRequest'
+      responses:
+        '200':
+          description: Product changes were successfully processed. All upsert and delete operations completed successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToqioHttpOkVoidResponse'
+        '400':
+          description: Bad request. The request body is invalid, malformed, or contains invalid product data. This may occur if required fields are missing, field values are out of valid ranges, or the request structure doesn't match the expected schema.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomException'
+              example:
+                code: INVALID_REQUEST
+                errorSeverity: ERROR
+                message: 'Invalid request body: required field ''id'' is missing in product at index 0'
+                httpStatus: 400
+                requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+                date: '2024-08-01T10:30:00.000Z'
+                errorOrigin: INTEGRATION_HUB
+        '404':
+          description: Customer not found. The specified customerId does not exist in the banking provider's system. Product changes cannot be processed for non-existent customers.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomException'
+              example:
+                code: CUSTOMER_NOT_FOUND
+                errorSeverity: ERROR
+                message: Customer with ID 'cust_123' does not exist in the system
+                httpStatus: 404
+                requestId: 7c8d9e0f-12a3-45b6-c789-d0e1f2a3b4c5
+                date: '2024-08-01T10:30:00.000Z'
+                errorOrigin: INTEGRATION_HUB
+components:
+  schemas:
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    ProductNotificationItemDTO:
+      type: object
+      description: Individual product item in a product change notification. Contains essential product information needed for synchronization between Toqio and the connector. The integration should store these fields to maintain an accurate representation of the customer's products.
+      required:
+      - id
+      - customerId
+      - partnerProduct
+      - bankingProvider
+      - name
+      - ledgerTypeId
+      - visible
+      properties:
+        id:
+          type: string
+          description: Unique identifier of the product. This is the primary key used to identify the product across systems. Use this ID for update operations and when referencing the product in subsequent API calls.
+        partnerProduct:
+          type: string
+          description: Partner product code that identifies the type/category of the product. This is a string code defined in the provider catalog. The integration should use this code to understand what type of product this is and apply appropriate business rules.
+          example: EUR
+        bankingProvider:
+          type: string
+          description: Identifier of the banking provider that manages this product. This corresponds to the connector identifier configured in Toqio's system. The integration receiving this notification should verify that this value matches their own identifier.
+          example: provider_xyz
+        name:
+          allOf:
+          - $ref: '#/components/schemas/I18nLabel'
+          description: Internationalized name of the product. Contains translations in multiple languages (Spanish, English, German, Italian, Chinese, Portuguese). The provider should display this name to end users in their preferred language. At least english language should be provided.
+        description:
+          allOf:
+          - $ref: '#/components/schemas/I18nLabel'
+          description: Internationalized description of the product. Contains detailed information about the product in multiple languages. The Toqio FE displays this description to end users when showing product details. Can be null if no description is available.
+        customerId:
+          type: string
+          description: Unique identifier of the customer who owns this product. This links the product to a specific customer in the connector's system. The integration must ensure this customer exists before creating the product.
+        ledgerTypeId:
+          type: string
+          description: Identifier of the ledger type associated with this product. This defines the accounting rules allowed for this product. The integration should use this to identify the product.
+          example: ledger_standard_checking
+        visible:
+          type: boolean
+          description: Indicates whether this product should be visible to the end user in the provider's interfaces (mobile app, web banking, etc.). If false, the product exists but should not be displayed to the merchant. This is useful for internal products or products in a pending state.
+          example: true
+        isCore:
+          type: boolean
+          description: Indicates whether this is a core banking product (true) or an marketplace product (false). Core products are created by default by Toqio system, and can't be modified by the customers. Are related to regular ledgerTypeId and core ledger system of Toqio.
+          example: true
+        productImageUrl:
+          type: string
+          format: uri
+          description: URL to the image/icon representing this product. Can be null if no image is available.
+          example: https://cdn.toqio.com/products/current-account.png
+        marketplaceKey:
+          type: string
+          description: Unique key relating this product with an app in marketplace context. This key is used to link the product to a specific marketplace application. Can be null (or 'regular') for core banking products.
+          example: marketplace_insurance_home_basic
+      example:
+        id: prod_7890abc
+        partnerProduct: SAVINGS_ACCOUNT
+        bankingProvider: provider_xyz
+        name:
+          en: High Yield Savings
+          es: Ahorro de Alto Rendimiento
+        description:
+          en: Earn competitive interest rates on your savings
+          es: Gana tasas de interés competitivas en tus ahorros
+        customerId: cust_456
+        ledgerTypeId: ledger_savings
+        visible: true
+        isCore: true
+        productImageUrl: https://cdn.toqio.com/products/savings.png
+        marketplaceKey: null
+    ProductChangeNotificationRequest:
+      type: object
+      description: Request payload for notifying product changes from Toqio to the integrations. This endpoint is called BY Integration Hub TO the banking provider integration to synchronize product information. The integration should implement this endpoint to receive product updates (upserts) and deletions.
+      properties:
+        products:
+          type: array
+          description: List of products to create or update (upsert). Each product in this array should be processed idempotently - if a product with the given ID already exists in the connector, it should be updated; if it doesn't exist, it should be created. This array can be null or empty if there are only deletions to process.
+          items:
+            $ref: '#/components/schemas/ProductNotificationItemDTO'
+        deleteProductIds:
+          type: array
+          description: List of product IDs to delete from the connector. The connector should remove these products or mark them as inactive. These are product IDs that were previously sent in the 'products' array but should now be deleted. This array can be null or empty if there are only upserts to process.
+          items:
+            type: string
+            description: Unique identifier of the product to delete.
+      example:
+        products:
+        - id: prod_123
+          partnerProduct: EUR
+          bankingProvider: provider_xyz
+          name:
+            en: Current Account
+            es: Cuenta Corriente
+          description:
+            en: Standard current account for daily transactions
+            es: Cuenta corriente estándar para transacciones diarias
+          customerId: cust_456
+          ledgerTypeId: ledger_789
+          visible: true
+          isCore: true
+          productImageUrl: https://example.com/images/current-account.png
+          marketplaceKey: null
+        deleteProductIds:
+        - prod_old_123
+        - prod_old_456
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createaccountusingpost_1
+- https://platform.toq.io/reference/createdynamicaccountconfiguration
+- https://platform.toq.io/reference/createproduct
+- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
+- https://platform.toq.io/reference/deleteaccountviaapiusingput
+- https://platform.toq.io/reference/deletedynamicaccountconfiguration
+- https://platform.toq.io/reference/getaccountsusingget
+- https://platform.toq.io/reference/getaccountusingget
+- https://platform.toq.io/reference/getclientaccounts
+- https://platform.toq.io/reference/getcustomfaculties
+- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
+- https://platform.toq.io/reference/getledgertypetexts
+- https://platform.toq.io/reference/getpartnerproductsusingget_1
+- https://platform.toq.io/reference/getproducts
+- https://platform.toq.io/reference/updateaccountalias
+- https://platform.toq.io/reference/updateaccountreadonlystatus
+- https://platform.toq.io/reference/updatecustomfaculties
+- https://platform.toq.io/reference/updatedynamicaccountconfiguration
+- https://platform.toq.io/reference/updateledgertypetexts
+- https://platform.toq.io/reference/updateproduct
