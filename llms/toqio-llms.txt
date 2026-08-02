@@ -1,0 +1,227 @@
+# Toqio Platform Documentation
+
+> Documentation for Toqio Platform
+
+## Guides
+- [Welcome to Toqio](https://platform.toq.io/docs/getting-started.md): Start here!
+- [Before you start](https://platform.toq.io/docs/before-you-start.md)
+- [Step 1: Logging in](https://platform.toq.io/docs/step-1-logging-in.md)
+- [Step 2: The Admin Panel](https://platform.toq.io/docs/step-2-the-admin-panel.md)
+- [Step 3: Terms and Conditions](https://platform.toq.io/docs/terms-and-conditions.md): Every user must accept the specific Terms and Conditions for the use of Toqio's platform, BaaS, and third parties.
+- [EULA](https://platform.toq.io/docs/eula.md)
+- [Step 4: Scheduling training](https://platform.toq.io/docs/step-4-scheduling-training.md)
+- [Step 5: Working together](https://platform.toq.io/docs/touchpoint-processes.md)
+- [Step 6: Mobile application setup](https://platform.toq.io/docs/mobile-application-setup.md)
+- [Onboarding your users](https://platform.toq.io/docs/onboarding-your-users.md): The public onboarding will allow companies and users to register into Toqio's system. Compliance will allow us to verify the identify and validity of the users and companies using Toqio's system.
+- [Registration](https://platform.toq.io/docs/registration.md)
+- [Credentials](https://platform.toq.io/docs/credentials.md)
+- [Setting up credentials](https://platform.toq.io/docs/setting-up-credentials.md)
+- [Multi-compliance](https://platform.toq.io/docs/multi-compliance.md)
+- [Third-Party data providers](https://platform.toq.io/docs/third-party-data-providers.md)
+- [Working with accounts](https://platform.toq.io/docs/working-with-accounts.md): "Accounts" is the main and mandatory platform product. Payments, expenses, and cards need to be linked to an account to be operated with.
+- [Create a new account](https://platform.toq.io/docs/create-your-first-account.md)
+- [Cancel and delete accounts](https://platform.toq.io/docs/cancel-and-delete-accounts.md)
+- [Main account](https://platform.toq.io/docs/main-account.md)
+- [Read-only accounts](https://platform.toq.io/docs/read-only-accounts.md)
+- [Dashboard view](https://platform.toq.io/docs/dashboard-view.md)
+- [Account section](https://platform.toq.io/docs/account-section.md)
+- [Bank account details](https://platform.toq.io/docs/bank-account-details.md)
+- [Download a balance statement](https://platform.toq.io/docs/download-a-balance-statement.md)
+- [BaaS providers](https://platform.toq.io/docs/baas-providers.md)
+- [Making and managing payments](https://platform.toq.io/docs/making-and-managing-payments.md)
+- [View past and future payments](https://platform.toq.io/docs/view-past-and-future-payments.md)
+- [Consult payment details](https://platform.toq.io/docs/consult-payment-details.md)
+- [Filter](https://platform.toq.io/docs/filters.md)
+- [Same Currency Payment](https://platform.toq.io/docs/same-currency-payment.md)
+- [Foreign currency payment](https://platform.toq.io/docs/foreign-currency-payment.md)
+- [Payment schemes](https://platform.toq.io/docs/payment-schemes.md)
+- [Edit a Payment](https://platform.toq.io/docs/edit-a-payment.md)
+- [Cancel a payment](https://platform.toq.io/docs/cancel-a-payment.md)
+- [Payment status](https://platform.toq.io/docs/payment-status.md)
+- [Payments via the Admin portal](https://platform.toq.io/docs/payments-via-the-admin-portal.md)
+- [Working with beneficiaries](https://platform.toq.io/docs/working-with-beneficiaries.md)
+- [Creating and managing cards](https://platform.toq.io/docs/creating-and-managing-cards.md): Card functions include issuing physical and virtual cards from web and apps. From the Admin portal users are able to manage and see cards by client and users.
+- [Admin portal configuration](https://platform.toq.io/docs/adminportalconfiguration.md)
+- [Card setup](https://platform.toq.io/docs/cardsetup.md)
+- [User card management](https://platform.toq.io/docs/user-card-management.md)
+- [How to issue a virtual card](https://platform.toq.io/docs/how-to-issue-a-virtual-card.md)
+- [How to issue a physical card](https://platform.toq.io/docs/how-to-issue-a-physical-card.md)
+- [Set card limits](https://platform.toq.io/docs/set-limits.md)
+- [Modify limits](https://platform.toq.io/docs/modify-limits.md)
+- [Block/Unblock card](https://platform.toq.io/docs/blockunblock-card.md)
+- [Webhooks](https://platform.toq.io/docs/webhooks.md)
+- [BaaS provider peculiarities](https://platform.toq.io/docs/baas-provider-peculiarities.md)
+- [Viewing transactions](https://platform.toq.io/docs/viewing-transactions.md): This document covers all transaction types that can be found on the platforms.
+- [Expenses](https://platform.toq.io/docs/transactions-expenses.md): This document covers all transaction types that can be found on the platforms.
+- [Payments](https://platform.toq.io/docs/transactions-payments.md)
+- [Cards](https://platform.toq.io/docs/transactions-cards.md)
+- [Searching through data](https://platform.toq.io/docs/searching-through-data.md): The search engine allows users to perform specific searches for transactions related to payments and expenses, with the possibility to export these results.
+- [Searching throughout modules](https://platform.toq.io/docs/searching-throughout-modules.md)
+- [Search options](https://platform.toq.io/docs/search-options.md)
+- [Exporting search results](https://platform.toq.io/docs/exporting-search-results.md)
+- [Exporting reports](https://platform.toq.io/docs/exporting-reports.md): Enable or disable the option of creating your own account report from the Toqio platform.
+- [Enable/Disable exporting](https://platform.toq.io/docs/enabledisable-exporting.md)
+- [Generate a report](https://platform.toq.io/docs/generate-a-report.md)
+- [User permissions](https://platform.toq.io/docs/user-permissions.md)
+- [Types of reports](https://platform.toq.io/docs/types-of-reports.md)
+- [Common errors](https://platform.toq.io/docs/common-errors.md)
+- [Set up and manage billing](https://platform.toq.io/docs/setup-and-manage-billing.md): The Toqio Billing Engine allows customers to monetize their digital banking proposition effectively through the automated collection of end-user fees.
+- [Create/Edit a billing model](https://platform.toq.io/docs/createedit-a-billing-model.md)
+- [Set a default billing model](https://platform.toq.io/docs/set-a-default-billing-model.md)
+- [Make info. public/private](https://platform.toq.io/docs/make-info-publicprivate.md)
+- [Hide a fee](https://platform.toq.io/docs/hide-a-fee.md)
+- [Check client billing model](https://platform.toq.io/docs/check-client-billing-model.md)
+- [Billing ON/OFF](https://platform.toq.io/docs/billing-onoff.md)
+- [Fees, times, and calculations](https://platform.toq.io/docs/fees-times-and-calculations.md): Lists of all the fees currently included in Toqio's engine, their execution times and how to calculate a fee.
+- [Account fees](https://platform.toq.io/docs/account-fees.md)
+- [Transaction fees](https://platform.toq.io/docs/transaction-fees.md)
+- [ATM fees](https://platform.toq.io/docs/atm-fees.md)
+- [Card fees](https://platform.toq.io/docs/card-fees.md)
+- [Client fees](https://platform.toq.io/docs/client-fees.md)
+- [Notes](https://platform.toq.io/docs/notes.md)
+- [Fee execution times & methods](https://platform.toq.io/docs/fee-execution-times.md)
+- [How fees are calculated](https://platform.toq.io/docs/how-fees-are-calculated.md)
+- [FX transaction fees](https://platform.toq.io/docs/fx-transaction-fees.md)
+- [Pending fees](https://platform.toq.io/docs/pending-fees.md)
+- [Ensuring security](https://platform.toq.io/docs/ensuring-security.md)
+- [Platform security](https://platform.toq.io/docs/platform-security.md)
+- [Roles and Permissions](https://platform.toq.io/docs/roles-and-permissions.md)
+- [Admin portal security](https://platform.toq.io/docs/admin-portal-security.md)
+- [API authentication](https://platform.toq.io/docs/api-authentication.md)
+- [Integration hub authentication](https://platform.toq.io/docs/integration-hub-authentication.md)
+- [Unblock user](https://platform.toq.io/docs/unblock-user.md): How to unblock a user from the admin portal
+- [Changing settings](https://platform.toq.io/docs/chaning-settings.md): This section allows users to see personal and company details, edit, and configure different capabilities available in the platform such as notifications, password reset, etc.
+- [SME settings](https://platform.toq.io/docs/sme-settings.md)
+- [Managing expenses](https://platform.toq.io/docs/managing-expenses.md): Expense management can be enabled for end-clients. This feature allows you to automatically track and reconcile expenses and payments, categorise, add attachments, comments, notes, and define the expense type and manage employee expenses.
+- [Admin portal](https://platform.toq.io/docs/admin-portal.md)
+- [SME apps/web](https://platform.toq.io/docs/sme-appsweb.md)
+- [Managing your team](https://platform.toq.io/docs/managing-your-team.md): The Team section is where clients are able to add new users, view personal details, assign roles and manage access.
+- [Invite new users](https://platform.toq.io/docs/invite-new-users.md)
+- [View/edit users](https://platform.toq.io/docs/viewedit-users.md)
+- [Issue cards to users](https://platform.toq.io/docs/issue-cards-to-users.md)
+- [Managing your clients](https://platform.toq.io/docs/managing-your-clients.md)
+- [End-Client Creation](https://platform.toq.io/docs/end-client-creation.md)
+- [End-Client Activation](https://platform.toq.io/docs/end-client-activation.md)
+- [Operating as a user admin](https://platform.toq.io/docs/operating-as-a-user-admin.md)
+- [Admin user Creation](https://platform.toq.io/docs/admin-user-creation.md)
+- [Admin user Activation](https://platform.toq.io/docs/admin-user-activation.md)
+- [Admin user list/details](https://platform.toq.io/docs/admin-user-list-details.md)
+- [Edit an Admin user](https://platform.toq.io/docs/admin-user-edit.md)
+- [Turning Admin functions ON/OFF](https://platform.toq.io/docs/feature-onoff-1.md): Feature ON/OFF allows you to customise your proposition. You can choose the feature you want to offer your end clients based on their business model and service types.
+- [Backoffice portal](https://platform.toq.io/docs/back-office-portal.md)
+
+## API Reference
+- [Authenticating against Toqio API](https://platform.toq.io/reference/authenticating-against-toqio-api.md)
+- [Create Client Lead Via API](https://platform.toq.io/reference/createcompanyleadviaapiusingpost-1.md)
+- [Create Client Lead Via API without documents](https://platform.toq.io/reference/createbasiccompanyleadviaapiusingpost.md)
+- [Get accounts of the customer](https://platform.toq.io/reference/getaccountsusingget.md): Allows to get the accounts of a customer
+- [Using Product ID in Account Creation](https://platform.toq.io/reference/using-product-id-in-account-creation.md)
+- [Get account](https://platform.toq.io/reference/getaccountusingget.md): Allows to get the details of an account for a given client
+- [Account information](https://platform.toq.io/reference/account-information.md)
+- [Product endpoints](https://platform.toq.io/reference/product-endpoints.md)
+- [Create account](https://platform.toq.io/reference/createaccountusingpost_1.md): Allows to create a new account
+- [Get partner products](https://platform.toq.io/reference/getpartnerproductsusingget_1.md): Allows to get the partner products of a given client
+- [Update account alias](https://platform.toq.io/reference/updateaccountalias.md): Updates the alias of an account for a specific merchant.
+- [Get account](https://platform.toq.io/reference/getaccountusingget.md): Allows to get the details of an account for a given client
+- [Cancel account](https://platform.toq.io/reference/deleteaccountviaapiusingput.md): Allows to cancel a given account
+- [Update Account Read Only](https://platform.toq.io/reference/updateaccountreadonlystatus.md): Allows to update a certain account to readOnly
+- [Update product details](https://platform.toq.io/reference/updateproduct.md): Updates the metadata of an existing product (name, description, image, visibility). Products group the partner products that a client can be enrolled in and drive the catalog displayed in the onboarding and account-opening flows.
+- [Create product](https://platform.toq.io/reference/createproduct.md): Creates a new product for the customer, optionally linked to a banking provider, a ledger type and a marketplace. Products are the catalog entries clients are enrolled in and define which partner products and account types are available to them.
+- [Get products](https://platform.toq.io/reference/getproducts.md): Returns the list of products for the customer, optionally filtered by banking provider, visibility flag, ledger type or marketplace key. All filter parameters are optional; when omitted, the full catalog visible to the customer is returned.
+- [Get client accounts information](https://platform.toq.io/reference/getclientaccounts.md): Allows to get the information of different accounts of the client filtering by status too.
+- [Configure Dynamic Account Button](https://platform.toq.io/reference/configure-dynamic-account-button.md)
+- [Get Dynamic Account Button Configuration](https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration.md)
+- [Create Dynamic Account Button Configuration](https://platform.toq.io/reference/createdynamicaccountconfiguration.md)
+- [Update Dynamic Account Button Configuration](https://platform.toq.io/reference/updatedynamicaccountconfiguration.md)
+- [Delete Dynamic Account Button Configuration](https://platform.toq.io/reference/deletedynamicaccountconfiguration.md)
+- [Faculties in Ledger Apps](https://platform.toq.io/reference/custom-faculties-in-ledger-apps.md)
+- [Dynamic Balance in Ledger Apps](https://platform.toq.io/reference/dynamic-balance-in-ledger-apps.md)
+- [Get Custom Faculties](https://platform.toq.io/reference/getcustomfaculties.md)
+- [Update Custom faculties](https://platform.toq.io/reference/updatecustomfaculties.md)
+- [Configure custom texts for banking apps](https://platform.toq.io/reference/configure-custom-texts-for-ledger-apps.md)
+- [Get the custom Ledger App Texts](https://platform.toq.io/reference/getledgertypetexts.md): Get the custom Ledger App Texts
+- [Update the Custom Ledger App Texts](https://platform.toq.io/reference/updateledgertypetexts.md): Update the Custom Ledger App Texts
+- [Allows cancelling or removing a specified account. A cancelled account remains visible in the UI, while a removed account is no longer shown](https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete.md): Allows to cancel or delete a given account
+- [Issue card](https://platform.toq.io/reference/issuecardusingpost.md): Endpoint that allows to issue a physical or virtual card
+- [Get card](https://platform.toq.io/reference/getcard.md): Endpoint that allows to get the card details
+- [Cancel card](https://platform.toq.io/reference/cancelcard.md): Endpoint that allows to cancel a card. Once it's cancelled, can't be reactivated again
+- [Suspend card](https://platform.toq.io/reference/suspendcard.md): Suspend the card. This action can be revert (unfreeze card)
+- [Get cards by client](https://platform.toq.io/reference/getcardsbyclient.md): Returns the cards issued to a client, optionally filtered by status, type, funding type, product, account, alias, holder details or creation date. Use this endpoint to power card management views or to reconcile a given client's card portfolio.
+- [Update card](https://platform.toq.io/reference/updatecard.md): Allows to update some properties of the card, like the limits. For both virtual and physical cards
+- [Update card alias](https://platform.toq.io/reference/updatecardaliasusingput.md): Allows to update the alias of a given card
+- [Get Transactions](https://platform.toq.io/reference/gettransactionsusingget.md): Returns a paginated list of transactions for the customer, filtered by the provided query parameters (account, company, dates, status, amount range, currency, etc.). Use this endpoint to retrieve the transaction history that powers statements, expense lists and reconciliation views.
+- [Get Transaction](https://platform.toq.io/reference/gettransactionusingget.md): Returns the full detail of a single transaction by its identifier, including the source/beneficiary accounts, amounts, status, attached invoice metadata and any associated expense or category information.
+- [Cancel Transfer](https://platform.toq.io/reference/canceltransferusingdelete.md): Cancels a previously created transaction that has not yet been settled by the bank (e.g. a pending or scheduled transfer). Once the underlying transfer is in flight or has settled, the transaction can no longer be cancelled through this endpoint.
+- [Get Bank Payment Schemes](https://platform.toq.io/reference/getbankpaymentschemesusingget.md): Returns the list of bank payment schemes (SEPA, SWIFT, UK Faster Payments, FX, etc.) available for sending the given amount from the source account to the beneficiary account through the specified provider. The returned code should be passed as the bankPaymentScheme when calling Create Transaction.
+- [Generate statement](https://platform.toq.io/reference/generatestatementusingget.md): Generates a PDF payment statement for a single transaction in the requested locale and returns it base64-encoded. Only applies to card payments and inbound/outbound bank transfers; other payment types are rejected with 417.
+- [Get Quote For Currency Pair](https://platform.toq.io/reference/getquoteforcurrencypairusingput.md): Requests an FX quote from the specified provider for converting between two currencies. Returns the indicative rate, fees and the quote identifier that should be referenced when issuing the corresponding FX payment.
+- [Create transaction](https://platform.toq.io/reference/create-transaction.md)
+- [Create Transaction](https://platform.toq.io/reference/createtransactionusingpost.md): Issues a payment on behalf of a client. Supports internal transfers, SEPA, SWIFT, UK Faster Payments and FX payments depending on the source account provider and currency. The bank payment scheme is required (except for FX); call the bankPaymentSchemes endpoint first to discover which schemes are available for the chosen source/beneficiary pair.
+- [Get account fees](https://platform.toq.io/reference/getnewaccountfees-1.md): Allows to get the fees of an account
+- [Get card fees](https://platform.toq.io/reference/getcardfees-1.md): Allows to get the fees of a card. For both virtual and physical cards
+- [Transaction fee](https://platform.toq.io/reference/transactionfeeusingpost.md)
+- [Get beneficiaries](https://platform.toq.io/reference/getbeneficiariesusingget.md): Returns the list of beneficiaries registered for a client. All filter query parameters (accountId, sourceCurrency, visible) are optional: omit them to retrieve every beneficiary the client can pay; pass them to narrow the result to a specific source account or currency. By default only visible (non-hidden) beneficiaries are returned — pass visible=ALL or visible=FALSE to include or restrict to hidden ones.
+- [Create beneficiary](https://platform.toq.io/reference/createbeneficiaryusingpost.md): Creates a new beneficiary for the given client. The beneficiary can be either external (identified by account details such as IBAN/account number plus bank details) or internal (linked to another Toqio account). Once created the beneficiary can be used as the destination of a payment via the Create Transaction endpoint.
+- [Get beneficiary](https://platform.toq.io/reference/getbeneficiaryusingget.md): Returns the full detail of a single beneficiary by identifier, including bank account details, address, asset type and visibility flags.
+- [Update beneficiary](https://platform.toq.io/reference/updatebeneficiaryusingput.md): Updates the details of an existing beneficiary. Only profile fields (name, address, city, postal code, country and visibility) can be edited. Bank account details captured at creation (currency/asset type, bank country, IBAN, account numbers, sort/routing codes, BIC/SWIFT and the Currencycloud-specific identifiers) are immutable: they are marked read-only and any value supplied for them is ignored, the stored value is preserved. To change bank details, delete the beneficiary and create a new one.
+- [Delete beneficiary](https://platform.toq.io/reference/deletebeneficiaryusingdelete.md): Removes a beneficiary from the client's address book. The beneficiary is logically deleted and will no longer appear in Get Beneficiaries; historical transactions that referenced it remain unaffected.
+- [Get or create internal beneficiary](https://platform.toq.io/reference/getinternalbeneficiaryusingpost.md): Returns the internal beneficiary pointing to the given Toqio account, creating it on the fly if one does not yet exist. Internal beneficiaries are used for transfers between two accounts that both live on Toqio (intra-platform payments) and avoid duplicating bank details across the address book.
+- [Overview](https://platform.toq.io/reference/custom-notifications-overview.md)
+- [Push Notifications](https://platform.toq.io/reference/push-notifications.md)
+- [User Center Notifications](https://platform.toq.io/reference/user-center-notifications.md)
+- [Target screens](https://platform.toq.io/reference/target-screens.md)
+- [Send custom notifications](https://platform.toq.io/reference/send-custom-notifications.md)
+- [Sample Use Cases](https://platform.toq.io/reference/sample-use-cases.md)
+- [Error Handling](https://platform.toq.io/reference/error-handling.md)
+- [Sending custom emails](https://platform.toq.io/reference/sending-custom-emails.md)
+- [Add a new email configuration](https://platform.toq.io/reference/createemailconfiguration.md)
+- [Retrieving data of an existing email configuration](https://platform.toq.io/reference/getemailconfiguration.md)
+- [Edit an email configuration](https://platform.toq.io/reference/updateemailconfiguration.md)
+- [Deleting an existing email configuration](https://platform.toq.io/reference/deleteemailconfiguration.md)
+- [Email Types and variables](https://platform.toq.io/reference/email-types-and-variables.md)
+- [Onboarding email types](https://platform.toq.io/reference/onboarding-email-types.md)
+- [Account creation email types](https://platform.toq.io/reference/account-creation-email-types.md)
+- [Transactions email types](https://platform.toq.io/reference/transactions-email-types.md)
+- [Cards email types](https://platform.toq.io/reference/cards-email-types.md)
+- [Revenue Collection email types](https://platform.toq.io/reference/revenue-collection-email-types.md)
+- [User management and security email types](https://platform.toq.io/reference/user-management-and-security-email-types.md)
+- [Get compliance statuses for a company](https://platform.toq.io/reference/getcomplianceblocksstatusesperprovider.md): This endpoint allows to get compliance statuses for a company
+- [Updates the compliance status of a client](https://platform.toq.io/reference/updateclientcompliancestatus.md): This endpoint updates the compliance status of a client
+- [Update compliance statuses for a company](https://platform.toq.io/reference/updatecomplianceblocksstatusesperprovider.md): This endpoint allows to update compliance statuses for a company
+- [Upload KYB documents for a merchant](https://platform.toq.io/reference/uploadkybdocuments.md)
+- [Get KYB Documents Per Company](https://platform.toq.io/reference/getkybdocumentspercompany.md): Retrieves KYB documents for a specified client and compliance provider.
+- [Update company kyb document status](https://platform.toq.io/reference/updatecompanykybdocumentsstatus.md): This endpoint allows to update company kyb document status
+- [Update user document status](https://platform.toq.io/reference/updateuserdocumentstatus.md): This endpoint allows to update the user document status
+- [Updates the compliance status of a user or shareholder](https://platform.toq.io/reference/updateusercompliancestatus.md): This endpoint updates the compliance status of a user or shareholder
+- [Update shareholder document status](https://platform.toq.io/reference/updateshareholderdocumentstatus.md): This endpoint allows to update the shareholder document status
+- [Deletes a merchants KYB document](https://platform.toq.io/reference/deletekybdocumentbykey.md): This endpoint will delete a KYB document previously uploaded through the platform or using pre-signed URL endpoint
+- [Update user status](https://platform.toq.io/reference/updateuserstatus.md): This endpoint allows to update user status
+- [User credentials](https://platform.toq.io/reference/user-credentials.md): Set up credentials for an existing user
+- [Get Pre-Signed URL for Document Download](https://platform.toq.io/reference/getpresignedurldownloaddocument.md): Retrieves a pre-signed URL for downloading a document.
+- [Get Pre-signed URLs to upload documents](https://platform.toq.io/reference/getpresignedurls.md)
+- [Build your request & collection journey using API](https://platform.toq.io/reference/build-your-request-collection-journey-using-api.md)
+- [Validate collection data](https://platform.toq.io/reference/validateandconvertfile_1.md): Validate a collection of unpaid invoice requests before they are sent to merchants. A collection represents a group of requests, each containing basic details about unpaid invoices.
+- [Send payment request to merchants](https://platform.toq.io/reference/saveandsendnotification_1.md): This endpoint allows customers to send out payment requests to all the merchants included in a previously validated collection file. Each merchant in the collection will receive a request for payment based on the details provided in the validated invoice data. Once the request is sent, merchants will receive these payment requests via email and through their notification centre in the portal.
+- [Pay payment request](https://platform.toq.io/reference/payrevenue.md): This endpoint allows merchants to make immediate payments for invoice payment requests. When the endpoint is called, the system will generate an immediate payment from the merchant's selected source account to the previously added receiver account, which was set up by the customer for receiving invoice payments. Once the payment is made successfully, the status of the corresponding request will be updated to PAID.
+- [Get requests](https://platform.toq.io/reference/getrevenuefilters_1.md): This endpoint returns a list of requests based on the filters used
+- [Get request details](https://platform.toq.io/reference/getrevenuedetails_1.md): This endpoint allows customers to retrieve detailed information about a specific request by its unique request ID. The response will include the status of the request, available options for the request, the option that was selected (if applicable), and detailed line data associated with the request.
+- [Update request status](https://platform.toq.io/reference/changestatus_1.md): This endpoint allows customers to modify the status of a selected payment request. Customers can update the status of a request to reflect its current state. Currently the system supports the following status: PAID, UNPAID, REJECTED, NOT_SENT.
+- [Add payment account details](https://platform.toq.io/reference/createcustomeraccount_1.md): This endpoint allows customers to add their bank account information for receiving invoice payments. Each customer can add one account per currency, ensuring that payments are routed to the appropriate account based on the currency of the transaction.
+- [Get payment accounts](https://platform.toq.io/reference/getrevenueaccounts_1.md): This endpoint allows customers to retrieve a list of their bank account details that have been added for receiving invoice payments. Customers can view the accounts associated with different currencies.
+- [Validate JWT token](https://platform.toq.io/reference/validatejwtsecure.md): Validates a JWT token sent in the request body. Returns validation status and error message if invalid.
+- [Get clients](https://platform.toq.io/reference/getclientsusingget.md): Allows to get the different clients of a customer
+- [Get client](https://platform.toq.io/reference/getclientusingget.md): Allows to get the client information
+- [Freeze company](https://platform.toq.io/reference/freezecompanyusingput.md): Allow to freeze a company
+- [Unfreeze company](https://platform.toq.io/reference/unfreezecompanyusingput.md): Allows to unfreeze a company
+- [Reject company](https://platform.toq.io/reference/rejectclientusingput.md): This endpoint allows rejecting a company. Only companies under 'Onboarding', 'Live' and 'Quarantine' status can be rejected
+- [Delete company](https://platform.toq.io/reference/deleteclientusingdelete.md): This endpoint allows deleting a company. Only companies under 'Lead' and 'Rejected' status can be rejected
+- [Get user](https://platform.toq.io/reference/getuserusingget.md): Allows to get the details of a given user
+- [Create user](https://platform.toq.io/reference/inviteuser.md): Allows to create a user under a client
+- [Get card fees](https://platform.toq.io/reference/getcardfees.md): This endpoint is deprecated. You should use <a href="https://docs.toq.io/reference/getcardfees"><u>Card Fees</u></a>
+- [Generate customer key](https://platform.toq.io/reference/customerkey.md): Allow to generate a key to encript the credentials data. You must keep it in a secure place as we do not have access to it. If you lose it, you will need to contact the support team to generate a new one.
+- [Create username](https://platform.toq.io/reference/usercredentialsusername.md): Allow the user to set up their own username
+- [Create security questions](https://platform.toq.io/reference/usercredentialsecurityquestion.md): Allow the user to set up their own security question answers. This is only required to Modulr customer
+- [Create security code](https://platform.toq.io/reference/setcredentialssecuritycode.md): Allow the user to set up their own security code.
+- [Create password](https://platform.toq.io/reference/setuserpassword.md): Allow the user to set up their password.
+- [Activate card](https://platform.toq.io/reference/activatecard.md): Activates (unfreezes) a previously suspended card so it can be used again for transactions. The request body must include the card activation token issued during card delivery.
+- [Execute Four-Eyes Payment](https://platform.toq.io/reference/executefoureyespaymentusingpost.md): Executes a previously created transaction that was held for four-eyes approval. The referenced transaction must be in pending-approval status; once executed, the underlying payment is sent to the bank provider and the transaction transitions to the standard payment lifecycle.

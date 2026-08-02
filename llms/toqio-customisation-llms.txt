@@ -1,0 +1,71 @@
+# Toqio Customisation Documentation
+
+> Documentation for Toqio Customisation
+
+## Guides
+- [Build & Launch Your Solutions](https://customise.toq.io/docs/getting-started.md)
+- [Toqio Design Studio](https://customise.toq.io/docs/toqio-design-studio.md)
+- [Configuring Solution](https://customise.toq.io/docs/configuring-solution.md)
+- [Ledger Apps](https://customise.toq.io/docs/ledger-apps.md)
+- [Working with Custom Workflow Apps in Toqio Design Studio ](https://customise.toq.io/docs/working-with-custom-workflow-apps-in-toqio-design-studio.md)
+- [Managing Your Solution's Apps ](https://customise.toq.io/docs/managing-your-solutions-apps.md)
+- [The Menu Configurator](https://customise.toq.io/docs/the-menu-configurator.md)
+- [Access and security](https://customise.toq.io/docs/configuration-portal-guide.md)
+- [Toqio Registration Template](https://customise.toq.io/docs/toqio-registration-template.md): A low-code solution for fast and flexible merchant registration.
+- [Registration Form](https://customise.toq.io/docs/ttt-1.md)
+- [Configuration: Customer set up](https://customise.toq.io/docs/ttt.md)
+- [Guide for Modelers](https://customise.toq.io/docs/guide-for-modelers-4.md)
+- [Toqio Onboarding Template](https://customise.toq.io/docs/onboarding.md)
+- [Compliance Provider Setup](https://customise.toq.io/docs/compliance-provider-configuration.md)
+- [Main Compliance Section](https://customise.toq.io/docs/main-section-onboadring-template.md)
+- [Guide for Modelers](https://customise.toq.io/docs/guide-for-workflow-modelers.md)
+- [Personal Information Section](https://customise.toq.io/docs/personal-information-validation.md)
+- [Guide for Modelers](https://customise.toq.io/docs/guide-for-modelers.md)
+- [Business Details Section](https://customise.toq.io/docs/business-details-section.md)
+- [Guide for Modelers](https://customise.toq.io/docs/guide-for-modelers-1.md)
+- [Supporting Documents Section](https://customise.toq.io/docs/supporting-documents-section.md)
+- [Guide for Modelers](https://customise.toq.io/docs/guide-for-modelers-2.md)
+- [Set up Directors Section](https://customise.toq.io/docs/set-up-directors-section.md)
+- [Guide for Modelers](https://customise.toq.io/docs/guide-for-modelers-3.md)
+- [Toqio Workflow Design Guide](https://customise.toq.io/docs/toqio-workflows-guide.md): ## **Objective**   Provide fundamental skills to create and manage simple workflows, forms, and basic integrations in Toqio Workflow Design and be able to perform some basic debugging tasks.
+- [Apps](https://customise.toq.io/docs/apps.md): Toqio Workflow Design is based on apps. An app is a container of every model that will be used to perform flows and render pages.
+- [Pages and forms](https://customise.toq.io/docs/pages-and-forms.md): With Toqio Workflow Design, you can directly build forms using drag and drop components then configuring them. You can also implement logic into the form using expressions.
+- [BPMN (Processes)](https://customise.toq.io/docs/bpmn-processes.md)
+- [Design System Guide](https://customise.toq.io/docs/platform-design.md)
+- [WEB Design](https://customise.toq.io/docs/web.md)
+- [Workflow Utilities Library](https://customise.toq.io/docs/workflow-fe-handlers-library.md)
+- [Avatar](https://customise.toq.io/docs/avatar.md): A visual representation of an entity.
+- [Bullet List](https://customise.toq.io/docs/bullet-list.md): Vertical grouping of related items preceded by an Icon.
+- [Chip](https://customise.toq.io/docs/chip.md): A visual indicator that highlights an element's status or attribute for quick recognition.
+- [Custom List](https://customise.toq.io/docs/custom-list.md): Efficiently display a table with the selected columns to be displayed.
+- [Table](https://customise.toq.io/docs/table.md): Used to display a group of list elements.
+- [Data amount](https://customise.toq.io/docs/data-amount.md): It highlights a relevant figure for the users.
+- [Data Item](https://customise.toq.io/docs/data-item.md): Used to display and organize data efficiently.
+- [Empty State](https://customise.toq.io/docs/empty-state.md): They're used when the content of the interface cannot be displayed.
+- [Group Separator](https://customise.toq.io/docs/group-separator.md): Groups and separates elements in a list.
+- [Header [deprecated]](https://customise.toq.io/docs/header.md): It positions users within the platform and introduces the displayed page. Replaced by Header with Actions.
+- [Header with Actions](https://customise.toq.io/docs/page-header-with-actions.md): It helps users orient themselves within the platform and provides an introduction to the current page. Replaces the Header component.
+- [Help notification](https://customise.toq.io/docs/help-notification.md): A support message that gives additional aid or a feedback notification.
+- [Link](https://customise.toq.io/docs/link.md): Interactive element that triggers an action.
+- [Link Button](https://customise.toq.io/docs/link-button.md): While a Link works for navigation only, a Link Button is able to open a modal or perform other actions.
+- [Navigation Row](https://customise.toq.io/docs/navigation-row.md): Provides access to a destination.
+- [Product item](https://customise.toq.io/docs/product-item.md): Shows basic data of an entity.
+- [Progress Bar](https://customise.toq.io/docs/progress-bar.md): A horizontal bar indicating a percentage reached with respect to a total value.
+- [Selection box](https://customise.toq.io/docs/selection-box.md): An interactive Container that represents an entity.
+- [Selection box list](https://customise.toq.io/docs/selection-box-list.md): The Selection Box List is an interactive information list representing, as an example, objects, banking concepts, users, etcetera.
+- [Spacing container](https://customise.toq.io/docs/spacing-container.md): Used to add margin by pixels to adjust the alignment of other components.
+- [Spinner](https://customise.toq.io/docs/spinner.md): It notifies users that their request is being processed.
+- [Text](https://customise.toq.io/docs/text.md): A Text Input is an input field that users can type into. It has a range of options and supports several text formats including letters, numbers, or dates.
+- [Feedback Notification](https://customise.toq.io/docs/feedback-notification.md): Static information or alert message that requires an action from users.
+- [Captcha](https://customise.toq.io/docs/captcha.md): An interactive component used to differentiate humans from bots
+- [Checkbox](https://customise.toq.io/docs/checkbox.md): A Checkbox is a form control that allows the user to select from zero, one or more available options.
+- [Code Field](https://customise.toq.io/docs/code-field.md): Used when users must introduce an OTP or security code offering an additional layer of security
+- [Selector](https://customise.toq.io/docs/selector.md): A form control that shows one or more entities selected from a list.
+- [Tabs Container](https://customise.toq.io/docs/tabs-container.md): Tabs are used to navigate between multiple related sections on the same page.
+- [Filter Button](https://customise.toq.io/docs/filter-button.md): Used to open a modal with filters.
+- [Filter Select](https://customise.toq.io/docs/filter-select.md): To choose an option from a list.
+- [Filter Sort](https://customise.toq.io/docs/filter-sort.md): Changes how a list is sorted.
+- [File](https://customise.toq.io/docs/file.md): File is used to manage uploaded documents.
+- [File Upload](https://customise.toq.io/docs/file-upload.md): File Upload is used to upload any type of document
+- [Status box](https://customise.toq.io/docs/status-box.md): A status box displays task steps and the current status of a process. It helps users track progress and allows them to navigate between completed and pending tasks.
+- [Information Box](https://customise.toq.io/docs/information-box.md): An information box is used to display different elements that include a visual and textual explanation, along with the option to visit another page for more information.

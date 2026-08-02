@@ -1,0 +1,60 @@
+generated: '2026-07-21'
+method: derived
+format: custom-envelope
+source: >-
+  Derived from the 4xx/5xx responses declared across openapi/*.yml and
+  enriched from the documented error references:
+  https://platform.toq.io/reference/error-handling (custom/push notification
+  error codes) and https://integrate.toq.io/reference/error-management
+  (Integration Hub error envelope).
+envelopes:
+  platform_notifications:
+    fields: [code, description, requestId, status]
+    notes: requestId is a UUID for troubleshooting and tracing within the Toqio system.
+  integration_hub:
+    fields: [code, errorSeverity, message, httpStatus, requestId, date, errorOrigin, data]
+    notes: >-
+      data[] carries field-level errors (field, code, message) whose messages
+      are shown to end users in the Toqio frontend; integrations must map BaaS
+      provider errors into this envelope (example code:
+      REMOTE_COMMUNICATION_ERROR, errorOrigin: bank-connector-hub).
+problems:
+  - status: 400
+    title: Bad Request
+    notes: Declared on write operations across the harvested platform specs.
+  - status: 401
+    title: Unauthorized
+    notes: >-
+      Missing/invalid Bearer token; also returned by integrations when a
+      webhook HMAC signature is absent.
+  - status: 403
+    title: Forbidden
+    notes: >-
+      Insufficient permissions; also returned when a webhook HMAC signature is
+      present but invalid.
+  - status: 404
+    title: Not Found
+    notes: Declared on nearly every operation for unknown customer/client/resource ids.
+  - status: 429
+    title: Too Many Requests
+    notes: Rate limit exceeded; retry with backoff honoring the Retry-After header (Integration Hub webhook contract).
+  - status: 500
+    title: Internal Server Error
+    notes: >-
+      Transient errors carry the Integration Hub envelope (e.g.
+      REMOTE_COMMUNICATION_ERROR when a BaaS provider call fails).
+notification_error_codes:
+  docs: https://platform.toq.io/reference/error-handling
+  codes:
+    - {code: unspecified_receivers, title: Unspecified receivers, status: 400}
+    - {code: unspecified_users, title: Unspecified users, status: 400}
+    - {code: custom_notification_not_delivered, title: Custom notification not delivered, status: 500}
+    - {code: custom_notification_errors_not_delivered, title: Custom notification errors not delivered, status: 500}
+    - {code: unable_to_map_custom_notification, title: Unable to map notification, status: 500}
+    - {code: unable_to_save_custom_notification, title: Unable to save notification, status: 500}
+    - {code: no_active_users_for_merchant, title: There are not active users for merchant, status: 404}
+    - {code: no_active_user_for_merchant, title: The user is not active for merchant, status: 404}
+    - {code: error_retrieving_active_users_for_merchant, title: Error retrieving active users for merchant, status: 500}
+    - {code: invalid_user_language_configured, title: Invalid user language configured, status: 404}
+    - {code: error_processing_data, title: Error processing data, status: 400}
+    - {code: push_notifications_disabled, title: Push notifications disabled, status: 403}

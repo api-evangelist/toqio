@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+type: Webhooks
+source:
+  - https://platform.toq.io/docs/webhooks
+  - https://integrate.toq.io/reference/web-hooks-service
+  - https://integrate.toq.io/reference/create-webhook-service-credentials
+description: >-
+  Toqio's event surface. No AsyncAPI document is published. Two webhook
+  surfaces are documented: (1) card-event webhooks surfaced through the Modulr
+  BaaS integration on the platform side, and (2) the Integration Hub webhooks
+  service — the authoritative asynchronous channel through which financial
+  provider integrations deliver events and state changes back to the Toqio
+  platform, with a documented reliability contract.
+
+platform_card_webhooks:
+  docs: https://platform.toq.io/docs/webhooks
+  provider_context: Modulr BaaS card integration
+  events:
+    - name: CARDAUTH
+      description: >-
+        Card authorisation events — approved, declined (with Reason), subsequent
+        decline of a previously approved authorisation (network outage/timeout),
+        and authorisation reversals (OrderID links reversed amounts). PAYIN /
+        PAYOUT identify card payments and refunds per AccountID. Saved in logs,
+        not configured as a webhook transaction.
+    - name: CARDCREATION
+      description: >-
+        Outcome of a submitted "Create physical card" request (Created or
+        Error). Physical cards only; retried on failure.
+    - name: CARDSTATUSUPDATE
+      description: >-
+        Card status changes regardless of trigger: CREATED and ACTIVE (physical
+        cards), BLOCK, UNBLOCK, CANCEL, EXPIRED, SUSPENDED.
+
+integration_hub_webhooks:
+  docs: https://integrate.toq.io/reference/web-hooks-service
+  direction: from the integration/financial-provider layer toward Toqio
+  transport: HTTPS only (TLS 1.2 minimum, TLS 1.3 recommended)
+  authentication:
+    api_key_header: X-Api-Key
+    signature_header: X-Toqio-Signature
+    signature_scheme: sha256={base64 HMAC-SHA256 over raw request body bytes}
+    docs: https://integrate.toq.io/reference/authentication
+  reliability_contract:
+    retry: exponential backoff with jitter; retry window agreed at onboarding
+    status_semantics:
+      "2xx": accepted, no retry
+      "4xx (except 429)": do not retry — contract violation
+      "429": retry with backoff, respect Retry-After header
+      "5xx / timeout": retry with exponential backoff
+    definitive_failure: >-
+      When the retry window is exhausted, the event is a definitive delivery
+      failure; integrations log full payload context and Toqio surfaces
+      unacknowledged events through its observability layer.

@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source:
+  - https://status.toq.io
+  - https://integrate.toq.io/reference/interface-contract-evolution
+description: >-
+  Toqio's operational lifecycle surface: a public status page and a formal,
+  documented interface-contract evolution and deprecation policy for the
+  Integration Hub's harmonised interface. Platform API specs are versioned
+  v1.0.0; the Integration Hub deliberately manages change through
+  classification, communication, and grace periods rather than parallel
+  versioning infrastructure.
+status_page: https://status.toq.io
+versioning:
+  scheme: single harmonised interface (no parallel versioning); platform specs published at v1.0.0
+  docs: https://integrate.toq.io/reference/interface-contract-evolution
+  change_classification:
+    non_breaking: >-
+      Additive changes (new optional fields, new webhook types, new optional
+      endpoints, expanded enums) — communicated proactively, no mandatory grace
+      period; integrators must implement tolerant readers.
+    breaking: >-
+      New mandatory fields, removal/renaming of fields, type/format/enum
+      semantic changes, endpoint removal or restructuring, authentication or
+      error-structure changes — subject to the formal deprecation process.
+deprecation:
+  policy_url: https://integrate.toq.io/reference/interface-contract-evolution
+  process: >-
+    Formal deprecation process for breaking changes: Technology, Product, and
+    Delivery teams assess feasibility and integrator impact before any
+    announcement; changes are announced with grace periods before taking
+    effect.
+  sunset_header: false
+deprecated_operations: []

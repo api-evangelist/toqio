@@ -1,0 +1,49 @@
+generated: '2026-07-21'
+method: searched
+source: https://customise.toq.io/llms.txt
+docs: https://customise.toq.io/docs/platform-design
+description: >-
+  Toqio's client-side / embeddable UI surface: the Toqio Design Studio and
+  Workflow Design component library used to build white-labeled finance
+  solutions (pages, forms, and BPMN-driven workflow apps) on the platform
+  without code. Distinct from server-side SDKs — these are the prebuilt UI
+  components documented in the Customisation docs (customise.toq.io).
+families:
+  - name: Design Studio / Workflow Design
+    docs: https://customise.toq.io/docs/toqio-design-studio
+    description: >-
+      Drag-and-drop pages and forms with expression logic, backed by BPMN
+      processes; apps are containers of models that perform flows and render
+      pages.
+    components:
+      - {name: Avatar, docs: https://customise.toq.io/docs/avatar}
+      - {name: Bullet List, docs: https://customise.toq.io/docs/bullet-list}
+      - {name: Chip, docs: https://customise.toq.io/docs/chip}
+      - {name: Custom List, docs: https://customise.toq.io/docs/custom-list}
+      - {name: Table, docs: https://customise.toq.io/docs/table}
+      - {name: Data amount, docs: https://customise.toq.io/docs/data-amount}
+      - {name: Data Item, docs: https://customise.toq.io/docs/data-item}
+      - {name: Empty State, docs: https://customise.toq.io/docs/empty-state}
+      - {name: Group Separator, docs: https://customise.toq.io/docs/group-separator}
+      - {name: Header with Actions, docs: https://customise.toq.io/docs/page-header-with-actions}
+      - {name: Help notification, docs: https://customise.toq.io/docs/help-notification}
+      - {name: Link, docs: https://customise.toq.io/docs/link}
+      - {name: Link Button, docs: https://customise.toq.io/docs/link-button}
+      - {name: Navigation Row, docs: https://customise.toq.io/docs/navigation-row}
+      - {name: Product item, docs: https://customise.toq.io/docs/product-item}
+      - {name: Progress Bar, docs: https://customise.toq.io/docs/progress-bar}
+      - {name: Selection box, docs: https://customise.toq.io/docs/selection-box}
+      - {name: Selection box list, docs: https://customise.toq.io/docs/selection-box-list}
+      - {name: Spacing container, docs: https://customise.toq.io/docs/spacing-container}
+      - {name: Spinner, docs: https://customise.toq.io/docs/spinner}
+      - {name: Text, docs: https://customise.toq.io/docs/text}
+      - {name: Feedback Notification, docs: https://customise.toq.io/docs/feedback-notification}
+      - {name: Captcha, docs: https://customise.toq.io/docs/captcha}
+  - name: Templates
+    description: Low-code registration and onboarding templates assembled from the component library.
+    components:
+      - {name: Toqio Registration Template, docs: https://customise.toq.io/docs/toqio-registration-template}
+      - {name: Toqio Onboarding Template, docs: https://customise.toq.io/docs/onboarding}
+  - name: Utilities
+    components:
+      - {name: Workflow Utilities Library, docs: https://customise.toq.io/docs/workflow-fe-handlers-library}

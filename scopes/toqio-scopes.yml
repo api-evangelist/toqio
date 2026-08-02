@@ -1,0 +1,91 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/toqio-accounts-openapi.yml, openapi/toqio-beneficiaries-openapi.yml, openapi/toqio-cards-openapi.yml,
+  openapi/toqio-clients-openapi.yml, openapi/toqio-compliance-endpoints-openapi.yml, openapi/toqio-create-lead-service-openapi.yml,
+  openapi/toqio-custom-notifications-openapi.yml, openapi/toqio-fees-openapi.yml, openapi/toqio-get-pre-signed-url-openapi.yml,
+  openapi/toqio-security-openapi.yml, openapi/toqio-transactions-openapi.yml, openapi/toqio-upload-kyb-documents-openapi.yml
+schemes:
+- name: clientCredentials
+  source: openapi/toqio-accounts-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-beneficiaries-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: bearer-jwt
+  source: openapi/toqio-cards-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-cards-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-clients-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-compliance-endpoints-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: OAuth2
+  source: openapi/toqio-create-lead-service-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-custom-notifications-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-fees-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: OAuth2
+  source: openapi/toqio-get-pre-signed-url-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: bearer-jwt
+  source: openapi/toqio-security-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-security-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: clientCredentials
+  source: openapi/toqio-transactions-openapi.yml
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://api.toq.io/iam/oauth/token
+- name: OAuth2
+  source: openapi/toqio-upload-kyb-documents-openapi.yml
+  flows:
+  - flow: password
+    tokenUrl: https://api.toq.io/iam/oauth/token
+scopes:
+- scope: openid
+  sources:
+  - openapi/toqio-create-lead-service-openapi.yml
+  - openapi/toqio-get-pre-signed-url-openapi.yml
+  - openapi/toqio-upload-kyb-documents-openapi.yml
+- scope: read
+  sources:
+  - openapi/toqio-cards-openapi.yml
+  - openapi/toqio-security-openapi.yml
+- scope: write
+  sources:
+  - openapi/toqio-cards-openapi.yml
+  - openapi/toqio-security-openapi.yml

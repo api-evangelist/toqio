@@ -1,0 +1,3232 @@
+openapi: 3.0.0
+info:
+  description: Endpoints to manage the client (company or individual) and their data
+  version: v1.0.0
+  title: Clients
+  license:
+    name: license
+servers:
+- url: https://api.sandbox.toq.io/iam/api
+  description: Simulation environment
+- url: https://api.toq.io/iam/api
+  description: Production environment
+paths:
+  /customers/{customerId}/credentials/generateCustomerKey:
+    post:
+      tags:
+      - User credentials
+      summary: Generate customer key
+      description: Allow to generate a key to encript the credentials data. You must
+        keep it in a secure place as we do not have access to it. If you lose it,
+        you will need to contact the support team to generate a new one.
+      operationId: customerKey
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/companies/{clientId}:
+    delete:
+      tags:
+      - Client actions
+      summary: Delete company
+      description: This endpoint allows deleting a company. Only companies under 'Lead'
+        and 'Rejected' status can be rejected
+      operationId: deleteClientUsingDELETE
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The client was deleted successfully.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/freeze:
+    put:
+      tags:
+      - Client actions
+      summary: Freeze company
+      description: Allow to freeze a company
+      operationId: freezeCompanyUsingPUT
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - message
+              properties:
+                message:
+                  type: string
+              title: RejectReasonDTO
+        description: reason
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      accountId:
+                        type: string
+                      amount:
+                        type: number
+                        format: double
+                      bicSwift:
+                        type: string
+                      bicSwiftForSEPA:
+                        type: string
+                      bicSwiftForSWIFT:
+                        type: string
+                      currency:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: Currency code (ISO 4217 code)
+                          country:
+                            type: string
+                            description: Country name
+                          currency:
+                            type: string
+                            description: Currency name
+                          symbol:
+                            type: string
+                            description: Currency symbol
+                        title: CurrencyDTO
+                      iban:
+                        type: string
+                      ukAccountNumber:
+                        type: string
+                      ukSortCode:
+                        type: string
+                    title: AccountDTO
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  billing:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      products:
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              currency:
+                                type: string
+                              fixedFee:
+                                type: number
+                                format: double
+                              frequency:
+                                type: string
+                                enum:
+                                - IMMEDIATE
+                                - WEEKLY
+                                - MONTHLY
+                                - YEARLY
+                              frequencyLabel:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  it:
+                                    type: string
+                                title: TranslateLabel
+                              maximumFee:
+                                type: number
+                                format: double
+                              minimumFee:
+                                type: number
+                                format: double
+                              product:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                - SETUP
+                                - NEW_ACCOUNT
+                                - NEW_VIRTUAL_CARD
+                                - NEW_PHYSICAL_CARD
+                                - PHYSICAL_CARD_FEE
+                                - VIRTUAL_CARD_FEE
+                                - ACCOUNT_FEE
+                                - SWIFT_INBOUND
+                                - INTER_LEDGER_INBOUND
+                                - INTER_LEDGER_OUTBOUND
+                                - SEPA_INBOUND
+                                - SEPA_OUTBOUND
+                                - FASTER_PAYMENTS_OUTBOUND
+                                - FASTER_PAYMENTS_INBOUND
+                                - BACS_INBOUND
+                                - CHAPS_INBOUNDS
+                                - ATM_WITHDRAWALS
+                                - BALANCE_MAINTENANCE_FEE
+                              typeLabel:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  it:
+                                    type: string
+                                title: TranslateLabel
+                              variableFee:
+                                type: number
+                                format: double
+                            title: BillingProductsDTO
+                    title: ViewClientBillingDTO
+                  cif:
+                    type: string
+                  city:
+                    type: string
+                  clientType:
+                    type: string
+                    enum:
+                    - BUSINESS
+                    - CONSUMER
+                  complianceHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        company:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        ipAddress:
+                          type: string
+                        kyxStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        message:
+                          type: object
+                          properties:
+                            de:
+                              type: string
+                            en:
+                              type: string
+                            es:
+                              type: string
+                            it:
+                              type: string
+                          title: TranslateLabel
+                        type:
+                          type: string
+                          enum:
+                          - LOGIN
+                          - IMPERSONATION
+                          - ONBOARDING_EMAIL
+                          - CUSTOMER_INVITED
+                          - CUSTOMER_FROZEN
+                          - CUSTOMER_UNFROZEN
+                          - CUSTOMER_REJECTED
+                          - CUSTOMER_NEW_DOCUMENTATION
+                          - CUSTOMER_UPDATED
+                          - CUSTOMER_LIVE
+                          - ADMIN_LIVE
+                          - ADMIN_INVITED
+                          - COMPLIANCE_STATUS
+                          - ACCEPT_TNC
+                        user:
+                          type: string
+                      title: ComplianceEvent
+                  country:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      isoCode:
+                        type: string
+                      name:
+                        type: object
+                        properties:
+                          de:
+                            type: string
+                          default:
+                            type: string
+                          en:
+                            type: string
+                          es:
+                            type: string
+                        title: I18nLabel
+                      prefix:
+                        type: string
+                    title: Country
+                  createdBy:
+                    type: string
+                  customer:
+                    type: string
+                  description:
+                    type: string
+                  directors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        alias:
+                          type: string
+                        email:
+                          type: string
+                        firstName:
+                          type: string
+                        id:
+                          type: string
+                        intnlPhoneNumber:
+                          type: string
+                        kycStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        lastName:
+                          type: string
+                        locale:
+                          type: string
+                        onboardedAt:
+                          type: string
+                          format: date-time
+                        onboardingStatus:
+                          type: string
+                          enum:
+                          - INCOMPLETE
+                          - NOT_ONBOARDING
+                          - PENDING_KYC_RESULT
+                          - PENDING_KYB_RESULTS
+                          - PENDING_KYC_DOCUMENTS
+                          - PENDING_KYB_DATA
+                          - PENDING_KYB
+                          - PENDING_ACCOUNT
+                          - COMPLETED
+                          - DECLINED
+                          - PENDING_USER_INFO
+                          - PENDING_KYC
+                        phoneCountry:
+                          type: string
+                        phoneNumber:
+                          type: string
+                        pushEnabled:
+                          type: boolean
+                        truNarrativeLink:
+                          type: string
+                      title: DirectorDTO
+                  email:
+                    type: string
+                  firstName:
+                    type: string
+                  hasWebsite:
+                    type: boolean
+                  id:
+                    type: string
+                  invitationHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        company:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        message:
+                          type: string
+                        success:
+                          type: boolean
+                        type:
+                          type: string
+                          enum:
+                          - LOGIN
+                          - IMPERSONATION
+                          - ONBOARDING_EMAIL
+                          - CUSTOMER_INVITED
+                          - CUSTOMER_FROZEN
+                          - CUSTOMER_UNFROZEN
+                          - CUSTOMER_REJECTED
+                          - CUSTOMER_NEW_DOCUMENTATION
+                          - CUSTOMER_UPDATED
+                          - CUSTOMER_LIVE
+                          - ADMIN_LIVE
+                          - ADMIN_INVITED
+                          - COMPLIANCE_STATUS
+                          - ACCEPT_TNC
+                        user:
+                          type: string
+                      title: OnboardingEmailEvent
+                  kybDocuments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        available:
+                          type: boolean
+                        documentName:
+                          type: string
+                        documentStatus:
+                          type: string
+                          enum:
+                          - IN_PROGRESS
+                          - UNDER_REVIEW
+                          - COMPLETED
+                          - DECLINED
+                        documentType:
+                          type: string
+                        documentURL:
+                          type: string
+                        id:
+                          type: string
+                        rejectReason:
+                          type: string
+                      title: KYXDocument
+                  kycDocuments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        available:
+                          type: boolean
+                        documentName:
+                          type: string
+                        documentStatus:
+                          type: string
+                          enum:
+                          - IN_PROGRESS
+                          - UNDER_REVIEW
+                          - COMPLETED
+                          - DECLINED
+                        documentType:
+                          type: string
+                        documentURL:
+                          type: string
+                        id:
+                          type: string
+                        rejectReason:
+                          type: string
+                      title: KYXDocument
+                  kyxStatus:
+                    type: string
+                    enum:
+                    - AWAITING_RESPONSE
+                    - REFERRED
+                    - COMPLETE
+                    - PENDING_EXTERNAL_APPROVAL
+                    - ACCEPT
+                    - DECLINE
+                    - CLOSE
+                    - REFQUE
+                    - STADEC
+                    - STACLR
+                  lastName:
+                    type: string
+                  legislationCountry:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      isoCode:
+                        type: string
+                      name:
+                        type: object
+                        properties:
+                          de:
+                            type: string
+                          default:
+                            type: string
+                          en:
+                            type: string
+                          es:
+                            type: string
+                        title: I18nLabel
+                      prefix:
+                        type: string
+                    title: Country
+                  middleName:
+                    type: string
+                  name:
+                    type: string
+                  onboardingStatus:
+                    type: string
+                    enum:
+                    - INCOMPLETE
+                    - NOT_ONBOARDING
+                    - PENDING_KYC_RESULT
+                    - PENDING_KYB_RESULTS
+                    - PENDING_KYC_DOCUMENTS
+                    - PENDING_KYB_DATA
+                    - PENDING_KYB
+                    - PENDING_ACCOUNT
+                    - COMPLETED
+                    - DECLINED
+                    - PENDING_USER_INFO
+                    - PENDING_KYC
+                  organisationType:
+                    type: string
+                    enum:
+                    - SOLE_TRADER
+                    - REGISTERED
+                    - NON_REGISTERED
+                  phoneNumber:
+                    type: string
+                  postalCode:
+                    type: string
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - ROLE_ADMIN
+                      - ROLE_SUPERCUSTOMER
+                      - ROLE_CUSTOMER_ADMIN
+                      - ROLE_DIRECTOR
+                      - ROLE_COMPANY_ADMIN
+                      - ROLE_EMPLOYEE
+                      - ROLE_ACCOUNTANT
+                      - ROLE_OWNER
+                      - ROLE_BENEFICIARY
+                      - ROLE_AGENT
+                  shareholders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        birthDate:
+                          type: string
+                          format: date-time
+                        city:
+                          type: string
+                        country:
+                          type: string
+                        id:
+                          type: string
+                        kyc:
+                          type: object
+                          properties:
+                            accountId:
+                              type: integer
+                              format: int32
+                            accountReference:
+                              type: string
+                            auditReference:
+                              type: string
+                            clientApplicationReference:
+                              type: string
+                            date:
+                              type: string
+                              format: date-time
+                            documents:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  documentPageBase64EncodedString:
+                                    type: string
+                                    description: Send the file in base64
+                                  documentType:
+                                    type: string
+                                    description: The document type will depend on
+                                      the legislationCountry value. If UK the available
+                                      documentType are PROOF_OF_SHAREHOLDER_STRUCTURE,
+                                      PREVIOUS_YEAR_ACCOUNTS and PROOF_OF_TRADING_ADDRESS.
+                                      If the legislationCountry is ES the available
+                                      documentType are ESCRITURAS, CIF and CERTIFICADO_DE_TITULARIDAD_REAL.
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                    description: The name of the document.
+                                  pages:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        filename:
+                                          type: string
+                                      title: Page
+                                  type:
+                                    type: string
+                                title: Document
+                            journey:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  format: int32
+                                name:
+                                  type: string
+                              title: Journey
+                            journeyType:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  format: int32
+                                label:
+                                  type: string
+                              title: JourneyType
+                            kyxType:
+                              type: string
+                              enum:
+                              - KYB
+                              - KYC
+                            previousStatus:
+                              type: string
+                              enum:
+                              - AWAITING_RESPONSE
+                              - REFERRED
+                              - COMPLETE
+                              - PENDING_EXTERNAL_APPROVAL
+                              - ACCEPT
+                              - DECLINE
+                              - CLOSE
+                              - REFQUE
+                              - STADEC
+                              - STACLR
+                            referralReference:
+                              type: string
+                            riskLevel:
+                              type: string
+                            status:
+                              type: string
+                              enum:
+                              - AWAITING_RESPONSE
+                              - REFERRED
+                              - COMPLETE
+                              - PENDING_EXTERNAL_APPROVAL
+                              - ACCEPT
+                              - DECLINE
+                              - CLOSE
+                              - REFQUE
+                              - STADEC
+                              - STACLR
+                            uid:
+                              type: string
+                            updatedAt:
+                              type: string
+                              format: date-time
+                          title: KYX
+                        name:
+                          type: string
+                        percentageOfShares:
+                          type: string
+                        postalCode:
+                          type: string
+                        s3DocumentURL:
+                          type: string
+                        surname:
+                          type: string
+                      title: Shareholder
+                  status:
+                    type: string
+                    enum:
+                    - LEAD
+                    - ONBOARDING
+                    - ONBOARDED
+                    - FROZEN
+                    - REJECTED
+                  subOrganisationType:
+                    type: string
+                    enum:
+                    - SOLE_TRADER
+                    - LIMITED
+                    - PARTNERSHIP
+                    - CHARITY
+                    - PUBLIC_LIMITED
+                    - ASSOCIATION
+                    - SUPPORT_GROUP
+                    - NON_REG_PARTNERSHIP
+                    - NOT_YET_REGISTERED
+                  truNarrativeLink:
+                    type: string
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        birthDate:
+                          type: string
+                          format: date-time
+                        city:
+                          type: string
+                        country:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                            isoCode:
+                              type: string
+                            name:
+                              type: object
+                              properties:
+                                de:
+                                  type: string
+                                default:
+                                  type: string
+                                en:
+                                  type: string
+                                es:
+                                  type: string
+                              title: I18nLabel
+                            prefix:
+                              type: string
+                          title: Country
+                        email:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        onboarded:
+                          type: boolean
+                        profileImage:
+                          type: string
+                        role:
+                          type: string
+                        status:
+                          type: string
+                        username:
+                          type: string
+                      title: TeamListItemAdminDTO
+                  websiteUrl:
+                    type: string
+                  paymentProvider:
+                    type: string
+                  statementDescriptor:
+                    type: string
+                title: ViewCompanyAdminDTO
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/client/{clientId}/card/fees/{currency}:
+    get:
+      tags:
+      - Fees
+      operationId: getCardFees
+      summary: Get card fees
+      description: This endpoint is deprecated. You should use <a href="https://docs.toq.io/reference/getcardfees"><u>Card
+        Fees</u></a>
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        description: Client to filter by
+        example: 6188de9f24e2410001b7ea74
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: currency
+        description: Currency to filter by
+        example: GBP
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/IssueCardFeeDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - clientCredentials: []
+      deprecated: true
+  /customers/{customerId}/clients:
+    get:
+      tags:
+      - Client information
+      summary: Get clients
+      description: Allows to get the different clients of a customer
+      operationId: getClientsUsingGET
+      parameters:
+      - name: clientType
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: kyxStatus
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - AWAITING_RESPONSE
+          - REFERRED
+          - COMPLETE
+          - PENDING_EXTERNAL_APPROVAL
+          - ACCEPT
+          - DECLINE
+          - CLOSE
+          - REFQUE
+          - STADEC
+          - STACLR
+      - name: pageNumber
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: pageSize
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int32
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: text
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cif:
+                          type: string
+                        clientType:
+                          type: string
+                          enum:
+                          - BUSINESS
+                          - CONSUMER
+                        createdAt:
+                          type: string
+                          format: date-time
+                        createdBy:
+                          type: object
+                          properties:
+                            email:
+                              type: string
+                            firstName:
+                              type: string
+                            id:
+                              type: string
+                            lastName:
+                              type: string
+                          title: ShortUserDTO
+                        customerName:
+                          type: string
+                        id:
+                          type: string
+                        kyxStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - LEAD
+                          - ONBOARDING
+                          - ONBOARDED
+                          - FROZEN
+                          - REJECTED
+                        paymentProvider:
+                          type: string
+                        legalPhoneNumber:
+                          type: string
+                        legalPhoneCountry:
+                          type: string
+                        legalIntnlPhoneNumber:
+                          type: string
+                        statementDescriptor:
+                          type: string
+                      title: CompanyListItemDTO
+                  paging:
+                    type: object
+                    properties:
+                      hasNextPage:
+                        type: boolean
+                      hasPreviousPage:
+                        type: boolean
+                      pageNumber:
+                        type: integer
+                        format: int32
+                      pageSize:
+                        type: integer
+                        format: int32
+                      sortingCriteria:
+                        type: string
+                      totalNumberOfPages:
+                        type: integer
+                        format: int32
+                      totalNumberOfRecords:
+                        type: integer
+                        format: int64
+                    title: PageAndSort
+                title: CompanyPageDTO
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/clients/{clientId}:
+    get:
+      tags:
+      - Client information
+      summary: Get client
+      description: Allows to get the client information
+      operationId: getClientUsingGET
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      accountId:
+                        type: string
+                      amount:
+                        type: number
+                        format: double
+                      bicSwift:
+                        type: string
+                      bicSwiftForSEPA:
+                        type: string
+                      bicSwiftForSWIFT:
+                        type: string
+                      currency:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: Currency code (ISO 4217 code)
+                          country:
+                            type: string
+                            description: Country name
+                          currency:
+                            type: string
+                            description: Currency name
+                          symbol:
+                            type: string
+                            description: Currency symbol
+                        title: CurrencyDTO
+                      iban:
+                        type: string
+                      ukAccountNumber:
+                        type: string
+                      ukSortCode:
+                        type: string
+                    title: AccountDTO
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  billing:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      products:
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              currency:
+                                type: string
+                              fixedFee:
+                                type: number
+                                format: double
+                              frequency:
+                                type: string
+                                enum:
+                                - IMMEDIATE
+                                - WEEKLY
+                                - MONTHLY
+                                - YEARLY
+                              frequencyLabel:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  it:
+                                    type: string
+                                title: TranslateLabel
+                              maximumFee:
+                                type: number
+                                format: double
+                              minimumFee:
+                                type: number
+                                format: double
+                              product:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                - SETUP
+                                - NEW_ACCOUNT
+                                - NEW_VIRTUAL_CARD
+                                - NEW_PHYSICAL_CARD
+                                - PHYSICAL_CARD_FEE
+                                - VIRTUAL_CARD_FEE
+                                - ACCOUNT_FEE
+                                - SWIFT_INBOUND
+                                - INTER_LEDGER_INBOUND
+                                - INTER_LEDGER_OUTBOUND
+                                - SEPA_INBOUND
+                                - SEPA_OUTBOUND
+                                - FASTER_PAYMENTS_OUTBOUND
+                                - FASTER_PAYMENTS_INBOUND
+                                - BACS_INBOUND
+                                - CHAPS_INBOUNDS
+                                - ATM_WITHDRAWALS
+                                - BALANCE_MAINTENANCE_FEE
+                              typeLabel:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  it:
+                                    type: string
+                                title: TranslateLabel
+                              variableFee:
+                                type: number
+                                format: double
+                            title: BillingProductsDTO
+                    title: ViewClientBillingDTO
+                  cif:
+                    type: string
+                  city:
+                    type: string
+                  clientType:
+                    type: string
+                    enum:
+                    - BUSINESS
+                    - CONSUMER
+                  complianceHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        company:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        ipAddress:
+                          type: string
+                        kyxStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        message:
+                          type: object
+                          properties:
+                            de:
+                              type: string
+                            en:
+                              type: string
+                            es:
+                              type: string
+                            it:
+                              type: string
+                          title: TranslateLabel
+                        type:
+                          type: string
+                          enum:
+                          - LOGIN
+                          - IMPERSONATION
+                          - ONBOARDING_EMAIL
+                          - CUSTOMER_INVITED
+                          - CUSTOMER_FROZEN
+                          - CUSTOMER_UNFROZEN
+                          - CUSTOMER_REJECTED
+                          - CUSTOMER_NEW_DOCUMENTATION
+                          - CUSTOMER_UPDATED
+                          - CUSTOMER_LIVE
+                          - ADMIN_LIVE
+                          - ADMIN_INVITED
+                          - COMPLIANCE_STATUS
+                          - ACCEPT_TNC
+                        user:
+                          type: string
+                      title: ComplianceEvent
+                  country:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      isoCode:
+                        type: string
+                      name:
+                        type: object
+                        properties:
+                          de:
+                            type: string
+                          default:
+                            type: string
+                          en:
+                            type: string
+                          es:
+                            type: string
+                        title: I18nLabel
+                      prefix:
+                        type: string
+                    title: Country
+                  createdBy:
+                    type: string
+                  customer:
+                    type: string
+                  description:
+                    type: string
+                  directors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        alias:
+                          type: string
+                        email:
+                          type: string
+                        firstName:
+                          type: string
+                        id:
+                          type: string
+                        intnlPhoneNumber:
+                          type: string
+                        kycStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        lastName:
+                          type: string
+                        locale:
+                          type: string
+                        onboardedAt:
+                          type: string
+                          format: date-time
+                        onboardingStatus:
+                          type: string
+                          enum:
+                          - INCOMPLETE
+                          - NOT_ONBOARDING
+                          - PENDING_KYC_RESULT
+                          - PENDING_KYB_RESULTS
+                          - PENDING_KYC_DOCUMENTS
+                          - PENDING_KYB_DATA
+                          - PENDING_KYB
+                          - PENDING_ACCOUNT
+                          - COMPLETED
+                          - DECLINED
+                          - PENDING_USER_INFO
+                          - PENDING_KYC
+                        phoneCountry:
+                          type: string
+                        phoneNumber:
+                          type: string
+                        pushEnabled:
+                          type: boolean
+                        truNarrativeLink:
+                          type: string
+                      title: DirectorDTO
+                  email:
+                    type: string
+                  firstName:
+                    type: string
+                  hasWebsite:
+                    type: boolean
+                  id:
+                    type: string
+                  invitationHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        company:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        message:
+                          type: string
+                        success:
+                          type: boolean
+                        type:
+                          type: string
+                          enum:
+                          - LOGIN
+                          - IMPERSONATION
+                          - ONBOARDING_EMAIL
+                          - CUSTOMER_INVITED
+                          - CUSTOMER_FROZEN
+                          - CUSTOMER_UNFROZEN
+                          - CUSTOMER_REJECTED
+                          - CUSTOMER_NEW_DOCUMENTATION
+                          - CUSTOMER_UPDATED
+                          - CUSTOMER_LIVE
+                          - ADMIN_LIVE
+                          - ADMIN_INVITED
+                          - COMPLIANCE_STATUS
+                          - ACCEPT_TNC
+                        user:
+                          type: string
+                      title: OnboardingEmailEvent
+                  kybDocuments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        available:
+                          type: boolean
+                        documentName:
+                          type: string
+                        documentStatus:
+                          type: string
+                          enum:
+                          - IN_PROGRESS
+                          - UNDER_REVIEW
+                          - COMPLETED
+                          - DECLINED
+                        documentType:
+                          type: string
+                        documentURL:
+                          type: string
+                        id:
+                          type: string
+                        rejectReason:
+                          type: string
+                      title: KYXDocument
+                  kycDocuments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        available:
+                          type: boolean
+                        documentName:
+                          type: string
+                        documentStatus:
+                          type: string
+                          enum:
+                          - IN_PROGRESS
+                          - UNDER_REVIEW
+                          - COMPLETED
+                          - DECLINED
+                        documentType:
+                          type: string
+                        documentURL:
+                          type: string
+                        id:
+                          type: string
+                        rejectReason:
+                          type: string
+                      title: KYXDocument
+                  kyxStatus:
+                    type: string
+                    enum:
+                    - AWAITING_RESPONSE
+                    - REFERRED
+                    - COMPLETE
+                    - PENDING_EXTERNAL_APPROVAL
+                    - ACCEPT
+                    - DECLINE
+                    - CLOSE
+                    - REFQUE
+                    - STADEC
+                    - STACLR
+                  lastName:
+                    type: string
+                  legislationCountry:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      isoCode:
+                        type: string
+                      name:
+                        type: object
+                        properties:
+                          de:
+                            type: string
+                          default:
+                            type: string
+                          en:
+                            type: string
+                          es:
+                            type: string
+                        title: I18nLabel
+                      prefix:
+                        type: string
+                    title: Country
+                  middleName:
+                    type: string
+                  name:
+                    type: string
+                  onboardingStatus:
+                    type: string
+                    enum:
+                    - INCOMPLETE
+                    - NOT_ONBOARDING
+                    - PENDING_KYC_RESULT
+                    - PENDING_KYB_RESULTS
+                    - PENDING_KYC_DOCUMENTS
+                    - PENDING_KYB_DATA
+                    - PENDING_KYB
+                    - PENDING_ACCOUNT
+                    - COMPLETED
+                    - DECLINED
+                    - PENDING_USER_INFO
+                    - PENDING_KYC
+                  organisationType:
+                    type: string
+                    enum:
+                    - SOLE_TRADER
+                    - REGISTERED
+                    - NON_REGISTERED
+                  phoneNumber:
+                    type: string
+                  postalCode:
+                    type: string
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - ROLE_ADMIN
+                      - ROLE_SUPERCUSTOMER
+                      - ROLE_CUSTOMER_ADMIN
+                      - ROLE_DIRECTOR
+                      - ROLE_COMPANY_ADMIN
+                      - ROLE_EMPLOYEE
+                      - ROLE_ACCOUNTANT
+                      - ROLE_OWNER
+                      - ROLE_BENEFICIARY
+                      - ROLE_AGENT
+                  shareholders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        birthDate:
+                          type: string
+                          format: date-time
+                        city:
+                          type: string
+                        country:
+                          type: string
+                        id:
+                          type: string
+                        kyc:
+                          type: object
+                          properties:
+                            accountId:
+                              type: integer
+                              format: int32
+                            accountReference:
+                              type: string
+                            auditReference:
+                              type: string
+                            clientApplicationReference:
+                              type: string
+                            date:
+                              type: string
+                              format: date-time
+                            documents:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  documentPageBase64EncodedString:
+                                    type: string
+                                    description: Send the file in base64
+                                  documentType:
+                                    type: string
+                                    description: The document type will depend on
+                                      the legislationCountry value. If UK the available
+                                      documentType are PROOF_OF_SHAREHOLDER_STRUCTURE,
+                                      PREVIOUS_YEAR_ACCOUNTS and PROOF_OF_TRADING_ADDRESS.
+                                      If the legislationCountry is ES the available
+                                      documentType are ESCRITURAS, CIF and CERTIFICADO_DE_TITULARIDAD_REAL.
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                    description: The name of the document.
+                                  pages:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        filename:
+                                          type: string
+                                      title: Page
+                                  type:
+                                    type: string
+                                title: Document
+                            journey:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  format: int32
+                                name:
+                                  type: string
+                              title: Journey
+                            journeyType:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  format: int32
+                                label:
+                                  type: string
+                              title: JourneyType
+                            kyxType:
+                              type: string
+                              enum:
+                              - KYB
+                              - KYC
+                            previousStatus:
+                              type: string
+                              enum:
+                              - AWAITING_RESPONSE
+                              - REFERRED
+                              - COMPLETE
+                              - PENDING_EXTERNAL_APPROVAL
+                              - ACCEPT
+                              - DECLINE
+                              - CLOSE
+                              - REFQUE
+                              - STADEC
+                              - STACLR
+                            referralReference:
+                              type: string
+                            riskLevel:
+                              type: string
+                            status:
+                              type: string
+                              enum:
+                              - AWAITING_RESPONSE
+                              - REFERRED
+                              - COMPLETE
+                              - PENDING_EXTERNAL_APPROVAL
+                              - ACCEPT
+                              - DECLINE
+                              - CLOSE
+                              - REFQUE
+                              - STADEC
+                              - STACLR
+                            uid:
+                              type: string
+                            updatedAt:
+                              type: string
+                              format: date-time
+                          title: KYX
+                        name:
+                          type: string
+                        percentageOfShares:
+                          type: string
+                        postalCode:
+                          type: string
+                        s3DocumentURL:
+                          type: string
+                        surname:
+                          type: string
+                      title: Shareholder
+                  status:
+                    type: string
+                    enum:
+                    - LEAD
+                    - ONBOARDING
+                    - ONBOARDED
+                    - FROZEN
+                    - REJECTED
+                  subOrganisationType:
+                    type: string
+                    enum:
+                    - SOLE_TRADER
+                    - LIMITED
+                    - PARTNERSHIP
+                    - CHARITY
+                    - PUBLIC_LIMITED
+                    - ASSOCIATION
+                    - SUPPORT_GROUP
+                    - NON_REG_PARTNERSHIP
+                    - NOT_YET_REGISTERED
+                  truNarrativeLink:
+                    type: string
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        birthDate:
+                          type: string
+                          format: date-time
+                        city:
+                          type: string
+                        country:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                            isoCode:
+                              type: string
+                            name:
+                              type: object
+                              properties:
+                                de:
+                                  type: string
+                                default:
+                                  type: string
+                                en:
+                                  type: string
+                                es:
+                                  type: string
+                              title: I18nLabel
+                            prefix:
+                              type: string
+                          title: Country
+                        email:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        onboarded:
+                          type: boolean
+                        profileImage:
+                          type: string
+                        role:
+                          type: string
+                        status:
+                          type: string
+                        username:
+                          type: string
+                      title: TeamListItemAdminDTO
+                  websiteUrl:
+                    type: string
+                  paymentProvider:
+                    type: string
+                  statementDescriptor:
+                    type: string
+                title: ViewCompanyAdminDTO
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/clients/{clientId}/users/{userId}:
+    get:
+      tags:
+      - User
+      summary: Get user
+      description: Allows to get the details of a given user
+      operationId: getUserUsingGET
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: userId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      accountId:
+                        type: string
+                      assetType:
+                        type: string
+                        enum:
+                        - GBP
+                        - EUR
+                      bicSwift:
+                        type: string
+                      iban:
+                        type: string
+                      ukAccountNumber:
+                        type: string
+                      ukSortCode:
+                        type: string
+                    title: Account
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  advancePaymentAccount:
+                    type: string
+                  birthDate:
+                    type: string
+                    example: yyyy-MM-dd
+                  cards:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        alias:
+                          type: string
+                        id:
+                          type: string
+                        product:
+                          type: string
+                          enum:
+                          - DEBIT
+                          - CREDIT
+                        status:
+                          type: string
+                          enum:
+                          - ACTIVE
+                          - INACTIVE
+                          - ACTIVATING
+                          - AWAITING
+                          - FAILED
+                          - SUSPENDED
+                          - CANCELLED
+                        type:
+                          type: string
+                          enum:
+                          - PHYSICAL
+                          - VIRTUAL
+                      title: TeamCardListItemDTO
+                  city:
+                    type: string
+                  country:
+                    type: string
+                  email:
+                    type: string
+                  enabled:
+                    type: boolean
+                  firstName:
+                    type: string
+                  fullName:
+                    type: string
+                  id:
+                    type: string
+                  intercomURL:
+                    type: string
+                  intnlPhoneNumber:
+                    type: string
+                  kycStatus:
+                    type: string
+                    enum:
+                    - AWAITING_RESPONSE
+                    - REFERRED
+                    - COMPLETE
+                    - PENDING_EXTERNAL_APPROVAL
+                    - ACCEPT
+                    - DECLINE
+                    - CLOSE
+                    - REFQUE
+                    - STADEC
+                    - STACLR
+                  lastName:
+                    type: string
+                  locale:
+                    type: string
+                  middleName:
+                    type: string
+                  monthlyExpenditure:
+                    type: number
+                    format: double
+                  onboarded:
+                    type: boolean
+                  onboardedAt:
+                    type: string
+                    format: date-time
+                  onboardingStatus:
+                    type: string
+                  personalIdentityNumber:
+                    type: string
+                  phoneCountry:
+                    type: string
+                  phoneNumber:
+                    type: string
+                  postalCode:
+                    type: string
+                  profileImage:
+                    type: string
+                  role:
+                    type: string
+                  tncVersion:
+                    type: object
+                    properties:
+                      dateUpdated:
+                        type: string
+                        format: date-time
+                      version:
+                        type: string
+                    title: TNCVersion
+                  username:
+                    type: string
+                  permissions:
+                    type: array
+                    items:
+                      type: string
+                  metadata:
+                    type: object
+                    additionalProperties: true
+                    description: Key→value map.<br/> • Must be an object<br/> • Cannot
+                      be a primitive
+                title: TeamUserAdminDTO
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/clients/{clientId}/users/create:
+    post:
+      tags:
+      - User
+      summary: Create user
+      description: 'Allows to create a user under a client '
+      operationId: inviteUser
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserInviteDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UserDTO'
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/reject:
+    put:
+      tags:
+      - Client actions
+      summary: Reject company
+      description: This endpoint allows rejecting a company. Only companies under
+        'Onboarding', 'Live' and 'Quarantine' status can be rejected
+      operationId: rejectClientUsingPUT
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - message
+              properties:
+                message:
+                  type: string
+              title: RejectReasonDTO
+        description: reason
+        required: true
+      responses:
+        '200':
+          description: The client was rejected successfully.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/users/{userId}/credentials/securityCode:
+    post:
+      tags:
+      - User credentials
+      summary: Create security code
+      description: Allow the user to set up their own security code.
+      operationId: setCredentialsSecurityCode
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentialSecurityCodeDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/users/{userId}/credentials/password:
+    post:
+      tags:
+      - User credentials
+      summary: Create password
+      description: Allow the user to set up their password.
+      operationId: setUserPassword
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentialPasswordDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/unfreeze:
+    put:
+      tags:
+      - Client actions
+      summary: Unfreeze company
+      description: Allows to unfreeze a company
+      operationId: unfreezeCompanyUsingPUT
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: object
+                    properties:
+                      accountId:
+                        type: string
+                      amount:
+                        type: number
+                        format: double
+                      bicSwift:
+                        type: string
+                      bicSwiftForSEPA:
+                        type: string
+                      bicSwiftForSWIFT:
+                        type: string
+                      currency:
+                        type: object
+                        properties:
+                          code:
+                            type: string
+                            description: Currency code (ISO 4217 code)
+                          country:
+                            type: string
+                            description: Country name
+                          currency:
+                            type: string
+                            description: Currency name
+                          symbol:
+                            type: string
+                            description: Currency symbol
+                        title: CurrencyDTO
+                      iban:
+                        type: string
+                      ukAccountNumber:
+                        type: string
+                      ukSortCode:
+                        type: string
+                    title: AccountDTO
+                  address:
+                    type: string
+                  address2:
+                    type: string
+                  billing:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      products:
+                        type: object
+                        additionalProperties:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              currency:
+                                type: string
+                              fixedFee:
+                                type: number
+                                format: double
+                              frequency:
+                                type: string
+                                enum:
+                                - IMMEDIATE
+                                - WEEKLY
+                                - MONTHLY
+                                - YEARLY
+                              frequencyLabel:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  it:
+                                    type: string
+                                title: TranslateLabel
+                              maximumFee:
+                                type: number
+                                format: double
+                              minimumFee:
+                                type: number
+                                format: double
+                              product:
+                                type: string
+                              type:
+                                type: string
+                                enum:
+                                - SETUP
+                                - NEW_ACCOUNT
+                                - NEW_VIRTUAL_CARD
+                                - NEW_PHYSICAL_CARD
+                                - PHYSICAL_CARD_FEE
+                                - VIRTUAL_CARD_FEE
+                                - ACCOUNT_FEE
+                                - SWIFT_INBOUND
+                                - INTER_LEDGER_INBOUND
+                                - INTER_LEDGER_OUTBOUND
+                                - SEPA_INBOUND
+                                - SEPA_OUTBOUND
+                                - FASTER_PAYMENTS_OUTBOUND
+                                - FASTER_PAYMENTS_INBOUND
+                                - BACS_INBOUND
+                                - CHAPS_INBOUNDS
+                                - ATM_WITHDRAWALS
+                                - BALANCE_MAINTENANCE_FEE
+                              typeLabel:
+                                type: object
+                                properties:
+                                  de:
+                                    type: string
+                                  en:
+                                    type: string
+                                  es:
+                                    type: string
+                                  it:
+                                    type: string
+                                title: TranslateLabel
+                              variableFee:
+                                type: number
+                                format: double
+                            title: BillingProductsDTO
+                    title: ViewClientBillingDTO
+                  cif:
+                    type: string
+                  city:
+                    type: string
+                  clientType:
+                    type: string
+                    enum:
+                    - BUSINESS
+                    - CONSUMER
+                  complianceHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        company:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        ipAddress:
+                          type: string
+                        kyxStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        message:
+                          type: object
+                          properties:
+                            de:
+                              type: string
+                            en:
+                              type: string
+                            es:
+                              type: string
+                            it:
+                              type: string
+                          title: TranslateLabel
+                        type:
+                          type: string
+                          enum:
+                          - LOGIN
+                          - IMPERSONATION
+                          - ONBOARDING_EMAIL
+                          - CUSTOMER_INVITED
+                          - CUSTOMER_FROZEN
+                          - CUSTOMER_UNFROZEN
+                          - CUSTOMER_REJECTED
+                          - CUSTOMER_NEW_DOCUMENTATION
+                          - CUSTOMER_UPDATED
+                          - CUSTOMER_LIVE
+                          - ADMIN_LIVE
+                          - ADMIN_INVITED
+                          - COMPLIANCE_STATUS
+                          - ACCEPT_TNC
+                        user:
+                          type: string
+                      title: ComplianceEvent
+                  country:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      isoCode:
+                        type: string
+                      name:
+                        type: object
+                        properties:
+                          de:
+                            type: string
+                          default:
+                            type: string
+                          en:
+                            type: string
+                          es:
+                            type: string
+                        title: I18nLabel
+                      prefix:
+                        type: string
+                    title: Country
+                  createdBy:
+                    type: string
+                  customer:
+                    type: string
+                  description:
+                    type: string
+                  directors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        alias:
+                          type: string
+                        email:
+                          type: string
+                        firstName:
+                          type: string
+                        id:
+                          type: string
+                        intnlPhoneNumber:
+                          type: string
+                        kycStatus:
+                          type: string
+                          enum:
+                          - AWAITING_RESPONSE
+                          - REFERRED
+                          - COMPLETE
+                          - PENDING_EXTERNAL_APPROVAL
+                          - ACCEPT
+                          - DECLINE
+                          - CLOSE
+                          - REFQUE
+                          - STADEC
+                          - STACLR
+                        lastName:
+                          type: string
+                        locale:
+                          type: string
+                        onboardedAt:
+                          type: string
+                          format: date-time
+                        onboardingStatus:
+                          type: string
+                          enum:
+                          - INCOMPLETE
+                          - NOT_ONBOARDING
+                          - PENDING_KYC_RESULT
+                          - PENDING_KYB_RESULTS
+                          - PENDING_KYC_DOCUMENTS
+                          - PENDING_KYB_DATA
+                          - PENDING_KYB
+                          - PENDING_ACCOUNT
+                          - COMPLETED
+                          - DECLINED
+                          - PENDING_USER_INFO
+                          - PENDING_KYC
+                        phoneCountry:
+                          type: string
+                        phoneNumber:
+                          type: string
+                        pushEnabled:
+                          type: boolean
+                        truNarrativeLink:
+                          type: string
+                      title: DirectorDTO
+                  email:
+                    type: string
+                  firstName:
+                    type: string
+                  hasWebsite:
+                    type: boolean
+                  id:
+                    type: string
+                  invitationHistory:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        company:
+                          type: string
+                        date:
+                          type: string
+                          format: date-time
+                        message:
+                          type: string
+                        success:
+                          type: boolean
+                        type:
+                          type: string
+                          enum:
+                          - LOGIN
+                          - IMPERSONATION
+                          - ONBOARDING_EMAIL
+                          - CUSTOMER_INVITED
+                          - CUSTOMER_FROZEN
+                          - CUSTOMER_UNFROZEN
+                          - CUSTOMER_REJECTED
+                          - CUSTOMER_NEW_DOCUMENTATION
+                          - CUSTOMER_UPDATED
+                          - CUSTOMER_LIVE
+                          - ADMIN_LIVE
+                          - ADMIN_INVITED
+                          - COMPLIANCE_STATUS
+                          - ACCEPT_TNC
+                        user:
+                          type: string
+                      title: OnboardingEmailEvent
+                  kybDocuments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        available:
+                          type: boolean
+                        documentName:
+                          type: string
+                        documentStatus:
+                          type: string
+                          enum:
+                          - IN_PROGRESS
+                          - UNDER_REVIEW
+                          - COMPLETED
+                          - DECLINED
+                        documentType:
+                          type: string
+                        documentURL:
+                          type: string
+                        id:
+                          type: string
+                        rejectReason:
+                          type: string
+                      title: KYXDocument
+                  kycDocuments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        available:
+                          type: boolean
+                        documentName:
+                          type: string
+                        documentStatus:
+                          type: string
+                          enum:
+                          - IN_PROGRESS
+                          - UNDER_REVIEW
+                          - COMPLETED
+                          - DECLINED
+                        documentType:
+                          type: string
+                        documentURL:
+                          type: string
+                        id:
+                          type: string
+                        rejectReason:
+                          type: string
+                      title: KYXDocument
+                  kyxStatus:
+                    type: string
+                    enum:
+                    - AWAITING_RESPONSE
+                    - REFERRED
+                    - COMPLETE
+                    - PENDING_EXTERNAL_APPROVAL
+                    - ACCEPT
+                    - DECLINE
+                    - CLOSE
+                    - REFQUE
+                    - STADEC
+                    - STACLR
+                  lastName:
+                    type: string
+                  legislationCountry:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      isoCode:
+                        type: string
+                      name:
+                        type: object
+                        properties:
+                          de:
+                            type: string
+                          default:
+                            type: string
+                          en:
+                            type: string
+                          es:
+                            type: string
+                        title: I18nLabel
+                      prefix:
+                        type: string
+                    title: Country
+                  middleName:
+                    type: string
+                  name:
+                    type: string
+                  onboardingStatus:
+                    type: string
+                    enum:
+                    - INCOMPLETE
+                    - NOT_ONBOARDING
+                    - PENDING_KYC_RESULT
+                    - PENDING_KYB_RESULTS
+                    - PENDING_KYC_DOCUMENTS
+                    - PENDING_KYB_DATA
+                    - PENDING_KYB
+                    - PENDING_ACCOUNT
+                    - COMPLETED
+                    - DECLINED
+                    - PENDING_USER_INFO
+                    - PENDING_KYC
+                  organisationType:
+                    type: string
+                    enum:
+                    - SOLE_TRADER
+                    - REGISTERED
+                    - NON_REGISTERED
+                  phoneNumber:
+                    type: string
+                  postalCode:
+                    type: string
+                  roles:
+                    type: array
+                    items:
+                      type: string
+                      enum:
+                      - ROLE_ADMIN
+                      - ROLE_SUPERCUSTOMER
+                      - ROLE_CUSTOMER_ADMIN
+                      - ROLE_DIRECTOR
+                      - ROLE_COMPANY_ADMIN
+                      - ROLE_EMPLOYEE
+                      - ROLE_ACCOUNTANT
+                      - ROLE_OWNER
+                      - ROLE_BENEFICIARY
+                      - ROLE_AGENT
+                  shareholders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        birthDate:
+                          type: string
+                          format: date-time
+                        city:
+                          type: string
+                        country:
+                          type: string
+                        id:
+                          type: string
+                        kyc:
+                          type: object
+                          properties:
+                            accountId:
+                              type: integer
+                              format: int32
+                            accountReference:
+                              type: string
+                            auditReference:
+                              type: string
+                            clientApplicationReference:
+                              type: string
+                            date:
+                              type: string
+                              format: date-time
+                            documents:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  documentPageBase64EncodedString:
+                                    type: string
+                                    description: Send the file in base64
+                                  documentType:
+                                    type: string
+                                    description: The document type will depend on
+                                      the legislationCountry value. If UK the available
+                                      documentType are PROOF_OF_SHAREHOLDER_STRUCTURE,
+                                      PREVIOUS_YEAR_ACCOUNTS and PROOF_OF_TRADING_ADDRESS.
+                                      If the legislationCountry is ES the available
+                                      documentType are ESCRITURAS, CIF and CERTIFICADO_DE_TITULARIDAD_REAL.
+                                  id:
+                                    type: string
+                                  name:
+                                    type: string
+                                    description: The name of the document.
+                                  pages:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        filename:
+                                          type: string
+                                      title: Page
+                                  type:
+                                    type: string
+                                title: Document
+                            journey:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  format: int32
+                                name:
+                                  type: string
+                              title: Journey
+                            journeyType:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  format: int32
+                                label:
+                                  type: string
+                              title: JourneyType
+                            kyxType:
+                              type: string
+                              enum:
+                              - KYB
+                              - KYC
+                            previousStatus:
+                              type: string
+                              enum:
+                              - AWAITING_RESPONSE
+                              - REFERRED
+                              - COMPLETE
+                              - PENDING_EXTERNAL_APPROVAL
+                              - ACCEPT
+                              - DECLINE
+                              - CLOSE
+                              - REFQUE
+                              - STADEC
+                              - STACLR
+                            referralReference:
+                              type: string
+                            riskLevel:
+                              type: string
+                            status:
+                              type: string
+                              enum:
+                              - AWAITING_RESPONSE
+                              - REFERRED
+                              - COMPLETE
+                              - PENDING_EXTERNAL_APPROVAL
+                              - ACCEPT
+                              - DECLINE
+                              - CLOSE
+                              - REFQUE
+                              - STADEC
+                              - STACLR
+                            uid:
+                              type: string
+                            updatedAt:
+                              type: string
+                              format: date-time
+                          title: KYX
+                        name:
+                          type: string
+                        percentageOfShares:
+                          type: string
+                        postalCode:
+                          type: string
+                        s3DocumentURL:
+                          type: string
+                        surname:
+                          type: string
+                      title: Shareholder
+                  status:
+                    type: string
+                    enum:
+                    - LEAD
+                    - ONBOARDING
+                    - ONBOARDED
+                    - FROZEN
+                    - REJECTED
+                  subOrganisationType:
+                    type: string
+                    enum:
+                    - SOLE_TRADER
+                    - LIMITED
+                    - PARTNERSHIP
+                    - CHARITY
+                    - PUBLIC_LIMITED
+                    - ASSOCIATION
+                    - SUPPORT_GROUP
+                    - NON_REG_PARTNERSHIP
+                    - NOT_YET_REGISTERED
+                  truNarrativeLink:
+                    type: string
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        address:
+                          type: string
+                        address2:
+                          type: string
+                        birthDate:
+                          type: string
+                          format: date-time
+                        city:
+                          type: string
+                        country:
+                          type: object
+                          properties:
+                            code:
+                              type: string
+                            isoCode:
+                              type: string
+                            name:
+                              type: object
+                              properties:
+                                de:
+                                  type: string
+                                default:
+                                  type: string
+                                en:
+                                  type: string
+                                es:
+                                  type: string
+                              title: I18nLabel
+                            prefix:
+                              type: string
+                          title: Country
+                        email:
+                          type: string
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        onboarded:
+                          type: boolean
+                        profileImage:
+                          type: string
+                        role:
+                          type: string
+                        status:
+                          type: string
+                        username:
+                          type: string
+                      title: TeamListItemAdminDTO
+                  websiteUrl:
+                    type: string
+                  paymentProvider:
+                    type: string
+                  statementDescriptor:
+                    type: string
+                title: ViewCompanyAdminDTO
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/clients/{clientId}/users/{userId}/credentials/securityQuestions:
+    post:
+      tags:
+      - User credentials
+      summary: Create security questions
+      description: Allow the user to set up their own security question answers. This
+        is only required to Modulr customer
+      operationId: userCredentialSecurityQuestion
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentialSecurityQuestionsDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/users/{userId}/credentials/username:
+    post:
+      tags:
+      - User credentials
+      summary: Create username
+      description: Allow the user to set up their own username
+      operationId: userCredentialsUsername
+      parameters:
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCredentialUsernameDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+      security:
+      - clientCredentials: []
+components:
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+  schemas:
+    IssueCardFeeDTO:
+      type: object
+      properties:
+        pricingVirtual:
+          type: number
+          format: double
+          example: 1
+        pricingPhysical:
+          type: number
+          format: double
+          example: 0
+        monthlyVirtualFee:
+          type: number
+          format: double
+          example: 3
+        monthlyPhysicalFee:
+          type: number
+          format: double
+          example: 3
+    TNCVersion:
+      type: object
+      properties:
+        dateUpdated:
+          type: string
+          format: date-time
+        version:
+          type: string
+      title: TNCVersion
+    UserInviteDTO:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      - phoneNumber
+      - phoneCountry
+      - role
+      - birthDate
+      - address
+      - city
+      - postalCode
+      - country
+      - sendInvite
+      properties:
+        firstName:
+          type: string
+          description: Minimum required informatiom to create a user.
+        lastName:
+          type: string
+          description: Minimum required informatiom to create a user.
+        email:
+          type: string
+        phoneNumber:
+          type: string
+          description: You MUST add a mobile phone. By adding a landline the request
+            will be rejected.
+        phoneCountry:
+          type: string
+          description: You MUST add the country prefix. We will send an OTP SMS message
+            when the user is setting up the credentials.
+        consultancy:
+          type: string
+        role:
+          type: string
+          enum:
+          - ROLE_DIRECTOR
+          - ROLE_COMPANY_ADMIN
+          - ROLE_EMPLOYEE
+          - ROLE_ACCOUNTANT
+          - ROLE_OWNER
+          - ROLE_BENEFICIARY
+          - ROLE_AGENT
+          description: 'SME roles: ROLE_DIRECTOR, ROLE_COMPANY_ADMIN, ROLE_EMPLOYEE,
+            ROLE_ACCOUNTANT and ROLE_AGENT; Consumer roles: ROLE_OWNER and ROLE_BENEFICIARY.'
+        birthDate:
+          type: string
+          description: Minimum required informatiom to create a user.
+        country:
+          type: string
+        postalCode:
+          type: string
+        address:
+          maxLength: 1000
+          minLength: 0
+          type: string
+          description: Minimum required informatiom to create a user.
+        address2:
+          maxLength: 1000
+          minLength: 0
+          type: string
+          description: Minimum required informatiom to create a user.
+        city:
+          type: string
+        cardType:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+        cardDeliveryName:
+          type: string
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        nameOnCard:
+          type: string
+        otp:
+          type: string
+        personalIdentityNumber:
+          type: string
+        documentType:
+          type: string
+        documentNumber:
+          type: string
+        tin:
+          maxLength: 11
+          minLength: 0
+          type: string
+        documentIssueDate:
+          type: string
+        sendInvite:
+          type: boolean
+          description: When the 'sendInvite' parameter is set to 'true', the newly
+            created user will receive an email invitation to set up their credentials.
+            If 'sendInvite' is set to 'false', no email will be sent. If 'sendInvite'
+            is left empty, the system will automatically set it to 'true' by default.
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Key→value map.<br/> • Must be an object<br/> • Cannot be a
+            primitive
+      description: When selecting overrideCompliance true OR overrideCompliance false
+        and runKYC true for SME REGISTERED clients, you can provide some information
+        if you have it in advance about the company you want to onboard. All the DIRECTORS
+        of the company MUST be added and will be required to do a KYC validation process
+        by sending a live photo of their personal documentation and a selfie or a
+        video, depending on the legislationCountry selection (e.g., if legislationCountry
+        is UK this will be a selfie, if legislationCountry ES it will be a video).
+        These DIRECTORS, in addition to the main user created in the OnboardingUserDTO,
+        will go through this process to be reviewed in our compliance partner (overrideCompliance
+        false) OR just saved to collect the information provided (overrideCompliance
+        true AND runKYC true).
+    UserDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        alias:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phoneNumber:
+          type: string
+        phoneCountry:
+          type: string
+        intnlPhoneNumber:
+          type: string
+        onboardedAt:
+          type: string
+          format: date-time
+        companyId:
+          type: string
+        externalId:
+          type: string
+        username:
+          type: string
+        address:
+          type: string
+        postalCode:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        profileImage:
+          type: string
+        enabled:
+          type: boolean
+        firebase:
+          $ref: '#/components/schemas/Firebase'
+        locale:
+          type: string
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        twoFactorAuthEnabled:
+          type: boolean
+        onboardingStatus:
+          type: string
+          enum:
+          - INCOMPLETE
+          - NOT_ONBOARDING
+          - PENDING_KYC_RESULT
+          - PENDING_KYB_RESULTS
+          - PENDING_KYC_DOCUMENTS
+          - PENDING_KYB_DATA
+          - PENDING_KYB
+          - PENDING_ACCOUNT
+          - COMPLETED
+          - DECLINED
+          - PENDING_USER_INFO
+          - PENDING_KYC
+          - REJECTED_FROM_QUARANTINE
+          - PENDING_ACCOUNT_VALIDATION
+          - REJECTED
+        tncVersion:
+          $ref: '#/components/schemas/TNCVersion'
+        birthDate:
+          type: string
+        balanceCurrency:
+          type: string
+        idNumber:
+          type: string
+        personalAccountCurrency:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - GOLDBLOC
+          - USD
+          - NOK
+          - WHISKY
+          - JPY
+          - NZD
+          - GOLD
+          - CZK
+          - DKK
+          - HUF
+          - PLN
+          - RON
+          - ILS
+          - RUB
+          - BHD
+          - SAR
+          - BGN
+          - KES
+          - SGD
+          - KWD
+          - ZAR
+          - CNH
+          - MYR
+          - HRK
+          - MXN
+          - THB
+          - TRY
+          - OMR
+          - UGX
+          - HKD
+          - PHP
+          - AED
+          - INR
+          - QAR
+          - IDR
+        documentNumber:
+          type: string
+        documentExpirationDate:
+          type: string
+          format: date-time
+        documentIssuerCountry:
+          type: string
+        documentType:
+          type: string
+        appointmentDate:
+          type: string
+        otpChannel:
+          type: string
+        tin:
+          maxLength: 11
+          minLength: 0
+          type: string
+        enforceTwoFactorAuth:
+          type: boolean
+        areSecurityQuestionsAnswered:
+          type: boolean
+        documentIssueDate:
+          type: string
+        businessCode:
+          type: string
+        email:
+          type: string
+    Firebase:
+      type: object
+      properties:
+        registrationToken:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+    NotificationSettings:
+      type: object
+      properties:
+        push:
+          $ref: '#/components/schemas/PushSettings'
+        email:
+          type: boolean
+        commercial:
+          type: boolean
+        thirdParties:
+          type: boolean
+    PushSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        pendingActions:
+          type: boolean
+        suggestions:
+          type: boolean
+    CardAddress:
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressNumber:
+          type: string
+        addressPostalCode:
+          type: string
+        addressRefinement:
+          type: string
+        addressRegion:
+          type: string
+        addressStreet:
+          type: string
+    UserCredentialSecurityCodeDTO:
+      required:
+      - securityCode
+      - transactionId
+      type: object
+      properties:
+        securityCode:
+          type: string
+          description: Encrypted security code
+        transactionId:
+          type: string
+          description: Version 4 UUID
+    UserCredentialPasswordDTO:
+      required:
+      - password
+      - transactionId
+      type: object
+      properties:
+        password:
+          type: string
+          description: Encrypted password
+        transactionId:
+          type: string
+          description: Version 4 UUID
+    UserCredentialSecurityQuestionsDTO:
+      required:
+      - transactionId
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Version 4 UUID
+        firstPetName:
+          type: string
+        maternalGrandmotherMaidenName:
+          type: string
+        favoriteChildhoodFriend:
+          type: string
+        firstCar:
+          type: string
+        cityParentsMet:
+          type: string
+    UserCredentialUsernameDTO:
+      required:
+      - transactionId
+      - username
+      type: object
+      properties:
+        username:
+          type: string
+          description: Username without encryption
+        transactionId:
+          type: string
+          description: Version 4 UUID
+x-source-pages:
+- https://platform.toq.io/reference/customerkey
+- https://platform.toq.io/reference/deleteclientusingdelete
+- https://platform.toq.io/reference/freezecompanyusingput
+- https://platform.toq.io/reference/getcardfees
+- https://platform.toq.io/reference/getclientsusingget
+- https://platform.toq.io/reference/getclientusingget
+- https://platform.toq.io/reference/getuserusingget
+- https://platform.toq.io/reference/inviteuser
+- https://platform.toq.io/reference/rejectclientusingput
+- https://platform.toq.io/reference/setcredentialssecuritycode
+- https://platform.toq.io/reference/setuserpassword
+- https://platform.toq.io/reference/unfreezecompanyusingput
+- https://platform.toq.io/reference/usercredentialsecurityquestion
+- https://platform.toq.io/reference/usercredentialsusername

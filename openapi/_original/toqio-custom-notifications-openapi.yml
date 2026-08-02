@@ -1,0 +1,264 @@
+openapi: 3.0.3
+info:
+  title: Custom Notifications
+  version: v1.0.0
+servers:
+- url: https://core.sandbox.toq.io/
+  description: Simulation environment
+- url: https://core.toq.io/
+  description: Production environment
+paths:
+  /iam/api/customers/{customerId}/email/configuration:
+    post:
+      tags:
+      - Email Configuration
+      summary: Add a new email configuration
+      description: ''
+      operationId: createEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailConfiguration
+        in: query
+        description: ''
+        schema:
+          $ref: '#/components/schemas/EmailConfigurationDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+    delete:
+      tags:
+      - Email Configuration
+      summary: Deleting an existing email configuration
+      description: ''
+      operationId: deleteEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailType
+        in: query
+        description: ''
+        required: false
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid url
+        '404':
+          description: Email Configuration not found
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+    get:
+      tags:
+      - Email Configuration
+      summary: Retrieving data of an existing email configuration
+      description: ''
+      operationId: getEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailType
+        in: query
+        required: false
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid url
+        '404':
+          description: Email Configuration not found
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+    put:
+      tags:
+      - Email Configuration
+      summary: Edit an email configuration
+      description: ''
+      operationId: updateEmailConfiguration
+      parameters:
+      - name: customerId
+        in: path
+        description: ''
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: emailConfiguration
+        in: query
+        description: ''
+        schema:
+          $ref: '#/components/schemas/EmailConfigurationDTO'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+      security:
+      - clientCredentials: []
+  /webhooks/integration/{integration}/webhooktype/{type}:
+    post:
+      tags:
+      - Custom Notifications
+      summary: Send custom notifications
+      description: ''
+      operationId: sendUserCenterNotification
+      parameters:
+      - name: integration
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: type
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          enum:
+          - USER_CENTER_NOTIFICATION
+          - ADMIN_CENTER_NOTIFICATION
+          - PUSH_NOTIFICATION
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomNotification'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmailConfigurationDTO'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+      security:
+      - clientCredentials: []
+components:
+  schemas:
+    EmailConfigurationDTO:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: ''
+        type:
+          type: string
+          description: ''
+        sender:
+          type: string
+          description: ''
+      xml:
+        name: '##default'
+    CustomNotification:
+      type: object
+      properties:
+        externalId:
+          type: string
+        titleI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        messageI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        data:
+          type: object
+          additionalProperties:
+            type: object
+        externalType:
+          type: string
+        receivers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Receivers'
+    TranslateLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        zh:
+          type: string
+    Receivers:
+      type: object
+      properties:
+        merchantId:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+x-source-pages:
+- https://platform.toq.io/reference/createemailconfiguration
+- https://platform.toq.io/reference/deleteemailconfiguration
+- https://platform.toq.io/reference/getemailconfiguration
+- https://platform.toq.io/reference/send-custom-notifications
+- https://platform.toq.io/reference/updateemailconfiguration

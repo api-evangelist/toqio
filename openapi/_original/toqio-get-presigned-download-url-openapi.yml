@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  description: GET PRESIGNED URL TO DOWNLOAD THE DOCUMENT
+  version: v1.0.0
+  title: TOQIO Get presigned url to download the document
+servers:
+- url: https://api.sandbox.toq.io/iam/api
+  description: Simulation environment
+- url: https://api.toq.io/iam/api
+  description: Production environment
+paths:
+  /customers/{customerId}/merchant/{clientId}/document/download:
+    get:
+      tags:
+      - API Endpoints
+      summary: Get Pre-Signed URL for Document Download
+      description: Retrieves a pre-signed URL for downloading a document.
+      operationId: getPreSignedUrlDownloadDocument
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: documentKey
+        description: 'The key of the document to download. For example: the key can
+          be retrieved from the company KYB documents endpoint.'
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Pre-signed URL for document download
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseDownloadPreSignedUrl'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    ResponseDownloadPreSignedUrl:
+      type: object
+      properties:
+        preSignedUrl:
+          type: string
+x-source-pages:
+- https://platform.toq.io/reference/getpresignedurldownloaddocument

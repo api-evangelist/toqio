@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  description: GET PRE-SIGNED URLs
+  version: v1.0.0
+  title: TOQIO Get Pre-signed URL
+servers:
+- url: https://api.sandbox.toq.io/iam/api
+  description: Simulation environment
+- url: https://api.toq.io/iam/api
+  description: Production environment
+paths:
+  /customers/{customerId}/merchant/{merchantId}/presigned-url/upload:
+    post:
+      tags:
+      - pre-signed-url-controller
+      summary: Get Pre-signed URLs to upload documents
+      operationId: getPreSignedUrls
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: merchantId
+        in: path
+        description: merchantId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPreSignedURLPayload'
+        description: getPreSignedUrlPayload
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/GetPreSignedUrlResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '417':
+          description: Validation Exception
+      security:
+      - OAuth2:
+        - openid
+      deprecated: false
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+  schemas:
+    GetPreSignedURLPayload:
+      type: object
+      properties:
+        section:
+          type: string
+          description: The section where the documents should be saved
+          enum:
+          - COMPANY_KYB_DOCUMENTS
+          - COMPANY_KYC_DOCUMENTS
+          - USER_KYC_DOCUMENTS
+          - SHAREHOLDER_DOCUMENTS
+        documents:
+          type: array
+          items:
+            properties:
+              name:
+                type: string
+                description: The name of the document
+              contentType:
+                type: string
+                description: The content type of the document
+                enum:
+                - application/pdf
+                - image/jpeg
+                - image/png
+                - image/tiff
+                - image/heic
+                - text/csv
+                - application/msword
+                - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+                - application/vnd.ms-excel
+                - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+        extraFields:
+          type: object
+          description: Extra fields required depending on the section. For USER_KYC_DOCUMENTS,
+            an extra field userId is required. For SHAREHOLDER_DOCUMENTS, shareholderId
+            is required.
+          properties:
+            userId:
+              type: string
+              description: Required only if the section USER_KYC_DOCUMENTS is set
+            shareholderId:
+              type: string
+              description: Required only if the section SHAREHOLDER_DOCUMENTS is set
+      title: Get PreSigned URL
+      description: This is the payload to get an aws presigned urls to upload documents.
+    GetPreSignedUrlResponse:
+      type: object
+      properties:
+        preSignedUrls:
+          type: array
+          items:
+            properties:
+              name:
+                type: string
+                description: The name of the document
+              preSignedUrl:
+                type: string
+                description: The aws pre-signed url where a PUT call should be made
+                  to save the document
+              key:
+                type: string
+                description: 'The path under which the document will be saved in aws.
+                  This key should be later on used to save the document in the toqio
+                  system by calling another endpoint depending on the case. For example:
+                  The uploadKybDocuments'
+      title: Get PreSignedUrls Response
+      description: The response of the get pre-signed urls
+x-source-pages:
+- https://platform.toq.io/reference/getpresignedurls

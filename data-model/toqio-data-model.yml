@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from the harvested OpenAPI in openapi/ — path nesting
+  (/customers/{customerId}/clients/{clientId}/accounts/{accountId}/...),
+  request/response schema $refs (ViewAccountDTO, CreateCompanyLeadViaApiDTO,
+  ComplianceStatusDTO, ...), and id-reference path parameters (customerId,
+  clientId/merchantId, accountId, cardId, transactionId, beneficiaryId).
+docs: https://platform.toq.io/reference
+notation: >-
+  relationships use has_one / has_many / belongs_to with the id field that
+  carries the reference; direction is from the entity that owns the reference.
+
+entities:
+  - {name: Customer, id_field: customerId, domain: platform, description: The corporate client (platform owner) operating a Toqio-powered finance solution; root of nearly every API path.}
+  - {name: Client, id_field: clientId, domain: platform, description: An end-client / SME merchant of the customer, onboarded onto the platform (also called company or merchant).}
+  - {name: Lead, id_field: leadId, domain: onboarding, description: A prospective client created via the create-lead service before activation.}
+  - {name: User, id_field: userId, domain: platform, description: An individual user of a client with credentials, security questions, and permissions.}
+  - {name: Account, id_field: accountId, domain: banking, description: The main platform product — payments, expenses, and cards link to an account; provisioned via BaaS providers.}
+  - {name: Product, id_field: productId, domain: banking, description: A partner/banking product an account is created against.}
+  - {name: Card, id_field: cardId, domain: cards, description: A virtual or physical card issued against an account.}
+  - {name: Transaction, id_field: transactionId, domain: payments, description: A payment or transfer on an account (same-currency or FX, with quotes and payment schemes).}
+  - {name: Beneficiary, id_field: beneficiaryId, domain: payments, description: A payee saved against a client for outbound payments.}
+  - {name: Fee, id_field: feeId, domain: billing, description: Account, card, and transaction fees calculated under a billing model.}
+  - {name: RevenueRequest, id_field: requestId, domain: revenue-collection, description: A payment-request/collection journey between clients and merchants.}
+  - {name: KybDocument, id_field: documentKey, domain: compliance, description: A KYB document uploaded for a company/merchant during compliance review.}
+  - {name: ComplianceStatus, id_field: null, domain: compliance, description: Per-provider compliance block statuses for companies, users, and shareholders.}
+  - {name: Notification, id_field: null, domain: messaging, description: Custom, push, and user-center notifications plus configurable email types.}
+
+relationships:
+  - {from: Customer, to: Client, kind: has_many, via: customerId}
+  - {from: Customer, to: Lead, kind: has_many, via: customerId}
+  - {from: Client, to: User, kind: has_many, via: clientId}
+  - {from: Client, to: Account, kind: has_many, via: clientId}
+  - {from: Account, to: Product, kind: belongs_to, via: productId}
+  - {from: Account, to: Card, kind: has_many, via: accountId}
+  - {from: Account, to: Transaction, kind: has_many, via: accountId}
+  - {from: Account, to: Fee, kind: has_many, via: accountId}
+  - {from: Card, to: Fee, kind: has_many, via: cardId}
+  - {from: Client, to: Beneficiary, kind: has_many, via: clientId}
+  - {from: Transaction, to: Beneficiary, kind: belongs_to, via: beneficiaryId}
+  - {from: Client, to: RevenueRequest, kind: has_many, via: clientId}
+  - {from: Client, to: KybDocument, kind: has_many, via: clientId}
+  - {from: Client, to: ComplianceStatus, kind: has_one, via: clientId}
+  - {from: User, to: ComplianceStatus, kind: has_one, via: userId}
+  - {from: User, to: Card, kind: has_many, via: userId}
+  - {from: Client, to: Notification, kind: has_many, via: merchantId}

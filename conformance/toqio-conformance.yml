@@ -1,0 +1,69 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  Searched compliance and security documentation on integrate.toq.io
+  (DORA third-party risk management, PCI-DSS requirements, authentication) and
+  derived from the securitySchemes, parameters, and error shapes of the
+  harvested OpenAPI in openapi/.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: >-
+      OAuth 2.0 Client Credentials Grant is the platform API authentication
+      method (tokenUrl https://api.toq.io/iam/oauth/token); declared as oauth2
+      securitySchemes across the harvested OpenAPI.
+  - id: rfc7523-jwt-bearer
+    conforms: true
+    evidence: >-
+      Integration Hub Layer 3 supports OAuth 2.0 client credentials with
+      self-signed JWT bearer assertions per RFC 7523 (RSA 2048+/EC P-256/P-384)
+      — https://integrate.toq.io/reference/authentication.
+  - id: oidc
+    conforms: false
+    evidence: >-
+      An "openid" scope appears in two spec fragments and the hub auth page
+      references OIDC client credentials, but no
+      /.well-known/openid-configuration discovery document is published
+      (404 on toqio.co, api.toq.io, platform.toq.io).
+  - id: tls-1-2-minimum
+    conforms: true
+    evidence: >-
+      "TLS 1.2 minimum, TLS 1.3 recommended" mandated for all Integration Hub
+      communication; live probes of api.toq.io and api.sandbox.toq.io negotiate
+      TLSv1.3 (security/toqio-domain-security.yml).
+  - id: hmac-webhook-signing
+    conforms: true
+    evidence: >-
+      HMAC-SHA256 payload signatures in the X-Toqio-Signature header, computed
+      over raw request body bytes — https://integrate.toq.io/reference/authentication.
+  - id: pci-dss
+    conforms: true
+    evidence: >-
+      PCI-DSS compliance is mandatory for card integrations; Toqio verifies
+      integrator attestations annually and performs security audits —
+      https://integrate.toq.io/reference/pci-dss-requirements.
+  - id: eu-dora
+    conforms: true
+    evidence: >-
+      Toqio operates a structured DORA third-party risk management program
+      (initial evaluation questionnaire, risk classification, ongoing
+      verification) —
+      https://integrate.toq.io/reference/third-party-risk-management-dora-compliance.
+  - id: gdpr
+    conforms: true
+    evidence: >-
+      GDPR compliance (EU-based servers, data protection measures) is part of
+      the DORA integrator questionnaire, and Toqio publishes a privacy policy
+      at https://www.toqio.co/privacy-policy.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use Toqio's own envelopes (code/description/requestId/status on
+      the platform; code/errorSeverity/message/httpStatus/requestId/date/
+      errorOrigin/data[] on the Integration Hub), not application/problem+json.
+  - id: pagination
+    conforms: true
+    evidence: Page-based pagination via pageNumber/pageSize parameters in the harvested OpenAPI.
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key mechanism documented or declared in any harvested spec.

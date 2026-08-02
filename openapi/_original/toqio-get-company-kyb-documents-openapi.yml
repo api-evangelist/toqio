@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  description: GET COMPANY KYB DOCUMENTS
+  version: v1.0.0
+  title: TOQIO Get Company KYB Documents
+servers: []
+paths:
+  /api/customers/{customerId}/merchant/{clientId}/provider/{complianceProvider}/companyDocuments:
+    get:
+      tags:
+      - API Endpoints
+      summary: Get KYB Documents Per Company
+      description: Retrieves KYB documents for a specified client and compliance provider.
+      operationId: getKYBDocumentsPerCompany
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of KYB documents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/KYXDocument'
+        '400':
+          description: Invalid input
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    KYXDocument:
+      type: object
+      properties:
+        id:
+          type: string
+        documentName:
+          type: string
+        documentStatus:
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+        documentURL:
+          type: string
+          deprecated: true
+        documentType:
+          type: string
+        rejectReason:
+          type: string
+        key:
+          type: string
+        externalDocumentId:
+          type: string
+        userId:
+          type: string
+        errorMessage:
+          type: string
+        available:
+          type: boolean
+        date:
+          type: string
+          format: date-time
+x-source-pages:
+- https://platform.toq.io/reference/getkybdocumentspercompany

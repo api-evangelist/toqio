@@ -1,0 +1,70 @@
+generated: '2026-07-21'
+method: searched
+source:
+  - https://platform.toq.io/reference/authenticating-against-toqio-api
+  - https://integrate.toq.io/reference/authentication
+  - https://integrate.toq.io/reference/error-management
+  - https://integrate.toq.io/reference/web-hooks-service
+  - https://platform.toq.io/reference/error-handling
+description: >-
+  Cross-cutting request/response semantics of the Toqio platform API and the
+  Integration Hub, captured from the published docs and the harvested OpenAPI.
+  Toqio is a B2B embedded-finance platform: the platform API is consumed by
+  corporate clients (OAuth 2.0 client credentials), while the Integration Hub
+  defines the harmonised contract financial-provider integrations implement.
+
+api_style: REST over HTTPS (TLS 1.2 minimum, TLS 1.3 recommended), JSON requests and responses
+base_urls:
+  platform_production: https://api.toq.io (path-scoped services /wallet, /iam, /billing) and https://core.toq.io
+  platform_simulation: https://api.sandbox.toq.io and https://core.sandbox.toq.io
+
+authentication:
+  scheme: OAuth 2.0 Client Credentials Grant; Bearer access token on every request
+  token_url: https://api.toq.io/iam/oauth/token
+  token_ttl: 3600 seconds by default (customisable on approved request)
+  integration_hub: >-
+    Layered model — X-Api-Key header (baseline), HMAC-SHA256 payload signature
+    in X-Toqio-Signature (integrity), and OAuth 2.0 client credentials with
+    RFC 7523 self-signed JWT bearer assertions (highest assurance).
+  detail: authentication/toqio-authentication.yml
+
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency-key header or parameter is documented in the platform docs
+    or declared in the harvested OpenAPI. Webhook delivery relies on
+    retry-with-backoff plus post-incident reconciliation rather than
+    idempotency keys.
+
+pagination:
+  style: page-based (offset)
+  request_params: [pageNumber, pageSize]
+  notes: Declared on list operations in the harvested OpenAPI (e.g. transactions).
+
+request_tracing:
+  request_id_field: requestId
+  description: >-
+    Error payloads carry a requestId (UUID) "useful for troubleshooting and
+    tracing errors within the Toqio system"; the Integration Hub error envelope
+    also carries date and errorOrigin.
+
+versioning:
+  scheme: single harmonised interface, no parallel versioning; formal change classification + grace periods
+  detail: lifecycle/toqio-lifecycle.yml
+
+error_envelope:
+  platform_notifications: 'fields: code, description, requestId, status (HTTP)'
+  integration_hub: 'fields: code, errorSeverity, message, httpStatus, requestId, date, errorOrigin, data[] (field-level: field, code, message — shown to end users)'
+  detail: errors/toqio-problem-types.yml
+
+rate_limit_signaling:
+  status_code: 429
+  retry_after_header: true
+  notes: >-
+    The Integration Hub webhook contract documents 429 with a Retry-After
+    header to be respected with backoff; no numeric rate limits are published.
+
+webhook_signing:
+  header: X-Toqio-Signature
+  scheme: sha256={base64 HMAC-SHA256 over raw request body bytes}
+  detail: asyncapi/toqio-webhooks.yml

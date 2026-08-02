@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  Derived from the servers[] blocks of the harvested OpenAPI definitions on
+  platform.toq.io/reference — every platform API publishes a dedicated
+  "Simulation environment" server alongside production. Toqio publishes no
+  magic test values (test cards, IBANs, or fixture tooling) in its public
+  docs; sandbox credentials are issued during client onboarding.
+description: >-
+  Toqio separates test and live traffic by host: each platform API is served
+  from a sandbox host (api.sandbox.toq.io / core.sandbox.toq.io, labeled
+  "Simulation environment" in the OpenAPI) and a production host (api.toq.io /
+  core.toq.io). Authentication uses the same OAuth 2.0 client-credentials flow
+  in both environments with environment-specific credentials.
+modes:
+  - name: simulation
+    servers:
+      - https://api.sandbox.toq.io/wallet/api
+      - https://api.sandbox.toq.io/wallet
+      - https://api.sandbox.toq.io/iam/api
+      - https://api.sandbox.toq.io/billing/api
+      - https://core.sandbox.toq.io/
+    notes: Labeled "Simulation environment" in every harvested OpenAPI servers[] block.
+  - name: production
+    servers:
+      - https://api.toq.io/wallet/api
+      - https://api.toq.io/wallet
+      - https://api.toq.io/iam/api
+      - https://api.toq.io/billing/api
+      - https://core.toq.io/
+test_values: none published — no public test cards, accounts, or fixtures

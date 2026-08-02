@@ -1,0 +1,27 @@
+generated: '2026-07-21'
+method: searched
+source: >-
+  npm registry search for "toqio" + GitHub org github.com/TOQIO. Toqio's
+  platform is consumed via REST (OAuth 2.0 client credentials) and no
+  general-purpose server-side client libraries are published to npm, PyPI,
+  Maven Central, NuGet, pkg.go.dev, RubyGems, Packagist, or crates.io. The one
+  published package is a first-party React Native compliance (KYC/Veridas) SDK
+  maintained by a toq.io engineer.
+packages:
+  - language: javascript
+    registry: npm
+    name: react-native-toqio-compliancesdk
+    url: https://www.npmjs.com/package/react-native-toqio-compliancesdk
+    install: npm install react-native-toqio-compliancesdk
+    official: true
+    notes: >-
+      React Native SDK for the Veridas-based compliance (identity verification)
+      flow in Toqio mobile apps. Maintainer mohamed@toq.io; repository
+      bitbucket.org/olivodigital/toqio-compliancesdk. Latest 0.1.3.
+repositories:
+  - name: toqio-plugin
+    registry: github
+    url: https://github.com/TOQIO/toqio-plugin
+    language: javascript
+    official: true
+    notes: Only public repository in the TOQIO GitHub organization (github.com/TOQIO).

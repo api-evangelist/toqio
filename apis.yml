@@ -1,22 +1,609 @@
 aid: toqio
 name: Toqio
-description: Toqio is a company surfaced as a portfolio company of speedinvest and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Toqio is an embedded finance platform that lets corporates and financial
+  institutions design, launch, and scale financial products — accounts,
+  payments, cards, lending, and expense management — for their SME customers
+  without building infrastructure. The platform pairs a no-code/low-code
+  Design Studio with a REST API (OAuth 2.0 client credentials) covering
+  accounts, transactions, beneficiaries, cards, fees, compliance/KYB, revenue
+  collection, and notifications, plus an Integration Hub through which banks
+  and BaaS providers plug their services into the Toqio marketplace.
 url: https://raw.githubusercontent.com/api-evangelist/toqio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - speedinvest
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched from portfolio lead — full developer surface harvested
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://toqio.co/hubfs/Home-featured.png
 tags:
-- Company
-apis: []
+- Embedded Finance
+- Fintech
+- Banking as a Service
+- Payments
+- Cards
+- Corporate Banking
+- Lending
+- Compliance
+- SMEs
+apis:
+- aid: toqio:toqio-account-api
+  name: Toqio Account API
+  description: The Account API from Toqio — 7 operation(s) for account.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-account-api-openapi.yml
+- aid: toqio:toqio-account-information-api
+  name: Toqio Account information API
+  description: The Account information API from Toqio — 7 operation(s) for account information.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Account information
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-account-information-api-openapi.yml
+- aid: toqio:toqio-api-endpoints-api
+  name: Toqio API Endpoints API
+  description: The API Endpoints API from Toqio — 2 operation(s) for api endpoints.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - API Endpoints
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-api-endpoints-api-openapi.yml
+- aid: toqio:toqio-beneficiary-actions-api
+  name: Toqio Beneficiary actions API
+  description: The Beneficiary actions API from Toqio — 3 operation(s) for beneficiary actions.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Beneficiary actions
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-beneficiary-actions-api-openapi.yml
+- aid: toqio:toqio-beneficiary-api
+  name: Toqio Beneficiary API
+  description: The Beneficiary API from Toqio — 6 operation(s) for beneficiary.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Beneficiary
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-beneficiary-api-openapi.yml
+- aid: toqio:toqio-card-actions-api
+  name: Toqio Card actions API
+  description: The Card actions API from Toqio — 7 operation(s) for card actions.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Card actions
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-card-actions-api-openapi.yml
+- aid: toqio:toqio-card-details-api
+  name: Toqio Card Details API
+  description: The Card Details API from Toqio — 6 operation(s) for card details.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Card Details
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-card-details-api-openapi.yml
+- aid: toqio:toqio-card-lifecycle-api
+  name: Toqio Card Lifecycle API
+  description: The Card Lifecycle API from Toqio — 9 operation(s) for card lifecycle.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Card Lifecycle
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-card-lifecycle-api-openapi.yml
+- aid: toqio:toqio-card-limits-api
+  name: Toqio Card Limits API
+  description: The Card Limits API from Toqio — 3 operation(s) for card limits.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Card Limits
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-card-limits-api-openapi.yml
+- aid: toqio:toqio-client-accounts-information-api
+  name: Toqio Client accounts information API
+  description: >-
+    The Client accounts information API from Toqio — 1 operation(s) for client accounts information.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Client accounts information
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-client-accounts-information-api-openapi.yml
+- aid: toqio:toqio-client-actions-api
+  name: Toqio Client actions API
+  description: The Client actions API from Toqio — 4 operation(s) for client actions.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Client actions
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-client-actions-api-openapi.yml
+- aid: toqio:toqio-client-information-api
+  name: Toqio Client information API
+  description: The Client information API from Toqio — 2 operation(s) for client information.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Client information
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-client-information-api-openapi.yml
+- aid: toqio:toqio-compliance-api
+  name: Toqio Compliance API
+  description: The Compliance API from Toqio — 7 operation(s) for compliance.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Compliance
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-compliance-api-openapi.yml
+- aid: toqio:toqio-compliance-controller-api
+  name: Toqio compliance-controller API
+  description: The compliance-controller API from Toqio — 1 operation(s) for compliance-controller.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - compliance-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-compliance-controller-api-openapi.yml
+- aid: toqio:toqio-create-transaction-api
+  name: Toqio Create transaction API
+  description: The Create transaction API from Toqio — 1 operation(s) for create transaction.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Create transaction
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-create-transaction-api-openapi.yml
+- aid: toqio:toqio-credit-cards-api
+  name: Toqio Credit Cards API
+  description: The Credit Cards API from Toqio — 10 operation(s) for credit cards.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Credit Cards
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-credit-cards-api-openapi.yml
+- aid: toqio:toqio-custom-faculties-api
+  name: Toqio Custom Faculties API
+  description: The Custom Faculties API from Toqio — 1 operation(s) for custom faculties.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Custom Faculties
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-custom-faculties-api-openapi.yml
+- aid: toqio:toqio-custom-ledger-app-texts-api
+  name: Toqio Custom Ledger App Texts API
+  description: The Custom Ledger App Texts API from Toqio — 2 operation(s) for custom ledger app texts.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Custom Ledger App Texts
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-custom-ledger-app-texts-api-openapi.yml
+- aid: toqio:toqio-custom-notifications-api
+  name: Toqio Custom Notifications API
+  description: The Custom Notifications API from Toqio — 3 operation(s) for custom notifications.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Custom Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-custom-notifications-api-openapi.yml
+- aid: toqio:toqio-customer-api
+  name: Toqio Customer API
+  description: The Customer API from Toqio — 7 operation(s) for customer.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Customer
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-customer-api-openapi.yml
+- aid: toqio:toqio-delete-account-api
+  name: Toqio Delete Account API
+  description: The Delete Account API from Toqio — 1 operation(s) for delete account.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Delete Account
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-delete-account-api-openapi.yml
+- aid: toqio:toqio-direct-debit-api
+  name: Toqio Direct debit API
+  description: The Direct debit API from Toqio — 3 operation(s) for direct debit.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Direct debit
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-direct-debit-api-openapi.yml
+- aid: toqio:toqio-dynamic-account-button-configuration-api
+  name: Toqio Dynamic Account Button Configuration API
+  description: >-
+    The Dynamic Account Button Configuration API from Toqio — 1 operation(s) for dynamic account button
+    configuration.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Dynamic Account Button Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-dynamic-account-button-configuration-api-openapi.yml
+- aid: toqio:toqio-email-configuration-api
+  name: Toqio Email Configuration API
+  description: The Email Configuration API from Toqio — 1 operation(s) for email configuration.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Email Configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-email-configuration-api-openapi.yml
+- aid: toqio:toqio-fees-api
+  name: Toqio Fees API
+  description: The Fees API from Toqio — 3 operation(s) for fees.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Fees
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-fees-api-openapi.yml
+- aid: toqio:toqio-get-customer-account-information-api
+  name: Toqio Get Customer account information API
+  description: >-
+    The Get Customer account information API from Toqio — 1 operation(s) for get customer account information.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Get Customer account information
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-get-customer-account-information-api-openapi.yml
+- aid: toqio:toqio-jwt-validation-api
+  name: Toqio JWT validation API
+  description: The JWT validation API from Toqio — 1 operation(s) for jwt validation.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - JWT validation
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-jwt-validation-api-openapi.yml
+- aid: toqio:toqio-lending-api
+  name: Toqio Lending API
+  description: The Lending API from Toqio — 1 operation(s) for lending.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Lending
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-lending-api-openapi.yml
+- aid: toqio:toqio-lending-lender-api
+  name: Toqio Lending - Lender API
+  description: The Lending - Lender API from Toqio — 1 operation(s) for lending - lender.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Lending - Lender
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-lending-lender-api-openapi.yml
+- aid: toqio:toqio-lending-loan-api
+  name: Toqio Lending - Loan API
+  description: The Lending - Loan API from Toqio — 4 operation(s) for lending - loan.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Lending - Loan
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-lending-loan-api-openapi.yml
+- aid: toqio:toqio-lending-loan-offer-api
+  name: Toqio Lending - Loan - Offer API
+  description: The Lending - Loan - Offer API from Toqio — 2 operation(s) for lending - loan - offer.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Lending - Loan - Offer
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-lending-loan-offer-api-openapi.yml
+- aid: toqio:toqio-lending-loan-request-api
+  name: Toqio Lending - Loan - Request API
+  description: >-
+    The Lending - Loan - Request API from Toqio — 3 operation(s) for lending - loan - request.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Lending - Loan - Request
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-lending-loan-request-api-openapi.yml
+- aid: toqio:toqio-manage-requests-api
+  name: Toqio Manage requests API
+  description: The Manage requests API from Toqio — 5 operation(s) for manage requests.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Manage requests
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-manage-requests-api-openapi.yml
+- aid: toqio:toqio-meawallet-api
+  name: Toqio MeaWallet API
+  description: The MeaWallet API from Toqio — 1 operation(s) for meawallet.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - MeaWallet
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-meawallet-api-openapi.yml
+- aid: toqio:toqio-merchant-api
+  name: Toqio Merchant API
+  description: The Merchant API from Toqio — 2 operation(s) for merchant.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Merchant
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-merchant-api-openapi.yml
+- aid: toqio:toqio-onboarding-api
+  name: Toqio Onboarding API
+  description: The Onboarding API from Toqio — 4 operation(s) for onboarding.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Onboarding
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-onboarding-api-openapi.yml
+- aid: toqio:toqio-onboarding-controller-api
+  name: Toqio onboarding-controller API
+  description: The onboarding-controller API from Toqio — 2 operation(s) for onboarding-controller.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - onboarding-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-onboarding-controller-api-openapi.yml
+- aid: toqio:toqio-otp-api
+  name: Toqio OTP API
+  description: The OTP API from Toqio — 1 operation(s) for otp.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - OTP
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-otp-api-openapi.yml
+- aid: toqio:toqio-pre-signed-url-controller-api
+  name: Toqio pre-signed-url-controller API
+  description: >-
+    The pre-signed-url-controller API from Toqio — 1 operation(s) for pre-signed-url-controller.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - pre-signed-url-controller
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-pre-signed-url-controller-api-openapi.yml
+- aid: toqio:toqio-products-api
+  name: Toqio Products API
+  description: The Products API from Toqio — 1 operation(s) for products.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-products-api-openapi.yml
+- aid: toqio:toqio-provider-api
+  name: Toqio Provider API
+  description: The Provider API from Toqio — 1 operation(s) for provider.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Provider
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-provider-api-openapi.yml
+- aid: toqio:toqio-receive-request-payment-api
+  name: Toqio Receive request payment API
+  description: The Receive request payment API from Toqio — 2 operation(s) for receive request payment.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Receive request payment
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-receive-request-payment-api-openapi.yml
+- aid: toqio:toqio-security-api
+  name: Toqio Security API
+  description: The Security API from Toqio — 8 operation(s) for security.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-security-api-openapi.yml
+- aid: toqio:toqio-transaction-api
+  name: Toqio Transaction API
+  description: The Transaction API from Toqio — 9 operation(s) for transaction.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Transaction
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-transaction-api-openapi.yml
+- aid: toqio:toqio-transactions-information-api
+  name: Toqio Transactions information API
+  description: >-
+    The Transactions information API from Toqio — 6 operation(s) for transactions information.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Transactions information
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-transactions-information-api-openapi.yml
+- aid: toqio:toqio-user-api
+  name: Toqio User API
+  description: The User API from Toqio — 2 operation(s) for user.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-user-api-openapi.yml
+- aid: toqio:toqio-user-credentials-api
+  name: Toqio User credentials API
+  description: The User credentials API from Toqio — 5 operation(s) for user credentials.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - User credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-user-credentials-api-openapi.yml
+- aid: toqio:toqio-user-status-api
+  name: Toqio User status API
+  description: The User status API from Toqio — 1 operation(s) for user status.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - User status
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-user-status-api-openapi.yml
+- aid: toqio:toqio-webhook-api
+  name: Toqio Webhook API
+  description: The Webhook API from Toqio — 2 operation(s) for webhook.
+  humanURL: https://platform.toq.io/reference/createaccountusingpost_1
+  baseURL: https://api.toq.io/wallet/api
+  tags:
+  - Webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/toqio-webhook-api-openapi.yml
+common:
+- type: Website
+  url: https://toqio.co
+- type: DeveloperPortal
+  url: https://platform.toq.io/docs/getting-started
+- type: Documentation
+  url: https://platform.toq.io/docs
+- type: APIReference
+  url: https://platform.toq.io/reference
+- type: GettingStarted
+  url: https://platform.toq.io/docs/getting-started
+- type: Blog
+  url: https://toqio.co/insights
+- type: GitHubOrganization
+  url: https://github.com/TOQIO
+- type: TermsOfService
+  url: https://toqio.co/terms-of-use
+- type: PrivacyPolicy
+  url: https://toqio.co/privacy-policy
+- type: StatusPage
+  url: https://status.toq.io
+- type: Deprecation
+  url: https://integrate.toq.io/reference/interface-contract-evolution
+- type: Compliance
+  url: https://integrate.toq.io/reference/third-party-risk-management-dora-compliance
+- type: DomainSecurity
+  url: security/toqio-domain-security.yml
+- type: OAuthScopes
+  url: scopes/toqio-scopes.yml
+- type: Authentication
+  url: authentication/toqio-authentication.yml
+- type: Packages
+  url: packages/toqio-packages.yml
+- type: SDKs
+  url: packages/toqio-packages.yml
+- type: MCPServer
+  url: mcp/toqio-mcp.yml
+- type: LLMsTxt
+  url: llms/toqio-llms.txt
+- type: Conformance
+  url: conformance/toqio-conformance.yml
+- type: ErrorCatalog
+  url: errors/toqio-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/toqio-lifecycle.yml
+- type: Sandbox
+  url: sandbox/toqio-sandbox.yml
+- type: Conventions
+  url: conventions/toqio-conventions.yml
+- type: Components
+  url: components/toqio-components.yml
+- type: DataModel
+  url: data-model/toqio-data-model.yml
+- type: Webhooks
+  url: asyncapi/toqio-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 55
+  pass: local-v1

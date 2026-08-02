@@ -1,0 +1,1789 @@
+openapi: 3.0.0
+info:
+  title: Transactions
+  description: Transactions endpoints to manage the transactions of a customer
+  license:
+    name: license
+  version: v1.0.0
+servers:
+- url: https://api.sandbox.toq.io/wallet/api
+  description: Simulation environment
+- url: https://api.toq.io/wallet/api
+  description: Production environment
+paths:
+  /customers/{customerId}/transactions/{transactionId}:
+    delete:
+      tags:
+      - Transactions information
+      summary: Cancel Transfer
+      description: Cancels a previously created transaction that has not yet been
+        settled by the bank (e.g. a pending or scheduled transfer). Once the underlying
+        transfer is in flight or has settled, the transaction can no longer be cancelled
+        through this endpoint.
+      operationId: cancelTransferUsingDELETE
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        description: transactionId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      deprecated: false
+      security:
+      - clientCredentials: []
+    get:
+      tags:
+      - Transactions information
+      summary: Get Transaction
+      description: Returns the full detail of a single transaction by its identifier,
+        including the source/beneficiary accounts, amounts, status, attached invoice
+        metadata and any associated expense or category information.
+      operationId: getTransactionUsingGET
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: transactionId
+        in: path
+        description: transactionId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewTransactionDetailDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/transactions:
+    post:
+      tags:
+      - Create transaction
+      summary: Create Transaction
+      description: Issues a payment on behalf of a client. Supports internal transfers,
+        SEPA, SWIFT, UK Faster Payments and FX payments depending on the source account
+        provider and currency. The bank payment scheme is required (except for FX);
+        call the bankPaymentSchemes endpoint first to discover which schemes are available
+        for the chosen source/beneficiary pair.
+      operationId: createTransactionUsingPOST
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: issuePayment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssuePaymentDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewTransactionDetailDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+    get:
+      tags:
+      - Transactions information
+      summary: Get Transactions
+      description: Returns a paginated list of transactions for the customer, filtered
+        by the provided query parameters (account, company, dates, status, amount
+        range, currency, etc.). Use this endpoint to retrieve the transaction history
+        that powers statements, expense lists and reconciliation views.
+      operationId: getTransactionsUsingGET
+      parameters:
+      - name: accountId
+        in: query
+        description: 'Filter by Bank Account ID (source or target account). I.e: 5c3efbeb-b292-42ae-98c2-2a50a7829d05'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: baseCurrency
+        in: query
+        description: 'Filter by the base currency (ISO 4217 code) of the bank account.
+          I.e: in:GBP,EUR'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: billable
+        in: query
+        description: 'Filter by whether the transaction is billable or not. I.e: true'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: card
+        in: query
+        description: 'Filter by card ID. I.e: 5c614183-ffdd-4487-ab66-ca20d6806698'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: category
+        in: query
+        description: 'Filter by category code. I.e: in:meals,internet'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - uncategorised
+          - it_licenses
+          - cleaning
+          - flight
+          - accountancy
+          - meals
+          - taxi
+          - other_office
+          - advertising
+          - suspense
+          - direct_costs
+          - meals_int
+          - subscriptions
+          - insurance
+          - legal
+          - purchases
+          - electricity
+          - taxes
+          - client_entertainment
+          - train
+          - flight_int
+          - postage
+          - bank_fees
+          - petrol
+      - name: client
+        in: query
+        description: Filter by a client
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: clientType
+        in: query
+        description: Filter by the type of client
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+      - name: closedPeriod
+        in: query
+        description: 'Filter by whether the transaction is in a closed period or not.
+          I.e: false'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: closingDate
+        in: query
+        description: 'Filter by closing date. I.e: btn:2018-06-18,2018-07-18'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: company
+        in: query
+        description: 'Filter: Show team expenses (company=true) if the user has the
+          required permission or only personal expenses (company=false)'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: companyId
+        in: query
+        description: Filter by company ID
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: currency
+        in: query
+        description: 'Filter by the currency (ISO 4217 code) in which the payment
+          was made. It might be same as the currency of the bank account or not. I.e:
+          in:GBP,EUR'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: customer
+        in: query
+        description: Filter by a customer
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: date
+        in: query
+        description: 'Filter by creation date. I.e: btn:2018-06-18,2018-07-18'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: 'Filter transactions with notes containing the given text. I.e:
+          like:market'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: direction
+        in: query
+        description: 'Filter by INBOUND, OUTBOUND. I.e: OUTBOUND'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+      - name: dueDate
+        in: query
+        description: 'Filter by due date. I.e: btn:2018-06-18,2018-07-18'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: hasReceipt
+        in: query
+        description: 'Filter by whether the transaction has an attached receipt or
+          not. I.e: false'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: hideDismissedPendingReceipt
+        in: query
+        description: If set to true, the transactions without receipt that have been
+          dismissed are filtered out
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: invoice
+        in: query
+        description: Filter by whether the transaction is an invoice or not
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: invoiceDate
+        in: query
+        description: 'Filter by invoice date. I.e: btn:2018-06-18,2018-07-18'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: managementStatus
+        in: query
+        description: 'Filter by the expense status. I.e: PAID'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - UNPAID
+          - DENIED
+          - PAID
+      - name: month
+        in: query
+        description: Filter by transactions created during the given month. Jan=1,
+          Feb=2, ..., Dec=12. -1 for Year to Date
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+      - name: movementType
+        in: query
+        description: Filter by movement type
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+          - EXPENSE
+      - name: pageNumber
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: pageSize
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: paymentType
+        in: query
+        description: 'Filter by payment type. I.e: CARD'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+      - name: recurring
+        in: query
+        description: 'Filter by whether the transaction is recurring or executed only
+          once. I.e: true'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: sort
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: 'Filter by the transaction status. I.e: neq:FAILED'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - PENDING_APPROVAL
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+      - name: superCustomer
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: syncStatus
+        in: query
+        description: 'Filter by the sync expense with [AccountingProvider]. I.e: SYNCED'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - UNSYNCED
+          - SYNCING
+          - SYNCED
+      - name: tags
+        in: query
+        description: 'Filter by tag ID. I.e: in:5c482f7a46e0fb0005d78a2e,5c482f7a46e0fb0005d78a2d'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: text
+        in: query
+        description: 'Text filter to search in `merchant`, `concept`, `address` and
+          `notes`, containing any terms from the provided query string. In order to
+          search for exact phrases, wrap them in double-quotes. To exclude a word,
+          you can prepend a "-" character. I.e: Mercado Barcelona'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: timeZone
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: total
+        in: query
+        description: 'Filter by transaction amount. lt (<), gt (>), btn (between),
+          etc. I.e: btn:10,45'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: triggerType
+        in: query
+        description: 'Filter by transfer trigger type. I.e: RECURRING'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - IMMEDIATELY
+          - ONCE_FUTURE_DATE
+          - RECURRING
+      - name: type
+        in: query
+        description: 'Filter by transaction type. I.e: EXPENSE'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - EXPENSE
+          - PAYMENT
+          - PURCHASE
+          - TAX
+          - INBOUND
+      - name: user
+        in: query
+        description: Filter by user ID
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: vatPercentage
+        in: query
+        description: Filter by VAT percent value
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: withTotal
+        in: query
+        description: This flag determines whether a total of all transactions must
+          be computed or not. For performance reasons, do not activate the flag unless
+          required.
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      - name: year
+        in: query
+        description: 'Filter by transactions created during the given year. I.e: 2019'
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+      - name: billingTx
+        in: query
+        description: Filter by billing transaction
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PaginatedTransactionDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+  /customers/{customerId}/clients/{clientId}/executePayment:
+    post:
+      tags:
+      - Transactions information
+      summary: Execute Four-Eyes Payment
+      description: Executes a previously created transaction that was held for four-eyes
+        approval. The referenced transaction must be in pending-approval status; once
+        executed, the underlying payment is sent to the bank provider and the transaction
+        transitions to the standard payment lifecycle.
+      operationId: executeFourEyesPaymentUsingPOST
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Identifier of the pending-approval transaction to execute
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteFourEyesDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewTransactionDetailDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Transaction not found
+        '412':
+          description: Transaction is not in pending-approval status
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/transactions/{transactionId}/paymentStatement:
+    get:
+      tags:
+      - Transactions information
+      summary: Generate statement
+      description: Generates a PDF payment statement for a single transaction in the
+        requested locale and returns it base64-encoded. Only applies to card payments
+        and inbound/outbound bank transfers; other payment types are rejected with
+        417.
+      operationId: generateStatementUsingGET
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: locale
+        in: query
+        description: locale
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          enum:
+          - DE_DE
+          - EN_GB
+          - ES_ES
+          - IT_IT
+          - ZH_HK
+          - PT_BR
+      - name: transactionId
+        in: path
+        description: transactionId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ViewFileDTO'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/clients/{clientId}/provider/{provider}/transactions/bankPaymentSchemes:
+    get:
+      tags:
+      - Transactions information
+      summary: Get Bank Payment Schemes
+      description: Returns the list of bank payment schemes (SEPA, SWIFT, UK Faster
+        Payments, FX, etc.) available for sending the given amount from the source
+        account to the beneficiary account through the specified provider. The returned
+        code should be passed as the bankPaymentScheme when calling Create Transaction.
+      operationId: getBankPaymentSchemesUsingGET
+      parameters:
+      - name: clientId
+        in: path
+        description: clientId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: provider
+        in: path
+        description: Bank provider identifier (e.g. railsbank, modulr)
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: amount
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: number
+          format: double
+      - name: beneficiaryAccountId
+        description: This value can be the beneficiary account id or the beneficiary
+          id. Account must be active
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: sourceAccountId
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BankPaymentScheme'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '417':
+          description: Account not found
+      deprecated: false
+      security:
+      - clientCredentials: []
+  /customers/{customerId}/provider/{provider}/transactions/quote:
+    put:
+      tags:
+      - Transactions information
+      summary: Get Quote For Currency Pair
+      description: Requests an FX quote from the specified provider for converting
+        between two currencies. Returns the indicative rate, fees and the quote identifier
+        that should be referenced when issuing the corresponding FX payment.
+      operationId: getQuoteForCurrencyPairUsingPUT
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: provider
+        in: path
+        description: Bank provider identifier (e.g. railsbank, modulr)
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuoteRequestDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/QuoteCurrencyPairDTO'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      deprecated: false
+      security:
+      - clientCredentials: []
+components:
+  securitySchemes:
+    clientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+  schemas:
+    AccountDetailsDTO:
+      title: AccountDetailsDTO
+      description: This object is REQUIRED if beneficiaryAccountId is empty
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bankCountry:
+          type: string
+        bicSwift:
+          type: string
+        firstName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        iban:
+          type: string
+        lastName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        name:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is COMPANY.
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+    BankPaymentScheme:
+      title: BankPaymentScheme
+      type: object
+      additionalProperties: true
+      properties:
+        code:
+          type: string
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        name:
+          type: string
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        cif:
+          type: string
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
+        id:
+          type: string
+        invoiceDate:
+          type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        id:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    IssuePaymentDTO:
+      title: IssuePaymentDTO
+      required:
+      - amount
+      - concept
+      - sourceAccountId
+      - companyId
+      type: object
+      properties:
+        advancedInvoiceId:
+          type: string
+          description: If the payment is related to an advanced invoice, the id of
+            it.
+        amount:
+          type: number
+          format: double
+        bankPaymentScheme:
+          type: string
+          description: For Railsr customers this field is REQUIRED except for FX payments.
+            Accepted codes vary by provider and currency; call GET /customers/{customerId}/clients/{clientId}/provider/{provider}/transactions/bankPaymentSchemes
+            to obtain the schemes available for a given source/beneficiary pair.
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        beneficiaryAccount:
+          $ref: '#/components/schemas/AccountDetailsDTO'
+        beneficiaryAccountId:
+          description: This field is REQUIRED if beneficiaryAccount object is empty.
+          type: string
+        beneficiaryAssetType:
+          type: string
+        billing:
+          type: boolean
+          description: Indicates if a payment is a billing fee
+          default: false
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+          description: This field is REQUIRED if beneficiaryAccountId is empty.
+        companyId:
+          type: string
+          description: Client ID assgined by TOQIO system
+        concept:
+          pattern: ^[a-zA-Z0-9\s]{1,18}$
+          type: string
+          description: Reference to be used for the Payment. If your provider is Railsbank
+            , Min 1 to max 18 characters; If your provider is Modulr, Min 1 to max
+            18 characters that are not all the same (up to 140 characters for currencies
+            other than GBP).
+        currency:
+          type: string
+        emails:
+          type: string
+          description: list of emails separated by comma
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        frequency:
+          type: string
+          enum:
+          - CUSTOM
+          - LAST_DAY_OF_MONTH
+          - WEEKLY
+          - EVERY_OTHER_WEEK
+          - MONTHLY
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        reason:
+          type: string
+        reference:
+          type: string
+          description: for FX payments
+        sourceAccountId:
+          type: string
+        transferConfig:
+          $ref: '#/components/schemas/TransferConfigDTO'
+        triggerType:
+          type: string
+          enum:
+          - IMMEDIATELY
+          - ONCE_FUTURE_DATE
+          - RECURRING
+        txFee:
+          type: number
+          format: double
+        userId:
+          type: string
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
+          type: string
+        fileUrl:
+          type: string
+        id:
+          type: string
+        invoiceId:
+          type: string
+        key:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+    TransferConfigDTO:
+      title: TransferConfigDTO
+      type: object
+      properties:
+        endDate:
+          type: string
+          format: date-time
+        repeatCount:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          format: date-time
+        timeInterval:
+          type: integer
+          format: int32
+        unit:
+          type: string
+          enum:
+          - MILLISECOND
+          - SECOND
+          - MINUTE
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+    TranslateLabel:
+      title: TranslateLabel
+      type: object
+      properties:
+        de:
+          type: string
+        en:
+          type: string
+        es:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    TagDTO:
+      title: TagDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
+          type: string
+          description: Tag name
+          example: My tag
+    TxAccount:
+      title: TxAccount
+      type: object
+      properties:
+        accountAlias:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        ifsc:
+          type: string
+        name:
+          type: string
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
+    ViewTransactionDetailDTO:
+      title: ViewTransactionDetailDTO
+      type: object
+      properties:
+        address:
+          type: string
+        balance:
+          type: number
+          format: double
+        bankPaymentScheme:
+          $ref: '#/components/schemas/BankPaymentScheme'
+        baseCurrency:
+          type: string
+        baseTotal:
+          type: number
+          format: double
+        beneficiaryCurrencyAmount:
+          type: number
+          format: double
+        billable:
+          type: boolean
+        billedTxId:
+          type: string
+        billingTx:
+          type: boolean
+        canDownloadPaymentStatement:
+          type: boolean
+        card:
+          type: string
+        categoryCode:
+          type: string
+        categoryLabel:
+          $ref: '#/components/schemas/TranslateLabel'
+        charityPayment:
+          type: boolean
+        concept:
+          type: string
+        country:
+          type: string
+        currency:
+          type: string
+        date:
+          type: string
+          format: date-time
+        description:
+          type: string
+        destinationAccount:
+          $ref: '#/components/schemas/TxAccount'
+        destinationAccountInfo:
+          type: string
+        destinationAccountType:
+          type: string
+          enum:
+          - SA
+          - BI
+          - I
+          - CD
+          - RA
+          - BA
+          - CRA
+        directDebit:
+          type: boolean
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        group:
+          type: string
+          enum:
+          - INBOUND
+          - OUTBOUND
+        hasComments:
+          type: boolean
+        id:
+          type: string
+        inClosedPeriod:
+          type: boolean
+        integrityOk:
+          type: boolean
+        invoice:
+          type: boolean
+        invoices:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceDataDTO'
+        isBaseTotalEdited:
+          type: boolean
+        isTotalWithoutVatEdited:
+          type: boolean
+        lat:
+          type: number
+          format: double
+        lng:
+          type: number
+          format: double
+        localDate:
+          type: string
+        manualTransaction:
+          type: boolean
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        payType:
+          type: string
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+        profileImage:
+          type: string
+        reference:
+          type: string
+        refund:
+          type: boolean
+        sourceAccount:
+          $ref: '#/components/schemas/TxAccount'
+        sourceAccountInfo:
+          type: string
+        sourceAccountType:
+          type: string
+          enum:
+          - SA
+          - BI
+          - I
+          - CD
+          - RA
+          - BA
+          - CRA
+        status:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - PENDING_APPROVAL
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        syncExpense:
+          type: string
+          enum:
+          - UNSYNCED
+          - SYNCING
+          - SYNCED
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagDTO'
+        timeZone:
+          type: string
+        total:
+          type: number
+          format: double
+        totalWithoutVat:
+          type: number
+          format: double
+        transactionNumber:
+          type: string
+        txTitle:
+          type: string
+        type:
+          type: string
+          enum:
+          - EXPENSE
+          - PAYMENT
+          - PURCHASE
+          - TAX
+          - INBOUND
+        unreadComment:
+          type: integer
+          format: int32
+        userId:
+          type: string
+        userName:
+          type: string
+        vatPercentage:
+          type: number
+          format: double
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
+    ExecuteFourEyesDTO:
+      title: ExecuteFourEyesDTO
+      type: object
+      required:
+      - transactionId
+      properties:
+        transactionId:
+          type: string
+          description: Identifier of the pending-approval transaction to execute
+    ViewFileDTO:
+      title: ViewFileDTO
+      type: object
+      properties:
+        data:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+    QuoteRequestDTO:
+      title: QuoteRequestDTO
+      type: object
+      required:
+      - amount
+      - beneficiaryCurrency
+      - fixedSide
+      - sourceCurrency
+      properties:
+        amount:
+          type: number
+          format: double
+          example: 3.45
+        beneficiaryCurrency:
+          type: string
+          example: EUR
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        sourceCurrency:
+          type: string
+          example: GBP
+    QuoteCurrencyPairDTO:
+      title: QuoteCurrencyPairDTO
+      type: object
+      properties:
+        beneficiaryCurrency:
+          type: string
+        beneficiaryCurrencyAmount:
+          type: number
+          format: double
+        fxRate:
+          type: number
+          format: double
+        sourceCurrency:
+          type: string
+        sourceCurrencyAmount:
+          type: number
+          format: double
+    PageAndSort:
+      title: PageAndSort
+      type: object
+      properties:
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        sortingCriteria:
+          type: string
+        totalNumberOfPages:
+          type: integer
+          format: int32
+        totalNumberOfRecords:
+          type: integer
+          format: int64
+    PaginatedTransactionDTO:
+      title: PaginatedTransactionDTO
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionListItemDTO'
+        paging:
+          $ref: '#/components/schemas/PageAndSort'
+        total:
+          type: number
+          format: double
+    TransactionListItemDTO:
+      title: TransactionListItemDTO
+      type: object
+      properties:
+        accountAlias:
+          type: string
+          description: Alias of the account where the transaction is done
+          example: My account
+        accountId:
+          type: string
+          description: Id of the account where the transaction is done
+        balance:
+          type: number
+          description: The account balance after this transaction was created.
+          format: double
+          example: 1500.45
+        baseCurrency:
+          type: string
+          description: Base currency (ISO 4217 code) of the bank account.
+          example: GBP
+        baseTotal:
+          type: number
+          description: Transaction amount in the same currency as the bank account
+          format: double
+          example: 45.05
+        card:
+          type: boolean
+          description: True if it is a card payment (payType==CARD). False otherwise.
+        categoryCode:
+          type: string
+          description: Category code.
+          enum:
+          - uncategorised
+          - it_licenses
+          - cleaning
+          - flight
+          - accountancy
+          - meals
+          - taxi
+          - other_office
+          - advertising
+          - suspense
+          - direct_costs
+          - meals_int
+          - subscriptions
+          - insurance
+          - legal
+          - purchases
+          - electricity
+          - taxes
+          - client_entertainment
+          - train
+          - flight_int
+          - postage
+          - bank_fees
+          - petrol
+        categoryLabel:
+          $ref: '#/components/schemas/TranslateLabel'
+        concept:
+          type: string
+        confirmed:
+          type: boolean
+          description: True if status==ACCEPTED. False otherwise.
+        currency:
+          type: string
+          description: Currency (ISO 4217 code) in which the payment was made.
+          example: GBP
+        executionDate:
+          type: string
+          format: date-time
+        date:
+          type: string
+          description: Creation date
+          format: date-time
+        day:
+          type: string
+          description: Day when the transaction was created
+          example: 7 March
+        directDebit:
+          type: boolean
+          example: 'false'
+        group:
+          type: string
+          description: Account movement direction
+          enum:
+          - INBOUND
+          - OUTBOUND
+        id:
+          type: string
+          description: Transaction id
+          example: 5c8133ecc9e77c0005751963
+        managementStatus:
+          type: string
+          enum:
+          - UNPAID
+          - DENIED
+          - PAID
+        localDate:
+          type: string
+          description: Creation date (ISO-8601 string with timezone)
+          example: '2019-02-09T05:58:38.022'
+        payable:
+          type: boolean
+        paidBy:
+          type: string
+        payType:
+          type: string
+          description: Pay type
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+        profileImage:
+          type: string
+          description: Link to the profile image of the transaction owner.
+          example: https://s3-eu-west-1.amazonaws.com/olivo-public/profile_images/5c348eb84cedfd000567a6be.jpg
+        receipt:
+          type: boolean
+          description: True if it has any receipt attached. False otherwise.
+        refund:
+          type: boolean
+          description: Whether if the transaction is a refund (money returned) or
+            not.
+        status:
+          type: string
+          description: Transaction status
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - PENDING_APPROVAL
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        tagged:
+          type: boolean
+          description: True if it has tags assigned. False otherwise.
+        time:
+          type: string
+          description: Time when the transaction was created
+          example: '15:08'
+        timeZone:
+          type: string
+          description: Zone offset
+          example: +00:00
+        total:
+          type: number
+          description: Transaction amount in local currency
+          format: double
+          example: 45.05
+        transactionNumber:
+          type: string
+          example: bf9-34a1120864f0
+        triggerType:
+          type: string
+          enum:
+          - IMMEDIATELY
+          - ONCE_FUTURE_DATE
+          - RECURRING
+        txTitle:
+          type: string
+          description: card (merchant), outboundTransfer (beneficiary), inboundTransfer
+            (source)
+          example: Starbucks
+        type:
+          type: string
+          description: Transaction type
+          enum:
+          - EXPENSE
+          - PAYMENT
+          - PURCHASE
+          - TAX
+          - INBOUND
+        unreadComments:
+          type: boolean
+          description: Whether if the transaction has unread comments by the user
+            issuing the request or not.
+        userName:
+          type: string
+          description: Username of the transaction owner.
+          example: Howard Hamlin
+        billingTx:
+          type: boolean
+          description: If set to true, indicates is a billing transaction
+          example: false
+        billedTxId:
+          type: string
+          description: If billingTx is set to true, this field will appear in the
+            tx
+x-source-pages:
+- https://platform.toq.io/reference/canceltransferusingdelete
+- https://platform.toq.io/reference/createtransactionusingpost
+- https://platform.toq.io/reference/executefoureyespaymentusingpost
+- https://platform.toq.io/reference/generatestatementusingget
+- https://platform.toq.io/reference/getbankpaymentschemesusingget
+- https://platform.toq.io/reference/getquoteforcurrencypairusingput
+- https://platform.toq.io/reference/gettransactionsusingget
+- https://platform.toq.io/reference/gettransactionusingget

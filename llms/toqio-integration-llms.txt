@@ -1,0 +1,201 @@
+# Toqio Integration Documentation
+
+> Documentation for Toqio Integration
+
+## Guides
+- [Getting started on the Marketplace](https://integrate.toq.io/docs/marketplace_start.md)
+- [Google Tag Manager](https://integrate.toq.io/docs/google-tag-manager.md)
+- [Configuring Google Analytics and GTM (Update screenshots)](https://integrate.toq.io/docs/google-tag-manager-analytics.md)
+- [Create a tag in Google Tag Manager (update screenshots)](https://integrate.toq.io/docs/google-tag-manager-create-tag.md)
+- [Tell Money](https://integrate.toq.io/docs/tell-money.md)
+- [User Consent to Read Accounts](https://integrate.toq.io/docs/tell-money-consent-read.md)
+- [User Consent to Initiante a Payment](https://integrate.toq.io/docs/tell-money-consent-payment.md)
+- [Granted / Revoke Consent](https://integrate.toq.io/docs/tell-money-granted-revoked-consent.md)
+- [Configuration in Tell Money](https://integrate.toq.io/docs/tell-money-config-tell-money.md)
+- [Configuration in Toqio](https://integrate.toq.io/docs/tell-money-config-toqio.md)
+- [Intercom](https://integrate.toq.io/docs/intercom.md)
+- [Use Cases](https://integrate.toq.io/docs/intercom-use-cases.md)
+- [Features](https://integrate.toq.io/docs/intercom-features.md)
+- [Configuration](https://integrate.toq.io/docs/intercom-config.md)
+- [Access and Connection between Toqio and Intercom](https://integrate.toq.io/docs/intercom-access-connection.md)
+- [Intercom Messenger in Toqio](https://integrate.toq.io/docs/intercom-messenger.md)
+- [Intercom Starter Kits](https://integrate.toq.io/docs/intercom-starter-kits.md)
+- [Toqio Analytics](https://integrate.toq.io/docs/toqio-analytics.md)
+- [Setup & Licenses](https://integrate.toq.io/docs/toqio-analytics-setup-licenses.md)
+- [Preconfigured Dashboards](https://integrate.toq.io/docs/toqio-analytics-dashboards.md)
+- [Drill Down](https://integrate.toq.io/docs/toqio-analytics-drill-down.md)
+- [Schedule Reports](https://integrate.toq.io/docs/toqio-analytics-reports.md)
+- [Explore](https://integrate.toq.io/docs/toqio-analytics-explore.md)
+- [Transaction monitoring for outbound payment](https://integrate.toq.io/docs/transaction-monitoring-outbound.md)
+- [Transaction monitoring via Looker](https://integrate.toq.io/docs/transaction-monitoring-via-looker.md)
+- [Configuration](https://integrate.toq.io/docs/configuration.md)
+- [Alerts and Reporting Management](https://integrate.toq.io/docs/transaction-monitoring-alerts-reporting.md)
+- [Firebase](https://integrate.toq.io/docs/firebase.md)
+
+## API Reference
+- [Welcome to Toqio's Integration Hub](https://integrate.toq.io/reference/welcome-to-toqios-integration-hub.md)
+- [Dictionary](https://integrate.toq.io/reference/dictionary.md): What does it mean for Toqio …
+- [Main Architecture Components](https://integrate.toq.io/reference/main-architecture-components.md)
+- [Third Party Risk Management (DORA compliance)](https://integrate.toq.io/reference/third-party-risk-management-dora-compliance.md)
+- [PCI-DSS requirements](https://integrate.toq.io/reference/pci-dss-requirements.md)
+- [Integration guide](https://integrate.toq.io/reference/integration-guide-2.md)
+- [First steps](https://integrate.toq.io/reference/first-steps.md): What needs to be setup for you to start developing
+- [Interface Contract Evolution ](https://integrate.toq.io/reference/interface-contract-evolution.md)
+- [Authentication](https://integrate.toq.io/reference/authentication.md)
+- [Mandatory endpoints](https://integrate.toq.io/reference/mandatory-endpoints.md)
+- [Error management](https://integrate.toq.io/reference/error-management.md)
+- [Capabilities](https://integrate.toq.io/reference/capabilities.md): Capabilities define specific functions of each financial provider, such as the need for a custom OTP process for transactions or the ability to support virtual cards.
+- [Client onboarding](https://integrate.toq.io/reference/client-onboarding.md)
+- [Beneficiaries and payments process](https://integrate.toq.io/reference/beneficiaries-and-payments-process.md)
+- [Mappings and Enums](https://integrate.toq.io/reference/mappings-and-enums.md)
+- [Account status](https://integrate.toq.io/reference/accountstatus.md)
+- [Card status](https://integrate.toq.io/reference/card-status.md)
+- [Transaction status](https://integrate.toq.io/reference/transaction-status.md)
+- [Frequency mandate](https://integrate.toq.io/reference/frequency-mandate.md)
+- [Bank payment scheme](https://integrate.toq.io/reference/bank-payment-scheme.md)
+- [Payment type](https://integrate.toq.io/reference/payment-type.md)
+- [Pay type](https://integrate.toq.io/reference/pay-type.md)
+- [Pay method](https://integrate.toq.io/reference/pay-method.md)
+- [Transaction type](https://integrate.toq.io/reference/transaction-type.md)
+- [Fixed side](https://integrate.toq.io/reference/fixed-side.md)
+- [Organisation type](https://integrate.toq.io/reference/organisation-type.md)
+- [How to manage signs in transaction's amounts](https://integrate.toq.io/reference/how-to-manage-signs-in-transactions-amounts.md)
+- [Business Codes](https://integrate.toq.io/reference/business-codes.md)
+- [Create webhook service credentials](https://integrate.toq.io/reference/create-webhook-service-credentials.md): 🤝Toqio delivery team will assist you during this phase.
+- [Required Objects Configuration](https://integrate.toq.io/reference/required-objects-configuration.md): Toqio delivery team will assist you during this phase.
+- [Lending API](https://integrate.toq.io/reference/lending-api.md): Offering short term loans and cash advance to merchants
+- [Lending: Lending Provider Profile](https://integrate.toq.io/reference/lending-integration-specific-objects.md)
+- [Lending: Merchant](https://integrate.toq.io/reference/lending-merchant.md)
+- [Lending Request](https://integrate.toq.io/reference/lending-request.md)
+- [Lending Request Object Configuration](https://integrate.toq.io/reference/lendingrequest-object-configuration.md): ⚙️To be set up in the Integration you will be building for a Lending Provider
+- [Loan Management](https://integrate.toq.io/reference/loan-management.md)
+- [Loan Object Configuration](https://integrate.toq.io/reference/loan-object-configuration.md): ⚙️To be set up in the Integration you will be building for a Loan
+- [Webhooks service](https://integrate.toq.io/reference/web-hooks-service.md)
+- [Compliance](https://integrate.toq.io/reference/compliance.md): This section will cover all information related to compliance webhooks.
+- [Merchant Compliance Transition](https://integrate.toq.io/reference/merchant-compliance-transition.md): Manages all webhooks related to merchant compliance
+- [Merchant Document Compliance Transition](https://integrate.toq.io/reference/merchant-document-compliance-transition.md): Manages all webhooks related to merchant compliance documents
+- [User Compliance Transition](https://integrate.toq.io/reference/user-compliance-transition.md): Manages all webhooks related to user compliance
+- [Sync Client (Merchant) Status](https://integrate.toq.io/reference/sync-client-status.md)
+- [Sync Account Status](https://integrate.toq.io/reference/sync-account-status.md)
+- [Update account](https://integrate.toq.io/reference/update-account.md)
+- [Card Update Status](https://integrate.toq.io/reference/card-creation.md)
+- [Card Failed](https://integrate.toq.io/reference/card-failed.md)
+- [Card Activated](https://integrate.toq.io/reference/card-activated.md)
+- [Card Awaiting Activation](https://integrate.toq.io/reference/card-awaiting-activation.md)
+- [Card Activate Failed](https://integrate.toq.io/reference/card-activate-failed.md)
+- [Card Suspend](https://integrate.toq.io/reference/card-suspend.md)
+- [Card Cancel](https://integrate.toq.io/reference/card-cancel.md)
+- [Card Close](https://integrate.toq.io/reference/card-close.md)
+- [Sync Lending Request Status](https://integrate.toq.io/reference/sync-lending-request-status.md)
+- [Sync Loan Status](https://integrate.toq.io/reference/sync-loan-status.md)
+- [Sync Loan Offer Status](https://integrate.toq.io/reference/sync-loan-offer-status.md)
+- [Save Transaction](https://integrate.toq.io/reference/save-transaction.md)
+- [Sync Transaction Status](https://integrate.toq.io/reference/sync-transaction-status.md)
+- [Update Transaction](https://integrate.toq.io/reference/update-transaction.md)
+- [Managing Expenses](https://integrate.toq.io/reference/managing-expenses-1.md)
+- [Dynamic Fields for Transaction Details](https://integrate.toq.io/reference/dynamic-fields-for-transaction-details.md)
+- [Ledger Created](https://integrate.toq.io/reference/ledger-created.md)
+- [Partner Product](https://integrate.toq.io/reference/partner-product.md)
+- [Find Customer](https://integrate.toq.io/reference/findcustomer-1.md)
+- [Get Partner Products](https://integrate.toq.io/reference/getpartnerproducts-1.md)
+- [Get available currencies for a customer](https://integrate.toq.io/reference/getbillingcurrencies-1.md)
+- [Get customer connection status](https://integrate.toq.io/reference/getcustomerconnectionstatus-1.md)
+- [Get capabilities](https://integrate.toq.io/reference/getcapabilities-1.md)
+- [Get Asset Types](https://integrate.toq.io/reference/getassettypes-1.md)
+- [Create Customer](https://integrate.toq.io/reference/createcustomer-1.md)
+- [Notify product changes for a customer](https://integrate.toq.io/reference/notifyproductchanges.md): This endpoint is called by Integration Hub to notify downstream banking provider systems about product changes that occurred in the Wallet system. The endpoint should be implemented by third-party banking providers to receive and process product change notifications.  When this endpoint is called, it indicates that products associated with a customer have been modified in the Wallet system and need to be synchronized in the banking provider's system. The notification can contain:  - **Products to upsert**: A list of products that should be created if they don't exist, or updated if they already exist in the provider's system. Each product contains complete information including account details, balances, status, and metadata.  - **Products to delete**: A list of product IDs that should be removed from the provider's system. These are products that have been deleted or deactivated in the Wallet and should no longer be accessible.  The provider system receiving this notification should: 1. Validate that the customerId corresponds to an existing customer in their system 2. Process all product upserts by creating new products or updating existing ones based on the product ID 3. Process all product deletions by removing or deactivating the specified products 4. Return a successful response (HTTP 200) if all operations completed successfully 5. Return an error response (HTTP 400/404) if validation fails or operations cannot be completed  The endpoint is idempotent - calling it multiple times with the same data should produce the same result. Product upserts should use the product ID as the unique identifier to determine whether to create or update.  This is a critical synchronization point to ensure consistency between Toqio and the integration products catalog for each customer.
+- [Create Merchant](https://integrate.toq.io/reference/createmerchant-1.md): Creates a new merchant for the specified customer. This is the first step in the onboarding process and will only be called if canRunCompliance capability is set to true.
+- [Get Hosted Onboarding Link for a Merchant](https://integrate.toq.io/reference/hostedonboarding-1.md): Returns a link that will allow a merchant to complete the onboarding process. This is the second step in the onboarding process and will only be called if canRunCompliance capability is set to true.
+- [Update Merchant](https://integrate.toq.io/reference/updateenduser-1.md)
+- [Update Merchant Directors](https://integrate.toq.io/reference/updateenduserdirectors-1.md)
+- [Get merchant details](https://integrate.toq.io/reference/getcompany-1.md): Deprecated
+- [Validate a merchant](https://integrate.toq.io/reference/validatecompany-1.md)
+- [Detailed overview](https://integrate.toq.io/reference/overview.md)
+- [Get account](https://integrate.toq.io/reference/getaccount-1.md)
+- [Update account](https://integrate.toq.io/reference/updateaccount-1.md)
+- [Delete account](https://integrate.toq.io/reference/deleteaccount-1.md)
+- [Get accounts](https://integrate.toq.io/reference/getaccounts-1.md)
+- [Create account](https://integrate.toq.io/reference/createaccount-1.md)
+- [Get account ownership certificate](https://integrate.toq.io/reference/getaccountownershipcertificate-1.md)
+- [Find account transaction list statement](https://integrate.toq.io/reference/findaccounttransactionliststatement.md)
+- [Find account transaction list statement](https://integrate.toq.io/reference/findaccounttransactionliststatement_1.md)
+- [Get Dynamic Account Balances](https://integrate.toq.io/reference/getdynamicaccountbalances.md): Retrieves dynamic balance entries for a specific ledger account. The balances returned by this endpoint REPLACE the standard balance display in the Toqio platform. Instead of showing the default two balance fields, the platform will display exactly what the connector returns here. This allows complete customization of which balances are shown (e.g., available balance, pending balance, reserved amounts, etc.) and how they are labeled. IMPORTANT: If the connector returns an empty array or no response, no balances will be displayed to the end user. For detailed implementation guidance, see the [Dynamic Balance in Ledger Apps](https://platform.toq.io/reference/dynamic-balance-in-ledger-apps) documentation.
+- [Get Payment Options](https://integrate.toq.io/reference/getpaymentoptions.md): Returns the payment options available for a specific source account. This endpoint is called by the Integration Hub before initiating a payment flow, so the frontend can determine how the user should select the destination beneficiary.  The main purpose of this endpoint is to communicate the **beneficiary selection mode**, which controls what kind of beneficiaries the user is allowed to choose as the destination of a payment originating from this account.  The connector must evaluate the source account (identified by `accountId`) and return the appropriate selection mode based on its own business rules, account type, regulatory constraints, or any other criteria relevant to the provider.  ### Beneficiary Selection Modes  The response contains a single field `beneficiarySelectionMode` which must be one of the following values:  - **`ANY_BENEFICIARY_ANY_PROVIDER`**: No restrictions. The user can select any beneficiary from any BaaS provider. This is the most permissive mode and should be used when there are no limitations on who can receive payments from this account.  - **`MERCHANT_ACCOUNTS_ANY_PROVIDER`**: The user can only select beneficiaries that correspond to the merchant's own Toqio accounts, but those accounts can be held at any BaaS provider. Use this mode when payments from this account must stay within the merchant's own accounts but can cross provider boundaries.  - **`MERCHANT_ACCOUNTS_SAME_PROVIDER`**: The user can only select beneficiaries that correspond to the merchant's own Toqio accounts AND those accounts must be held at the same BaaS provider as the source account. This is the most restrictive mode and should be used when payments must stay within the same provider's infrastructure (e.g., for instant internal transfers or regulatory reasons).  ### How the Frontend Uses This  The Toqio frontend calls this endpoint through the Integration Hub before displaying the beneficiary selection step in the payment flow. Based on the returned mode, the frontend will filter the list of available beneficiaries accordingly, preventing the user from selecting an invalid destination.  ### Error Handling / Fallback Behavior  If this endpoint returns **any error** (4xx, 5xx, timeout, connection refused, etc.), the Integration Hub will treat it as if the connector returned `ANY_BENEFICIARY_ANY_PROVIDER`. This means the user will see all beneficiaries without restrictions. This fallback applies regardless of the specific error code or message. Connectors that do not wish to restrict beneficiary selection can simply not implement this endpoint at all.
+- [Get Provider Partner Products](https://integrate.toq.io/reference/getproviderpartnerproducts-1.md)
+- [Update Beneficiary](https://integrate.toq.io/reference/updatebeneficiary-1.md): Updates an existing beneficiary. Profile fields (name, address and visibility) can be edited. Bank-account detail fields are immutable: they are captured at creation and marked read-only on the update request body, so any value supplied for them is ignored and the stored value is preserved before the request is forwarded to the provider.
+- [Delete Beneficiary](https://integrate.toq.io/reference/deletebeneficiary-1.md)
+- [Find Beneficiary](https://integrate.toq.io/reference/findbeneficiary-1.md): Deprecated
+- [Create a new beneficiary](https://integrate.toq.io/reference/createbeneficiary-1.md)
+- [Search Beneficiaries](https://integrate.toq.io/reference/searchbeneficiaries-1.md): Deprecated
+- [Get Beneficiary Filters](https://integrate.toq.io/reference/getbeneficiaryfilters-1.md): Returns the available filters for beneficiary operations (payments, beneficiary listing, and beneficiary creation). The response includes the permitted asset types (currencies) and countries based on the source account characteristics. This allows the client to filter beneficiaries by supported currencies and countries according to the integration's business rules.
+- [Get Beneficiary](https://integrate.toq.io/reference/getbeneficiary-1.md)
+- [Verify beneficiary for a client](https://integrate.toq.io/reference/verifybeneficiarycompany.md): Verifies beneficiary information for a client before proceeding with a payment. This endpoint validates beneficiary details and returns verification status.
+- [Transaction](https://integrate.toq.io/reference/transaction.md)
+- [Dynamic Button for transactions](https://integrate.toq.io/reference/dynamic-button-for-transactions.md)
+- [Fetch transactions](https://integrate.toq.io/reference/fetchtransactions-1.md)
+- [Save Transfer](https://integrate.toq.io/reference/savetransfer-1.md)
+- [Get Dynamic Button configuration](https://integrate.toq.io/reference/getdynamicbuttonconfiguration-1.md)
+- [Get Transaction Status](https://integrate.toq.io/reference/gettransactionstatus-1.md)
+- [Sync Transactions](https://integrate.toq.io/reference/synctransactions-1.md): Deprecated
+- [Sync Transaction Status](https://integrate.toq.io/reference/synctransactionstatus_1-1.md): Deprecated
+- [Sync Transaction Status](https://integrate.toq.io/reference/synctransactionstatus-1.md): Deprecated
+- [Get bank payment schemes](https://integrate.toq.io/reference/getbankpaymentschemes-1.md)
+- [Get quote for currency pair](https://integrate.toq.io/reference/getquoteforcurrencypair-1.md)
+- [Get bank statement footer](https://integrate.toq.io/reference/getbankstatementfooter-1.md): Returns the footer text for a customer's bank statement based, ledger type, and locale.
+- [Update card alias](https://integrate.toq.io/reference/updatecardalias.md): Updates the friendly name (alias) of a specific card. This endpoint allows modifying only the card's display name without affecting other card properties.  **Business Context**: Called when a user wants to rename their card for easier identification in the frontend application. The updated alias is displayed across all card views and helps users distinguish between multiple cards.  **Important**:  - This endpoint will only be called if the integration has the capability `hasCardAlias` set to `true`. If this capability is not enabled, the platform will not invoke this endpoint.
+- [Issue a new card](https://integrate.toq.io/reference/issuecard.md): Creates and issues a new physical or virtual card for a customer. This endpoint handles both debit and credit cards, supports custom card designs, delivery addresses, and limit configurations. The card will be created in the banking provider system.  **Business Context**: Used when issuing a card to a user or creating a company card. The card details returned are displayed in the frontend application. Supports multi-company scenarios where different merchants can issue cards.
+- [Get card details](https://integrate.toq.io/reference/getcard-1.md): Retrieves detailed information about a specific card. Automatically syncs the card status from the banking provider to ensure consistency.  **Business Context**: Called when viewing card details in the frontend application. Returns full card information including limits, status, and associated account details that are displayed to the user.  **IMPORTANT - Card Limits**: The integration MUST return all card limits that are currently defined for the card (i.e. cardLimitDaily, cardLimitMonthly, cardLimitTransaction, or any custom limits). If a limit is defined for the card but not returned in the response, the system will not be able to display it correctly or will show outdated information. Only return the limits that are actually configured for this specific card - do not return limits that have not been set.
+- [Delete card](https://integrate.toq.io/reference/deletecard.md): Permanently deletes a card from the system.  **Business Context**: Used for complete card removal from both the system and banking provider.
+- [Activate card](https://integrate.toq.io/reference/activatecard.md): Activates (unfreezes) a suspended card. Requires card token for activation.  **Business Context**: Called when a cardholder or administrator wants to activate a suspended card. The activation reason is determined by the requester's role (owner, director, or admin). Requires security code verification.
+- [Activate card with OTP verification](https://integrate.toq.io/reference/activatecardotp.md): Activates a card using OTP (One-Time Password) verification for enhanced security.  **Business Context**: Used when the banking provider requires OTP verification for card activation (e.g., first-time activation).
+- [Suspend card](https://integrate.toq.io/reference/suspendcard-1.md): Suspends (freezes) a card temporarily. The card can be reactivated later.  **Business Context**: Called when a cardholder temporarily freezes their card (e.g., lost wallet) or when a director/admin suspends an employee's card. Requires security code verification.
+- [Cancel card](https://integrate.toq.io/reference/cancelcard-1.md): Permanently cancels a card. Unlike suspend, a cancelled card cannot be reactivated.  **Business Context**: Used when permanently deactivating a card (e.g., employee termination, compromised card). The card is removed from the available cards list in the frontend but remains in the system for audit purposes.
+- [Update card details and limits](https://integrate.toq.io/reference/updatecard-1.md): Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.  **Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.  **Important**:  - This endpoint extends AdditionalParams, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover which custom limits are available in your system. - To update card alias, use the dedicated endpoint PUT /customers/{customerId}/cards/{cardId}/alias instead.
+- [Update card read-only status](https://integrate.toq.io/reference/updatecardreadonly.md): Sets a card to read-only mode, typically used for direct debit card accounts.  **Business Context**: Used when configuring cards for specific payment methods like direct debit where the card should not allow active spending.
+- [Get card settings](https://integrate.toq.io/reference/getcardsettings.md): Retrieves configuration settings for a specific card from the banking provider.  **Business Context**: Used to retrieve provider-specific card configuration and capabilities.
+- [Get card PAN (Primary Account Number)](https://integrate.toq.io/reference/getpan.md): Retrieves sensitive card details including PAN, CVV, and expiry date. Requires security verification (encrypted security code).  **Business Context**: Called when user needs to view full card details. Security code is encrypted using RSA public key before transmission. Supports both standard encryption and MEA Wallet wrapped key encryption.
+- [Get card PIN](https://integrate.toq.io/reference/getpin.md): Retrieves the card PIN number. Requires elevated security permissions.  **Business Context**: Used when cardholder needs to retrieve their PIN for ATM or POS transactions.
+- [Get card PIN asynchronously (POC only)](https://integrate.toq.io/reference/getpinasync.md): Asynchronous PIN retrieval endpoint for proof-of-concept testing only. Not for production use.
+- [Get card image URL](https://integrate.toq.io/reference/getcardimageurl.md): Retrieves the URL for the card's visual design image.  **Business Context**: Used to display card artwork in the frontend application. Returns the URL of the card image that can be rendered in the UI.
+- [Get card image URL by template](https://integrate.toq.io/reference/getcardimageurlbytemplate.md): Retrieves the card image URL based on the customer's default card template/design.  **Business Context**: Used to show the default card design before a card is issued, helping users preview what their card will look like.
+- [Get card limit constraints (min/max values)](https://integrate.toq.io/reference/getcardlimitsminmax.md): Retrieves the minimum and maximum allowed values for card limits based on card type, client type, and currency. This endpoint returns standard limit constraints and may include additional custom limit constraints configured in your system.  **Business Context**: Called when displaying the card issuance form or limit update form in the frontend to show users the allowable range for each limit type. Helps validate user input before submission.
+- [Get available card limit types](https://integrate.toq.io/reference/getavailablecardlimits.md): Retrieves the list of available card limit types configured in the system. Use this endpoint to discover which custom limits can be set when creating or updating cards.  **Business Context**: Called to dynamically discover which limit fields are available for configuration. This allows the frontend UI to adapt to different banking provider capabilities and custom limit configurations.  **Note**: The response includes all supported limit types, but the integration is not required to return all of them. Only return the limits that are actually configured in your system. Any limit not included in the response will be interpreted as null and ignored.
+- [Get linked external accounts](https://integrate.toq.io/reference/linkedexternalaccounts.md): Retrieves the list of external bank accounts linked to a credit card account for payment purposes.  **Business Context**: Used in credit card management to display in the frontend which external accounts can be used to pay off the credit card balance.
+- [Link external account](https://integrate.toq.io/reference/linkexternalaccount.md): Links an external bank account to a credit card account for payment purposes.  **Business Context**: Allows users to add external bank accounts that can be used to make payments on their credit card balance.
+- [Get partner token](https://integrate.toq.io/reference/getpartnertoken.md): Retrieves a partner integration token for credit card operations.  **Business Context**: Used when integrating with third-party services for credit card account linking and payments.
+- [Get scheduled credit payments](https://integrate.toq.io/reference/scheduledcreditpayments.md): Retrieves all scheduled payments for a credit card account.  **Business Context**: Shows users their upcoming scheduled payments including one-time payments and autopay schedules.
+- [Schedule credit card payment](https://integrate.toq.io/reference/schedulepaymentcard.md): Schedules a one-time payment for a credit card account.  **Business Context**: Allows users to schedule a future payment from a linked external account to their credit card balance.
+- [Schedule autopay](https://integrate.toq.io/reference/scheduleautopay.md): Sets up automatic recurring payments for a credit card account.  **Business Context**: Enables automatic payment of credit card balance (minimum payment, full balance, or fixed amount) on a recurring schedule.
+- [Cancel scheduled payment](https://integrate.toq.io/reference/cancelscheduledpayment.md): Cancels a previously scheduled credit card payment.  **Business Context**: Allows users to cancel scheduled payments before they are executed.
+- [Get credit card details](https://integrate.toq.io/reference/getcreditdetails.md): Retrieves detailed credit card account information including balance, available credit, and payment status.  **Business Context**: Displays current credit card account status in the frontend application.
+- [Remove linked external account](https://integrate.toq.io/reference/removelinkedexternalaccount.md): Removes a linked external account from a credit card.  **Business Context**: Allows users to unlink external bank accounts that are no longer needed for credit card payments.
+- [Fetch credit card statements](https://integrate.toq.io/reference/fetchcreditstatement.md): Retrieves credit card billing statements.  **Business Context**: Allows users to view their credit card statements showing transactions, payments, and balance information.
+- [Get TOTP secret for card](https://integrate.toq.io/reference/gettotpsecret.md): Retrieves the Time-based One-Time Password (TOTP) secret for the card. Used with authenticator apps for enhanced security.  **Business Context**: Called when setting up TOTP-based authentication (e.g., Google Authenticator, Authy) for card transactions. Requires that the banking provider supports MEA Wallet configuration.
+- [Overview](https://integrate.toq.io/reference/overview-1.md)
+- [Apply Direct Debit](https://integrate.toq.io/reference/applydirectdebit-1.md)
+- [Get Mandate Detail](https://integrate.toq.io/reference/getmandatedetail-1.md)
+- [Get Mandates](https://integrate.toq.io/reference/getmandates-1.md)
+- [Get Mea Wallet API Config](https://integrate.toq.io/reference/getmeawalletapiconfig-1.md): Deprecated
+- [Update MEA Wallet API Configuration](https://integrate.toq.io/reference/updatemeawalletapiconfig-1.md): Deprecated
+- [Delete Mea Wallet](https://integrate.toq.io/reference/deletemeawalletapiconfig-1.md): Deprecated
+- [Get default repayment terms](https://integrate.toq.io/reference/getdefaultrepaymentterms-1.md)
+- [Get a lender configuration](https://integrate.toq.io/reference/getlenderconfiguration-1.md)
+- [Update a lender configuration](https://integrate.toq.io/reference/updatelenderconfiguration-1.md)
+- [Create a lender configuration](https://integrate.toq.io/reference/createlenderconfiguration-1.md)
+- [Get loans by filter](https://integrate.toq.io/reference/getloansbyfilter-1.md)
+- [Get a loan](https://integrate.toq.io/reference/getloan-1.md)
+- [Get loan transactions](https://integrate.toq.io/reference/getloantransactions-1.md)
+- [Get a contract](https://integrate.toq.io/reference/getcontract-1.md)
+- [Create a lending request](https://integrate.toq.io/reference/createlendingrequest-1.md)
+- [Get lending requests by filter](https://integrate.toq.io/reference/getlendingrequestsbyfilter-1.md)
+- [Get a lending request](https://integrate.toq.io/reference/getlendingrequest-1.md)
+- [Update a lending request](https://integrate.toq.io/reference/updatelendingrequest-1.md)
+- [Accept a loan offer](https://integrate.toq.io/reference/acceptloanoffer-1.md)
+- [Get a loan offer](https://integrate.toq.io/reference/getloanoffer-1.md)
+- [Notify custom notification errors](https://integrate.toq.io/reference/notifycustomnotificationerrors-1.md)
+- [Send Email Notification](https://integrate.toq.io/reference/sendemailnotification-1.md)
+- [Webhook base endpoint](https://integrate.toq.io/reference/webhook_3-1.md): This endpoint is used to handle webhook notifications.
+- [Webhook base endpoint](https://integrate.toq.io/reference/webhook_4-1.md): This endpoint is used to handle webhook notifications.
+- [OTP](https://integrate.toq.io/reference/otp.md)
+- [Resend OTP](https://integrate.toq.io/reference/resendotp-1.md): Resend OTP
+- [Discover Our Public API](https://integrate.toq.io/reference/discover-our-public-api.md)

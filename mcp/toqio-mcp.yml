@@ -1,0 +1,565 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/*.yml (one candidate tool per operationId); no official Toqio MCP server found on npm,
+  the MCP registry, or the docs
+server:
+  name: toqio
+  transport: http
+tools:
+- name: create_account
+  description: Create account
+  source_operation: openapi/toqio-accounts-openapi.yml#createAccountUsingPOST_1
+- name: get_accounts
+  description: Get accounts of the customer
+  source_operation: openapi/toqio-accounts-openapi.yml#getAccountsUsingGET
+- name: create_dynamic_account_configuration
+  description: Create Dynamic Account Button Configuration
+  source_operation: openapi/toqio-accounts-openapi.yml#createDynamicAccountConfiguration
+- name: delete_dynamic_account_configuration
+  description: Delete Dynamic Account Button Configuration
+  source_operation: openapi/toqio-accounts-openapi.yml#deleteDynamicAccountConfiguration
+- name: get_dynamic_account_button_configuration
+  description: Get Dynamic Account Button Configuration
+  source_operation: openapi/toqio-accounts-openapi.yml#getDynamicAccountButtonConfiguration
+- name: update_dynamic_account_configuration
+  description: Update Dynamic Account Button Configuration
+  source_operation: openapi/toqio-accounts-openapi.yml#updateDynamicAccountConfiguration
+- name: create_product
+  description: Create product
+  source_operation: openapi/toqio-accounts-openapi.yml#createProduct
+- name: get_products
+  description: Get products
+  source_operation: openapi/toqio-accounts-openapi.yml#getProducts
+- name: delete_account_status_via_a_p_i
+  description: Allows cancelling or removing a specified account. A cancelled account remains visible
+    in the UI, while a removed account is no longer shown
+  source_operation: openapi/toqio-accounts-openapi.yml#deleteAccountStatusViaAPIUsingDELETE
+- name: delete_account_via_a_p_i
+  description: Cancel account
+  source_operation: openapi/toqio-accounts-openapi.yml#deleteAccountViaAPIUsingPUT
+- name: get_account
+  description: Get account
+  source_operation: openapi/toqio-accounts-openapi.yml#getAccountUsingGET
+- name: get_client_accounts
+  description: Get client accounts information
+  source_operation: openapi/toqio-accounts-openapi.yml#getClientAccounts
+- name: get_custom_faculties
+  description: Get Custom Faculties
+  source_operation: openapi/toqio-accounts-openapi.yml#getCustomFaculties
+- name: update_custom_faculties
+  description: Update Custom faculties
+  source_operation: openapi/toqio-accounts-openapi.yml#updateCustomFaculties
+- name: get_ledger_type_texts
+  description: Get the custom Ledger App Texts
+  source_operation: openapi/toqio-accounts-openapi.yml#getLedgerTypeTexts
+- name: get_partner_products
+  description: Get partner products
+  source_operation: openapi/toqio-accounts-openapi.yml#getPartnerProductsUsingGET_1
+- name: update_account_alias
+  description: Update account alias
+  source_operation: openapi/toqio-accounts-openapi.yml#updateAccountAlias
+- name: update_account_read_only_status
+  description: Update Account Read Only
+  source_operation: openapi/toqio-accounts-openapi.yml#updateAccountReadOnlyStatus
+- name: update_ledger_type_texts
+  description: Update the Custom Ledger App Texts
+  source_operation: openapi/toqio-accounts-openapi.yml#updateLedgerTypeTexts
+- name: update_product
+  description: Update product details
+  source_operation: openapi/toqio-accounts-openapi.yml#updateProduct
+- name: create_beneficiary
+  description: Create beneficiary
+  source_operation: openapi/toqio-beneficiaries-openapi.yml#createBeneficiaryUsingPOST
+- name: get_beneficiaries
+  description: Get beneficiaries
+  source_operation: openapi/toqio-beneficiaries-openapi.yml#getBeneficiariesUsingGET
+- name: delete_beneficiary
+  description: Delete beneficiary
+  source_operation: openapi/toqio-beneficiaries-openapi.yml#deleteBeneficiaryUsingDELETE
+- name: get_beneficiary
+  description: Get beneficiary
+  source_operation: openapi/toqio-beneficiaries-openapi.yml#getBeneficiaryUsingGET
+- name: update_beneficiary
+  description: Update beneficiary
+  source_operation: openapi/toqio-beneficiaries-openapi.yml#updateBeneficiaryUsingPUT
+- name: get_internal_beneficiary
+  description: Get or create internal beneficiary
+  source_operation: openapi/toqio-beneficiaries-openapi.yml#getInternalBeneficiaryUsingPOST
+- name: activate_card
+  description: Activate card
+  source_operation: openapi/toqio-card-management-api-openapi.yml#activateCard
+- name: activate_card_o_t_p
+  description: Activate card with OTP verification
+  source_operation: openapi/toqio-card-management-api-openapi.yml#activateCardOTP
+- name: cancel_card
+  description: Cancel card
+  source_operation: openapi/toqio-card-management-api-openapi.yml#cancelCard
+- name: cancel_scheduled_payment
+  description: Cancel scheduled payment
+  source_operation: openapi/toqio-card-management-api-openapi.yml#cancelScheduledPayment
+- name: delete_card
+  description: Delete card
+  source_operation: openapi/toqio-card-management-api-openapi.yml#deleteCard
+- name: get_card
+  description: Get card details
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getCard
+- name: fetch_credit_statement
+  description: Fetch credit card statements
+  source_operation: openapi/toqio-card-management-api-openapi.yml#fetchCreditStatement
+- name: get_available_card_limits
+  description: Get available card limit types
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getAvailableCardLimits
+- name: get_card_image_url
+  description: Get card image URL
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getCardImageUrl
+- name: get_card_image_url_by_template
+  description: Get card image URL by template
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getCardImageUrlByTemplate
+- name: get_card_limits_min_max
+  description: Get card limit constraints (min/max values)
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getCardLimitsMinMax
+- name: get_card_settings
+  description: Get card settings
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getCardSettings
+- name: get_credit_details
+  description: Get credit card details
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getCreditDetails
+- name: get_pan
+  description: Get card PAN (Primary Account Number)
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getPan
+- name: get_partner_token
+  description: Get partner token
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getPartnerToken
+- name: get_pin
+  description: Get card PIN
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getPin
+- name: get_pin_async
+  description: Get card PIN asynchronously (POC only)
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getPinAsync
+- name: get_t_o_t_p_secret
+  description: Get TOTP secret for card
+  source_operation: openapi/toqio-card-management-api-openapi.yml#getTOTPSecret
+- name: issue_card
+  description: Issue a new card
+  source_operation: openapi/toqio-card-management-api-openapi.yml#issueCard
+- name: linked_external_accounts
+  description: Get linked external accounts
+  source_operation: openapi/toqio-card-management-api-openapi.yml#linkedExternalAccounts
+- name: link_external_account
+  description: Link external account
+  source_operation: openapi/toqio-card-management-api-openapi.yml#linkExternalAccount
+- name: remove_linked_external_account
+  description: Remove linked external account
+  source_operation: openapi/toqio-card-management-api-openapi.yml#removeLinkedExternalAccount
+- name: schedule_auto_pay
+  description: Schedule autopay
+  source_operation: openapi/toqio-card-management-api-openapi.yml#scheduleAutoPay
+- name: scheduled_credit_payments
+  description: Get scheduled credit payments
+  source_operation: openapi/toqio-card-management-api-openapi.yml#scheduledCreditPayments
+- name: schedule_payment_card
+  description: Schedule credit card payment
+  source_operation: openapi/toqio-card-management-api-openapi.yml#schedulePaymentCard
+- name: suspend_card
+  description: Suspend card
+  source_operation: openapi/toqio-card-management-api-openapi.yml#suspendCard
+- name: update_card
+  description: Update card details and limits
+  source_operation: openapi/toqio-card-management-api-openapi.yml#updateCard
+- name: update_card_alias
+  description: Update card alias
+  source_operation: openapi/toqio-card-management-api-openapi.yml#updateCardAlias
+- name: update_card_read_only
+  description: Update card read-only status
+  source_operation: openapi/toqio-card-management-api-openapi.yml#updateCardReadOnly
+- name: activate_card_2
+  description: Activate card
+  source_operation: openapi/toqio-cards-openapi.yml#activateCard
+- name: cancel_card_2
+  description: Cancel card
+  source_operation: openapi/toqio-cards-openapi.yml#cancelCard
+- name: get_card_2
+  description: Get card
+  source_operation: openapi/toqio-cards-openapi.yml#getCard
+- name: get_cards_by_client
+  description: Get cards by client
+  source_operation: openapi/toqio-cards-openapi.yml#getCardsByClient
+- name: issue_card_2
+  description: Issue card
+  source_operation: openapi/toqio-cards-openapi.yml#issueCardUsingPOST
+- name: suspend_card_2
+  description: Suspend card
+  source_operation: openapi/toqio-cards-openapi.yml#suspendCard
+- name: update_card_2
+  description: Update card
+  source_operation: openapi/toqio-cards-openapi.yml#updateCard
+- name: update_card_alias_2
+  description: Update card alias
+  source_operation: openapi/toqio-cards-openapi.yml#updateCardAliasUsingPUT
+- name: customer_key
+  description: Generate customer key
+  source_operation: openapi/toqio-clients-openapi.yml#customerKey
+- name: delete_client
+  description: Delete company
+  source_operation: openapi/toqio-clients-openapi.yml#deleteClientUsingDELETE
+- name: freeze_company
+  description: Freeze company
+  source_operation: openapi/toqio-clients-openapi.yml#freezeCompanyUsingPUT
+- name: get_card_fees
+  description: Get card fees
+  source_operation: openapi/toqio-clients-openapi.yml#getCardFees
+- name: get_clients
+  description: Get clients
+  source_operation: openapi/toqio-clients-openapi.yml#getClientsUsingGET
+- name: get_client
+  description: Get client
+  source_operation: openapi/toqio-clients-openapi.yml#getClientUsingGET
+- name: get_user
+  description: Get user
+  source_operation: openapi/toqio-clients-openapi.yml#getUserUsingGET
+- name: invite_user
+  description: Create user
+  source_operation: openapi/toqio-clients-openapi.yml#inviteUser
+- name: reject_client
+  description: Reject company
+  source_operation: openapi/toqio-clients-openapi.yml#rejectClientUsingPUT
+- name: set_credentials_security_code
+  description: Create security code
+  source_operation: openapi/toqio-clients-openapi.yml#setCredentialsSecurityCode
+- name: set_user_password
+  description: Create password
+  source_operation: openapi/toqio-clients-openapi.yml#setUserPassword
+- name: unfreeze_company
+  description: Unfreeze company
+  source_operation: openapi/toqio-clients-openapi.yml#unfreezeCompanyUsingPUT
+- name: user_credential_security_question
+  description: Create security questions
+  source_operation: openapi/toqio-clients-openapi.yml#userCredentialSecurityQuestion
+- name: user_credentials_username
+  description: Create username
+  source_operation: openapi/toqio-clients-openapi.yml#userCredentialsUsername
+- name: delete_kyb_document_by_key
+  description: Deletes a merchants KYB document
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#deleteKybDocumentByKey
+- name: get_compliance_blocks_statuses_per_provider
+  description: Get compliance statuses for a company
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#getComplianceBlocksStatusesPerProvider
+- name: update_compliance_blocks_statuses_per_provider
+  description: Update compliance statuses for a company
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateComplianceBlocksStatusesPerProvider
+- name: update_client_compliance_status
+  description: Updates the compliance status of a client
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateClientComplianceStatus
+- name: update_company_kyb_documents_status
+  description: Update company kyb document status
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateCompanyKybDocumentsStatus
+- name: update_shareholder_document_status
+  description: Update shareholder document status
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateShareholderDocumentStatus
+- name: update_user_compliance_status
+  description: Updates the compliance status of a user or shareholder
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateUserComplianceStatus
+- name: update_user_document_status
+  description: Update user document status
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateUserDocumentStatus
+- name: update_user_status
+  description: Update user status
+  source_operation: openapi/toqio-compliance-endpoints-openapi.yml#updateUserStatus
+- name: create_basic_company_lead_via_a_p_i
+  description: Create Client Lead Via API without documents
+  source_operation: openapi/toqio-create-lead-service-openapi.yml#createBasicCompanyLeadViaAPIUsingPOST
+- name: create_company_lead_via_a_p_i
+  description: Create Client Lead Via API
+  source_operation: openapi/toqio-create-lead-service-openapi.yml#createCompanyLeadViaAPIUsingPOST
+- name: create_email_configuration
+  description: Add a new email configuration
+  source_operation: openapi/toqio-custom-notifications-openapi.yml#createEmailConfiguration
+- name: delete_email_configuration
+  description: Deleting an existing email configuration
+  source_operation: openapi/toqio-custom-notifications-openapi.yml#deleteEmailConfiguration
+- name: get_email_configuration
+  description: Retrieving data of an existing email configuration
+  source_operation: openapi/toqio-custom-notifications-openapi.yml#getEmailConfiguration
+- name: update_email_configuration
+  description: Edit an email configuration
+  source_operation: openapi/toqio-custom-notifications-openapi.yml#updateEmailConfiguration
+- name: send_user_center_notification
+  description: Send custom notifications
+  source_operation: openapi/toqio-custom-notifications-openapi.yml#sendUserCenterNotification
+- name: get_card_fees_2
+  description: Get card fees
+  source_operation: openapi/toqio-fees-openapi.yml#getCardFees
+- name: get_new_account_fees
+  description: Get account fees
+  source_operation: openapi/toqio-fees-openapi.yml#getNewAccountFees
+- name: transaction_fee
+  description: Transaction fee
+  source_operation: openapi/toqio-fees-openapi.yml#TransactionFeeUsingPOST
+- name: get_k_y_b_documents_per_company
+  description: Get KYB Documents Per Company
+  source_operation: openapi/toqio-get-company-kyb-documents-openapi.yml#getKYBDocumentsPerCompany
+- name: get_pre_signed_urls
+  description: Get Pre-signed URLs to upload documents
+  source_operation: openapi/toqio-get-pre-signed-url-openapi.yml#getPreSignedUrls
+- name: get_pre_signed_url_download_document
+  description: Get Pre-Signed URL for Document Download
+  source_operation: openapi/toqio-get-presigned-download-url-openapi.yml#getPreSignedUrlDownloadDocument
+- name: accept_loan_offer
+  description: Accept a loan offer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#acceptLoanOffer
+- name: apply_direct_debit
+  description: Apply Direct Debit
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#applyDirectDebit
+- name: create_account_2
+  description: Create account
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#createAccount
+- name: get_accounts_2
+  description: Get accounts
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getAccounts
+- name: create_beneficiary_2
+  description: Create a new beneficiary
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#createBeneficiary
+- name: find_beneficiary
+  description: Find Beneficiary
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#findBeneficiary
+- name: create_customer
+  description: Create Customer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#createCustomer
+- name: create_lender_configuration
+  description: Create a lender configuration
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#createLenderConfiguration
+- name: get_lender_configuration
+  description: Get a lender configuration
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLenderConfiguration
+- name: update_lender_configuration
+  description: Update a lender configuration
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateLenderConfiguration
+- name: create_lending_request
+  description: Create a lending request
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#createLendingRequest
+- name: create_merchant
+  description: Create Merchant
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#createMerchant
+- name: delete_account
+  description: Delete account
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#deleteAccount
+- name: get_account_2
+  description: Get account
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getAccount
+- name: update_account
+  description: Update account
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateAccount
+- name: delete_beneficiary_2
+  description: Delete Beneficiary
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#deleteBeneficiary
+- name: update_beneficiary_2
+  description: Update Beneficiary
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateBeneficiary
+- name: delete_mea_wallet_api_config
+  description: Delete Mea Wallet
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#deleteMeaWalletApiConfig
+- name: get_mea_wallet_api_config
+  description: Get Mea Wallet API Config
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getMeaWalletApiConfig
+- name: update_mea_wallet_api_config
+  description: Update MEA Wallet API Configuration
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateMeaWalletApiConfig
+- name: fetch_transactions
+  description: Fetch transactions
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#fetchTransactions
+- name: save_transfer
+  description: Save Transfer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#saveTransfer
+- name: find_account_transaction_list_statement
+  description: Find account transaction list statement
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#findAccountTransactionListStatement
+- name: find_account_transaction_list_statement_1
+  description: Find account transaction list statement
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#findAccountTransactionListStatement_1
+- name: find_customer
+  description: Find Customer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#findCustomer
+- name: get_account_ownership_certificate
+  description: Get account ownership certificate
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getAccountOwnershipCertificate
+- name: get_asset_types
+  description: Get Asset Types
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getAssetTypes
+- name: get_bank_payment_schemes
+  description: Get bank payment schemes
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getBankPaymentSchemes
+- name: get_bank_statement_footer
+  description: Get bank statement footer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getBankStatementFooter
+- name: get_beneficiary_2
+  description: Get Beneficiary
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getBeneficiary
+- name: get_beneficiary_filters
+  description: Get Beneficiary Filters
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getBeneficiaryFilters
+- name: get_billing_currencies
+  description: Get available currencies for a customer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getBillingCurrencies
+- name: get_capabilities
+  description: Get capabilities
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getCapabilities
+- name: get_company
+  description: Get merchant details
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getCompany
+- name: get_contract
+  description: Get a contract
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getContract
+- name: get_customer_connection_status
+  description: Get customer connection status
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getCustomerConnectionStatus
+- name: get_default_repayment_terms
+  description: Get default repayment terms
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getDefaultRepaymentTerms
+- name: get_dynamic_account_balances
+  description: Get Dynamic Account Balances
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getDynamicAccountBalances
+- name: get_dynamic_button_configuration
+  description: Get Dynamic Button configuration
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getDynamicButtonConfiguration
+- name: get_lending_request
+  description: Get a lending request
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLendingRequest
+- name: update_lending_request
+  description: Update a lending request
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateLendingRequest
+- name: get_lending_requests_by_filter
+  description: Get lending requests by filter
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLendingRequestsByFilter
+- name: get_loan
+  description: Get a loan
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLoan
+- name: get_loan_offer
+  description: Get a loan offer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLoanOffer
+- name: get_loans_by_filter
+  description: Get loans by filter
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLoansByFilter
+- name: get_loan_transactions
+  description: Get loan transactions
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getLoanTransactions
+- name: get_mandate_detail
+  description: Get Mandate Detail
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getMandateDetail
+- name: get_mandates
+  description: Get Mandates
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getMandates
+- name: get_partner_products_2
+  description: Get Partner Products
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getPartnerProducts
+- name: get_payment_options
+  description: Get Payment Options
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getPaymentOptions
+- name: get_provider_partner_products
+  description: Get Provider Partner Products
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getProviderPartnerProducts
+- name: get_quote_for_currency_pair
+  description: Get quote for currency pair
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getQuoteForCurrencyPair
+- name: get_transaction_status
+  description: Get Transaction Status
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#getTransactionStatus
+- name: hosted_onboarding
+  description: Get Hosted Onboarding Link for a Merchant
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#hostedOnboarding
+- name: notify_custom_notification_errors
+  description: Notify custom notification errors
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#notifyCustomNotificationErrors
+- name: notify_product_changes
+  description: Notify product changes for a customer
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#notifyProductChanges
+- name: resend_otp
+  description: Resend OTP
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#resendOtp
+- name: search_beneficiaries
+  description: Search Beneficiaries
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#searchBeneficiaries
+- name: send_email_notification
+  description: Send Email Notification
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#sendEmailNotification
+- name: sync_transactions
+  description: Sync Transactions
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#syncTransactions
+- name: sync_transaction_status
+  description: Sync Transaction Status
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#syncTransactionStatus
+- name: sync_transaction_status_1
+  description: Sync Transaction Status
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#syncTransactionStatus_1
+- name: update_end_user
+  description: Update Merchant
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateEndUser
+- name: update_end_user_directors
+  description: Update Merchant Directors
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#updateEndUserDirectors
+- name: validate_company
+  description: Validate a merchant
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#validateCompany
+- name: verify_beneficiary_company
+  description: Verify beneficiary for a client
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#verifyBeneficiaryCompany
+- name: webhook_3
+  description: Webhook base endpoint
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#webhook_3
+- name: webhook_4
+  description: Webhook base endpoint
+  source_operation: openapi/toqio-integration-hub-api-openapi.yml#webhook_4
+- name: change_status_1
+  description: Update request status
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#changeStatus_1
+- name: create_customer_account_1
+  description: Add payment account details
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#createCustomerAccount_1
+- name: get_revenue_accounts_1
+  description: Get payment accounts
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#getRevenueAccounts_1
+- name: get_revenue_details_1
+  description: Get request details
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#getRevenueDetails_1
+- name: save_and_send_notification_1
+  description: Send payment request to merchants
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#saveAndSendNotification_1
+- name: get_revenue_filters_1
+  description: Get requests
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#getRevenueFilters_1
+- name: pay_revenue
+  description: Pay payment request
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#payRevenue
+- name: validate_and_convert_file_1
+  description: Validate collection data
+  source_operation: openapi/toqio-revenue-collections-openapi.yml#validateAndConvertFile_1
+- name: validate_j_w_t_secure
+  description: Validate JWT token
+  source_operation: openapi/toqio-security-openapi.yml#validateJWTSecure
+- name: cancel_transfer
+  description: Cancel Transfer
+  source_operation: openapi/toqio-transactions-openapi.yml#cancelTransferUsingDELETE
+- name: get_transaction
+  description: Get Transaction
+  source_operation: openapi/toqio-transactions-openapi.yml#getTransactionUsingGET
+- name: create_transaction
+  description: Create Transaction
+  source_operation: openapi/toqio-transactions-openapi.yml#createTransactionUsingPOST
+- name: get_transactions
+  description: Get Transactions
+  source_operation: openapi/toqio-transactions-openapi.yml#getTransactionsUsingGET
+- name: execute_four_eyes_payment
+  description: Execute Four-Eyes Payment
+  source_operation: openapi/toqio-transactions-openapi.yml#executeFourEyesPaymentUsingPOST
+- name: generate_statement
+  description: Generate statement
+  source_operation: openapi/toqio-transactions-openapi.yml#generateStatementUsingGET
+- name: get_bank_payment_schemes_2
+  description: Get Bank Payment Schemes
+  source_operation: openapi/toqio-transactions-openapi.yml#getBankPaymentSchemesUsingGET
+- name: get_quote_for_currency_pair_2
+  description: Get Quote For Currency Pair
+  source_operation: openapi/toqio-transactions-openapi.yml#getQuoteForCurrencyPairUsingPUT
+- name: upload_kyb_documents
+  description: Upload KYB documents for a merchant
+  source_operation: openapi/toqio-upload-kyb-documents-openapi.yml#uploadKybDocuments

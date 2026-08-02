@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  description: UPLOAD KYB DOCUMENTS
+  version: v1.0.0
+  title: TOQIO Upload KYB Documents
+servers:
+- url: https://api.sandbox.toq.io/iam/api
+  description: Simulation environment
+- url: https://api.toq.io/iam/api
+  description: Production environment
+paths:
+  /customers/{customerId}/merchant/{merchantId}/provider/{complianceProvider}/uploadKybDocument:
+    post:
+      tags:
+      - compliance-controller
+      summary: Upload KYB documents for a merchant
+      operationId: uploadKybDocuments
+      parameters:
+      - name: customerId
+        in: path
+        description: customerId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: merchantId
+        in: path
+        description: merchantId
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: complianceProvider
+        in: path
+        description: complianceProvider
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadKYBDocumentsPayload'
+        description: uploadKybDocumentsPayload
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UploadKYBDocumentsResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      security:
+      - OAuth2:
+        - openid
+      deprecated: false
+components:
+  securitySchemes:
+    OAuth2:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: https://api.toq.io/iam/oauth/token
+          scopes: {}
+  schemas:
+    UploadKYBDocumentsPayload:
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            properties:
+              documentType:
+                type: string
+                description: The type of the document, depends on the compliance provider.
+              name:
+                type: string
+                description: The name of the document
+              key:
+                type: string
+                description: The aws key of the document retrieved from the get pre-signed
+                  url endpoint
+              status:
+                type: string
+                description: The status of the document
+                enum:
+                - IN_PROGRESS
+                - UNDER_REVIEW
+      title: Upload KYB Documents
+      description: This is the payload to upload kyb documents for a merchant
+    UploadKYBDocumentsResponse:
+      type: array
+      items:
+        properties:
+          id:
+            type: string
+            description: The id of the document
+          documentName:
+            type: string
+            description: The name of the document
+          documentStatus:
+            type: string
+            description: The status of the document
+          documentType:
+            type: string
+            description: The type of the document
+          key:
+            type: string
+            description: The aws key of the document
+          date:
+            type: string
+            description: The date when the document was uploaded
+          available:
+            type: boolean
+            description: The flag indicating whether the document is available
+            default: true
+      title: Upload KYB documents Response
+      description: The response of the upload KYB documents
+x-source-pages:
+- https://platform.toq.io/reference/uploadkybdocuments

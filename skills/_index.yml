@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the harvested Toqio OpenAPI
+  (openapi/*.yml). Every step is grounded in an operationId verified verbatim
+  in the specs; cross-cutting rules cite conventions/, errors/,
+  authentication/, sandbox/, and asyncapi/.
+skills:
+  - file: toqio-onboard-client-and-account.md
+    name: Onboard a client and open their first account
+    api: openapi/toqio-accounts-openapi.yml
+    operations: [createCompanyLeadViaAPIUsingPOST, getComplianceBlocksStatusesPerProvider, getPartnerProductsUsingGET_1, createAccountUsingPOST_1, getAccountsUsingGET]
+  - file: toqio-make-payment.md
+    name: Make a payment to a beneficiary
+    api: openapi/toqio-transactions-openapi.yml
+    operations: [getBankPaymentSchemesUsingGET, createBeneficiaryUsingPOST, getQuoteForCurrencyPairUsingPUT, createTransactionUsingPOST, getTransactionUsingGET]
+  - file: toqio-issue-and-manage-card.md
+    name: Issue and manage a card
+    api: openapi/toqio-cards-openapi.yml
+    operations: [issueCardUsingPOST, activateCard, getCard, updateCard, suspendCard, cancelCard]
