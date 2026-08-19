@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Create transaction API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Create transaction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Issues a payment on behalf of a client. Supports internal transfers, SEPA, SWIFT, UK Faster Payments and FX payments depending on the source account provider and currency. The bank payment scheme is required (except for FX); call the bankPaymentSchemes endpoint first to discover which schemes are available for the chosen source/beneficiary pair."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

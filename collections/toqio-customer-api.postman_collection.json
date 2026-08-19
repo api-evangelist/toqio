@@ -1,0 +1,978 @@
+{
+  "item": [
+    {
+      "id": "6727f102-e095-4163-baad-769dfafd5052",
+      "name": "Customer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a729cc62-fea4-4c35-98de-b355bc59d22c",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"providerConfigId\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"paymentProvider\": {\n    \"customerId\": \"<string>\",\n    \"paymentProviderType\": \"<string>\",\n    \"key\": \"<string>\",\n    \"loginId\": \"<string>\",\n    \"hmacKey\": \"<string>\"\n  },\n  \"commercialName\": \"<string>\",\n  \"availableCurrencies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "178ffae2-e395-4b5a-a511-ed4dae567750",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"providerConfigId\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"paymentProvider\": {\n    \"customerId\": \"<string>\",\n    \"paymentProviderType\": \"<string>\",\n    \"key\": \"<string>\",\n    \"loginId\": \"<string>\",\n    \"hmacKey\": \"<string>\"\n  },\n  \"commercialName\": \"<string>\",\n  \"availableCurrencies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"apiKey\": \"string\",\n    \"provider\": \"string\",\n    \"superCustomerId\": \"string\",\n    \"paymentProvider\": {\n      \"customerId\": \"<string>\",\n      \"paymentProviderType\": \"<string>\",\n      \"key\": \"<string>\",\n      \"loginId\": \"<string>\",\n      \"hmacKey\": \"<string>\"\n    },\n    \"commercialName\": \"string\",\n    \"availableCurrencies\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a7e6b6-380d-4e70-96dc-78ffcf76566e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"apiKey\": \"<string>\",\n  \"providerConfigId\": \"<string>\",\n  \"provider\": \"<string>\",\n  \"paymentProvider\": {\n    \"customerId\": \"<string>\",\n    \"paymentProviderType\": \"<string>\",\n    \"key\": \"<string>\",\n    \"loginId\": \"<string>\",\n    \"hmacKey\": \"<string>\"\n  },\n  \"commercialName\": \"<string>\",\n  \"availableCurrencies\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "220960fc-ddfb-4a7e-bc5d-a18747905ad7",
+          "name": "Find Customer",
+          "request": {
+            "name": "Find Customer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c77642a6-addd-4817-9bb5-7f0e387aca9c",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"apiKey\": \"string\",\n    \"provider\": \"string\",\n    \"superCustomerId\": \"string\",\n    \"paymentProvider\": {\n      \"customerId\": \"<string>\",\n      \"paymentProviderType\": \"<string>\",\n      \"key\": \"<string>\",\n      \"loginId\": \"<string>\",\n      \"hmacKey\": \"<string>\"\n    },\n    \"commercialName\": \"string\",\n    \"availableCurrencies\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49556a19-3e89-4e65-85e7-f01e226c36f9",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4931625f-0044-4a77-8f35-b882e04a9fa1",
+          "name": "Get Asset Types",
+          "request": {
+            "name": "Get Asset Types",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "assetTypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "754c6cf0-75e4-4abf-a9df-64640fe83ace",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "assetTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"myr\",\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae87d6bf-0def-41de-859d-4a3ff2ab45b4",
+              "name": "Bank not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "assetTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca46e966-5285-48c9-8975-9aa109f38bdb",
+          "name": "Get available currencies for a customer",
+          "request": {
+            "name": "Get available currencies for a customer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97a3aa7c-7e34-4e47-b873-c7c0aeaa58dc",
+              "name": "Currencies retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"myr\",\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "019fcf5a-3d68-4e33-9dd8-628b27b0a4e1",
+              "name": "Bank not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1220972-4a3d-4c29-adc4-4d0ce9492eca",
+          "name": "Get capabilities",
+          "request": {
+            "name": "Get capabilities",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "capability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2deccf59-792c-4da7-8e08-d7a7e8f8c606",
+              "name": "Capabilities retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "capability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"hasOwnOTP\": false,\n    \"canResendOTP\": false,\n    \"canRetrievePan\": true,\n    \"allowSixMonthsStatements\": true,\n    \"allowVirtualCards\": true,\n    \"allowEditBeneficiaries\": false,\n    \"hasSecurityQuestions\": true,\n    \"hasPhysicalCardVerificationNumber\": false,\n    \"hasMeaWalletConfig\": false,\n    \"hasBusinessCode\": false,\n    \"hasToCreateEndUserKYC\": true,\n    \"canCancelAccounts\": false,\n    \"canRemoveAccounts\": true,\n    \"hasAccountPurposes\": false,\n    \"hasExpectedVolume\": true,\n    \"needAccountSignature\": true,\n    \"canRunCompliance\": false\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e5884c3-eeb7-4b2c-8e05-40843089d95a",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "capability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "730d37ad-325d-49e4-8b0d-ab97913c55f2",
+          "name": "Get customer connection status",
+          "request": {
+            "name": "Get customer connection status",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "connectionStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) The ID of the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6db6e7ac-43bb-4c7d-99af-b498eae5ee72",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "connectionStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The ID of the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": \"CONNECTED\",\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e63a7b01-3104-478e-a3d6-a214dc33a493",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "connectionStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The ID of the customer"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f07806eb-5dd7-44bb-8f49-991049b108b1",
+          "name": "Get Partner Products",
+          "request": {
+            "name": "Get Partner Products",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "partnerProducts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29e4bf08-3529-4691-8e9e-3a91b1ef1b77",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"code\": \"string\",\n        \"assetType\": \"myr\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"ELIXIR\",\n          \"GIRO_ZRT\"\n        ],\n        \"assetTypes\": [\n          \"sek\",\n          \"ugx\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"assetType\": \"gold\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"GIRO_ZRT\",\n          \"TRANSFOND_SENT_ACH\"\n        ],\n        \"assetTypes\": [\n          \"mxn\",\n          \"jpy\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": [\n      {\n        \"code\": \"string\",\n        \"assetType\": \"omr\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"SKN\",\n          \"NEFT\"\n        ],\n        \"assetTypes\": [\n          \"php\",\n          \"usd\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"assetType\": \"dkk\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"CERTIS\",\n          \"CHIPS\"\n        ],\n        \"assetTypes\": [\n          \"pln\",\n          \"gold\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0448472-2677-4d28-a8d2-0bf6c9f8c455",
+              "name": "Bank not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "577275c7-ce24-4e9d-9d2e-d2841d976421",
+    "name": "Accounts Account Customer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

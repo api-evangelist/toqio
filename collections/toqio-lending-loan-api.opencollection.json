@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Lending - Loan API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending - Loan",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/loans/:loanId/contract",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "path",
+                "description": "Loan ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get a contract"
+        },
+        {
+          "info": {
+            "name": "Get a loan",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/loans/:loanId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "path",
+                "description": "Loan ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get a loan"
+        },
+        {
+          "info": {
+            "name": "Get loans by filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/loans/find",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get loans by filter"
+        },
+        {
+          "info": {
+            "name": "Get loan transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/loans/:loanId/transactions",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "loanId",
+                "value": "",
+                "type": "path",
+                "description": "Loan ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get loan transactions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

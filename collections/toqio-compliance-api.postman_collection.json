@@ -1,0 +1,3077 @@
+{
+  "item": [
+    {
+      "id": "154889dc-163a-4d25-ab3e-8edaa83dd33e",
+      "name": "Compliance",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "813bf729-8178-4a9a-a631-9e85c8bf2dae",
+          "name": "Deletes a merchants KYB document",
+          "request": {
+            "name": "Deletes a merchants KYB document",
+            "description": {
+              "content": "This endpoint will delete a KYB document previously uploaded through the platform or using pre-signed URL endpoint",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "provider",
+                ":complianceProvider",
+                "document",
+                ":documentKey"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "documentId",
+                  "value": "<string>",
+                  "description": "If the document was uploaded through the platform, a documentId is returned. This documentId is required to delete the document"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) The compliance provider the document is associated with"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "documentKey",
+                  "description": "(Required) documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "afdb3569-9aa7-46c3-bc5e-9317b2283f17",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "document",
+                    ":documentKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "documentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the document is associated with"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentKey",
+                      "description": "(Required) documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"deleteDocumentMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8baf5787-dac5-40c8-9517-85dad4620506",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "document",
+                    ":documentKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "documentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the document is associated with"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentKey",
+                      "description": "(Required) documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2fd3ec4-5051-4edf-a6f6-c082f5b230f4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "document",
+                    ":documentKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "documentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the document is associated with"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentKey",
+                      "description": "(Required) documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c44f6e3d-6ed2-4ea5-b0e3-9c9f770f3b3d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "document",
+                    ":documentKey"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "documentId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the document is associated with"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "documentKey",
+                      "description": "(Required) documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be1d2a08-8524-4155-a6c8-310c4827d1cb",
+          "name": "Get compliance statuses for a company",
+          "request": {
+            "name": "Get compliance statuses for a company",
+            "description": {
+              "content": "This endpoint allows to get compliance statuses for a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "provider",
+                ":complianceProvider",
+                "complianceStatuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) The compliance provider the the action is associated with"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3c6abd2f-b34b-4f36-82fb-3450e51a4551",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"businessDetailsStatus\": \"CLOSE\",\n  \"supportingDocumentsStatus\": \"ACCEPTED\",\n  \"boardOfDirectorsStatus\": \"ADDED_BY_ADMIN\",\n  \"shareholdersStatus\": \"COMPLETED\",\n  \"userProfileStatus\": \"VERIFIED\",\n  \"overallComplianceStatus\": \"IN_PROGRESS\",\n  \"pendingTasks\": {\n    \"pendingSupportingDocuments\": [\n      \"string\",\n      \"string\"\n    ],\n    \"directorsPendingVerification\": [\n      \"string\",\n      \"string\"\n    ],\n    \"pendingBusinessDetails\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48d38fb4-a828-4e08-bee8-543635fa7d21",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a23b824a-db8e-4afe-ab57-e9d16769fa81",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cdf94beb-3575-432e-94fc-48473add3bb6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab1efa3a-a129-4d69-8fad-2a16af6a7507",
+          "name": "Update compliance statuses for a company",
+          "request": {
+            "name": "Update compliance statuses for a company",
+            "description": {
+              "content": "This endpoint allows to update compliance statuses for a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "provider",
+                ":complianceProvider",
+                "complianceStatuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateCompanyKybDocumentsDTO",
+                  "value": "businessDetailsStatus,<string>,supportingDocumentsStatus,<string>,boardOfDirectorsStatus,<string>,shareholdersStatus,<string>,overallComplianceStatus,<string>",
+                  "description": "(Required) List of documents to update"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) The compliance provider the the action is associated with"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9b41e74d-0190-450c-9783-0c9462445ab6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "businessDetailsStatus,<string>,supportingDocumentsStatus,<string>,boardOfDirectorsStatus,<string>,shareholdersStatus,<string>,overallComplianceStatus,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"businessDetailsStatus\": \"VERIFIED\",\n  \"supportingDocumentsStatus\": \"NOT_STARTED\",\n  \"boardOfDirectorsStatus\": \"IN_PROGRESS\",\n  \"shareholdersStatus\": \"PENDING\",\n  \"overallComplianceStatus\": \"OVERRIDE_COMPLIANCE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d25eaf1-6228-45a5-9215-a56f4018e009",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "businessDetailsStatus,<string>,supportingDocumentsStatus,<string>,boardOfDirectorsStatus,<string>,shareholdersStatus,<string>,overallComplianceStatus,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43e98877-28ea-4834-9b74-8225cc6a885e",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "businessDetailsStatus,<string>,supportingDocumentsStatus,<string>,boardOfDirectorsStatus,<string>,shareholdersStatus,<string>,overallComplianceStatus,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "654ee409-440a-4eca-831a-622c2f6c1eed",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "complianceStatuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "businessDetailsStatus,<string>,supportingDocumentsStatus,<string>,boardOfDirectorsStatus,<string>,shareholdersStatus,<string>,overallComplianceStatus,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "791c5799-fab8-40bc-bc78-5cb5ee02bf52",
+          "name": "Updates the compliance status of a client",
+          "request": {
+            "name": "Updates the compliance status of a client",
+            "description": {
+              "content": "This endpoint updates the compliance status of a client",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "provider",
+                ":complianceProvider",
+                "updateComplianceStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "complianceStatusUpdateDTO",
+                  "value": "status,<string>,accountId,<integer>,directors,[object Object],[object Object],finalisedManually,<boolean>,clientId,<string>",
+                  "description": "(Required) Object with the statuses to be updated"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) The compliance provider the the action is associated with"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fb71b2fb-2a2f-47fd-b59a-d324cb3a12d8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "status,<string>,accountId,<integer>,directors,[object Object],[object Object],finalisedManually,<boolean>,clientId,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "58fde9bf-44d6-41ab-88f9-ef23173f52cb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "status,<string>,accountId,<integer>,directors,[object Object],[object Object],finalisedManually,<boolean>,clientId,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7fc17279-ee39-4b8d-94f7-4cf2efdaf78d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "status,<string>,accountId,<integer>,directors,[object Object],[object Object],finalisedManually,<boolean>,clientId,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fdbaec3d-7bd8-4d5f-99ac-bf568980ff22",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "status,<string>,accountId,<integer>,directors,[object Object],[object Object],finalisedManually,<boolean>,clientId,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f7b8ebb-a6b0-48d8-94f3-540fa8685eba",
+          "name": "Update company kyb document status",
+          "request": {
+            "name": "Update company kyb document status",
+            "description": {
+              "content": "This endpoint allows to update company kyb document status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "kybDocuments",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateCompanyKybDocumentsDTO",
+                  "value": "documents,[object Object],[object Object]",
+                  "description": "(Required) List of documents to update"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "04d5f116-15ce-4c7d-8696-1e0ab195247e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "kybDocuments",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4349a990-8bb1-4c15-bd3d-4fc1f139d5d6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "kybDocuments",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b481d00-55dc-4601-ae70-d6cb37920298",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "kybDocuments",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e036310b-a715-49b5-906d-d45842a73e21",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "kybDocuments",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateCompanyKybDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd0f542a-32a3-47aa-b1ad-737ade658162",
+          "name": "Update shareholder document status",
+          "request": {
+            "name": "Update shareholder document status",
+            "description": {
+              "content": "This endpoint allows to update the shareholder document status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                "${{clientId}}",
+                "shareholders",
+                "${{shareholderId}}",
+                "documents",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateShareholderDocuments",
+                  "value": "externalId,<string>,frontSideDocStatus,<string>,backSideDocStatus,<string>,errorMessage,<string>,documents,[object Object],[object Object]",
+                  "description": "(Required) List of documents to update"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1c204c74-9b04-4206-9a10-9c162fcca6d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    "${{clientId}}",
+                    "shareholders",
+                    "${{shareholderId}}",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateShareholderDocuments",
+                      "value": "externalId,<string>,frontSideDocStatus,<string>,backSideDocStatus,<string>,errorMessage,<string>,documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "999ae7cf-f78a-42d0-8244-a7b0c7654abf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    "${{clientId}}",
+                    "shareholders",
+                    "${{shareholderId}}",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateShareholderDocuments",
+                      "value": "externalId,<string>,frontSideDocStatus,<string>,backSideDocStatus,<string>,errorMessage,<string>,documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2fbc95f2-56fb-4673-bb18-523c1ba44a29",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    "${{clientId}}",
+                    "shareholders",
+                    "${{shareholderId}}",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateShareholderDocuments",
+                      "value": "externalId,<string>,frontSideDocStatus,<string>,backSideDocStatus,<string>,errorMessage,<string>,documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b21ed533-b6c3-4fb8-85ba-49ebeb7cfb0e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    "${{clientId}}",
+                    "shareholders",
+                    "${{shareholderId}}",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateShareholderDocuments",
+                      "value": "externalId,<string>,frontSideDocStatus,<string>,backSideDocStatus,<string>,errorMessage,<string>,documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5702f72e-8b19-4297-a193-0b7cc8f33c7b",
+          "name": "Updates the compliance status of a user or shareholder",
+          "request": {
+            "name": "Updates the compliance status of a user or shareholder",
+            "description": {
+              "content": "This endpoint updates the compliance status of a user or shareholder",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "user",
+                ":userId",
+                "provider",
+                ":complianceProvider",
+                "updateComplianceStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "complianceStatusUpdateDTO",
+                  "value": "userId,<string>,customerId,<string>,clientId,<string>,status,<string>",
+                  "description": "(Required) Object with the statuses to be updated"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) Toqios user ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) The compliance provider the the action is associated with"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b12cdd87-0ca8-4a4d-8e5c-c1bf6c406e44",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "user",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "userId,<string>,customerId,<string>,clientId,<string>,status,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b849394e-2035-4aef-978a-6ab4256aeddd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "user",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "userId,<string>,customerId,<string>,clientId,<string>,status,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dd3b6a9b-9354-4cc3-bff4-395a0ffea180",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "user",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "userId,<string>,customerId,<string>,clientId,<string>,status,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "10c08f30-590e-44ec-8af8-1005748ecae2",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "user",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "updateComplianceStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "complianceStatusUpdateDTO",
+                      "value": "userId,<string>,customerId,<string>,clientId,<string>,status,<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6e157e8-c88d-4bc7-a0fb-e9cb197e3f16",
+          "name": "Update user document status",
+          "request": {
+            "name": "Update user document status",
+            "description": {
+              "content": "This endpoint allows to update the user document status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "iam",
+                "api",
+                "customers",
+                ":customerId",
+                "merchant",
+                ":clientId",
+                "users",
+                ":userId",
+                "provider",
+                ":complianceProvider",
+                "documents",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "userDocumentsDTO",
+                  "value": "documents,[object Object],[object Object]",
+                  "description": "(Required) List of documents to update"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Toqios customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Toqios client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) Toqios user ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) The compliance provider the the action is associated with"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "662c922c-6559-4002-858d-a7a27e52c385",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "users",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "22d2739c-9800-454b-b1f9-0387bc44caed",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "users",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1762deec-fc41-4918-bcfa-4cdd7c944249",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "users",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49fea958-98ab-4ba6-9ce3-edc3763308a4",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "iam",
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":clientId",
+                    "users",
+                    ":userId",
+                    "provider",
+                    ":complianceProvider",
+                    "documents",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "userDocumentsDTO",
+                      "value": "documents,[object Object],[object Object]"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Toqios customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Toqios client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) Toqios user ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) The compliance provider the the action is associated with"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Toqios client ID",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "clientId"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Toqios shareholder ID",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "shareholderId"
+    }
+  ],
+  "info": {
+    "_postman_id": "5be32bbe-bf58-41ff-8d3e-11010e309205",
+    "name": "Accounts Account Compliance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Direct debit API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Direct debit",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apply Direct Debit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/directDebit",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply Direct Debit"
+        },
+        {
+          "info": {
+            "name": "Get Mandate Detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/accounts/:accountId/mandates/:mandateId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "mandateId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Mandate Detail"
+        },
+        {
+          "info": {
+            "name": "Get Mandates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/accounts/:accountId/mandates",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Mandates"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

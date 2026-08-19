@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Products API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Products",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Notify product changes for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/products/changes",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the customer in the banking provider's system. This ID must correspond to an existing customer record. All product changes in the request will be associated with this customer."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is called by Integration Hub to notify downstream banking provider systems about product changes that occurred in the Wallet system. The endpoint should be implemented by third-party banking providers to receive and process product change notifications.\n\nWhen this endpoint is called, it indicates that products associated with a customer have been modified in the Wallet system and need to be synchronized in the banking provider's system. The notification can contain:\n\n- **Products t"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

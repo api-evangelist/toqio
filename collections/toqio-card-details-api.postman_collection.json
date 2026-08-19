@@ -1,0 +1,735 @@
+{
+  "item": [
+    {
+      "id": "f410b351-3152-4bcf-b778-aaa2d3326ae7",
+      "name": "Card Details",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "68ded202-4695-4a23-b6ef-6c12398857bc",
+          "name": "Get card image URL",
+          "request": {
+            "name": "Get card image URL",
+            "description": {
+              "content": "Retrieves the URL for the card's visual design image.\n\n**Business Context**: Used to display card artwork in the frontend application. Returns the URL of the card image that can be rendered in the UI.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "image",
+                "url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76fedd60-21c5-4f34-9954-a664c4f12d92",
+              "name": "Card image URL retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "image",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"https://cdn.provider.com/card-designs/corporate-blue-123.png\",\n  \"code\": \"200\",\n  \"message\": \"Card image URL retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c0db5b3-c1b9-4e09-95eb-468c2580046b",
+          "name": "Get card image URL by template",
+          "request": {
+            "name": "Get card image URL by template",
+            "description": {
+              "content": "Retrieves the card image URL based on the customer's default card template/design.\n\n**Business Context**: Used to show the default card design before a card is issued, helping users preview what their card will look like.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                "image",
+                "url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0883d91e-e6c7-4a58-8783-36e3a19a52cf",
+              "name": "Template card image URL retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    "image",
+                    "url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"https://cdn.provider.com/resource\",\n  \"code\": \"200\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Resource retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7114645a-b14a-4f3a-963f-fa8e53db905b",
+          "name": "Get card settings",
+          "request": {
+            "name": "Get card settings",
+            "description": {
+              "content": "Retrieves configuration settings for a specific card from the banking provider.\n\n**Business Context**: Used to retrieve provider-specific card configuration and capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "49032234-5e62-4777-aef3-098333ceb80e",
+              "name": "Card settings retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"key_0\": 2260.046534136667\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card settings retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02f1d534-9f83-4f12-9c1d-033188d5f5a9",
+          "name": "Get card PAN (Primary Account Number)",
+          "request": {
+            "name": "Get card PAN (Primary Account Number)",
+            "description": {
+              "content": "Retrieves sensitive card details including PAN, CVV, and expiry date. Requires security verification (encrypted security code).\n\n**Business Context**: Called when user needs to view full card details. Security code is encrypted using RSA public key before transmission. Supports both standard encryption and MEA Wallet wrapped key encryption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "pan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"encryptedSecurityCode\": \"<string>\",\n  \"wrappedKey\": \"<string>\",\n  \"iv\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "708922f4-caa0-49dc-b689-76e2cec2a6ca",
+              "name": "PAN retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"encryptedSecurityCode\": \"<string>\",\n  \"wrappedKey\": \"<string>\",\n  \"iv\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"pan\": \"4111111111111111\",\n    \"cvv\": \"123\",\n    \"expiryDate\": \"12/27\"\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"FATAL\",\n  \"message\": \"Card PAN retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2eec25f6-0db2-4f67-9bac-520106427a5e",
+              "name": "Unauthorized - Invalid security code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"encryptedSecurityCode\": \"<string>\",\n  \"wrappedKey\": \"<string>\",\n  \"iv\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8d9de259-f3ba-4471-a459-46237b561225",
+          "name": "Get card PIN",
+          "request": {
+            "name": "Get card PIN",
+            "description": {
+              "content": "Retrieves the card PIN number. Requires elevated security permissions.\n\n**Business Context**: Used when cardholder needs to retrieve their PIN for ATM or POS transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "pin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "487cd6b9-bf35-4e72-ac04-48f48806402c",
+              "name": "PIN retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"pin\": \"1234\"\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card PIN retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1bfd3876-0d47-4b39-bf48-53573dfdb990",
+          "name": "Get card PIN asynchronously (POC only)",
+          "request": {
+            "name": "Get card PIN asynchronously (POC only)",
+            "description": {
+              "content": "Asynchronous PIN retrieval endpoint for proof-of-concept testing only. Not for production use.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "pin",
+                "async"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "349b38ed-79b6-4a00-a847-59feb70da327",
+              "name": "PIN retrieval initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pin",
+                    "async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91c2ea65-178f-408f-b9dc-40c8b508e689",
+    "name": "Accounts Account Card Details API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

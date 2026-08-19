@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Card Details API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Card Details",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get card image URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/image/url",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Retrieves the URL for the card's visual design image.\n\n**Business Context**: Used to display card artwork in the frontend application. Returns the URL of the card image that can be rendered in the UI."
+        },
+        {
+          "info": {
+            "name": "Get card image URL by template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/image/url",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              }
+            ]
+          },
+          "docs": "Retrieves the card image URL based on the customer's default card template/design.\n\n**Business Context**: Used to show the default card design before a card is issued, helping users preview what their card will look like."
+        },
+        {
+          "info": {
+            "name": "Get card settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/settings",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Retrieves configuration settings for a specific card from the banking provider.\n\n**Business Context**: Used to retrieve provider-specific card configuration and capabilities."
+        },
+        {
+          "info": {
+            "name": "Get card PAN (Primary Account Number)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/pan",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves sensitive card details including PAN, CVV, and expiry date. Requires security verification (encrypted security code).\n\n**Business Context**: Called when user needs to view full card details. Security code is encrypted using RSA public key before transmission. Supports both standard encryption and MEA Wallet wrapped key encryption."
+        },
+        {
+          "info": {
+            "name": "Get card PIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/pin",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Retrieves the card PIN number. Requires elevated security permissions.\n\n**Business Context**: Used when cardholder needs to retrieve their PIN for ATM or POS transactions."
+        },
+        {
+          "info": {
+            "name": "Get card PIN asynchronously (POC only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/pin/async",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Asynchronous PIN retrieval endpoint for proof-of-concept testing only. Not for production use."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

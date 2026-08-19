@@ -563,3 +563,9 @@ tools:
 - name: upload_kyb_documents
   description: Upload KYB documents for a merchant
   source_operation: openapi/toqio-upload-kyb-documents-openapi.yml#uploadKybDocuments
+deployment:
+  mode: none
+  verified: derived
+  tools: 185
+  checked: '2026-08-12'
+  source: catalog MCP census

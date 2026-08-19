@@ -1,0 +1,1111 @@
+{
+  "item": [
+    {
+      "id": "56f954af-0b96-4892-8137-88c9d073a206",
+      "name": "Security",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6537eb58-f647-4889-8739-240805035e38",
+          "name": "Activate card",
+          "request": {
+            "name": "Activate card",
+            "description": {
+              "content": "Activates (unfreezes) a suspended card. Requires card token for activation.\n\n**Business Context**: Called when a cardholder or administrator wants to activate a suspended card. The activation reason is determined by the requester's role (owner, director, or admin). Requires security code verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"securityCode\": {\n    \"encryptedSecurityCode\": \"<string>\",\n    \"iv\": \"<string>\",\n    \"tag\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "12a7ccfe-81ef-4be3-8ef1-128c3dda31d2",
+              "name": "Card activated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"securityCode\": {\n    \"encryptedSecurityCode\": \"<string>\",\n    \"iv\": \"<string>\",\n    \"tag\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 9771.608026868467,\n    \"limit\": 4194.134730170069,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 351\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19e991b5-a6b2-412a-8e1e-0e07aadc1921",
+          "name": "Activate card with OTP verification",
+          "request": {
+            "name": "Activate card with OTP verification",
+            "description": {
+              "content": "Activates a card using OTP (One-Time Password) verification for enhanced security.\n\n**Business Context**: Used when the banking provider requires OTP verification for card activation (e.g., first-time activation).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "activateOTP"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"cardTokenRequest\": {\n    \"token\": \"<string>\",\n    \"securityCode\": {\n      \"encryptedSecurityCode\": \"<string>\",\n      \"iv\": \"<string>\",\n      \"tag\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5a2e071-a012-4c18-9cc6-ba3ac021801c",
+              "name": "Card activated successfully with OTP",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activateOTP"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"baasOTP\": \"123456\",\n  \"operationId\": \"op-12345\",\n  \"userId\": \"user-789\",\n  \"cardTokenRequest\": {\n    \"token\": \"activation-token-xyz\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 9771.608026868467,\n    \"limit\": 4194.134730170069,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 351\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c84e4a46-d685-4805-9e14-f1a9a1c26ab1",
+              "name": "Invalid OTP",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activateOTP"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"baasOTP\": \"123456\",\n  \"operationId\": \"op-12345\",\n  \"userId\": \"user-789\",\n  \"cardTokenRequest\": {\n    \"token\": \"activation-token-xyz\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5077ef75-c3c8-4124-aed1-b43db24a07e1",
+          "name": "Get card PAN (Primary Account Number)",
+          "request": {
+            "name": "Get card PAN (Primary Account Number)",
+            "description": {
+              "content": "Retrieves sensitive card details including PAN, CVV, and expiry date. Requires security verification (encrypted security code).\n\n**Business Context**: Called when user needs to view full card details. Security code is encrypted using RSA public key before transmission. Supports both standard encryption and MEA Wallet wrapped key encryption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "pan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"encryptedSecurityCode\": \"<string>\",\n  \"wrappedKey\": \"<string>\",\n  \"iv\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "493d1019-f73e-45c8-9c23-b5f6e218489c",
+              "name": "PAN retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"encryptedSecurityCode\": \"<string>\",\n  \"wrappedKey\": \"<string>\",\n  \"iv\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"pan\": \"4111111111111111\",\n    \"cvv\": \"123\",\n    \"expiryDate\": \"12/27\"\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"WARNING\",\n  \"message\": \"Card PAN retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f35d1c51-90f7-435e-bf9c-945572463726",
+              "name": "Unauthorized - Invalid security code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"encryptedSecurityCode\": \"<string>\",\n  \"wrappedKey\": \"<string>\",\n  \"iv\": \"<string>\",\n  \"tag\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a605ac28-0c83-4bd7-a02f-bd9a8512f36d",
+          "name": "Get partner token",
+          "request": {
+            "name": "Get partner token",
+            "description": {
+              "content": "Retrieves a partner integration token for credit card operations.\n\n**Business Context**: Used when integrating with third-party services for credit card account linking and payments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                "client",
+                ":clientId",
+                "partnerToken"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b58dc667-c97a-4729-906e-1cdd20a0bdb5",
+              "name": "Partner token retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    "client",
+                    ":clientId",
+                    "partnerToken"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff18fdd9-2b07-4924-85f7-22300f65c376",
+          "name": "Get card PIN",
+          "request": {
+            "name": "Get card PIN",
+            "description": {
+              "content": "Retrieves the card PIN number. Requires elevated security permissions.\n\n**Business Context**: Used when cardholder needs to retrieve their PIN for ATM or POS transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "pin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c526c265-31d8-44a5-9fdf-1297991ec4c2",
+              "name": "PIN retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"pin\": \"1234\"\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card PIN retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05e001c4-c6c7-486d-8143-432f86c67fb4",
+          "name": "Get card PIN asynchronously (POC only)",
+          "request": {
+            "name": "Get card PIN asynchronously (POC only)",
+            "description": {
+              "content": "Asynchronous PIN retrieval endpoint for proof-of-concept testing only. Not for production use.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "pin",
+                "async"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3216d382-5c54-43f4-8e2b-571484ef8b76",
+              "name": "PIN retrieval initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "pin",
+                    "async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f4636bb-6223-46fb-b154-29efba2c7689",
+          "name": "Get TOTP secret for card",
+          "request": {
+            "name": "Get TOTP secret for card",
+            "description": {
+              "content": "Retrieves the Time-based One-Time Password (TOTP) secret for the card. Used with authenticator apps for enhanced security.\n\n**Business Context**: Called when setting up TOTP-based authentication (e.g., Google Authenticator, Authy) for card transactions. Requires that the banking provider supports MEA Wallet configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "card",
+                ":cardId",
+                "secret"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4146671-6114-4a31-83e0-f69e13e65418",
+              "name": "TOTP secret retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "card",
+                    ":cardId",
+                    "secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"JBSWY3DPEHPK3PXP\",\n  \"code\": \"200\",\n  \"message\": \"TOTP secret retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d32507f-9907-43c9-a691-4b0d9e2b5789",
+              "name": "TOTP not supported by this provider",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "card",
+                    ":cardId",
+                    "secret"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6165f726-2b05-4e92-a041-3df56cf4f24b",
+          "name": "Suspend card",
+          "request": {
+            "name": "Suspend card",
+            "description": {
+              "content": "Suspends (freezes) a card temporarily. The card can be reactivated later.\n\n**Business Context**: Called when a cardholder temporarily freezes their card (e.g., lost wallet) or when a director/admin suspends an employee's card. Requires security code verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "suspend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "478af5ee-1880-477f-b0a5-b43077314295",
+              "name": "Card suspended successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 9771.608026868467,\n    \"limit\": 4194.134730170069,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 351\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d9aa113c-c57e-4f43-a7bf-5330eec96a72",
+    "name": "Accounts Account Security API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

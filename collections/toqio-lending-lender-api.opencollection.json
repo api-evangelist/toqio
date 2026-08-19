@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Lending - Lender API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending - Lender",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a lender configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/lender",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get a lender configuration"
+        },
+        {
+          "info": {
+            "name": "Create a lender configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/lender",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "lenderConfigurationRequest",
+                "value": "",
+                "type": "query",
+                "description": "Lender configuration request. Cannot be null."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a lender configuration"
+        },
+        {
+          "info": {
+            "name": "Update a lender configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/lender",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "lenderConfigurationRequest",
+                "value": "",
+                "type": "query",
+                "description": "Lender configuration request. Cannot be null."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a lender configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

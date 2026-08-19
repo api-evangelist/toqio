@@ -1,0 +1,916 @@
+{
+  "item": [
+    {
+      "id": "b47fca4a-824e-42a3-a38d-470698cbef5d",
+      "name": "Fees",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e41f4ab6-7c66-41ee-9bd2-1b1e900d9381",
+          "name": "Get card fees",
+          "request": {
+            "name": "Get card fees",
+            "description": {
+              "content": "This endpoint is deprecated. You should use <a href=\"https://docs.toq.io/reference/getcardfees\"><u>Card Fees</u></a>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "client",
+                ":clientId",
+                "card",
+                "fees",
+                ":currency"
+              ],
+              "host": [
+                "{{customers-customerId-client-clientId-card-fees-currency-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Client to filter by"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) Currency to filter by"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d636d3de-8ac2-4430-9f4c-a3c1a32d3f75",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "client",
+                    ":clientId",
+                    "card",
+                    "fees",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{customers-customerId-client-clientId-card-fees-currency-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client to filter by"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"pricingVirtual\": 1,\n  \"pricingPhysical\": 0,\n  \"monthlyVirtualFee\": 3,\n  \"monthlyPhysicalFee\": 3\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a9b2c5f-a71e-496d-8895-9a6c34d1d204",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "client",
+                    ":clientId",
+                    "card",
+                    "fees",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{customers-customerId-client-clientId-card-fees-currency-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client to filter by"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1cdc88ef-fe92-4233-8924-eb005e7872a6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "client",
+                    ":clientId",
+                    "card",
+                    "fees",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{customers-customerId-client-clientId-card-fees-currency-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client to filter by"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e5fb6c5-8f29-4926-9339-200b7014b6ab",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "client",
+                    ":clientId",
+                    "card",
+                    "fees",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{customers-customerId-client-clientId-card-fees-currency-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Client to filter by"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) Currency to filter by"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da9d12fb-3848-4647-b3fa-4a4bed5e9adc",
+          "name": "Get account fees",
+          "request": {
+            "name": "Get account fees",
+            "description": {
+              "content": "Allows to get the fees of an account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "client",
+                ":clientId",
+                "account",
+                "fees",
+                ":currency"
+              ],
+              "host": [
+                "{{customers-customerId-client-clientId-account-fees-currency-Url}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c0531308-feae-4982-9569-3f81b1b2b916",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "client",
+                    ":clientId",
+                    "account",
+                    "fees",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{customers-customerId-client-clientId-account-fees-currency-Url}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"newAccountFee\": 7993.895309429165,\n  \"monthlyAccountFee\": 832.914501091081\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "334821ef-1852-4bbb-a1ad-5508cad23387",
+          "name": "Transaction fee",
+          "request": {
+            "name": "Transaction fee",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "transactions",
+                "fees"
+              ],
+              "host": [
+                "{{customers-customerId-clients-clientId-transactions-fees-Url}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) Banking provider of the source account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<double>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"sourceAccountId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64fd3226-7a5b-46c8-aabd-260d482ddc68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "transactions",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{customers-customerId-clients-clientId-transactions-fees-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"bankPaymentScheme\": \"INTERLEDGER\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"GBP\",\n  \"sourceAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "7690.499042438496",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "041154fb-7b50-4fd8-b64f-c45eccc7d50b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "transactions",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{customers-customerId-clients-clientId-transactions-fees-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"bankPaymentScheme\": \"INTERLEDGER\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"GBP\",\n  \"sourceAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b11e7374-065a-42fe-bd69-4ce0443728c6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "transactions",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{customers-customerId-clients-clientId-transactions-fees-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"bankPaymentScheme\": \"INTERLEDGER\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"GBP\",\n  \"sourceAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "13bb0e37-d461-4659-8f39-b9d18e81c6e5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "transactions",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{customers-customerId-clients-clientId-transactions-fees-Url}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"bankPaymentScheme\": \"INTERLEDGER\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"GBP\",\n  \"sourceAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    },
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/billing",
+      "key": "customers-customerId-client-clientId-card-fees-currency-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/billing",
+      "key": "customers-customerId-client-clientId-account-fees-currency-Url"
+    },
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/billing",
+      "key": "customers-customerId-clients-clientId-transactions-fees-Url"
+    }
+  ],
+  "info": {
+    "_postman_id": "1ad1e789-d46f-4eb9-a1f0-8f6b7d0214ea",
+    "name": "Accounts Account Fees API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

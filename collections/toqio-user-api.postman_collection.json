@@ -1,0 +1,475 @@
+{
+  "item": [
+    {
+      "id": "74d7ab6d-269a-4ff9-90e2-5aa6cd725faa",
+      "name": "User",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87eac4f3-d7d2-4d53-9781-0d018cf1925f",
+          "name": "Get user",
+          "request": {
+            "name": "Get user",
+            "description": {
+              "content": "Allows to get the details of a given user",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "users",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "userId",
+                  "description": "(Required) userId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7fdbd172-3f64-40ef-be53-89a018e96e34",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) userId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountId\": \"string\",\n    \"assetType\": \"GBP\",\n    \"bicSwift\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\"\n  },\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"advancePaymentAccount\": \"string\",\n  \"birthDate\": \"yyyy-MM-dd\",\n  \"cards\": [\n    {\n      \"alias\": \"string\",\n      \"id\": \"string\",\n      \"product\": \"DEBIT\",\n      \"status\": \"AWAITING\",\n      \"type\": \"PHYSICAL\"\n    },\n    {\n      \"alias\": \"string\",\n      \"id\": \"string\",\n      \"product\": \"DEBIT\",\n      \"status\": \"SUSPENDED\",\n      \"type\": \"PHYSICAL\"\n    }\n  ],\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"email\": \"string\",\n  \"enabled\": false,\n  \"firstName\": \"string\",\n  \"fullName\": \"string\",\n  \"id\": \"string\",\n  \"intercomURL\": \"string\",\n  \"intnlPhoneNumber\": \"string\",\n  \"kycStatus\": \"DECLINE\",\n  \"lastName\": \"string\",\n  \"locale\": \"string\",\n  \"middleName\": \"string\",\n  \"monthlyExpenditure\": 1097.2416015603426,\n  \"onboarded\": false,\n  \"onboardedAt\": \"2000-08-02T14:25:31.098Z\",\n  \"onboardingStatus\": \"string\",\n  \"personalIdentityNumber\": \"string\",\n  \"phoneCountry\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"postalCode\": \"string\",\n  \"profileImage\": \"string\",\n  \"role\": \"string\",\n  \"tncVersion\": {\n    \"dateUpdated\": \"1989-01-01T13:30:23.040Z\",\n    \"version\": \"string\"\n  },\n  \"username\": \"string\",\n  \"permissions\": [\n    \"string\",\n    \"string\"\n  ],\n  \"metadata\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7da76bd1-76b7-43a6-8697-edf0ea8450d5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) userId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62e7d6f3-9d17-4e4f-97f9-37ea7350c106",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) userId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25c3133d-546b-4b16-822c-8cbda1ea343b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "users",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "userId",
+                      "description": "(Required) userId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d71a334-b773-44a9-964c-cb9ba2052269",
+          "name": "Create user",
+          "request": {
+            "name": "Create user",
+            "description": {
+              "content": "Allows to create a user under a client ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "users",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneCountry\": \"<string>\",\n  \"role\": \"<string>\",\n  \"birthDate\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"sendInvite\": \"<boolean>\",\n  \"consultancy\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"cardType\": \"<string>\",\n  \"cardDeliveryName\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"nameOnCard\": \"<string>\",\n  \"otp\": \"<string>\",\n  \"personalIdentityNumber\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"documentNumber\": \"<string>\",\n  \"tin\": \"<string>\",\n  \"documentIssueDate\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f92f4d76-4a30-4e47-a0ff-877cca9d9f75",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "users",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"email\": \"<string>\",\n  \"phoneNumber\": \"<string>\",\n  \"phoneCountry\": \"<string>\",\n  \"role\": \"<string>\",\n  \"birthDate\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"country\": \"<string>\",\n  \"sendInvite\": \"<boolean>\",\n  \"consultancy\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"cardType\": \"<string>\",\n  \"cardDeliveryName\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"nameOnCard\": \"<string>\",\n  \"otp\": \"<string>\",\n  \"personalIdentityNumber\": \"<string>\",\n  \"documentType\": \"<string>\",\n  \"documentNumber\": \"<string>\",\n  \"tin\": \"<string>\",\n  \"documentIssueDate\": \"<string>\",\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": 8477.832116916332,\n    \"key_2\": 339.64528980512387\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"alias\": \"string\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"phoneNumber\": \"string\",\n  \"phoneCountry\": \"string\",\n  \"intnlPhoneNumber\": \"string\",\n  \"onboardedAt\": \"2007-10-25T10:37:03.432Z\",\n  \"companyId\": \"string\",\n  \"externalId\": \"string\",\n  \"username\": \"string\",\n  \"address\": \"string\",\n  \"postalCode\": \"string\",\n  \"city\": \"string\",\n  \"country\": \"string\",\n  \"profileImage\": \"string\",\n  \"enabled\": true,\n  \"firebase\": {\n    \"registrationToken\": \"string\",\n    \"updatedAt\": \"2004-01-13T03:10:05.755Z\"\n  },\n  \"locale\": \"string\",\n  \"notificationSettings\": {\n    \"push\": {\n      \"enabled\": true,\n      \"pendingActions\": false,\n      \"suggestions\": false\n    },\n    \"email\": false,\n    \"commercial\": false,\n    \"thirdParties\": false\n  },\n  \"twoFactorAuthEnabled\": false,\n  \"onboardingStatus\": \"PENDING_KYB_RESULTS\",\n  \"tncVersion\": {\n    \"dateUpdated\": \"1978-01-01T01:10:40.706Z\",\n    \"version\": \"string\"\n  },\n  \"birthDate\": \"string\",\n  \"balanceCurrency\": \"string\",\n  \"idNumber\": \"string\",\n  \"personalAccountCurrency\": \"RON\",\n  \"documentNumber\": \"string\",\n  \"documentExpirationDate\": \"1998-01-16T15:04:58.578Z\",\n  \"documentIssuerCountry\": \"string\",\n  \"documentType\": \"string\",\n  \"appointmentDate\": \"string\",\n  \"otpChannel\": \"string\",\n  \"tin\": \"string\",\n  \"enforceTwoFactorAuth\": true,\n  \"areSecurityQuestionsAnswered\": true,\n  \"documentIssueDate\": \"string\",\n  \"businessCode\": \"string\",\n  \"email\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2869412e-4a55-497f-8454-d55e77fc5f80",
+    "name": "Accounts Account User API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

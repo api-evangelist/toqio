@@ -1,0 +1,295 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Credit Cards API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Cards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel scheduled payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/accounts/:accountId/scheduledPayment/:scheduledPaymentId/cancel",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "scheduledPaymentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancels a previously scheduled credit card payment.\n\n**Business Context**: Allows users to cancel scheduled payments before they are executed."
+        },
+        {
+          "info": {
+            "name": "Fetch credit card statements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/account/:accountId/companies/:companyId/creditStatements",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves credit card billing statements.\n\n**Business Context**: Allows users to view their credit card statements showing transactions, payments, and balance information."
+        },
+        {
+          "info": {
+            "name": "Get credit card details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/account/:accountId/company/:companyId/creditDetails",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed credit card account information including balance, available credit, and payment status.\n\n**Business Context**: Displays current credit card account status in the frontend application."
+        },
+        {
+          "info": {
+            "name": "Get partner token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/client/:clientId/partnerToken",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a partner integration token for credit card operations.\n\n**Business Context**: Used when integrating with third-party services for credit card account linking and payments."
+        },
+        {
+          "info": {
+            "name": "Get linked external accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/accounts/:accountId/external-accounts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of external bank accounts linked to a credit card account for payment purposes.\n\n**Business Context**: Used in credit card management to display in the frontend which external accounts can be used to pay off the credit card balance."
+        },
+        {
+          "info": {
+            "name": "Link external account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/account/:accountId/linkExternalAccount",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Links an external bank account to a credit card account for payment purposes.\n\n**Business Context**: Allows users to add external bank accounts that can be used to make payments on their credit card balance."
+        },
+        {
+          "info": {
+            "name": "Remove linked external account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/account/:accountId/company/:companyId/creditDetails/:externalAccountId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "externalAccountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes a linked external account from a credit card.\n\n**Business Context**: Allows users to unlink external bank accounts that are no longer needed for credit card payments."
+        },
+        {
+          "info": {
+            "name": "Schedule autopay",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/accounts/:accountId/payments/schedule/autopay",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets up automatic recurring payments for a credit card account.\n\n**Business Context**: Enables automatic payment of credit card balance (minimum payment, full balance, or fixed amount) on a recurring schedule."
+        },
+        {
+          "info": {
+            "name": "Get scheduled credit payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/accounts/:accountId/scheduledCreditPayments",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves all scheduled payments for a credit card account.\n\n**Business Context**: Shows users their upcoming scheduled payments including one-time payments and autopay schedules."
+        },
+        {
+          "info": {
+            "name": "Schedule credit card payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/accounts/:accountId/schedule",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedules a one-time payment for a credit card account.\n\n**Business Context**: Allows users to schedule a future payment from a linked external account to their credit card balance."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

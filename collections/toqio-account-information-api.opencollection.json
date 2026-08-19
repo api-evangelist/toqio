@@ -1,0 +1,357 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Account information API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account information",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/accounts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows to create a new account"
+        },
+        {
+          "info": {
+            "name": "Get products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/products",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "bankingProvider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "visible",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ledgerTypeId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "marketplaceKey",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns the list of products for the customer, optionally filtered by banking provider, visibility flag, ledger type or marketplace key. All filter parameters are optional; when omitted, the full catalog visible to the customer is returned."
+        },
+        {
+          "info": {
+            "name": "Create product",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/products",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Creates a new product for the customer, optionally linked to a banking provider, a ledger type and a marketplace. Products are the catalog entries clients are enrolled in and define which partner products and account types are available to them."
+        },
+        {
+          "info": {
+            "name": "Get account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "accountId"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ]
+          },
+          "docs": "Allows to get the details of an account for a given client"
+        },
+        {
+          "info": {
+            "name": "Cancel account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "accountId"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows to cancel a given account"
+        },
+        {
+          "info": {
+            "name": "Get partner products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/partnerProducts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "clientId"
+              },
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query",
+                "description": "countryCode"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "query",
+                "description": "Banking provider of the source account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows to get the partner products of a given client"
+        },
+        {
+          "info": {
+            "name": "Update account alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/merchant/:companyId/accounts/:accountId/alias",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the customer making the request"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the merchant company"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "ID of the account to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the alias of an account for a specific merchant."
+        },
+        {
+          "info": {
+            "name": "Update Account Read Only",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/accounts/:accountId/readOnly/:readOnly",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "accountId"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "readOnly",
+                "value": "",
+                "type": "path",
+                "description": "readOnly"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows to update a certain account to readOnly"
+        },
+        {
+          "info": {
+            "name": "Update product details",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/products/:productId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "productId",
+                "value": "",
+                "type": "path",
+                "description": "productId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Updates the metadata of an existing product (name, description, image, visibility). Products group the partner products that a client can be enrolled in and drive the catalog displayed in the onboarding and account-opening flows."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

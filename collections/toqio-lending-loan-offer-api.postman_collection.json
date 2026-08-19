@@ -1,0 +1,452 @@
+{
+  "item": [
+    {
+      "id": "289ad48c-167f-4371-bcc2-606d1a87c728",
+      "name": "Lending - Loan - Offer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3710a25f-1f3c-4427-9ad7-e2f56ad06b7b",
+          "name": "Accept a loan offer",
+          "request": {
+            "name": "Accept a loan offer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "loans",
+                "offers",
+                ":loanOfferId",
+                "accept"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loanOfferId",
+                  "description": "(Required) Loan offer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1399790-3d27-4906-bb90-5c86ed040c33",
+              "name": "Loan offer accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "loans",
+                    "offers",
+                    ":loanOfferId",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanOfferId",
+                      "description": "(Required) Loan offer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"productType\": \"CASH_ADVANCE\",\n    \"fundingAmount\": 5831.4222614080745,\n    \"currencyISOCode\": \"string\",\n    \"loanFee\": {\n      \"amount\": 6235.23969746017,\n      \"currencyISOCode\": \"string\"\n    },\n    \"rateType\": \"FIXED\",\n    \"originalAmount\": 6200.933004142977,\n    \"totalAnnualExpense\": 7735.555505177365,\n    \"offerExpiryDate\": \"string\",\n    \"lendingRequestId\": \"string\",\n    \"status\": \"CANCELLED\",\n    \"interestRate\": 6348.138708184055,\n    \"maturity\": 1325,\n    \"monthlyRepayment\": 2602.981014142559,\n    \"repaymentTerms\": {\n      \"basisPoint\": 2771.185229004789,\n      \"estimatedDays\": 1415,\n      \"thresholdAmount\": 8375.058478509973,\n      \"thresholdDuration\": 976,\n      \"startsAt\": \"string\"\n    },\n    \"thresholdAmountReached\": 1630.581671077017\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83336595-c5bf-448b-b3d5-14304172e1be",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "loans",
+                    "offers",
+                    ":loanOfferId",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanOfferId",
+                      "description": "(Required) Loan offer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ddd32ed-e05e-4083-ba1f-78823086b069",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "loans",
+                    "offers",
+                    ":loanOfferId",
+                    "accept"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanOfferId",
+                      "description": "(Required) Loan offer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90741b0a-13f9-4f8c-a18a-ff21585291ae",
+          "name": "Get a loan offer",
+          "request": {
+            "name": "Get a loan offer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "loans",
+                "offers",
+                ":loanOfferId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loanOfferId",
+                  "description": "(Required) Loan offer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23e9a2a5-7749-4010-8997-5e8dedaf0a85",
+              "name": "Loan offer retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "loans",
+                    "offers",
+                    ":loanOfferId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanOfferId",
+                      "description": "(Required) Loan offer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"productType\": \"CASH_ADVANCE\",\n    \"fundingAmount\": 5831.4222614080745,\n    \"currencyISOCode\": \"string\",\n    \"loanFee\": {\n      \"amount\": 6235.23969746017,\n      \"currencyISOCode\": \"string\"\n    },\n    \"rateType\": \"FIXED\",\n    \"originalAmount\": 6200.933004142977,\n    \"totalAnnualExpense\": 7735.555505177365,\n    \"offerExpiryDate\": \"string\",\n    \"lendingRequestId\": \"string\",\n    \"status\": \"CANCELLED\",\n    \"interestRate\": 6348.138708184055,\n    \"maturity\": 1325,\n    \"monthlyRepayment\": 2602.981014142559,\n    \"repaymentTerms\": {\n      \"basisPoint\": 2771.185229004789,\n      \"estimatedDays\": 1415,\n      \"thresholdAmount\": 8375.058478509973,\n      \"thresholdDuration\": 976,\n      \"startsAt\": \"string\"\n    },\n    \"thresholdAmountReached\": 1630.581671077017\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "048073ae-5208-451f-9230-9badd1819dce",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "loans",
+                    "offers",
+                    ":loanOfferId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanOfferId",
+                      "description": "(Required) Loan offer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a22e37d-6ed1-4c5e-929f-99a5c552bac0",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "loans",
+                    "offers",
+                    ":loanOfferId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loanOfferId",
+                      "description": "(Required) Loan offer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7054b750-6b09-4a61-9035-6c51b2b1ca32",
+    "name": "Accounts Account Lending - Loan - Offer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

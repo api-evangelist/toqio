@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account User status API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update user status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/provider/:complianceProvider/user/:userId/status/:status",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the the action is associated with"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios user ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "path",
+                "description": "The compliance status to be set"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint allows to update user status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

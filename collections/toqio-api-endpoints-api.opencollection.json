@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account API Endpoints API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get KYB Documents Per Company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/merchant/:clientId/provider/:complianceProvider/companyDocuments",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves KYB documents for a specified client and compliance provider."
+        },
+        {
+          "info": {
+            "name": "Get Pre-Signed URL for Document Download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/merchant/:clientId/document/download",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentKey",
+                "value": "",
+                "type": "query",
+                "description": "The key of the document to download. For example: the key can be retrieved from the company KYB documents endpoint."
+              }
+            ]
+          },
+          "docs": "Retrieves a pre-signed URL for downloading a document."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

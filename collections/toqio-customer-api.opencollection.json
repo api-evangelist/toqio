@@ -1,0 +1,152 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Customer API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Customer"
+        },
+        {
+          "info": {
+            "name": "Find Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Find Customer"
+        },
+        {
+          "info": {
+            "name": "Get Asset Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/assetTypes",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Asset Types"
+        },
+        {
+          "info": {
+            "name": "Get available currencies for a customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/currencies",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get available currencies for a customer"
+        },
+        {
+          "info": {
+            "name": "Get capabilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/capability",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get capabilities"
+        },
+        {
+          "info": {
+            "name": "Get customer connection status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/connectionStatus",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the customer"
+              }
+            ]
+          },
+          "docs": "Get customer connection status"
+        },
+        {
+          "info": {
+            "name": "Get Partner Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/partnerProducts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "countryCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Partner Products"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

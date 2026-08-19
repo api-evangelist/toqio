@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account pre-signed-url-controller API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "pre-signed-url-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pre-signed URLs to upload documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/merchant/:merchantId/presigned-url/upload",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "merchantId",
+                "value": "",
+                "type": "path",
+                "description": "merchantId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Pre-signed URLs to upload documents"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

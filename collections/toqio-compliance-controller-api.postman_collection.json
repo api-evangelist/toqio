@@ -1,0 +1,370 @@
+{
+  "item": [
+    {
+      "id": "557b1e37-3457-4c7d-b5a2-105016bb5a15",
+      "name": "compliance-controller",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5bb15d89-a17a-43e1-aa74-e56c8e1e1efb",
+          "name": "Upload KYB documents for a merchant",
+          "request": {
+            "name": "Upload KYB documents for a merchant",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "merchant",
+                ":merchantId",
+                "provider",
+                ":complianceProvider",
+                "uploadKybDocument"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchantId",
+                  "description": "(Required) merchantId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "complianceProvider",
+                  "description": "(Required) complianceProvider"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documents\": [\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d00ba74-49e5-43ee-8d37-a98a29444235",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "provider",
+                    ":complianceProvider",
+                    "uploadKybDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) complianceProvider"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"documentName\": \"string\",\n    \"documentStatus\": \"string\",\n    \"documentType\": \"string\",\n    \"key\": \"string\",\n    \"date\": \"string\",\n    \"available\": true\n  },\n  {\n    \"id\": \"string\",\n    \"documentName\": \"string\",\n    \"documentStatus\": \"string\",\n    \"documentType\": \"string\",\n    \"key\": \"string\",\n    \"date\": \"string\",\n    \"available\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1b3117f5-159c-4627-a7bf-20e5c7421bd2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "provider",
+                    ":complianceProvider",
+                    "uploadKybDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) complianceProvider"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a1ed826d-d28c-44aa-b29c-32ea8491e117",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "provider",
+                    ":complianceProvider",
+                    "uploadKybDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) complianceProvider"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dac0b2f5-7a52-41b0-93fd-e564a38766db",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "provider",
+                    ":complianceProvider",
+                    "uploadKybDocument"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "complianceProvider",
+                      "description": "(Required) complianceProvider"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documents\": [\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    },\n    {\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\",\n      \"key\": \"<string>\",\n      \"status\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4358071e-c33d-4521-8f1f-8fc1f69b32b5",
+    "name": "Accounts Account compliance-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

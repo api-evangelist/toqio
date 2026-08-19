@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Onboarding API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Onboarding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/onboarding/createMerchant",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new merchant for the specified customer. This is the first step in the onboarding process and will only be called if canRunCompliance capability is set to true."
+        },
+        {
+          "info": {
+            "name": "Get Hosted Onboarding Link for a Merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/onboarding/client/:clientId/hostedOnboarding",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a link that will allow a merchant to complete the onboarding process. This is the second step in the onboarding process and will only be called if canRunCompliance capability is set to true."
+        },
+        {
+          "info": {
+            "name": "Update Merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/onboarding/:clientId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Merchant"
+        },
+        {
+          "info": {
+            "name": "Update Merchant Directors",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/onboarding/:clientId/updateEnduser",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Merchant Directors"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

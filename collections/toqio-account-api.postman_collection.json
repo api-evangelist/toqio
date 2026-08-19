@@ -1,0 +1,2752 @@
+{
+  "item": [
+    {
+      "id": "c83872fa-a484-4909-9949-853d5749b3ec",
+      "name": "Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffdf6c5e-ccec-4f1c-8135-bfc686242500",
+          "name": "Create account",
+          "request": {
+            "name": "Create account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"signUpRequest\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"cif\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dateOfBirth\": \"<dateTime>\",\n    \"partnerProduct\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"clientType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"subOrganisationType\": \"<string>\"\n  },\n  \"partnerProduct\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"address2\": \"<string>\",\n  \"legislationCountry\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "975364eb-a713-496f-98a0-59ae4bb3f354",
+              "name": "Account successfully created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"signUpRequest\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"cif\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dateOfBirth\": \"<dateTime>\",\n    \"partnerProduct\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"clientType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"subOrganisationType\": \"<string>\"\n  },\n  \"partnerProduct\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"address2\": \"<string>\",\n  \"legislationCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accountId\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwiftForSEPA\": \"string\",\n    \"bicSwiftForSWIFT\": \"string\",\n    \"assetType\": \"usd\",\n    \"createdAt\": \"1965-10-17T17:03:15.993Z\",\n    \"status\": \"PENDING\",\n    \"totalBalance\": 4294.462485377076,\n    \"availableBalance\": 213.93508615441647,\n    \"countryCode\": \"string\",\n    \"alias\": \"string\",\n    \"correspondentBank\": \"string\",\n    \"correspondentBankAddress\": \"string\",\n    \"correspondentBankSWIFT\": \"string\",\n    \"holderBank\": \"string\",\n    \"holderBankAddress\": \"string\",\n    \"internationalEnabled\": false,\n    \"partnerProduct\": \"string\",\n    \"holderName\": \"string\",\n    \"holderAddress\": \"string\",\n    \"holderAddressObj\": {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    \"address\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"wireRoutingNumber\": \"string\",\n    \"achRoutingNumber\": \"string\",\n    \"signUpResponse\": {\n      \"sendQuarantinedEmail\": false,\n      \"sendKycCheckEmail\": true,\n      \"kycCheckEmailMessage\": \"string\"\n    },\n    \"accountCanIssueCards\": true\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27b63e03-2c5f-4609-a2df-c4f5780fb9a8",
+              "name": "BAD_REQUEST",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"signUpRequest\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"cif\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dateOfBirth\": \"<dateTime>\",\n    \"partnerProduct\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"clientType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"subOrganisationType\": \"<string>\"\n  },\n  \"partnerProduct\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"address2\": \"<string>\",\n  \"legislationCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "74544cf8-8067-4e60-bbc9-8eb4071fa2cc",
+              "name": "INVALID_ACCOUNT_PRODUCT_CODE_COUNTRY",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"signUpRequest\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"cif\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dateOfBirth\": \"<dateTime>\",\n    \"partnerProduct\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"clientType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"subOrganisationType\": \"<string>\"\n  },\n  \"partnerProduct\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"address2\": \"<string>\",\n  \"legislationCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c860d614-9bb1-4674-9e47-49e8c6a7a118",
+              "name": "ERROR_CLIENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"signUpRequest\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"cif\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dateOfBirth\": \"<dateTime>\",\n    \"partnerProduct\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"clientType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"subOrganisationType\": \"<string>\"\n  },\n  \"partnerProduct\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"address2\": \"<string>\",\n  \"legislationCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ef0dc419-61d8-4db5-8fa1-7063fd6b2a7a",
+              "name": "INVALID_CLIENT_CONFIGURATION",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"clientId\": \"<string>\",\n  \"address\": \"<string>\",\n  \"city\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"signUpRequest\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"cif\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dateOfBirth\": \"<dateTime>\",\n    \"partnerProduct\": \"<string>\",\n    \"countryCode\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"clientType\": \"<string>\",\n    \"address\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"subOrganisationType\": \"<string>\"\n  },\n  \"partnerProduct\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"address2\": \"<string>\",\n  \"legislationCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e44b443d-33c3-4632-9143-599c7d20df65",
+          "name": "Get accounts",
+          "request": {
+            "name": "Get accounts",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddb026b3-4304-4d12-94b1-7fd51f1c8167",
+              "name": "List of account successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"accountId\": \"string\",\n        \"ukAccountNumber\": \"string\",\n        \"ukSortCode\": \"string\",\n        \"iban\": \"string\",\n        \"bicSwiftForSEPA\": \"string\",\n        \"bicSwiftForSWIFT\": \"string\",\n        \"assetType\": \"czk\",\n        \"createdAt\": \"1979-06-06T02:20:25.144Z\",\n        \"status\": \"HIDE\",\n        \"totalBalance\": 1761.204596013255,\n        \"availableBalance\": 8520.50931034831,\n        \"countryCode\": \"string\",\n        \"alias\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\",\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"internationalEnabled\": true,\n        \"partnerProduct\": \"string\",\n        \"holderName\": \"string\",\n        \"holderAddress\": \"string\",\n        \"holderAddressObj\": {\n          \"address\": \"string\",\n          \"address2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"postalCode\": \"string\",\n        \"wireRoutingNumber\": \"string\",\n        \"achRoutingNumber\": \"string\",\n        \"signUpResponse\": {\n          \"sendQuarantinedEmail\": false,\n          \"sendKycCheckEmail\": true,\n          \"kycCheckEmailMessage\": \"string\"\n        },\n        \"accountCanIssueCards\": false\n      },\n      {\n        \"accountId\": \"string\",\n        \"ukAccountNumber\": \"string\",\n        \"ukSortCode\": \"string\",\n        \"iban\": \"string\",\n        \"bicSwiftForSEPA\": \"string\",\n        \"bicSwiftForSWIFT\": \"string\",\n        \"assetType\": \"jpy\",\n        \"createdAt\": \"2004-03-14T23:59:18.426Z\",\n        \"status\": \"CLOSED\",\n        \"totalBalance\": 9407.168609812476,\n        \"availableBalance\": 7788.782242437324,\n        \"countryCode\": \"string\",\n        \"alias\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\",\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"internationalEnabled\": false,\n        \"partnerProduct\": \"string\",\n        \"holderName\": \"string\",\n        \"holderAddress\": \"string\",\n        \"holderAddressObj\": {\n          \"address\": \"string\",\n          \"address2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"postalCode\": \"string\",\n        \"wireRoutingNumber\": \"string\",\n        \"achRoutingNumber\": \"string\",\n        \"signUpResponse\": {\n          \"sendQuarantinedEmail\": true,\n          \"sendKycCheckEmail\": true,\n          \"kycCheckEmailMessage\": \"string\"\n        },\n        \"accountCanIssueCards\": true\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": [\n      {\n        \"accountId\": \"string\",\n        \"ukAccountNumber\": \"string\",\n        \"ukSortCode\": \"string\",\n        \"iban\": \"string\",\n        \"bicSwiftForSEPA\": \"string\",\n        \"bicSwiftForSWIFT\": \"string\",\n        \"assetType\": \"thb\",\n        \"createdAt\": \"1961-03-20T19:40:43.081Z\",\n        \"status\": \"QUARANTINE\",\n        \"totalBalance\": 8479.057277115995,\n        \"availableBalance\": 9999.755668534903,\n        \"countryCode\": \"string\",\n        \"alias\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\",\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"internationalEnabled\": true,\n        \"partnerProduct\": \"string\",\n        \"holderName\": \"string\",\n        \"holderAddress\": \"string\",\n        \"holderAddressObj\": {\n          \"address\": \"string\",\n          \"address2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"postalCode\": \"string\",\n        \"wireRoutingNumber\": \"string\",\n        \"achRoutingNumber\": \"string\",\n        \"signUpResponse\": {\n          \"sendQuarantinedEmail\": true,\n          \"sendKycCheckEmail\": true,\n          \"kycCheckEmailMessage\": \"string\"\n        },\n        \"accountCanIssueCards\": false\n      },\n      {\n        \"accountId\": \"string\",\n        \"ukAccountNumber\": \"string\",\n        \"ukSortCode\": \"string\",\n        \"iban\": \"string\",\n        \"bicSwiftForSEPA\": \"string\",\n        \"bicSwiftForSWIFT\": \"string\",\n        \"assetType\": \"hkd\",\n        \"createdAt\": \"1984-01-07T19:30:47.367Z\",\n        \"status\": \"SUSPENDED\",\n        \"totalBalance\": 1757.7333126673734,\n        \"availableBalance\": 808.7998128446294,\n        \"countryCode\": \"string\",\n        \"alias\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\",\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"internationalEnabled\": false,\n        \"partnerProduct\": \"string\",\n        \"holderName\": \"string\",\n        \"holderAddress\": \"string\",\n        \"holderAddressObj\": {\n          \"address\": \"string\",\n          \"address2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"country\": \"string\"\n        },\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"city\": \"string\",\n        \"postalCode\": \"string\",\n        \"wireRoutingNumber\": \"string\",\n        \"achRoutingNumber\": \"string\",\n        \"signUpResponse\": {\n          \"sendQuarantinedEmail\": false,\n          \"sendKycCheckEmail\": true,\n          \"kycCheckEmailMessage\": \"string\"\n        },\n        \"accountCanIssueCards\": false\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4b463a3-590f-4166-afa8-6719c50c673c",
+              "name": "BAD_REQUEST",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94202d6c-774e-4706-8337-a1a9e707e989",
+              "name": "BANK_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6e527199-1ca1-4b77-a30f-34064ad4e244",
+              "name": "INVALID_CLIENT_CONFIGURATION",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a8b898a-7bbb-4b0c-8944-8a1bd3c4326a",
+          "name": "Delete account",
+          "request": {
+            "name": "Delete account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52a00b14-5f2c-4ee3-951d-c9d95aefefc2",
+              "name": "Account successfully deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5e41ec8-bd22-45c0-bcde-7c200af8ae74",
+              "name": "BAD_REQUEST",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "603b521e-ae3e-4a8a-a9f3-2cd858a173de",
+              "name": "ACCOUNT_CLIENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "349d8a43-9eb1-4182-a5c6-d7af420db95c",
+              "name": "ERROR_CLOSING_ACCOUNT",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Expectation Failed",
+              "code": 417,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "064a5b10-be21-4937-8004-d1368e05e678",
+              "name": "ERROR_CLOSING_ACCOUNT",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b696697-754f-404d-a93b-f823482a9342",
+          "name": "Get account",
+          "request": {
+            "name": "Get account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "529124e0-6862-4f38-8d08-111670adcba5",
+              "name": "Account details successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accountId\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwiftForSEPA\": \"string\",\n    \"bicSwiftForSWIFT\": \"string\",\n    \"assetType\": \"usd\",\n    \"createdAt\": \"1965-10-17T17:03:15.993Z\",\n    \"status\": \"PENDING\",\n    \"totalBalance\": 4294.462485377076,\n    \"availableBalance\": 213.93508615441647,\n    \"countryCode\": \"string\",\n    \"alias\": \"string\",\n    \"correspondentBank\": \"string\",\n    \"correspondentBankAddress\": \"string\",\n    \"correspondentBankSWIFT\": \"string\",\n    \"holderBank\": \"string\",\n    \"holderBankAddress\": \"string\",\n    \"internationalEnabled\": false,\n    \"partnerProduct\": \"string\",\n    \"holderName\": \"string\",\n    \"holderAddress\": \"string\",\n    \"holderAddressObj\": {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    \"address\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"wireRoutingNumber\": \"string\",\n    \"achRoutingNumber\": \"string\",\n    \"signUpResponse\": {\n      \"sendQuarantinedEmail\": false,\n      \"sendKycCheckEmail\": true,\n      \"kycCheckEmailMessage\": \"string\"\n    },\n    \"accountCanIssueCards\": true\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc8ead71-dd1b-4ad0-a8f3-3b430c53aedb",
+              "name": "BAD_REQUEST",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0ec342d7-a082-4dfc-847a-add9c93583ad",
+              "name": "ERROR_CLIENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04bd2c8d-d1a1-475b-b6c2-d46e3d6aa9b4",
+              "name": "INVALID_CLIENT_CONFIGURATION",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b866f21-c940-46e5-bdce-5a9e6e44a36b",
+          "name": "Update account",
+          "request": {
+            "name": "Update account",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"city\": \"<string>\",\n  \"address\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "51014327-668f-4d37-9a4c-74da1828e2ac",
+              "name": "Account details successfully updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"address\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"accountId\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwiftForSEPA\": \"string\",\n    \"bicSwiftForSWIFT\": \"string\",\n    \"assetType\": \"usd\",\n    \"createdAt\": \"1965-10-17T17:03:15.993Z\",\n    \"status\": \"PENDING\",\n    \"totalBalance\": 4294.462485377076,\n    \"availableBalance\": 213.93508615441647,\n    \"countryCode\": \"string\",\n    \"alias\": \"string\",\n    \"correspondentBank\": \"string\",\n    \"correspondentBankAddress\": \"string\",\n    \"correspondentBankSWIFT\": \"string\",\n    \"holderBank\": \"string\",\n    \"holderBankAddress\": \"string\",\n    \"internationalEnabled\": false,\n    \"partnerProduct\": \"string\",\n    \"holderName\": \"string\",\n    \"holderAddress\": \"string\",\n    \"holderAddressObj\": {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"postalCode\": \"string\",\n      \"country\": \"string\"\n    },\n    \"address\": \"string\",\n    \"address2\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"wireRoutingNumber\": \"string\",\n    \"achRoutingNumber\": \"string\",\n    \"signUpResponse\": {\n      \"sendQuarantinedEmail\": false,\n      \"sendKycCheckEmail\": true,\n      \"kycCheckEmailMessage\": \"string\"\n    },\n    \"accountCanIssueCards\": true\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4317837-42ab-45d7-89a6-f999bca4c267",
+              "name": "BAD_REQUEST",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"address\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fcb778a-3e96-4655-98da-8652d0a86dc1",
+              "name": "ACCOUNT_NOT_FOUND_FOR_CLIENT",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"address\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1dc8b3b3-57cb-45e2-bfc7-b2defe13386a",
+              "name": "FUNCTION_NOT_IMPLEMENTED_YET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"city\": \"<string>\",\n  \"address\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"alias\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cb3165eb-9c8a-4c23-a900-c9bc3e7034fa",
+          "name": "Find account transaction list statement",
+          "request": {
+            "name": "Find account transaction list statement",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts",
+                ":accountId",
+                "bankStatement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7aadca6-4f96-43c1-ac6a-6b58fa087225",
+              "name": "List of account transactions successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId",
+                    "bankStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"balance\": -478.89,\n        \"date\": \"1986-07-08T18:05:15.369Z\",\n        \"transactionNumber\": \"string\"\n      },\n      {\n        \"balance\": 9.01,\n        \"date\": \"1959-02-27T17:37:54.347Z\",\n        \"transactionNumber\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": [\n      {\n        \"balance\": -915628.97,\n        \"date\": \"2005-08-18T08:51:05.532Z\",\n        \"transactionNumber\": \"string\"\n      },\n      {\n        \"balance\": -69280480122.08,\n        \"date\": \"1972-01-07T08:29:22.159Z\",\n        \"transactionNumber\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f1b20d7-b5de-4faa-ab44-2908a52fdc85",
+              "name": "BAD_REQUEST",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId",
+                    "bankStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "06b2dcf2-35da-4dec-9114-fa1fdc4f4226",
+              "name": "ACCOUNT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId",
+                    "bankStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"start\": \"<dateTime>\",\n  \"end\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be21602f-180a-4ff8-a202-d338de6f2a24",
+          "name": "Find account transaction list statement",
+          "request": {
+            "name": "Find account transaction list statement",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "accounts",
+                ":accountId",
+                "bankStatementOtp"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": \"<string>\",\n  \"OTPBaas\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"dateRange\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c6c59df-1bee-4927-9ef1-8cc3e6f229ea",
+              "name": "List of account transactions successfully retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId",
+                    "bankStatementOtp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"OTPBaas\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"dateRange\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"balance\": -491.81,\n        \"date\": \"2001-11-23T07:24:35.729Z\",\n        \"transactionNumber\": \"string\"\n      },\n      {\n        \"balance\": 3903068.67,\n        \"date\": \"2025-08-22T20:55:28.200Z\",\n        \"transactionNumber\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": [\n      {\n        \"balance\": 644334340.38,\n        \"date\": \"1994-06-03T17:50:59.832Z\",\n        \"transactionNumber\": \"string\"\n      },\n      {\n        \"balance\": 13540771933.78,\n        \"date\": \"2006-01-16T09:45:12.098Z\",\n        \"transactionNumber\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02b2f676-6319-459d-9b69-35b81e7b6f43",
+              "name": "ACCOUNT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "accounts",
+                    ":accountId",
+                    "bankStatementOtp"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userId\": \"<string>\",\n  \"OTPBaas\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"dateRange\": {\n    \"start\": \"<dateTime>\",\n    \"end\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f191e2e5-1781-42c7-91ba-dfc29913ea8b",
+          "name": "Get account ownership certificate",
+          "request": {
+            "name": "Get account ownership certificate",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "merchants",
+                ":merchantId",
+                "accounts",
+                ":accountId",
+                "certificates",
+                "ownership"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchantId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "874e0666-1e39-4441-acd8-2bfe62490341",
+              "name": "String encoded in base 64 that represents the PDF",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchants",
+                    ":merchantId",
+                    "accounts",
+                    ":accountId",
+                    "certificates",
+                    "ownership"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\",\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24301037-744c-459e-9385-bccde7424956",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchants",
+                    ":merchantId",
+                    "accounts",
+                    ":accountId",
+                    "certificates",
+                    "ownership"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6f2c59ee-e4f6-462f-8fbf-cddfeafc237e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchants",
+                    ":merchantId",
+                    "accounts",
+                    ":accountId",
+                    "certificates",
+                    "ownership"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67e4f422-91fc-4283-83b0-c941a28b267e",
+          "name": "Get Dynamic Account Balances",
+          "request": {
+            "name": "Get Dynamic Account Balances",
+            "description": {
+              "content": "Retrieves dynamic balance entries for a specific ledger account. The balances returned by this endpoint REPLACE the standard balance display in the Toqio platform. Instead of showing the default two balance fields, the platform will display exactly what the connector returns here. This allows complete customization of which balances are shown (e.g., available balance, pending balance, reserved amounts, etc.) and how they are labeled. IMPORTANT: If the connector returns an empty array or no response, no balances will be displayed to the end user. For detailed implementation guidance, see the [Dynamic Balance in Ledger Apps](https://platform.toq.io/reference/dynamic-balance-in-ledger-apps) documentation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "accounts",
+                ":accountId",
+                "dynamicBalances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer in the Toqio platform. This ID is used to identify which customer's account balances are being requested."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Unique identifier of the ledger account for which dynamic balances are being requested. This is the account ID from your connector's system."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68441d94-7c24-4594-97eb-6ddae0bedd59",
+              "name": "Successfully retrieved dynamic account balances. Returns an array of balance entries. If one balance is returned, one will be displayed. If two or more balances are returned, only the first two will be displayed. If an empty array is returned, no balances will be shown to the user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "dynamicBalances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer in the Toqio platform. This ID is used to identify which customer's account balances are being requested."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique identifier of the ledger account for which dynamic balances are being requested. This is the account ID from your connector's system."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"title\": {\n        \"es\": \"string\",\n        \"en\": \"string\",\n        \"de\": \"string\",\n        \"it\": \"string\",\n        \"zh\": \"string\",\n        \"pt\": \"string\"\n      },\n      \"amount\": 1234.56,\n      \"currency\": \"EUR\",\n      \"tooltipInformation\": {\n        \"es\": \"string\",\n        \"en\": \"string\",\n        \"de\": \"string\",\n        \"it\": \"string\",\n        \"zh\": \"string\",\n        \"pt\": \"string\"\n      }\n    },\n    {\n      \"title\": {\n        \"es\": \"string\",\n        \"en\": \"string\",\n        \"de\": \"string\",\n        \"it\": \"string\",\n        \"zh\": \"string\",\n        \"pt\": \"string\"\n      },\n      \"amount\": 1234.56,\n      \"currency\": \"EUR\",\n      \"tooltipInformation\": {\n        \"es\": \"string\",\n        \"en\": \"string\",\n        \"de\": \"string\",\n        \"it\": \"string\",\n        \"zh\": \"string\",\n        \"pt\": \"string\"\n      }\n    }\n  ],\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b31ec590-47a8-4f95-be17-9349d0f435b6",
+              "name": "BAD_REQUEST - The request parameters are invalid or malformed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "dynamicBalances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer in the Toqio platform. This ID is used to identify which customer's account balances are being requested."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique identifier of the ledger account for which dynamic balances are being requested. This is the account ID from your connector's system."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0bd39cfe-002a-40a4-9cff-cfbb62e0b622",
+              "name": "ACCOUNT_NOT_FOUND - The specified account ID does not exist in the connector's system",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "dynamicBalances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer in the Toqio platform. This ID is used to identify which customer's account balances are being requested."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique identifier of the ledger account for which dynamic balances are being requested. This is the account ID from your connector's system."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "43960f5e-3524-4136-8273-684b974ba403",
+              "name": "INTERNAL_SERVER_ERROR - An unexpected error occurred while calculating or retrieving the dynamic balances",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "dynamicBalances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer in the Toqio platform. This ID is used to identify which customer's account balances are being requested."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique identifier of the ledger account for which dynamic balances are being requested. This is the account ID from your connector's system."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61411f84-ab29-4ff9-b57c-ebd73dacc63e",
+          "name": "Get Payment Options",
+          "request": {
+            "name": "Get Payment Options",
+            "description": {
+              "content": "Returns the payment options available for a specific source account. This endpoint is called by the Integration Hub before initiating a payment flow, so the frontend can determine how the user should select the destination beneficiary.\n\nThe main purpose of this endpoint is to communicate the **beneficiary selection mode**, which controls what kind of beneficiaries the user is allowed to choose as the destination of a payment originating from this account.\n\nThe connector must evaluate the source account (identified by `accountId`) and return the appropriate selection mode based on its own business rules, account type, regulatory constraints, or any other criteria relevant to the provider.\n\n### Beneficiary Selection Modes\n\nThe response contains a single field `beneficiarySelectionMode` which must be one of the following values:\n\n- **`ANY_BENEFICIARY_ANY_PROVIDER`**: No restrictions. The user can select any beneficiary from any BaaS provider. This is the most permissive mode and should be used when there are no limitations on who can receive payments from this account.\n\n- **`MERCHANT_ACCOUNTS_ANY_PROVIDER`**: The user can only select beneficiaries that correspond to the merchant's own Toqio accounts, but those accounts can be held at any BaaS provider. Use this mode when payments from this account must stay within the merchant's own accounts but can cross provider boundaries.\n\n- **`MERCHANT_ACCOUNTS_SAME_PROVIDER`**: The user can only select beneficiaries that correspond to the merchant's own Toqio accounts AND those accounts must be held at the same BaaS provider as the source account. This is the most restrictive mode and should be used when payments must stay within the same provider's infrastructure (e.g., for instant internal transfers or regulatory reasons).\n\n### How the Frontend Uses This\n\nThe Toqio frontend calls this endpoint through the Integration Hub before displaying the beneficiary selection step in the payment flow. Based on the returned mode, the frontend will filter the list of available beneficiaries accordingly, preventing the user from selecting an invalid destination.\n\n### Error Handling / Fallback Behavior\n\nIf this endpoint returns **any error** (4xx, 5xx, timeout, connection refused, etc.), the Integration Hub will treat it as if the connector returned `ANY_BENEFICIARY_ANY_PROVIDER`. This means the user will see all beneficiaries without restrictions. This fallback applies regardless of the specific error code or message. Connectors that do not wish to restrict beneficiary selection can simply not implement this endpoint at all.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "accounts",
+                ":accountId",
+                "payment-options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer in the Toqio platform. This is the customer who owns the source account and is initiating the payment flow."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Unique identifier of the source account from which the payment will be made. The connector should evaluate this account to determine which beneficiary selection mode applies."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99c972e3-c257-462d-9ee3-a5827956a869",
+              "name": "Successfully retrieved payment options for the specified account. The response contains the beneficiary selection mode that the frontend will use to filter the beneficiary list in the payment flow.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "payment-options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer in the Toqio platform. This is the customer who owns the source account and is initiating the payment flow."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique identifier of the source account from which the payment will be made. The connector should evaluate this account to determine which beneficiary selection mode applies."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"data\": {\n    \"beneficiarySelectionMode\": \"MERCHANT_ACCOUNTS_ANY_PROVIDER\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18fa7647-ccd7-4f6b-bcd0-43cf74697539",
+              "name": "The specified customerId or accountId does not exist in the connector's system. Any error response will cause the Integration Hub to default to ANY_BENEFICIARY_ANY_PROVIDER.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "payment-options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer in the Toqio platform. This is the customer who owns the source account and is initiating the payment flow."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Unique identifier of the source account from which the payment will be made. The connector should evaluate this account to determine which beneficiary selection mode applies."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "596caf8a-8751-4ae9-8db3-723966c63c93",
+    "name": "Accounts Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

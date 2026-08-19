@@ -1,0 +1,387 @@
+{
+  "item": [
+    {
+      "id": "44c6c66a-bd63-445f-a053-9ac3762c5ee7",
+      "name": "pre-signed-url-controller",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "107e050b-e8a6-40cd-ae16-428f8d9aa2d0",
+          "name": "Get Pre-signed URLs to upload documents",
+          "request": {
+            "name": "Get Pre-signed URLs to upload documents",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "merchant",
+                ":merchantId",
+                "presigned-url",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchantId",
+                  "description": "(Required) merchantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"section\": \"<string>\",\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    }\n  ],\n  \"extraFields\": {\n    \"userId\": \"<string>\",\n    \"shareholderId\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0be28ac0-c911-471b-8dce-4f6fc4f8efd5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "presigned-url",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    }\n  ],\n  \"extraFields\": {\n    \"userId\": \"<string>\",\n    \"shareholderId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"preSignedUrls\": [\n    {\n      \"name\": \"string\",\n      \"preSignedUrl\": \"string\",\n      \"key\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"preSignedUrl\": \"string\",\n      \"key\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d113f01f-662e-4fb9-9416-d239bfc81429",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "presigned-url",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    }\n  ],\n  \"extraFields\": {\n    \"userId\": \"<string>\",\n    \"shareholderId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7310dc88-0eb5-44d2-81ee-c82c94d0b6dd",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "presigned-url",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    }\n  ],\n  \"extraFields\": {\n    \"userId\": \"<string>\",\n    \"shareholderId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c2d84cd0-b986-48a2-b79b-fbecb8dbe199",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "presigned-url",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    }\n  ],\n  \"extraFields\": {\n    \"userId\": \"<string>\",\n    \"shareholderId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "57d2eb59-42e0-4692-bb7b-15e49aacb8ca",
+              "name": "Validation Exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":merchantId",
+                    "presigned-url",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) merchantId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"section\": \"<string>\",\n  \"documents\": [\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"contentType\": \"<string>\"\n    }\n  ],\n  \"extraFields\": {\n    \"userId\": \"<string>\",\n    \"shareholderId\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Expectation Failed",
+              "code": 417,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8c38d4f5-a055-4c69-9599-aafc2909c176",
+    "name": "Accounts Account pre-signed-url-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,807 @@
+{
+  "item": [
+    {
+      "id": "2b223a41-c2fb-4982-912b-c41cc535aa1e",
+      "name": "Manage requests",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c00f1a02-b962-4113-9117-8c72483e7277",
+          "name": "Update request status",
+          "request": {
+            "name": "Update request status",
+            "description": {
+              "content": "This endpoint allows customers to modify the status of a selected payment request. Customers can update the status of a request to reflect its current state. Currently the system supports the following status: PAID, UNPAID, REJECTED, NOT_SENT.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue",
+                ":id",
+                "merchant",
+                ":merchantId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "merchantId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e86b613-d726-4a00-ab56-20f50265318b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue",
+                    ":id",
+                    "merchant",
+                    ":merchantId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "merchantId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60220781-3d20-4055-a1f9-d3c8eb565757",
+          "name": "Get request details",
+          "request": {
+            "name": "Get request details",
+            "description": {
+              "content": "This endpoint allows customers to retrieve detailed information about a specific request by its unique request ID. The response will include the status of the request, available options for the request, the option that was selected (if applicable), and detailed line data associated with the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) ID of the request"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e48f4f4-ce28-47cd-baa8-caf368e54839",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"group\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"requestDate\": \"1951-05-30T00:52:29.901Z\",\n    \"customerId\": \"string\",\n    \"paymentConfigurator\": [\n      {\n        \"type\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"type\": \"string\",\n        \"name\": \"string\"\n      }\n    ]\n  },\n  \"status\": \"REJECTED\",\n  \"clientId\": \"string\",\n  \"clientName\": \"string\",\n  \"invoiceNumber\": \"string\",\n  \"invoiceAmount\": 1907.8331414721529,\n  \"invoiceCurrency\": \"string\",\n  \"invoiceIssueDate\": \"1961-12-07T22:18:14.610Z\",\n  \"invoiceDueDate\": \"2000-05-22T10:59:10.038Z\",\n  \"selectedOption\": {\n    \"type\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "873bcacf-63b4-4a35-83d5-8586fa65cc46",
+          "name": "Send payment request to merchants",
+          "request": {
+            "name": "Send payment request to merchants",
+            "description": {
+              "content": "This endpoint allows customers to send out payment requests to all the merchants included in a previously validated collection file. Each merchant in the collection will receive a request for payment based on the details provided in the validated invoice data. Once the request is sent, merchants will receive these payment requests via email and through their notification centre in the portal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"revenueCollection\": [\n    {\n      \"clientId\": \"<string>\",\n      \"clientName\": \"<string>\",\n      \"invoiceAmount\": \"<double>\",\n      \"invoiceCurrency\": \"<string>\",\n      \"invoiceDueDate\": \"<dateTime>\",\n      \"invoiceIssueDate\": \"<dateTime>\",\n      \"invoiceNumber\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"lineErrors\": [\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"clientId\": \"<string>\",\n      \"clientName\": \"<string>\",\n      \"invoiceAmount\": \"<double>\",\n      \"invoiceCurrency\": \"<string>\",\n      \"invoiceDueDate\": \"<dateTime>\",\n      \"invoiceIssueDate\": \"<dateTime>\",\n      \"invoiceNumber\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"lineErrors\": [\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"paymentOptions\": [\n    {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "666c9b42-7ae4-4df8-a063-99cfaf61f56e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"revenueCollection\": [\n    {\n      \"clientId\": \"<string>\",\n      \"clientName\": \"<string>\",\n      \"invoiceAmount\": \"<double>\",\n      \"invoiceCurrency\": \"<string>\",\n      \"invoiceDueDate\": \"<dateTime>\",\n      \"invoiceIssueDate\": \"<dateTime>\",\n      \"invoiceNumber\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"lineErrors\": [\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"clientId\": \"<string>\",\n      \"clientName\": \"<string>\",\n      \"invoiceAmount\": \"<double>\",\n      \"invoiceCurrency\": \"<string>\",\n      \"invoiceDueDate\": \"<dateTime>\",\n      \"invoiceIssueDate\": \"<dateTime>\",\n      \"invoiceNumber\": \"<string>\",\n      \"lineNumber\": \"<integer>\",\n      \"lineErrors\": [\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        },\n        {\n          \"field\": \"<string>\",\n          \"errorType\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"paymentOptions\": [\n    {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"requestDate\": \"1974-11-23T22:58:42.996Z\",\n  \"clientsFail\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba40fa4f-0578-4c2c-8aad-429b494cc963",
+          "name": "Get requests",
+          "request": {
+            "name": "Get requests",
+            "description": {
+              "content": "This endpoint returns a list of requests based on the filters used",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "merchantId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionName",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "fromInvoiceIssueDate",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "toInvoiceIssueDate",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "fromInvoiceDueDate",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "toInvoiceDueDate",
+                  "value": "<date>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "61f6ecc5-86c0-4cd2-8f93-121dc3612d03",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "collectionName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "fromInvoiceIssueDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toInvoiceIssueDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "fromInvoiceDueDate",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "toInvoiceDueDate",
+                      "value": "<date>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"group\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestDate\": \"1975-11-01T06:52:17.922Z\",\n      \"customerId\": \"string\",\n      \"paymentConfigurator\": [\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"status\": \"REJECTED\",\n    \"clientId\": \"string\",\n    \"clientName\": \"string\",\n    \"invoiceNumber\": \"string\",\n    \"invoiceAmount\": 6399.207065564838,\n    \"invoiceCurrency\": \"string\",\n    \"invoiceIssueDate\": \"1952-10-01T00:03:56.077Z\",\n    \"invoiceDueDate\": \"2010-05-08T17:13:20.653Z\",\n    \"selectedOption\": {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"group\": {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"requestDate\": \"2025-03-05T22:33:50.334Z\",\n      \"customerId\": \"string\",\n      \"paymentConfigurator\": [\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ]\n    },\n    \"status\": \"NOT_SENT\",\n    \"clientId\": \"string\",\n    \"clientName\": \"string\",\n    \"invoiceNumber\": \"string\",\n    \"invoiceAmount\": 8679.27238946465,\n    \"invoiceCurrency\": \"string\",\n    \"invoiceIssueDate\": \"1948-08-03T19:12:23.781Z\",\n    \"invoiceDueDate\": \"1972-06-15T00:17:57.508Z\",\n    \"selectedOption\": {\n      \"type\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "872fc925-09ff-4a6a-b9a0-029a08b9137d",
+          "name": "Pay payment request",
+          "request": {
+            "name": "Pay payment request",
+            "description": {
+              "content": "This endpoint allows merchants to make immediate payments for invoice payment requests. When the endpoint is called, the system will generate an immediate payment from the merchant's selected source account to the previously added receiver account, which was set up by the customer for receiving invoice payments. Once the payment is made successfully, the status of the corresponding request will be updated to PAID. ",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue",
+                ":id",
+                "pay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"securityCode\": {\n    \"userId\": \"<string>\",\n    \"encData\": \"<string>\",\n    \"encAesKey\": \"<string>\",\n    \"iv\": \"<string>\",\n    \"tag\": \"<string>\"\n  },\n  \"paymentOption\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"superCustomerId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"clientType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c1695eda-f0b4-4f46-9c0b-0352a3572644",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue",
+                    ":id",
+                    "pay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"securityCode\": {\n    \"userId\": \"<string>\",\n    \"encData\": \"<string>\",\n    \"encAesKey\": \"<string>\",\n    \"iv\": \"<string>\",\n    \"tag\": \"<string>\"\n  },\n  \"paymentOption\": {\n    \"type\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"superCustomerId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"clientType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"transactionNumber\": \"string\",\n  \"txTitle\": \"string\",\n  \"invoice\": false,\n  \"invoices\": [\n    {\n      \"id\": \"string\",\n      \"hasInvoice\": true,\n      \"supplier\": \"string\",\n      \"amount\": 2667.092453288177,\n      \"invoiceNumber\": \"string\",\n      \"cif\": \"string\",\n      \"postalCode\": \"string\",\n      \"totalWithoutVat\": 300.3848738217174,\n      \"vatPercentage\": 9634.805060074517,\n      \"isTotalWithoutVatEdited\": false,\n      \"files\": [\n        {\n          \"id\": \"string\",\n          \"extension\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\",\n          \"fileUrl\": \"string\",\n          \"mime\": \"string\",\n          \"size\": 3484,\n          \"thumbnailUrl\": \"string\",\n          \"invoiceId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"extension\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\",\n          \"fileUrl\": \"string\",\n          \"mime\": \"string\",\n          \"size\": 9656,\n          \"thumbnailUrl\": \"string\",\n          \"invoiceId\": \"string\"\n        }\n      ],\n      \"invoiceDate\": \"string\",\n      \"dueDate\": \"string\",\n      \"discountPercentage\": 4654.345642476754,\n      \"discountAmount\": 9634.131607006833,\n      \"lines\": [\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"totalWithoutVat\": 9660.186863331983,\n          \"vatPercentage\": 6313.874237281114,\n          \"amount\": 6212.690095152838\n        },\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"totalWithoutVat\": 8941.912275604673,\n          \"vatPercentage\": 1362.2375822392007,\n          \"amount\": 1137.7937769045955\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"hasInvoice\": false,\n      \"supplier\": \"string\",\n      \"amount\": 6218.766842892855,\n      \"invoiceNumber\": \"string\",\n      \"cif\": \"string\",\n      \"postalCode\": \"string\",\n      \"totalWithoutVat\": 9121.300746253455,\n      \"vatPercentage\": 9365.25180501527,\n      \"isTotalWithoutVatEdited\": true,\n      \"files\": [\n        {\n          \"id\": \"string\",\n          \"extension\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\",\n          \"fileUrl\": \"string\",\n          \"mime\": \"string\",\n          \"size\": 3310,\n          \"thumbnailUrl\": \"string\",\n          \"invoiceId\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"extension\": \"string\",\n          \"key\": \"string\",\n          \"name\": \"string\",\n          \"fileUrl\": \"string\",\n          \"mime\": \"string\",\n          \"size\": 7794,\n          \"thumbnailUrl\": \"string\",\n          \"invoiceId\": \"string\"\n        }\n      ],\n      \"invoiceDate\": \"string\",\n      \"dueDate\": \"string\",\n      \"discountPercentage\": 4642.668820530695,\n      \"discountAmount\": 6457.151871290387,\n      \"lines\": [\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"totalWithoutVat\": 7693.931931856396,\n          \"vatPercentage\": 2955.226169380655,\n          \"amount\": 8914.799373486572\n        },\n        {\n          \"id\": \"string\",\n          \"description\": \"string\",\n          \"totalWithoutVat\": 7873.206607168636,\n          \"vatPercentage\": 5352.568959482833,\n          \"amount\": 4286.708491995417\n        }\n      ]\n    }\n  ],\n  \"address\": \"string\",\n  \"lat\": 766.6336493274184,\n  \"lng\": 1814.5177360376097,\n  \"currency\": \"string\",\n  \"baseCurrency\": \"string\",\n  \"total\": 2933.5119925184163,\n  \"baseTotal\": 7450.978341569252,\n  \"totalWithoutVat\": 7194.078721870644,\n  \"date\": \"1969-04-04T22:24:18.683Z\",\n  \"executionDate\": \"1966-01-30T14:30:04.649Z\",\n  \"localDate\": \"string\",\n  \"timeZone\": \"string\",\n  \"status\": \"WITHHELD\",\n  \"type\": \"PURCHASE\",\n  \"group\": \"INBOUND\",\n  \"payType\": \"INBOUND_BANK_TRANSFER\",\n  \"card\": \"string\",\n  \"description\": \"string\",\n  \"categoryCode\": \"string\",\n  \"categoryLabel\": {\n    \"es\": \"string\",\n    \"en\": \"string\",\n    \"de\": \"string\",\n    \"it\": \"string\",\n    \"zh\": \"string\",\n    \"pt\": \"string\"\n  },\n  \"vatPercentage\": 11.750175242810634,\n  \"billable\": true,\n  \"isBaseTotalEdited\": false,\n  \"files\": [\n    {\n      \"id\": \"string\",\n      \"extension\": \"string\",\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"fileUrl\": \"string\",\n      \"mime\": \"string\",\n      \"size\": 4177,\n      \"thumbnailUrl\": \"string\",\n      \"invoiceId\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"extension\": \"string\",\n      \"key\": \"string\",\n      \"name\": \"string\",\n      \"fileUrl\": \"string\",\n      \"mime\": \"string\",\n      \"size\": 1562,\n      \"thumbnailUrl\": \"string\",\n      \"invoiceId\": \"string\"\n    }\n  ],\n  \"tags\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  ],\n  \"unreadComment\": 6244,\n  \"hasComments\": false,\n  \"userName\": \"string\",\n  \"userId\": \"string\",\n  \"profileImage\": \"string\",\n  \"concept\": \"string\",\n  \"sourceAccount\": {\n    \"id\": \"string\",\n    \"type\": \"cad\",\n    \"name\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwift\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"accountAlias\": \"string\",\n    \"assetFlag\": \"string\",\n    \"accountNumber\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"routingNumber\": \"string\",\n    \"bsbCode\": \"string\",\n    \"bankCountry\": \"string\",\n    \"bankingProvider\": \"string\",\n    \"ledgerType\": \"string\"\n  },\n  \"manualTransaction\": true,\n  \"sourceAccountType\": \"BA\",\n  \"sourceAccountInfo\": \"string\",\n  \"destinationAccountType\": \"BA\",\n  \"destinationAccountInfo\": \"string\",\n  \"balance\": 7089.367165733263,\n  \"syncExpense\": \"UNSYNCED\",\n  \"refund\": false,\n  \"isTotalWithoutVatEdited\": false,\n  \"inClosedPeriod\": true,\n  \"country\": \"string\",\n  \"integrityOk\": false,\n  \"discountAmount\": 8912.892292718741,\n  \"discountPercentage\": 2633.2739524674585,\n  \"charityPayment\": true,\n  \"beneficiaryCurrencyAmount\": 4726.120650963562,\n  \"bankPaymentScheme\": \"AUS_PAY_NET\",\n  \"canDownloadPaymentStatement\": false,\n  \"reference\": \"string\",\n  \"meta\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\"\n  },\n  \"billingTx\": false,\n  \"billedTxId\": \"string\",\n  \"directDebit\": false,\n  \"payable\": false,\n  \"purposeCode\": \"string\",\n  \"paymentProviderDetails\": {\n    \"shortReference\": \"string\",\n    \"internalReference\": \"string\",\n    \"paymentId\": \"string\",\n    \"conversionId\": \"string\",\n    \"rate\": 6678.6037050377945,\n    \"settlementDate\": \"1983-02-10T21:10:20.234Z\"\n  },\n  \"corePaymentType\": \"RIX\",\n  \"hasFailedTransactionMonitoring\": false,\n  \"ledgerType\": \"string\",\n  \"dynamicFields\": [\n    {\n      \"id\": \"string\",\n      \"label\": {\n        \"key_0\": \"string\"\n      },\n      \"valueId\": \"string\",\n      \"value\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"label\": {\n        \"key_0\": \"string\"\n      },\n      \"valueId\": \"string\",\n      \"value\": \"string\"\n    }\n  ],\n  \"internal\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ef7ea14-afa3-4af2-8acd-db56c7d7f397",
+          "name": "Validate collection data",
+          "request": {
+            "name": "Validate collection data",
+            "description": {
+              "content": "Validate a collection of unpaid invoice requests before they are sent to merchants. A collection represents a group of requests, each containing basic details about unpaid invoices.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue",
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"file\": \"<binary>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "712f93bb-390e-4350-bf31-f86590f1b571",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue",
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"file\": \"<binary>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"clientId\": \"<string>\",\n    \"clientName\": \"<string>\",\n    \"invoiceAmount\": \"<double>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"invoiceDueDate\": \"<dateTime>\",\n    \"invoiceIssueDate\": \"<dateTime>\",\n    \"invoiceNumber\": \"<string>\",\n    \"lineNumber\": \"<integer>\",\n    \"lineErrors\": [\n      {\n        \"field\": \"<string>\",\n        \"errorType\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"errorType\": \"<string>\"\n      }\n    ]\n  },\n  {\n    \"clientId\": \"<string>\",\n    \"clientName\": \"<string>\",\n    \"invoiceAmount\": \"<double>\",\n    \"invoiceCurrency\": \"<string>\",\n    \"invoiceDueDate\": \"<dateTime>\",\n    \"invoiceIssueDate\": \"<dateTime>\",\n    \"invoiceNumber\": \"<string>\",\n    \"lineNumber\": \"<integer>\",\n    \"lineErrors\": [\n      {\n        \"field\": \"<string>\",\n        \"errorType\": \"<string>\"\n      },\n      {\n        \"field\": \"<string>\",\n        \"errorType\": \"<string>\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "75570455-11a8-4d25-b493-cf8c73e7518e",
+    "name": "Accounts Account Manage requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,399 @@
+{
+  "item": [
+    {
+      "id": "230e6f2c-d8b1-4f25-8148-5b2a38787f7e",
+      "name": "Card Limits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "18254c93-41fd-42e1-bdb5-c0e09eb497b6",
+          "name": "Get available card limit types",
+          "request": {
+            "name": "Get available card limit types",
+            "description": {
+              "content": "Retrieves the list of available card limit types configured in the system. Use this endpoint to discover which custom limits can be set when creating or updating cards.\n\n**Business Context**: Called to dynamically discover which limit fields are available for configuration. This allows the frontend UI to adapt to different banking provider capabilities and custom limit configurations.\n\n**Note**: The response includes all supported limit types, but the integration is not required to return all of them. Only return the limits that are actually configured in your system. Any limit not included in the response will be interpreted as null and ignored.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "availableCardLimits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "334616a0-276d-44ba-bd14-93f889aef410",
+              "name": "Available card limits retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "availableCardLimits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"transactionLimit\": {\n      \"canEdit\": true,\n      \"optional\": false\n    },\n    \"dailyLimit\": {\n      \"canEdit\": true,\n      \"optional\": false\n    },\n    \"monthlyLimit\": {\n      \"canEdit\": true,\n      \"optional\": false\n    },\n    \"lifetimeLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    },\n    \"purchasesDailyLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    },\n    \"purchasesMonthlyLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    },\n    \"atmDailyLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    },\n    \"atmMonthlyLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    },\n    \"atmOperationsLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    },\n    \"purchasesOperationsLimit\": {\n      \"canEdit\": true,\n      \"optional\": true\n    }\n  },\n  \"code\": \"200\",\n  \"message\": \"Available card limits retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9f297ed2-0685-464c-aa9a-9b4c69d95575",
+          "name": "Get card limit constraints (min/max values)",
+          "request": {
+            "name": "Get card limit constraints (min/max values)",
+            "description": {
+              "content": "Retrieves the minimum and maximum allowed values for card limits based on card type, client type, and currency. This endpoint returns standard limit constraints and may include additional custom limit constraints configured in your system.\n\n**Business Context**: Called when displaying the card issuance form or limit update form in the frontend to show users the allowable range for each limit type. Helps validate user input before submission.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                "type",
+                ":cardType",
+                "clientType",
+                ":clientType",
+                "limits",
+                ":currency"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "merchant",
+                  "value": "<string>",
+                  "description": "Optional merchant identifier for merchant-specific limits"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardType",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientType",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "currency",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb2daeb0-0b30-4d34-8fa3-4e2d27fe406d",
+              "name": "Card limit constraints retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    "type",
+                    ":cardType",
+                    "clientType",
+                    ":clientType",
+                    "limits",
+                    ":currency"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "merchant",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientType",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "currency",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"provider\": \"MODULR\",\n    \"currency\": \"EUR\",\n    \"minDailyLimit\": 100,\n    \"maxDailyLimit\": 5000,\n    \"minMonthlyLimit\": 500,\n    \"maxMonthlyLimit\": 20000,\n    \"minTransactionLimit\": 10,\n    \"maxTransactionLimit\": 2000,\n    \"minLifetimeSpendLimit\": 1000,\n    \"maxLifetimeSpendLimit\": 100000\n  },\n  \"code\": \"200\",\n  \"message\": \"Card limit constraints retrieved successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25226045-6fc9-47ae-8ed2-a047b863cea2",
+          "name": "Update card details and limits",
+          "request": {
+            "name": "Update card details and limits",
+            "description": {
+              "content": "Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.\n\n**Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.\n\n**Important**: \n- This endpoint extends AdditionalParams, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover which custom limits are available in your system.\n- To update card alias, use the dedicated endpoint PUT /customers/{customerId}/cards/{cardId}/alias instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardLimitDaily\": \"<integer>\",\n  \"cardLimitMonthly\": \"<integer>\",\n  \"cardLimitTransaction\": \"<number>\",\n  \"lifetimeSpendLimit\": \"<double>\",\n  \"cardMinLimitTransaction\": \"<double>\",\n  \"cardMinLimitTransactionForPhysicalBusiness\": \"<double>\",\n  \"alias\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"clientType\": \"<string>\",\n  \"cardOTP\": {\n    \"baasOTP\": \"<string>\",\n    \"operationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"cardTokenRequest\": {\n      \"token\": \"<string>\",\n      \"securityCode\": {\n        \"encryptedSecurityCode\": \"<string>\",\n        \"iv\": \"<string>\",\n        \"tag\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "778fc5f9-5b65-4d65-9019-5cb824eaa473",
+              "name": "Card updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"card-abc123\",\n    \"token\": \"tok_card_xyz789\",\n    \"status\": \"ACTIVE\",\n    \"provider\": \"MODULR\",\n    \"nameOnCard\": \"John Doe\",\n    \"truncatedPan\": \"4321\",\n    \"expiryDate\": \"12/27\",\n    \"spend\": 2500,\n    \"limit\": 5000\n  },\n  \"code\": \"200\",\n  \"message\": \"Card updated successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "91316bff-4b3b-4628-8991-4e78173685c0",
+    "name": "Accounts Account Card Limits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

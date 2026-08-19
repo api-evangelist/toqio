@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Custom Ledger App Texts API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Ledger App Texts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the custom Ledger App Texts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/ledgertypes/marketplaces/:marketplaceKey/texts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "marketplaceKey",
+                "value": "",
+                "type": "path",
+                "description": "marketplaceKey"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Get the custom Ledger App Texts"
+        },
+        {
+          "info": {
+            "name": "Update the Custom Ledger App Texts",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/ledgertypes/texts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Update the Custom Ledger App Texts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

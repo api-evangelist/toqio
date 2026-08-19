@@ -1,0 +1,331 @@
+{
+  "item": [
+    {
+      "id": "0aeca500-f972-494f-931f-0a231f729a35",
+      "name": "Create transaction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "530e5775-02fc-4b7a-bfff-b9489aff20b7",
+          "name": "Create Transaction",
+          "request": {
+            "name": "Create Transaction",
+            "description": {
+              "content": "Issues a payment on behalf of a client. Supports internal transfers, SEPA, SWIFT, UK Faster Payments and FX payments depending on the source account provider and currency. The bank payment scheme is required (except for FX); call the bankPaymentSchemes endpoint first to discover which schemes are available for the chosen source/beneficiary pair.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<double>\",\n  \"concept\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccount\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\"\n  },\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiaryAssetType\": \"<string>\",\n  \"billing\": false,\n  \"clientType\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"emails\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"meta\": {\n    \"key_0\": \"<string>\"\n  },\n  \"reason\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"transferConfig\": {\n    \"endDate\": \"<dateTime>\",\n    \"repeatCount\": \"<integer>\",\n    \"startDate\": \"<dateTime>\",\n    \"timeInterval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  },\n  \"triggerType\": \"<string>\",\n  \"txFee\": \"<double>\",\n  \"userId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3cf120f-3d71-4577-b35a-9f11e47f3d39",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"concept\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccount\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\"\n  },\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiaryAssetType\": \"<string>\",\n  \"billing\": false,\n  \"clientType\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"emails\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reason\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"transferConfig\": {\n    \"endDate\": \"<dateTime>\",\n    \"repeatCount\": \"<integer>\",\n    \"startDate\": \"<dateTime>\",\n    \"timeInterval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  },\n  \"triggerType\": \"<string>\",\n  \"txFee\": \"<double>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"address\": \"string\",\n  \"balance\": 5981.871267709496,\n  \"bankPaymentScheme\": {\n    \"code\": \"SEPA\",\n    \"name\": \"string\",\n    \"key_0\": false,\n    \"key_1\": 431\n  },\n  \"baseCurrency\": \"string\",\n  \"baseTotal\": 5885.262698133403,\n  \"beneficiaryCurrencyAmount\": 9401.824137110401,\n  \"billable\": false,\n  \"billedTxId\": \"string\",\n  \"billingTx\": false,\n  \"canDownloadPaymentStatement\": true,\n  \"card\": \"string\",\n  \"categoryCode\": \"string\",\n  \"categoryLabel\": {\n    \"de\": \"string\",\n    \"en\": \"string\",\n    \"es\": \"string\",\n    \"it\": \"string\",\n    \"zh\": \"string\",\n    \"pt\": \"string\"\n  },\n  \"charityPayment\": true,\n  \"concept\": \"string\",\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"date\": \"1957-08-29T21:55:18.270Z\",\n  \"description\": \"string\",\n  \"destinationAccount\": {\n    \"accountAlias\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"bank\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"cnaps\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"id\": \"string\",\n    \"ifsc\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"JPY\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"purposeCode\": \"string\",\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"rate\": \"string\",\n      \"settlementDate\": \"1948-05-07T23:22:05.798Z\"\n    }\n  },\n  \"destinationAccountInfo\": \"string\",\n  \"destinationAccountType\": \"CD\",\n  \"directDebit\": false,\n  \"discountAmount\": 8320.286813805695,\n  \"discountPercentage\": 3407.6235874904437,\n  \"files\": [\n    {\n      \"extension\": \"string\",\n      \"fileUrl\": \"string\",\n      \"id\": \"string\",\n      \"invoiceId\": \"string\",\n      \"key\": \"string\",\n      \"mime\": \"string\",\n      \"name\": \"string\",\n      \"size\": 581,\n      \"thumbnailUrl\": \"string\"\n    },\n    {\n      \"extension\": \"string\",\n      \"fileUrl\": \"string\",\n      \"id\": \"string\",\n      \"invoiceId\": \"string\",\n      \"key\": \"string\",\n      \"mime\": \"string\",\n      \"name\": \"string\",\n      \"size\": 9242,\n      \"thumbnailUrl\": \"string\"\n    }\n  ],\n  \"group\": \"INBOUND\",\n  \"hasComments\": true,\n  \"id\": \"string\",\n  \"inClosedPeriod\": true,\n  \"integrityOk\": false,\n  \"invoice\": true,\n  \"invoices\": [\n    {\n      \"amount\": 4632.5228514178625,\n      \"cif\": \"string\",\n      \"discountAmount\": 6185.6977105743235,\n      \"discountPercentage\": 5661.954405625414,\n      \"dueDate\": \"string\",\n      \"files\": [\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 3463,\n          \"thumbnailUrl\": \"string\"\n        },\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 5607,\n          \"thumbnailUrl\": \"string\"\n        }\n      ],\n      \"hasInvoice\": false,\n      \"id\": \"string\",\n      \"invoiceDate\": \"string\",\n      \"invoiceNumber\": \"string\",\n      \"isTotalWithoutVatEdited\": true,\n      \"lines\": [\n        {\n          \"amount\": 998.6034552481659,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 9433.386346445155,\n          \"vatPercentage\": 5554.438021601575\n        },\n        {\n          \"amount\": 5813.7606492718205,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 633.6600543423076,\n          \"vatPercentage\": 8162.327354916762\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"supplier\": \"string\",\n      \"totalWithoutVat\": 9860.143390609153,\n      \"vatPercentage\": 2598.0823992559745\n    },\n    {\n      \"amount\": 6661.242610174959,\n      \"cif\": \"string\",\n      \"discountAmount\": 1795.0843717978216,\n      \"discountPercentage\": 9796.950190105454,\n      \"dueDate\": \"string\",\n      \"files\": [\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 6256,\n          \"thumbnailUrl\": \"string\"\n        },\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 7226,\n          \"thumbnailUrl\": \"string\"\n        }\n      ],\n      \"hasInvoice\": true,\n      \"id\": \"string\",\n      \"invoiceDate\": \"string\",\n      \"invoiceNumber\": \"string\",\n      \"isTotalWithoutVatEdited\": false,\n      \"lines\": [\n        {\n          \"amount\": 388.21332274405427,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 8626.187650272395,\n          \"vatPercentage\": 8305.788769114522\n        },\n        {\n          \"amount\": 4412.839839956077,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 8206.87455648225,\n          \"vatPercentage\": 1371.6660415579552\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"supplier\": \"string\",\n      \"totalWithoutVat\": 2273.667858061046,\n      \"vatPercentage\": 5274.962201404444\n    }\n  ],\n  \"isBaseTotalEdited\": false,\n  \"isTotalWithoutVatEdited\": false,\n  \"lat\": 2653.9551147378024,\n  \"lng\": 2775.8326099383066,\n  \"localDate\": \"string\",\n  \"manualTransaction\": false,\n  \"meta\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  },\n  \"payType\": \"MANUAL\",\n  \"profileImage\": \"string\",\n  \"reference\": \"string\",\n  \"refund\": true,\n  \"sourceAccount\": {\n    \"accountAlias\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"bank\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"cnaps\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"id\": \"string\",\n    \"ifsc\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"EUR\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"purposeCode\": \"string\",\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"rate\": \"string\",\n      \"settlementDate\": \"1984-11-29T11:34:45.559Z\"\n    }\n  },\n  \"sourceAccountInfo\": \"string\",\n  \"sourceAccountType\": \"BI\",\n  \"status\": \"AUTHORIZED\",\n  \"syncExpense\": \"UNSYNCED\",\n  \"tags\": [\n    {\n      \"id\": \"5c473c5046e0fb0005c436af\",\n      \"name\": \"My tag\"\n    },\n    {\n      \"id\": \"5c473c5046e0fb0005c436af\",\n      \"name\": \"My tag\"\n    }\n  ],\n  \"timeZone\": \"string\",\n  \"total\": 5507.442530489243,\n  \"totalWithoutVat\": 5440.2553557333185,\n  \"transactionNumber\": \"string\",\n  \"txTitle\": \"string\",\n  \"type\": \"PURCHASE\",\n  \"unreadComment\": 9910,\n  \"userId\": \"string\",\n  \"userName\": \"string\",\n  \"vatPercentage\": 834.9504095950056,\n  \"purposeCode\": \"string\",\n  \"paymentProviderDetails\": {\n    \"shortReference\": \"string\",\n    \"internalReference\": \"string\",\n    \"paymentId\": \"string\",\n    \"conversionId\": \"string\",\n    \"rate\": \"string\",\n    \"settlementDate\": \"1987-02-22T10:38:51.005Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "997b20b7-3a50-4c2d-ad30-363c8eb7e04d",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"concept\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccount\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\"\n  },\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiaryAssetType\": \"<string>\",\n  \"billing\": false,\n  \"clientType\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"emails\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reason\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"transferConfig\": {\n    \"endDate\": \"<dateTime>\",\n    \"repeatCount\": \"<integer>\",\n    \"startDate\": \"<dateTime>\",\n    \"timeInterval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  },\n  \"triggerType\": \"<string>\",\n  \"txFee\": \"<double>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d85f2490-f8c3-4b49-802d-d2831f07c5db",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"concept\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccount\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\"\n  },\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiaryAssetType\": \"<string>\",\n  \"billing\": false,\n  \"clientType\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"emails\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reason\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"transferConfig\": {\n    \"endDate\": \"<dateTime>\",\n    \"repeatCount\": \"<integer>\",\n    \"startDate\": \"<dateTime>\",\n    \"timeInterval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  },\n  \"triggerType\": \"<string>\",\n  \"txFee\": \"<double>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9996caf2-80a2-43ca-a779-ce1fb2408a35",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"concept\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccount\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\"\n  },\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiaryAssetType\": \"<string>\",\n  \"billing\": false,\n  \"clientType\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"emails\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reason\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"transferConfig\": {\n    \"endDate\": \"<dateTime>\",\n    \"repeatCount\": \"<integer>\",\n    \"startDate\": \"<dateTime>\",\n    \"timeInterval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  },\n  \"triggerType\": \"<string>\",\n  \"txFee\": \"<double>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac04814c-0af4-4a6d-954f-e0c77b62643e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"concept\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"beneficiaryAccount\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\"\n  },\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiaryAssetType\": \"<string>\",\n  \"billing\": false,\n  \"clientType\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"emails\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"frequency\": \"<string>\",\n  \"meta\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"reason\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"transferConfig\": {\n    \"endDate\": \"<dateTime>\",\n    \"repeatCount\": \"<integer>\",\n    \"startDate\": \"<dateTime>\",\n    \"timeInterval\": \"<integer>\",\n    \"unit\": \"<string>\"\n  },\n  \"triggerType\": \"<string>\",\n  \"txFee\": \"<double>\",\n  \"userId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c445b2a3-2348-43a1-98d4-cf81752a8407",
+    "name": "Accounts Account Create transaction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

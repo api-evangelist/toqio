@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Lending API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get default repayment terms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/default-repayment-terms",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get default repayment terms"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

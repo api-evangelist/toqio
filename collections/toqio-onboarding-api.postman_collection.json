@@ -1,0 +1,754 @@
+{
+  "item": [
+    {
+      "id": "1b651d50-ca6c-464e-a1cb-e83f36ae8ada",
+      "name": "Onboarding",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3ea4e0b-99e2-49c0-a5d1-0d74332b9a87",
+          "name": "Create Merchant",
+          "request": {
+            "name": "Create Merchant",
+            "description": {
+              "content": "Creates a new merchant for the specified customer. This is the first step in the onboarding process and will only be called if canRunCompliance capability is set to true.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "onboarding",
+                "createMerchant"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"name\": \"<string>\",\n  \"subOrganisationType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"address\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"businessCode\": \"<string>\",\n  \"currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dateOfBirth\": \"<dateTime>\",\n      \"countryOfResidence\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"address\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dateOfBirth\": \"<dateTime>\",\n      \"countryOfResidence\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"address\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"legalPhoneNumber\": \"<string>\",\n  \"statementDescriptor\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b09af25-3ec6-4543-b998-c7c5c4e03493",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    "createMerchant"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"name\": \"<string>\",\n  \"subOrganisationType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"address\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"businessCode\": \"<string>\",\n  \"currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dateOfBirth\": \"<dateTime>\",\n      \"countryOfResidence\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"address\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dateOfBirth\": \"<dateTime>\",\n      \"countryOfResidence\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"address\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"legalPhoneNumber\": \"<string>\",\n  \"statementDescriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afc8a235-47d6-4f09-b74b-07114e1d4a03",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    "createMerchant"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"name\": \"<string>\",\n  \"subOrganisationType\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"address\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"businessCode\": \"<string>\",\n  \"currencies\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dateOfBirth\": \"<dateTime>\",\n      \"countryOfResidence\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"address\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"email\": \"<email>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dateOfBirth\": \"<dateTime>\",\n      \"countryOfResidence\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"address\": \"<string>\",\n      \"address2\": \"<string>\",\n      \"city\": \"<string>\",\n      \"email\": \"<email>\"\n    }\n  ],\n  \"legalPhoneNumber\": \"<string>\",\n  \"statementDescriptor\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e83317e-500c-4291-9fb7-9ce078757eaa",
+          "name": "Get Hosted Onboarding Link for a Merchant",
+          "request": {
+            "name": "Get Hosted Onboarding Link for a Merchant",
+            "description": {
+              "content": "Returns a link that will allow a merchant to complete the onboarding process. This is the second step in the onboarding process and will only be called if canRunCompliance capability is set to true.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "onboarding",
+                "client",
+                ":clientId",
+                "hostedOnboarding"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"locale\": \"<string>\",\n  \"redirectUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae2dc4d0-72d7-4d7c-bd1f-21dbbaeb44b6",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    "client",
+                    ":clientId",
+                    "hostedOnboarding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locale\": \"en-GB\",\n  \"redirectUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"link\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd72f71f-94a7-40fd-816a-02c28a24ecca",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    "client",
+                    ":clientId",
+                    "hostedOnboarding"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"locale\": \"en-GB\",\n  \"redirectUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a42a114-907d-4fc4-a8f5-28cdf2c0b31c",
+          "name": "Update Merchant",
+          "request": {
+            "name": "Update Merchant",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "onboarding",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"industryCode\": \"<string>\",\n  \"businessCode\": \"<string>\",\n  \"endUserId\": \"<string>\",\n  \"citizenship\": \"<string>\",\n  \"docIdType\": \"<string>\",\n  \"docIdIssuedAt\": \"<dateTime>\",\n  \"docIdNumber\": \"<string>\",\n  \"docIdCountry\": \"<string>\",\n  \"clientType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2005a018-3d1e-4f53-a67d-87ef616cad54",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"industryCode\": \"<string>\",\n  \"businessCode\": \"<string>\",\n  \"endUserId\": \"<string>\",\n  \"citizenship\": \"<string>\",\n  \"docIdType\": \"<string>\",\n  \"docIdIssuedAt\": \"<dateTime>\",\n  \"docIdNumber\": \"<string>\",\n  \"docIdCountry\": \"<string>\",\n  \"clientType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c73beae-0f9c-4cbb-934d-ac95e3a770a2",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"industryCode\": \"<string>\",\n  \"businessCode\": \"<string>\",\n  \"endUserId\": \"<string>\",\n  \"citizenship\": \"<string>\",\n  \"docIdType\": \"<string>\",\n  \"docIdIssuedAt\": \"<dateTime>\",\n  \"docIdNumber\": \"<string>\",\n  \"docIdCountry\": \"<string>\",\n  \"clientType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3df0fa5-b621-4229-b11e-bcf529c218ac",
+          "name": "Update Merchant Directors",
+          "request": {
+            "name": "Update Merchant Directors",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "onboarding",
+                ":clientId",
+                "updateEnduser"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"partnerProduct\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"clientType\": \"<string>\",\n  \"address\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"subOrganisationType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fdbab3f2-431c-4713-bf50-16ad8446c6c1",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    ":clientId",
+                    "updateEnduser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"partnerProduct\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"clientType\": \"<string>\",\n  \"address\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"subOrganisationType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5f782eb-8215-443b-b7e7-2537c47a56ce",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "onboarding",
+                    ":clientId",
+                    "updateEnduser"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"cif\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"partnerProduct\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"postalCode\": \"<string>\",\n  \"clientType\": \"<string>\",\n  \"address\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"city\": \"<string>\",\n  \"subOrganisationType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "328dae27-2a75-4a75-9198-6232ca4e7504",
+    "name": "Accounts Account Onboarding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

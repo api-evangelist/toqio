@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Card Limits API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Card Limits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available card limit types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/availableCardLimits",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of available card limit types configured in the system. Use this endpoint to discover which custom limits can be set when creating or updating cards.\n\n**Business Context**: Called to dynamically discover which limit fields are available for configuration. This allows the frontend UI to adapt to different banking provider capabilities and custom limit configurations.\n\n**Note**: The response includes all supported limit types, but the integration is not required to return all of"
+        },
+        {
+          "info": {
+            "name": "Get card limit constraints (min/max values)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/type/:cardType/clientType/:clientType/limits/:currency",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardType",
+                "value": "DEBIT",
+                "type": "path"
+              },
+              {
+                "name": "clientType",
+                "value": "BUSINESS",
+                "type": "path"
+              },
+              {
+                "name": "currency",
+                "value": "EUR",
+                "type": "path"
+              },
+              {
+                "name": "merchant",
+                "value": "",
+                "type": "query",
+                "description": "Optional merchant identifier for merchant-specific limits"
+              }
+            ]
+          },
+          "docs": "Retrieves the minimum and maximum allowed values for card limits based on card type, client type, and currency. This endpoint returns standard limit constraints and may include additional custom limit constraints configured in your system.\n\n**Business Context**: Called when displaying the card issuance form or limit update form in the frontend to show users the allowable range for each limit type. Helps validate user input before submission."
+        },
+        {
+          "info": {
+            "name": "Update card details and limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/update",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.\n\n**Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.\n\n**Important**: \n- This endpoint extends AdditionalParams, allowing custom limit fields t"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

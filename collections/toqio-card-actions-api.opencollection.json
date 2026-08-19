@@ -1,0 +1,382 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Card actions API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Card actions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Activate card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/cards/:cardId/activate",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "card identification number"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Activates (unfreezes) a previously suspended card so it can be used again for transactions. The request body must include the card activation token issued during card delivery."
+        },
+        {
+          "info": {
+            "name": "Get card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/cards/:cardId",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "card identification number"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customer identification number"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Endpoint that allows to get the card details"
+        },
+        {
+          "info": {
+            "name": "Cancel card",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/cards/:cardId",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "card identification number"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customer identification number"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Endpoint that allows to cancel a card. Once it's cancelled, can't be reactivated again"
+        },
+        {
+          "info": {
+            "name": "Get cards by client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/clients/:clientId/cards",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05",
+                "type": "query",
+                "description": "Filter by Bank Account ID."
+              },
+              {
+                "name": "alias",
+                "value": "",
+                "type": "query",
+                "description": "Filter by card alias"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Filter by client ID"
+              },
+              {
+                "name": "createdAt",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date"
+              },
+              {
+                "name": "customer",
+                "value": "",
+                "type": "query",
+                "description": "Filter by customer"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "firstName",
+                "value": "",
+                "type": "query",
+                "description": "Filter by First Name"
+              },
+              {
+                "name": "lastName",
+                "value": "",
+                "type": "query",
+                "description": "Filter by last name"
+              },
+              {
+                "name": "freezeReason",
+                "value": "",
+                "type": "query",
+                "description": "Reason for freezing a card"
+              },
+              {
+                "name": "product",
+                "value": "",
+                "type": "query",
+                "description": "Deprecated. Use `fundingType` instead. Filter by product type."
+              },
+              {
+                "name": "fundingType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by funding type. Extensible; current supported values are DEBIT and CREDIT."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by card status"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the type of the card"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns the cards issued to a client, optionally filtered by status, type, funding type, product, account, alias, holder details or creation date. Use this endpoint to power card management views or to reconcile a given client's card portfolio."
+        },
+        {
+          "info": {
+            "name": "Issue card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/cards",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Endpoint that allows to issue a physical or virtual card"
+        },
+        {
+          "info": {
+            "name": "Suspend card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/cards/:cardId/suspend",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "card identification number"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Suspend the card. This action can be revert (unfreeze card)"
+        },
+        {
+          "info": {
+            "name": "Update card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/clients/:clientId/card/:cardId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows to update some properties of the card, like the limits. For both virtual and physical cards"
+        },
+        {
+          "info": {
+            "name": "Update card alias",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/api/customers/:customerId/clients/:clientId/card/:cardId/updateAlias",
+            "params": [
+              {
+                "name": "cardId",
+                "value": "",
+                "type": "path",
+                "description": "cardId"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "clientId"
+              },
+              {
+                "name": "customerId",
+                "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05",
+                "type": "path",
+                "description": "customerId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Allows to update the alias of a given card"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

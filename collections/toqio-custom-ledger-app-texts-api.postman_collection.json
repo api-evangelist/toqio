@@ -1,0 +1,646 @@
+{
+  "item": [
+    {
+      "id": "b50b4ed2-1898-47ad-9bbf-665bfc85599a",
+      "name": "Custom Ledger App Texts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b80c077d-26ea-408b-8427-b71345d53ab3",
+          "name": "Get the custom Ledger App Texts",
+          "request": {
+            "name": "Get the custom Ledger App Texts",
+            "description": {
+              "content": "Get the custom Ledger App Texts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "ledgertypes",
+                "marketplaces",
+                ":marketplaceKey",
+                "texts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "marketplaceKey",
+                  "description": "(Required) marketplaceKey"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d1bffc6f-1c65-4c96-b7dc-5ae7827e3605",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "marketplaces",
+                    ":marketplaceKey",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketplaceKey",
+                      "description": "(Required) marketplaceKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"marketplaceKey\": \"testMarketplaceKey\",\n    \"texts\": {\n      \"newAccountButton\": {\n        \"en\": \"testNewAccountButton\",\n        \"es\": \"testBotonNuevaCuenta\",\n        \"zh\": null\n      },\n      \"appTitle\": {\n        \"en\": \"demoAppTitle\",\n        \"es\": \"testTituloApp\",\n        \"zh\": null\n      },\n      \"currentBalanceTooltip\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      },\n      \"currentBalanceTitle\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      }\n    }\n  },\n  {\n    \"marketplaceKey\": \"testMarketplaceKey\",\n    \"texts\": {\n      \"newAccountButton\": {\n        \"en\": \"testNewAccountButton\",\n        \"es\": \"testBotonNuevaCuenta\",\n        \"zh\": null\n      },\n      \"appTitle\": {\n        \"en\": \"demoAppTitle\",\n        \"es\": \"testTituloApp\",\n        \"zh\": null\n      },\n      \"currentBalanceTooltip\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      },\n      \"currentBalanceTitle\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a928e51-66ab-461b-965c-7f5ff12371a3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "marketplaces",
+                    ":marketplaceKey",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketplaceKey",
+                      "description": "(Required) marketplaceKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1deac9c6-f94c-4126-894c-e8715eaf21e9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "marketplaces",
+                    ":marketplaceKey",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketplaceKey",
+                      "description": "(Required) marketplaceKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c820840e-180e-4ff7-b685-282327a109c3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "marketplaces",
+                    ":marketplaceKey",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "marketplaceKey",
+                      "description": "(Required) marketplaceKey"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "234d3622-2cde-4d64-9f17-6119d03631e9",
+          "name": "Update the Custom Ledger App Texts",
+          "request": {
+            "name": "Update the Custom Ledger App Texts",
+            "description": {
+              "content": "Update the Custom Ledger App Texts",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "ledgertypes",
+                "texts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"marketplaceKey\": \"<string>\",\n  \"texts\": {\n    \"newAccountButton\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"appTitle\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"currentBalanceTooltip\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"currentBalanceTitle\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2b95f79-487e-46a2-9f78-ddcb8e969250",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketplaceKey\": \"testMarketplaceKey\",\n  \"texts\": {\n    \"newAccountButton\": {\n      \"en\": \"testNewAccountButton\",\n      \"es\": \"testBotonNuevaCuenta\",\n      \"zh\": null\n    },\n    \"appTitle\": {\n      \"en\": \"demoAppTitle\",\n      \"es\": \"testTituloApp\",\n      \"zh\": null\n    },\n    \"currentBalanceTooltip\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    },\n    \"currentBalanceTitle\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"marketplaceKey\": \"testMarketplaceKey\",\n    \"texts\": {\n      \"newAccountButton\": {\n        \"en\": \"testNewAccountButton\",\n        \"es\": \"testBotonNuevaCuenta\",\n        \"zh\": null\n      },\n      \"appTitle\": {\n        \"en\": \"demoAppTitle\",\n        \"es\": \"testTituloApp\",\n        \"zh\": null\n      },\n      \"currentBalanceTooltip\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      },\n      \"currentBalanceTitle\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      }\n    }\n  },\n  {\n    \"marketplaceKey\": \"testMarketplaceKey\",\n    \"texts\": {\n      \"newAccountButton\": {\n        \"en\": \"testNewAccountButton\",\n        \"es\": \"testBotonNuevaCuenta\",\n        \"zh\": null\n      },\n      \"appTitle\": {\n        \"en\": \"demoAppTitle\",\n        \"es\": \"testTituloApp\",\n        \"zh\": null\n      },\n      \"currentBalanceTooltip\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      },\n      \"currentBalanceTitle\": {\n        \"en\": \"Current Balance\",\n        \"es\": \"Balance actual\",\n        \"zh\": null\n      }\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58073203-ec2d-4237-877c-f9c58b2ccd6c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketplaceKey\": \"testMarketplaceKey\",\n  \"texts\": {\n    \"newAccountButton\": {\n      \"en\": \"testNewAccountButton\",\n      \"es\": \"testBotonNuevaCuenta\",\n      \"zh\": null\n    },\n    \"appTitle\": {\n      \"en\": \"demoAppTitle\",\n      \"es\": \"testTituloApp\",\n      \"zh\": null\n    },\n    \"currentBalanceTooltip\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    },\n    \"currentBalanceTitle\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c61587a-4ec7-4d24-bab2-999af4b23e1a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketplaceKey\": \"testMarketplaceKey\",\n  \"texts\": {\n    \"newAccountButton\": {\n      \"en\": \"testNewAccountButton\",\n      \"es\": \"testBotonNuevaCuenta\",\n      \"zh\": null\n    },\n    \"appTitle\": {\n      \"en\": \"demoAppTitle\",\n      \"es\": \"testTituloApp\",\n      \"zh\": null\n    },\n    \"currentBalanceTooltip\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    },\n    \"currentBalanceTitle\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "986fa1cc-1ac1-4de2-96b4-480cde915d92",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgertypes",
+                    "texts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"marketplaceKey\": \"testMarketplaceKey\",\n  \"texts\": {\n    \"newAccountButton\": {\n      \"en\": \"testNewAccountButton\",\n      \"es\": \"testBotonNuevaCuenta\",\n      \"zh\": null\n    },\n    \"appTitle\": {\n      \"en\": \"demoAppTitle\",\n      \"es\": \"testTituloApp\",\n      \"zh\": null\n    },\n    \"currentBalanceTooltip\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    },\n    \"currentBalanceTitle\": {\n      \"en\": \"Current Balance\",\n      \"es\": \"Balance actual\",\n      \"zh\": null\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a505f23d-4185-4cfe-a8a5-67d5ef54111e",
+    "name": "Accounts Account Custom Ledger App Texts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

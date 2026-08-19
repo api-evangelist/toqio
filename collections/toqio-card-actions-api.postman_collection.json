@@ -1,0 +1,3321 @@
+{
+  "item": [
+    {
+      "id": "02c1b9c0-0b0d-44fa-b7a4-152d689e8391",
+      "name": "Card actions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8da2fea-42b5-4370-9981-9ecc0da48667",
+          "name": "Activate card",
+          "request": {
+            "name": "Activate card",
+            "description": {
+              "content": "Activates (unfreezes) a previously suspended card so it can be used again for transactions. The request body must include the card activation token issued during card delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) card identification number"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"<string>\",\n  \"securityCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bebf4b5d-6e69-4a3f-b946-8c2694ccc4be",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"securityCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"alias\": \"string\",\n  \"cancelled\": false,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressNumber\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressRefinement\": \"string\",\n    \"addressRegion\": \"string\",\n    \"addressStreet\": \"string\"\n  },\n  \"cardDeliveryMethodEnum\": \"DHL\",\n  \"cardLimitDaily\": 5006,\n  \"cardLimitMonthly\": 1569,\n  \"cardLimitTransaction\": 7780,\n  \"cardMinLimitTransaction\": 6458,\n  \"cardMinLimitTransactionForPhysicalBusiness\": 1812,\n  \"createdAt\": \"2020-06-22T10:20:34.460Z\",\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CARD_CANCELLED\",\n  \"fundingType\": \"CREDIT\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 268,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"spend\": 3564.4764925373183,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"VIRTUAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53dc3761-a071-4013-aca1-a9eb4662424c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"securityCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "17db4279-1745-4135-9147-f98c250cf42c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"securityCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec85b4c2-eeb0-41f8-8580-ab80bbd0aa37",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"securityCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a47e8927-d169-4718-9655-60f276d8b928",
+          "name": "Cancel card",
+          "request": {
+            "name": "Cancel card",
+            "description": {
+              "content": "Endpoint that allows to cancel a card. Once it's cancelled, can't be reactivated again",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) card identification number"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customer identification number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d75289ca-46b2-44b3-ae5a-2f4c074428da",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"alias\": \"string\",\n  \"cancelled\": false,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressNumber\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressRefinement\": \"string\",\n    \"addressRegion\": \"string\",\n    \"addressStreet\": \"string\"\n  },\n  \"cardDeliveryMethodEnum\": \"DHL\",\n  \"cardLimitDaily\": 5006,\n  \"cardLimitMonthly\": 1569,\n  \"cardLimitTransaction\": 7780,\n  \"cardMinLimitTransaction\": 6458,\n  \"cardMinLimitTransactionForPhysicalBusiness\": 1812,\n  \"createdAt\": \"2020-06-22T10:20:34.460Z\",\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CARD_CANCELLED\",\n  \"fundingType\": \"CREDIT\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 268,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"spend\": 3564.4764925373183,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"VIRTUAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9906f8b4-bf35-4469-aeb1-bd4ad7317ec5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "838caf27-30b6-45a6-ac9d-4cc0bf7972ae",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "30116448-2470-4570-bb24-afc55fad3337",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b962f7b-688c-4e3e-83f6-7f9f519c2bbe",
+          "name": "Get card",
+          "request": {
+            "name": "Get card",
+            "description": {
+              "content": "Endpoint that allows to get the card details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) card identification number"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customer identification number"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bc9bde30-9200-4598-86ea-e3945d11d5e6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"alias\": \"string\",\n  \"cancelled\": false,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressNumber\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressRefinement\": \"string\",\n    \"addressRegion\": \"string\",\n    \"addressStreet\": \"string\"\n  },\n  \"cardDeliveryMethodEnum\": \"DHL\",\n  \"cardLimitDaily\": 5006,\n  \"cardLimitMonthly\": 1569,\n  \"cardLimitTransaction\": 7780,\n  \"cardMinLimitTransaction\": 6458,\n  \"cardMinLimitTransactionForPhysicalBusiness\": 1812,\n  \"createdAt\": \"2020-06-22T10:20:34.460Z\",\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CARD_CANCELLED\",\n  \"fundingType\": \"CREDIT\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 268,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"spend\": 3564.4764925373183,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"VIRTUAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "46aa0394-d5ea-4280-8885-6e8195c5c5e2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d9aa7f5-6c1b-4e71-b3ad-ef87474e1760",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "72ff8e69-c68f-44f1-907b-2132217f7e88",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customer identification number"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eeebc523-fb87-4b0a-bbad-31a23bce2d20",
+          "name": "Get cards by client",
+          "request": {
+            "name": "Get cards by client",
+            "description": {
+              "content": "Returns the cards issued to a client, optionally filtered by status, type, funding type, product, account, alias, holder details or creation date. Use this endpoint to power card management views or to reconcile a given client's card portfolio.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "Filter by Bank Account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "alias",
+                  "value": "<string>",
+                  "description": "Filter by card alias"
+                },
+                {
+                  "disabled": false,
+                  "key": "createdAt",
+                  "value": "<string>",
+                  "description": "Filter by creation date"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer",
+                  "value": "<string>",
+                  "description": "Filter by customer"
+                },
+                {
+                  "disabled": false,
+                  "key": "firstName",
+                  "value": "<string>",
+                  "description": "Filter by First Name"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastName",
+                  "value": "<string>",
+                  "description": "Filter by last name"
+                },
+                {
+                  "disabled": false,
+                  "key": "freezeReason",
+                  "value": "<string>",
+                  "description": "Reason for freezing a card"
+                },
+                {
+                  "disabled": false,
+                  "key": "product",
+                  "value": "<string>",
+                  "description": "Deprecated. Use `fundingType` instead. Filter by product type."
+                },
+                {
+                  "disabled": false,
+                  "key": "fundingType",
+                  "value": "<string>",
+                  "description": "Filter by funding type. Extensible; current supported values are DEBIT and CREDIT."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by card status"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by the type of the card"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Filter by user ID"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Filter by client ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "88fc6d66-d0e6-4c47-ba4a-7cdfc88166dd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+                    },
+                    {
+                      "key": "alias",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freezeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fundingType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Filter by client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"accountId\": \"string\",\n    \"alias\": \"string\",\n    \"cancelled\": false,\n    \"cardDeliveryAddress\": {\n      \"addressCity\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressRefinement\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressStreet\": \"string\"\n    },\n    \"cardDeliveryMethodEnum\": \"STANDARD_FIRST_CLASS\",\n    \"cardLimitDaily\": 5101,\n    \"cardLimitMonthly\": 4985,\n    \"cardLimitTransaction\": 3991,\n    \"cardMinLimitTransaction\": 6134,\n    \"cardMinLimitTransactionForPhysicalBusiness\": 9190,\n    \"createdAt\": \"1999-04-15T19:16:28.309Z\",\n    \"expiryDate\": \"string\",\n    \"freezeReason\": \"COMPANY_REJECTED\",\n    \"fundingType\": \"CREDIT\",\n    \"id\": \"string\",\n    \"lifetimeSpendLimit\": 5664,\n    \"name\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"spend\": 5200.509475146295,\n    \"status\": \"SUSPENDED\",\n    \"token\": \"1234567\",\n    \"truncatedPan\": \"string\",\n    \"type\": \"PHYSICAL\",\n    \"userId\": \"string\",\n    \"cardProgramme\": \"string\",\n    \"cardDesign\": \"string\"\n  },\n  {\n    \"accountId\": \"string\",\n    \"alias\": \"string\",\n    \"cancelled\": false,\n    \"cardDeliveryAddress\": {\n      \"addressCity\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressRefinement\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressStreet\": \"string\"\n    },\n    \"cardDeliveryMethodEnum\": \"STANDARD_FIRST_CLASS\",\n    \"cardLimitDaily\": 1741,\n    \"cardLimitMonthly\": 9149,\n    \"cardLimitTransaction\": 944,\n    \"cardMinLimitTransaction\": 1820,\n    \"cardMinLimitTransactionForPhysicalBusiness\": 5303,\n    \"createdAt\": \"2002-02-18T16:50:48.371Z\",\n    \"expiryDate\": \"string\",\n    \"freezeReason\": \"CUSTOMER_REJECTED\",\n    \"fundingType\": \"DEBIT\",\n    \"id\": \"string\",\n    \"lifetimeSpendLimit\": 5333,\n    \"name\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"spend\": 8654.48495337641,\n    \"status\": \"INACTIVE\",\n    \"token\": \"1234567\",\n    \"truncatedPan\": \"string\",\n    \"type\": \"VIRTUAL\",\n    \"userId\": \"string\",\n    \"cardProgramme\": \"string\",\n    \"cardDesign\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c292cca-71a3-47be-bc8c-3b37f78c519e",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+                    },
+                    {
+                      "key": "alias",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freezeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fundingType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Filter by client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba7e0e56-c5d8-44ab-a3b1-117703c1de51",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+                    },
+                    {
+                      "key": "alias",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freezeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fundingType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Filter by client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "821c3f0d-b35c-42ec-a0ec-97618945ef8a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+                    },
+                    {
+                      "key": "alias",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freezeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fundingType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Filter by client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f44d304-964b-4097-a6e0-223cfe63a6e9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+                    },
+                    {
+                      "key": "alias",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "createdAt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "firstName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lastName",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "freezeReason",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "product",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fundingType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Filter by client ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1a9b48df-dad2-4d8d-8197-73735869181c",
+          "name": "Issue card",
+          "request": {
+            "name": "Issue card",
+            "description": {
+              "content": "Endpoint that allows to issue a physical or virtual card",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"fundingType\": \"DEBIT\",\n  \"physical\": \"<boolean>\",\n  \"telephone\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"cardLimitDaily\": \"<integer>\",\n  \"cardLimitMonthly\": \"<integer>\",\n  \"cardLimitTransaction\": \"<integer>\",\n  \"cardMinLimitTransaction\": \"<integer>\",\n  \"lifetimeSpendLimit\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": \"<integer>\",\n  \"cardLimitPurchasesMonthly\": \"<integer>\",\n  \"cardLimitATMDaily\": \"<integer>\",\n  \"cardLimitATMMonthly\": \"<integer>\",\n  \"cardLimitATMOperations\": \"<integer>\",\n  \"cardLimitPurchasesOperations\": \"<integer>\",\n  \"securityQuestions\": {\n    \"cityParentsMet\": \"<string>\",\n    \"favoriteChildhoodFriend\": \"<string>\",\n    \"firstCar\": \"<string>\",\n    \"firstPetName\": \"<string>\",\n    \"maternalGrandmotherMaidenName\": \"<string>\"\n  },\n  \"billingAccountId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d8d4f7f9-608d-4057-9c6d-37488b4e6052",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"fundingType\": \"DEBIT\",\n  \"physical\": \"<boolean>\",\n  \"telephone\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 50000,\n  \"cardLimitTransaction\": 100,\n  \"cardMinLimitTransaction\": \"<integer>\",\n  \"lifetimeSpendLimit\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100,\n  \"securityQuestions\": {\n    \"cityParentsMet\": \"<string>\",\n    \"favoriteChildhoodFriend\": \"<string>\",\n    \"firstCar\": \"<string>\",\n    \"firstPetName\": \"<string>\",\n    \"maternalGrandmotherMaidenName\": \"<string>\"\n  },\n  \"billingAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountLine\": \"string\",\n    \"alias\": \"string\",\n    \"assetFlag\": \"string\",\n    \"assetSymbol\": \"string\",\n    \"assetType\": \"string\",\n    \"bicSwift\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"id\": \"string\",\n    \"type\": \"COMPANY\"\n  },\n  \"alias\": \"string\",\n  \"authentication\": {\n    \"knowledgeBaseStatus\": \"NOT_ENROLLED\",\n    \"otpSmsStatus\": \"UNENROLLED\"\n  },\n  \"cancelled\": true,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryMethodEnum\": \"STANDARD_FIRST_CLASS\",\n  \"cardLimitDaily\": 4319,\n  \"cardLimitMonthly\": 5249,\n  \"cardLimitTransaction\": 3147,\n  \"createdAt\": \"2005-06-05T22:53:47.530Z\",\n  \"design\": {\n    \"cardNumber\": {\n      \"maxX\": 6401,\n      \"maxY\": 3847,\n      \"minX\": 1698,\n      \"minY\": 9861\n    },\n    \"cvv\": {\n      \"maxX\": 6342,\n      \"maxY\": 1899,\n      \"minX\": 3885,\n      \"minY\": 703\n    },\n    \"expiration\": {\n      \"maxX\": 4654,\n      \"maxY\": 8176,\n      \"minX\": 1710,\n      \"minY\": 3013\n    },\n    \"nameOnCard\": {\n      \"maxX\": 931,\n      \"maxY\": 8212,\n      \"minX\": 7134,\n      \"minY\": 1917\n    },\n    \"templateUrl\": \"string\",\n    \"textColor\": \"string\",\n    \"token\": {\n      \"maxX\": 1352,\n      \"maxY\": 813,\n      \"minX\": 3683,\n      \"minY\": 1429\n    }\n  },\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CUSTOMER_REJECTED\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 8915,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"product\": \"DEBIT\",\n  \"fundingType\": \"DEBIT\",\n  \"profileImage\": \"string\",\n  \"provider\": \"RAILSBANK\",\n  \"scale\": 7817,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"externalId\": \"string\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"PHYSICAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c79c0ada-ba87-4db6-a868-00746f41e846",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"fundingType\": \"DEBIT\",\n  \"physical\": \"<boolean>\",\n  \"telephone\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 50000,\n  \"cardLimitTransaction\": 100,\n  \"cardMinLimitTransaction\": \"<integer>\",\n  \"lifetimeSpendLimit\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100,\n  \"securityQuestions\": {\n    \"cityParentsMet\": \"<string>\",\n    \"favoriteChildhoodFriend\": \"<string>\",\n    \"firstCar\": \"<string>\",\n    \"firstPetName\": \"<string>\",\n    \"maternalGrandmotherMaidenName\": \"<string>\"\n  },\n  \"billingAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a5f9634e-3852-4d61-8b50-f3073eb12480",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"fundingType\": \"DEBIT\",\n  \"physical\": \"<boolean>\",\n  \"telephone\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 50000,\n  \"cardLimitTransaction\": 100,\n  \"cardMinLimitTransaction\": \"<integer>\",\n  \"lifetimeSpendLimit\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100,\n  \"securityQuestions\": {\n    \"cityParentsMet\": \"<string>\",\n    \"favoriteChildhoodFriend\": \"<string>\",\n    \"firstCar\": \"<string>\",\n    \"firstPetName\": \"<string>\",\n    \"maternalGrandmotherMaidenName\": \"<string>\"\n  },\n  \"billingAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7daf15d8-25de-4666-b226-128a202548de",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"fundingType\": \"DEBIT\",\n  \"physical\": \"<boolean>\",\n  \"telephone\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 50000,\n  \"cardLimitTransaction\": 100,\n  \"cardMinLimitTransaction\": \"<integer>\",\n  \"lifetimeSpendLimit\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100,\n  \"securityQuestions\": {\n    \"cityParentsMet\": \"<string>\",\n    \"favoriteChildhoodFriend\": \"<string>\",\n    \"firstCar\": \"<string>\",\n    \"firstPetName\": \"<string>\",\n    \"maternalGrandmotherMaidenName\": \"<string>\"\n  },\n  \"billingAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "28c617d8-71db-4a74-bc93-bd1e4bc40c82",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryName\": \"<string>\",\n  \"dateOfBirth\": \"<dateTime>\",\n  \"email\": \"<string>\",\n  \"fundingType\": \"DEBIT\",\n  \"physical\": \"<boolean>\",\n  \"telephone\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 50000,\n  \"cardLimitTransaction\": 100,\n  \"cardMinLimitTransaction\": \"<integer>\",\n  \"lifetimeSpendLimit\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100,\n  \"securityQuestions\": {\n    \"cityParentsMet\": \"<string>\",\n    \"favoriteChildhoodFriend\": \"<string>\",\n    \"firstCar\": \"<string>\",\n    \"firstPetName\": \"<string>\",\n    \"maternalGrandmotherMaidenName\": \"<string>\"\n  },\n  \"billingAccountId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd52f442-c268-4861-8828-febae1056010",
+          "name": "Suspend card",
+          "request": {
+            "name": "Suspend card",
+            "description": {
+              "content": "Suspend the card. This action can be revert (unfreeze card)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "suspend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) card identification number"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6c77c325-b8c7-4e8b-94eb-e167679ec794",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"alias\": \"string\",\n  \"cancelled\": false,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryMethodEnum\": \"INTERNATIONAL_MAIL\",\n  \"cardLimitDaily\": 1953,\n  \"cardLimitMonthly\": 763,\n  \"cardLimitTransaction\": 6835,\n  \"cardMinLimitTransaction\": 7770,\n  \"cardMinLimitTransactionForPhysicalBusiness\": 9598,\n  \"createdAt\": \"1972-10-20T14:02:50.876Z\",\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CARD_FROZEN_BY_ADMIN\",\n  \"fundingType\": \"CREDIT\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 9426,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"spend\": 162.89595206477435,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"PHYSICAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df92b90b-529e-467a-9971-2c161d10d8fe",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8d778455-1044-4dd0-95a2-00baa13cc191",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c481c7df-2cae-4c90-8971-940204f430f4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "139aa1d6-0a0a-4700-9e7b-7e8ae81c5d8f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) card identification number"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1708734e-3c43-4c79-97da-53900c2813c7",
+          "name": "Update card",
+          "request": {
+            "name": "Update card",
+            "description": {
+              "content": "Allows to update some properties of the card, like the limits. For both virtual and physical cards",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "card",
+                ":cardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lifetimeSpendLimit\": \"<number>\",\n  \"cardLimitTransaction\": \"<integer>\",\n  \"cardLimitMonthly\": \"<integer>\",\n  \"cardLimitDaily\": \"<integer>\",\n  \"cardLimitPurchasesDaily\": \"<integer>\",\n  \"cardLimitPurchasesMonthly\": \"<integer>\",\n  \"cardLimitATMDaily\": \"<integer>\",\n  \"cardLimitATMMonthly\": \"<integer>\",\n  \"cardLimitATMOperations\": \"<integer>\",\n  \"cardLimitPurchasesOperations\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa58762b-c64f-45bb-b2b0-399ee832e73c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lifetimeSpendLimit\": 100,\n  \"cardLimitTransaction\": 100,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitDaily\": 100,\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountLine\": \"string\",\n    \"alias\": \"string\",\n    \"assetFlag\": \"string\",\n    \"assetSymbol\": \"string\",\n    \"assetType\": \"string\",\n    \"bicSwift\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"id\": \"string\",\n    \"type\": \"COMPANY\"\n  },\n  \"alias\": \"string\",\n  \"authentication\": {\n    \"knowledgeBaseStatus\": \"NOT_ENROLLED\",\n    \"otpSmsStatus\": \"UNENROLLED\"\n  },\n  \"cancelled\": true,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryMethodEnum\": \"STANDARD_FIRST_CLASS\",\n  \"cardLimitDaily\": 4319,\n  \"cardLimitMonthly\": 5249,\n  \"cardLimitTransaction\": 3147,\n  \"createdAt\": \"2005-06-05T22:53:47.530Z\",\n  \"design\": {\n    \"cardNumber\": {\n      \"maxX\": 6401,\n      \"maxY\": 3847,\n      \"minX\": 1698,\n      \"minY\": 9861\n    },\n    \"cvv\": {\n      \"maxX\": 6342,\n      \"maxY\": 1899,\n      \"minX\": 3885,\n      \"minY\": 703\n    },\n    \"expiration\": {\n      \"maxX\": 4654,\n      \"maxY\": 8176,\n      \"minX\": 1710,\n      \"minY\": 3013\n    },\n    \"nameOnCard\": {\n      \"maxX\": 931,\n      \"maxY\": 8212,\n      \"minX\": 7134,\n      \"minY\": 1917\n    },\n    \"templateUrl\": \"string\",\n    \"textColor\": \"string\",\n    \"token\": {\n      \"maxX\": 1352,\n      \"maxY\": 813,\n      \"minX\": 3683,\n      \"minY\": 1429\n    }\n  },\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CUSTOMER_REJECTED\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 8915,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"product\": \"DEBIT\",\n  \"fundingType\": \"DEBIT\",\n  \"profileImage\": \"string\",\n  \"provider\": \"RAILSBANK\",\n  \"scale\": 7817,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"externalId\": \"string\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"PHYSICAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b900af8d-1a00-4cfd-a553-32d4bdd54da3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lifetimeSpendLimit\": 100,\n  \"cardLimitTransaction\": 100,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitDaily\": 100,\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5d8cce8-b504-44e4-9206-9ccee930f152",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lifetimeSpendLimit\": 100,\n  \"cardLimitTransaction\": 100,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitDaily\": 100,\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d7e87f4f-5af9-4551-8bf7-0cd0ae1dc71a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lifetimeSpendLimit\": 100,\n  \"cardLimitTransaction\": 100,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitDaily\": 100,\n  \"cardLimitPurchasesDaily\": 100,\n  \"cardLimitPurchasesMonthly\": 100,\n  \"cardLimitATMDaily\": 100,\n  \"cardLimitATMMonthly\": 100,\n  \"cardLimitATMOperations\": 100,\n  \"cardLimitPurchasesOperations\": 100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25f9d10e-7bb9-4ef5-93c3-778e2fbd9c03",
+          "name": "Update card alias",
+          "request": {
+            "name": "Update card alias",
+            "description": {
+              "content": "Allows to update the alias of a given card",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "card",
+                ":cardId",
+                "updateAlias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) cardId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e68f893b-dce7-4a83-a754-621cbddb6362",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId",
+                    "updateAlias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) cardId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountLine\": \"string\",\n    \"alias\": \"string\",\n    \"assetFlag\": \"string\",\n    \"assetSymbol\": \"string\",\n    \"assetType\": \"string\",\n    \"bicSwift\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"id\": \"string\",\n    \"type\": \"COMPANY\"\n  },\n  \"alias\": \"string\",\n  \"authentication\": {\n    \"knowledgeBaseStatus\": \"NOT_ENROLLED\",\n    \"otpSmsStatus\": \"UNENROLLED\"\n  },\n  \"cancelled\": true,\n  \"cardDeliveryAddress\": {\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressRefinement\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressStreet\": \"<string>\"\n  },\n  \"cardDeliveryMethodEnum\": \"STANDARD_FIRST_CLASS\",\n  \"cardLimitDaily\": 4319,\n  \"cardLimitMonthly\": 5249,\n  \"cardLimitTransaction\": 3147,\n  \"createdAt\": \"2005-06-05T22:53:47.530Z\",\n  \"design\": {\n    \"cardNumber\": {\n      \"maxX\": 6401,\n      \"maxY\": 3847,\n      \"minX\": 1698,\n      \"minY\": 9861\n    },\n    \"cvv\": {\n      \"maxX\": 6342,\n      \"maxY\": 1899,\n      \"minX\": 3885,\n      \"minY\": 703\n    },\n    \"expiration\": {\n      \"maxX\": 4654,\n      \"maxY\": 8176,\n      \"minX\": 1710,\n      \"minY\": 3013\n    },\n    \"nameOnCard\": {\n      \"maxX\": 931,\n      \"maxY\": 8212,\n      \"minX\": 7134,\n      \"minY\": 1917\n    },\n    \"templateUrl\": \"string\",\n    \"textColor\": \"string\",\n    \"token\": {\n      \"maxX\": 1352,\n      \"maxY\": 813,\n      \"minX\": 3683,\n      \"minY\": 1429\n    }\n  },\n  \"expiryDate\": \"string\",\n  \"freezeReason\": \"CUSTOMER_REJECTED\",\n  \"id\": \"string\",\n  \"lifetimeSpendLimit\": 8915,\n  \"name\": \"string\",\n  \"nameOnCard\": \"string\",\n  \"product\": \"DEBIT\",\n  \"fundingType\": \"DEBIT\",\n  \"profileImage\": \"string\",\n  \"provider\": \"RAILSBANK\",\n  \"scale\": 7817,\n  \"status\": \"SUSPENDED\",\n  \"token\": \"1234567\",\n  \"externalId\": \"string\",\n  \"truncatedPan\": \"string\",\n  \"type\": \"PHYSICAL\",\n  \"userId\": \"string\",\n  \"cardProgramme\": \"string\",\n  \"cardDesign\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30b26ae0-19e0-4497-b8eb-c4821ab5bbd7",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId",
+                    "updateAlias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) cardId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1417b100-f39a-4f83-b85f-3f020eecbf3c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId",
+                    "updateAlias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) cardId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "96da6203-0ea7-47f9-b62c-78a0cce5cff0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId",
+                    "updateAlias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) cardId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8c975255-9ee5-4613-97e7-543cf321aeab",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "card",
+                    ":cardId",
+                    "updateAlias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) cardId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9fec4837-21b8-47d7-b482-ca19dadf2beb",
+    "name": "Accounts Account Card actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

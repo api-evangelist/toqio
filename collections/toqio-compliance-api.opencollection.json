@@ -1,0 +1,392 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Compliance API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Compliance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deletes a merchants KYB document",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/provider/:complianceProvider/document/:documentKey",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the document is associated with"
+              },
+              {
+                "name": "documentKey",
+                "value": "",
+                "type": "path",
+                "description": "documentKey of the document to be deleted, provided when uploading using the pre-signed URL endpoint"
+              },
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query",
+                "description": "If the document was uploaded through the platform, a documentId is returned. This documentId is required to delete the document"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint will delete a KYB document previously uploaded through the platform or using pre-signed URL endpoint"
+        },
+        {
+          "info": {
+            "name": "Get compliance statuses for a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/provider/:complianceProvider/complianceStatuses",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the the action is associated with"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint allows to get compliance statuses for a company"
+        },
+        {
+          "info": {
+            "name": "Update compliance statuses for a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/provider/:complianceProvider/complianceStatuses",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the the action is associated with"
+              },
+              {
+                "name": "updateCompanyKybDocumentsDTO",
+                "value": "",
+                "type": "query",
+                "description": "List of documents to update"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint allows to update compliance statuses for a company"
+        },
+        {
+          "info": {
+            "name": "Updates the compliance status of a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/provider/:complianceProvider/updateComplianceStatus",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the the action is associated with"
+              },
+              {
+                "name": "complianceStatusUpdateDTO",
+                "value": "",
+                "type": "query",
+                "description": "Object with the statuses to be updated"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint updates the compliance status of a client"
+        },
+        {
+          "info": {
+            "name": "Update company kyb document status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/kybDocuments/status",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "updateCompanyKybDocumentsDTO",
+                "value": "",
+                "type": "query",
+                "description": "List of documents to update"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint allows to update company kyb document status"
+        },
+        {
+          "info": {
+            "name": "Update shareholder document status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/$:clientId/shareholders/$:shareholderId/documents/status",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "shareholderId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios shareholder ID"
+              },
+              {
+                "name": "updateShareholderDocuments",
+                "value": "",
+                "type": "query",
+                "description": "List of documents to update"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint allows to update the shareholder document status"
+        },
+        {
+          "info": {
+            "name": "Updates the compliance status of a user or shareholder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/user/:userId/provider/:complianceProvider/updateComplianceStatus",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios user ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the the action is associated with"
+              },
+              {
+                "name": "complianceStatusUpdateDTO",
+                "value": "",
+                "type": "query",
+                "description": "Object with the statuses to be updated"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint updates the compliance status of a user or shareholder"
+        },
+        {
+          "info": {
+            "name": "Update user document status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/iam/api/customers/:customerId/merchant/:clientId/users/:userId/provider/:complianceProvider/documents/status",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios customer ID"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios client ID"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Toqios user ID"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "The compliance provider the the action is associated with"
+              },
+              {
+                "name": "userDocumentsDTO",
+                "value": "",
+                "type": "query",
+                "description": "List of documents to update"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "This endpoint allows to update the user document status"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Webhook API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhook",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Webhook base endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/webhook/:customerId",
+            "headers": [
+              {
+                "name": "headers",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID"
+              },
+              {
+                "name": "notificationBody",
+                "value": "",
+                "type": "query",
+                "description": "Notification body"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to handle webhook notifications."
+        },
+        {
+          "info": {
+            "name": "Webhook base endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/webhook",
+            "headers": [
+              {
+                "name": "headers",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID"
+              },
+              {
+                "name": "notificationBody",
+                "value": "",
+                "type": "query",
+                "description": "Notification body"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to handle webhook notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

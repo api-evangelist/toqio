@@ -1,0 +1,2813 @@
+{
+  "item": [
+    {
+      "id": "ba4ff9d9-d7dd-49a5-b2ab-664bac557483",
+      "name": "Account information",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4f97496-c8a0-4e37-a65d-9a15f1835ac0",
+          "name": "Create account",
+          "request": {
+            "name": "Create account",
+            "description": {
+              "content": "Allows to create a new account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"bankingProvider\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"readOnly\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d3fb0fc-9dc0-4728-92c9-1cd56ce0ffe5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\",\n  \"assetType\": \"GBP\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"bankingProvider\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"readOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"accountType\": \"string\",\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"alias\": \"string\",\n  \"amount\": 5198.668932066729,\n  \"assetFlag\": \"string\",\n  \"assetSymbol\": \"string\",\n  \"assetType\": \"string\",\n  \"availableBalance\": 2006.2559403436908,\n  \"bicSwift\": \"string\",\n  \"bicSwiftForSEPA\": \"string\",\n  \"bicSwiftForSWIFT\": \"string\",\n  \"canCancelAccount\": true,\n  \"city\": \"string\",\n  \"correspondentBank\": \"string\",\n  \"correspondentBankAddress\": \"string\",\n  \"correspondentBankSWIFT\": \"string\",\n  \"countryCode\": \"string\",\n  \"createdAt\": \"1988-05-31T06:03:49.557Z\",\n  \"hasBillingPayment\": true,\n  \"holderAddress\": \"string\",\n  \"holderBank\": \"string\",\n  \"holderBankAddress\": \"string\",\n  \"holderName\": \"string\",\n  \"iban\": \"string\",\n  \"id\": \"string\",\n  \"internationalEnabled\": true,\n  \"main\": false,\n  \"partnerProduct\": \"string\",\n  \"postalCode\": \"string\",\n  \"status\": \"REMOVED\",\n  \"totalBalance\": 1279.9731075979491,\n  \"totalExpenses\": 5112.708418492969,\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"userId\": \"string\",\n  \"readOnly\": false,\n  \"wireRoutingNumber\": \"string\",\n  \"achRoutingNumber\": \"string\",\n  \"ibanForSwift\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0340b738-60b4-4972-8200-e9529f55e8cd",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\",\n  \"assetType\": \"GBP\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"bankingProvider\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"readOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "38a8bc1b-787c-41d7-afe2-ce16a0de7b71",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\",\n  \"assetType\": \"GBP\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"bankingProvider\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"readOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9d2b62d1-1fa6-46c4-b092-67ba00f13352",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\",\n  \"assetType\": \"GBP\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"bankingProvider\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"readOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bcb7f4e0-7bf8-4f00-952a-64e941806710",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\",\n  \"assetType\": \"GBP\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"bankingProvider\": \"<string>\",\n  \"productId\": \"<string>\",\n  \"accountType\": \"<string>\",\n  \"readOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74644b64-cd8a-4c1c-aba4-c2e9b9544a45",
+          "name": "Create product",
+          "request": {
+            "name": "Create product",
+            "description": {
+              "content": "Creates a new product for the customer, optionally linked to a banking provider, a ledger type and a marketplace. Products are the catalog entries clients are enrolled in and define which partner products and account types are available to them.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"bankingProvider\": \"<string>\",\n  \"partnerProduct\": \"<string>\",\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"ledgerTypeId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"marketplaceKey\": \"<string>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "140094b8-1fd8-44dc-affa-b84dd9d7973f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankingProvider\": \"<string>\",\n  \"partnerProduct\": \"<string>\",\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"ledgerTypeId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"marketplaceKey\": \"<string>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"bankingProvider\": \"string\",\n  \"customerId\": \"string\",\n  \"ledgerTypeId\": \"string\",\n  \"visible\": true,\n  \"marketplaceKey\": \"string\",\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"partnerProduct\": {\n    \"code\": \"string\",\n    \"assetType\": \"zar\",\n    \"label\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"schemes\": [\n      \"FAST\",\n      \"NCS\"\n    ],\n    \"bankingProvider\": \"string\",\n    \"assetTypes\": [\n      \"pln\",\n      \"usd\"\n    ],\n    \"holderBank\": \"string\",\n    \"holderBankAddress\": \"string\",\n    \"holderBankSWIFT\": \"string\",\n    \"correspondentBank\": \"string\",\n    \"correspondentBankAddress\": \"string\",\n    \"correspondentBankSWIFT\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fea74d1-9fab-4b59-b7a5-a0acb7c196b2",
+              "name": "PRODUCT_ALREADY_EXISTS, ERROR_PARTNER_PRODUCT_NOT_VALID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankingProvider\": \"<string>\",\n  \"partnerProduct\": \"<string>\",\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"ledgerTypeId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"marketplaceKey\": \"<string>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fdfc1049-4db7-4bb1-8e06-b92d069e9832",
+              "name": "ERROR_CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"bankingProvider\": \"<string>\",\n  \"partnerProduct\": \"<string>\",\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"ledgerTypeId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"marketplaceKey\": \"<string>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Expectation Failed",
+              "code": 417,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70b881ff-35be-4cd8-bf20-8462113adf2b",
+          "name": "Get products",
+          "request": {
+            "name": "Get products",
+            "description": {
+              "content": "Returns the list of products for the customer, optionally filtered by banking provider, visibility flag, ledger type or marketplace key. All filter parameters are optional; when omitted, the full catalog visible to the customer is returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "products"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "bankingProvider",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "visible",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ledgerTypeId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "marketplaceKey",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "89e2e537-09d6-4673-9462-9775761c66cd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "bankingProvider",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visible",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ledgerTypeId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "marketplaceKey",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"bankingProvider\": \"string\",\n    \"customerId\": \"string\",\n    \"ledgerTypeId\": \"string\",\n    \"visible\": false,\n    \"marketplaceKey\": \"string\",\n    \"name\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"description\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"partnerProduct\": {\n      \"code\": \"string\",\n      \"assetType\": \"hkd\",\n      \"label\": {\n        \"en\": \"<string>\",\n        \"es\": \"<string>\",\n        \"zh\": \"<string>\"\n      },\n      \"schemes\": [\n        \"ELIXIR\",\n        \"CERTIS\"\n      ],\n      \"bankingProvider\": \"string\",\n      \"assetTypes\": [\n        \"bhd\",\n        \"sgd\"\n      ],\n      \"holderBank\": \"string\",\n      \"holderBankAddress\": \"string\",\n      \"holderBankSWIFT\": \"string\",\n      \"correspondentBank\": \"string\",\n      \"correspondentBankAddress\": \"string\",\n      \"correspondentBankSWIFT\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"bankingProvider\": \"string\",\n    \"customerId\": \"string\",\n    \"ledgerTypeId\": \"string\",\n    \"visible\": false,\n    \"marketplaceKey\": \"string\",\n    \"name\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"description\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"partnerProduct\": {\n      \"code\": \"string\",\n      \"assetType\": \"ugx\",\n      \"label\": {\n        \"en\": \"<string>\",\n        \"es\": \"<string>\",\n        \"zh\": \"<string>\"\n      },\n      \"schemes\": [\n        \"CHAPS\",\n        \"FEDACH\"\n      ],\n      \"bankingProvider\": \"string\",\n      \"assetTypes\": [\n        \"huf\",\n        \"zar\"\n      ],\n      \"holderBank\": \"string\",\n      \"holderBankAddress\": \"string\",\n      \"holderBankSWIFT\": \"string\",\n      \"correspondentBank\": \"string\",\n      \"correspondentBankAddress\": \"string\",\n      \"correspondentBankSWIFT\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8280b2a9-c364-46d1-a35f-9a078d230935",
+          "name": "Cancel account",
+          "request": {
+            "name": "Cancel account",
+            "description": {
+              "content": "Allows to cancel a given account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) accountId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7216dca1-df61-4ee9-8cfe-4e0e6afb6db3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"accountType\": \"string\",\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"alias\": \"string\",\n  \"amount\": 5198.668932066729,\n  \"assetFlag\": \"string\",\n  \"assetSymbol\": \"string\",\n  \"assetType\": \"string\",\n  \"availableBalance\": 2006.2559403436908,\n  \"bicSwift\": \"string\",\n  \"bicSwiftForSEPA\": \"string\",\n  \"bicSwiftForSWIFT\": \"string\",\n  \"canCancelAccount\": true,\n  \"city\": \"string\",\n  \"correspondentBank\": \"string\",\n  \"correspondentBankAddress\": \"string\",\n  \"correspondentBankSWIFT\": \"string\",\n  \"countryCode\": \"string\",\n  \"createdAt\": \"1988-05-31T06:03:49.557Z\",\n  \"hasBillingPayment\": true,\n  \"holderAddress\": \"string\",\n  \"holderBank\": \"string\",\n  \"holderBankAddress\": \"string\",\n  \"holderName\": \"string\",\n  \"iban\": \"string\",\n  \"id\": \"string\",\n  \"internationalEnabled\": true,\n  \"main\": false,\n  \"partnerProduct\": \"string\",\n  \"postalCode\": \"string\",\n  \"status\": \"REMOVED\",\n  \"totalBalance\": 1279.9731075979491,\n  \"totalExpenses\": 5112.708418492969,\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"userId\": \"string\",\n  \"readOnly\": false,\n  \"wireRoutingNumber\": \"string\",\n  \"achRoutingNumber\": \"string\",\n  \"ibanForSwift\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "acb9d53a-0ee5-4872-aa1d-b1f19ce716d4",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2fa52ccc-a4e1-4bdc-8b8f-07d87ad50947",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b6ac4423-73a3-4323-b15d-6e3597d7ede7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ca17beef-80c9-415e-97c5-564b515daa6c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e02c169f-25e3-4688-af54-21c708340b4c",
+          "name": "Get account",
+          "request": {
+            "name": "Get account",
+            "description": {
+              "content": "Allows to get the details of an account for a given client",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) accountId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fca946e4-7734-422c-9be5-a9aabb21ed9c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"accountType\": \"string\",\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"alias\": \"string\",\n  \"amount\": 5198.668932066729,\n  \"assetFlag\": \"string\",\n  \"assetSymbol\": \"string\",\n  \"assetType\": \"string\",\n  \"availableBalance\": 2006.2559403436908,\n  \"bicSwift\": \"string\",\n  \"bicSwiftForSEPA\": \"string\",\n  \"bicSwiftForSWIFT\": \"string\",\n  \"canCancelAccount\": true,\n  \"city\": \"string\",\n  \"correspondentBank\": \"string\",\n  \"correspondentBankAddress\": \"string\",\n  \"correspondentBankSWIFT\": \"string\",\n  \"countryCode\": \"string\",\n  \"createdAt\": \"1988-05-31T06:03:49.557Z\",\n  \"hasBillingPayment\": true,\n  \"holderAddress\": \"string\",\n  \"holderBank\": \"string\",\n  \"holderBankAddress\": \"string\",\n  \"holderName\": \"string\",\n  \"iban\": \"string\",\n  \"id\": \"string\",\n  \"internationalEnabled\": true,\n  \"main\": false,\n  \"partnerProduct\": \"string\",\n  \"postalCode\": \"string\",\n  \"status\": \"REMOVED\",\n  \"totalBalance\": 1279.9731075979491,\n  \"totalExpenses\": 5112.708418492969,\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"userId\": \"string\",\n  \"readOnly\": false,\n  \"wireRoutingNumber\": \"string\",\n  \"achRoutingNumber\": \"string\",\n  \"ibanForSwift\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b10b7eff-e99d-4902-9cfd-3be51f373cc1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "efce50d9-2743-4d43-a13a-6d7325d95d7f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1235a37-a1cf-4e5b-a6f4-c953ecbb0fed",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25916a6e-8463-4dc6-9ec2-e26d52c1952f",
+          "name": "Get partner products",
+          "request": {
+            "name": "Get partner products",
+            "description": {
+              "content": "Allows to get the partner products of a given client",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "partnerProducts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "countryCode",
+                  "value": "<string>",
+                  "description": "(Required) countryCode"
+                },
+                {
+                  "disabled": false,
+                  "key": "provider",
+                  "value": "<string>",
+                  "description": "(Required) Banking provider of the source account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0968e71a-5ceb-4771-a9df-caf4c265569a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"assetType\": \"NZD\",\n  \"assetTypes\": [\n    \"bhd\",\n    \"aud\"\n  ],\n  \"code\": \"string\",\n  \"correspondentBank\": \"string\",\n  \"correspondentBankAddress\": \"string\",\n  \"correspondentBankSWIFT\": \"string\",\n  \"holderBank\": \"string\",\n  \"holderBankAddress\": \"string\",\n  \"holderBankSWIFT\": \"string\",\n  \"label\": {\n    \"de\": \"string\",\n    \"default\": \"string\",\n    \"en\": \"string\",\n    \"es\": \"string\"\n  },\n  \"schemes\": [\n    {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"code\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7cac870-9cf9-4b57-8d3c-a68950c894ac",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a25d53d-5261-4eb5-bccc-865055d4c5a7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3ae7face-f9a8-4968-b73e-10e2566b04e0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "countryCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "provider",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9509b063-aa38-46dc-9d81-6dca1bd2e4e0",
+          "name": "Update account alias",
+          "request": {
+            "name": "Update account alias",
+            "description": {
+              "content": "Updates the alias of an account for a specific merchant.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "merchant",
+                ":companyId",
+                "accounts",
+                ":accountId",
+                "alias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) ID of the customer making the request"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "companyId",
+                  "description": "(Required) ID of the merchant company"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) ID of the account to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32e414b6-6d3a-4b8d-ba4f-f77a134c9924",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":companyId",
+                    "accounts",
+                    ":accountId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer making the request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) ID of the merchant company"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"accountType\": \"string\",\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"alias\": \"string\",\n  \"amount\": 5198.668932066729,\n  \"assetFlag\": \"string\",\n  \"assetSymbol\": \"string\",\n  \"assetType\": \"string\",\n  \"availableBalance\": 2006.2559403436908,\n  \"bicSwift\": \"string\",\n  \"bicSwiftForSEPA\": \"string\",\n  \"bicSwiftForSWIFT\": \"string\",\n  \"canCancelAccount\": true,\n  \"city\": \"string\",\n  \"correspondentBank\": \"string\",\n  \"correspondentBankAddress\": \"string\",\n  \"correspondentBankSWIFT\": \"string\",\n  \"countryCode\": \"string\",\n  \"createdAt\": \"1988-05-31T06:03:49.557Z\",\n  \"hasBillingPayment\": true,\n  \"holderAddress\": \"string\",\n  \"holderBank\": \"string\",\n  \"holderBankAddress\": \"string\",\n  \"holderName\": \"string\",\n  \"iban\": \"string\",\n  \"id\": \"string\",\n  \"internationalEnabled\": true,\n  \"main\": false,\n  \"partnerProduct\": \"string\",\n  \"postalCode\": \"string\",\n  \"status\": \"REMOVED\",\n  \"totalBalance\": 1279.9731075979491,\n  \"totalExpenses\": 5112.708418492969,\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"userId\": \"string\",\n  \"readOnly\": false,\n  \"wireRoutingNumber\": \"string\",\n  \"achRoutingNumber\": \"string\",\n  \"ibanForSwift\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1b6ff8e-eb67-4745-836b-96f18521e65b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":companyId",
+                    "accounts",
+                    ":accountId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer making the request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) ID of the merchant company"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3c6349f9-97d2-40cc-876c-96455626fea6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":companyId",
+                    "accounts",
+                    ":accountId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer making the request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) ID of the merchant company"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2e8381c-d360-4455-9b26-fedc151ce63b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "merchant",
+                    ":companyId",
+                    "accounts",
+                    ":accountId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) ID of the customer making the request"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "companyId",
+                      "description": "(Required) ID of the merchant company"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) ID of the account to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "292e769c-6e5a-4c8b-a813-6d34b44c543d",
+          "name": "Update Account Read Only",
+          "request": {
+            "name": "Update Account Read Only",
+            "description": {
+              "content": "Allows to update a certain account to readOnly",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "accounts",
+                ":accountId",
+                "readOnly",
+                ":readOnly"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) accountId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<boolean>",
+                  "key": "readOnly",
+                  "description": "(Required) readOnly"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d7fb947-de3d-4cbc-9345-41b7fa26187d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "readOnly",
+                    ":readOnly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<boolean>",
+                      "key": "readOnly",
+                      "description": "(Required) readOnly"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"accountType\": \"string\",\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"alias\": \"string\",\n  \"amount\": 5198.668932066729,\n  \"assetFlag\": \"string\",\n  \"assetSymbol\": \"string\",\n  \"assetType\": \"string\",\n  \"availableBalance\": 2006.2559403436908,\n  \"bicSwift\": \"string\",\n  \"bicSwiftForSEPA\": \"string\",\n  \"bicSwiftForSWIFT\": \"string\",\n  \"canCancelAccount\": true,\n  \"city\": \"string\",\n  \"correspondentBank\": \"string\",\n  \"correspondentBankAddress\": \"string\",\n  \"correspondentBankSWIFT\": \"string\",\n  \"countryCode\": \"string\",\n  \"createdAt\": \"1988-05-31T06:03:49.557Z\",\n  \"hasBillingPayment\": true,\n  \"holderAddress\": \"string\",\n  \"holderBank\": \"string\",\n  \"holderBankAddress\": \"string\",\n  \"holderName\": \"string\",\n  \"iban\": \"string\",\n  \"id\": \"string\",\n  \"internationalEnabled\": true,\n  \"main\": false,\n  \"partnerProduct\": \"string\",\n  \"postalCode\": \"string\",\n  \"status\": \"REMOVED\",\n  \"totalBalance\": 1279.9731075979491,\n  \"totalExpenses\": 5112.708418492969,\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"userId\": \"string\",\n  \"readOnly\": false,\n  \"wireRoutingNumber\": \"string\",\n  \"achRoutingNumber\": \"string\",\n  \"ibanForSwift\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfa1ddb2-7b18-49c5-9038-1feb2282b416",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "readOnly",
+                    ":readOnly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<boolean>",
+                      "key": "readOnly",
+                      "description": "(Required) readOnly"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "314f437f-d2fa-4276-b462-67c110fd539e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "readOnly",
+                    ":readOnly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<boolean>",
+                      "key": "readOnly",
+                      "description": "(Required) readOnly"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bac88416-44e7-47c8-90ed-fbb17e00551d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "readOnly",
+                    ":readOnly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<boolean>",
+                      "key": "readOnly",
+                      "description": "(Required) readOnly"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31e13448-d81b-4b84-92c4-9c1f327696ce",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "accounts",
+                    ":accountId",
+                    "readOnly",
+                    ":readOnly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) accountId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<boolean>",
+                      "key": "readOnly",
+                      "description": "(Required) readOnly"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52f6ecc0-6c7c-4771-beb9-f7910973b1d3",
+          "name": "Update product details",
+          "request": {
+            "name": "Update product details",
+            "description": {
+              "content": "Updates the metadata of an existing product (name, description, image, visibility). Products group the partner products that a client can be enrolled in and drive the catalog displayed in the onboarding and account-opening flows.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "products",
+                ":productId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "productId",
+                  "description": "(Required) productId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"visible\": \"<boolean>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f14b2817-8742-4ad1-96c3-9bf4d4259223",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) productId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"visible\": \"<boolean>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"bankingProvider\": \"string\",\n  \"customerId\": \"string\",\n  \"ledgerTypeId\": \"string\",\n  \"visible\": true,\n  \"marketplaceKey\": \"string\",\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"partnerProduct\": {\n    \"code\": \"string\",\n    \"assetType\": \"usd\",\n    \"label\": {\n      \"en\": \"<string>\",\n      \"es\": \"<string>\",\n      \"zh\": \"<string>\"\n    },\n    \"schemes\": [\n      \"NEFT\",\n      \"NEFT\"\n    ],\n    \"bankingProvider\": \"string\",\n    \"assetTypes\": [\n      \"kes\",\n      \"idr\"\n    ],\n    \"holderBank\": \"string\",\n    \"holderBankAddress\": \"string\",\n    \"holderBankSWIFT\": \"string\",\n    \"correspondentBank\": \"string\",\n    \"correspondentBankAddress\": \"string\",\n    \"correspondentBankSWIFT\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b09e585-4103-405b-88d5-b05994b49b8d",
+              "name": "PRODUCT_UPDATE_FORBIDDEN",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) productId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"visible\": \"<boolean>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "720e9a8d-2b43-404c-bb18-7a2a59721d89",
+              "name": "PRODUCT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products",
+                    ":productId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "productId",
+                      "description": "(Required) productId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"description\": {\n    \"en\": \"<string>\",\n    \"es\": \"<string>\",\n    \"zh\": \"<string>\"\n  },\n  \"visible\": \"<boolean>\",\n  \"productImageBase64\": \"<string>\",\n  \"productImageName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e535d369-b61d-4d10-81b8-1f0e3a20dd39",
+    "name": "Accounts Account Account information API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

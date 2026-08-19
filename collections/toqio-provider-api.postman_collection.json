@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "8aa6e9a8-012c-4acf-a732-f69c15c75282",
+      "name": "Provider",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "efb220c6-c20d-4cd9-8452-5d4f261bfe83",
+          "name": "Get Provider Partner Products",
+          "request": {
+            "name": "Get Provider Partner Products",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "partnerProducts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4d026b0-1fa3-4a9a-ae1f-9a50eb51e59b",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"code\": \"string\",\n        \"assetType\": \"kwd\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"SEPA_INSTANT\",\n          \"INTRADAGCLEARING\"\n        ],\n        \"assetTypes\": [\n          \"eur\",\n          \"eur\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"assetType\": \"zar\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"TARGET2\",\n          \"STRAKSCLEARING_INSTANT\"\n        ],\n        \"assetTypes\": [\n          \"kwd\",\n          \"mxn\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": [\n      {\n        \"code\": \"string\",\n        \"assetType\": \"kes\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"NORWEGIAN_INTERBANK_CLEARING_SYSTEM\",\n          \"TARGET2\"\n        ],\n        \"assetTypes\": [\n          \"huf\",\n          \"bhd\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      },\n      {\n        \"code\": \"string\",\n        \"assetType\": \"kes\",\n        \"label\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"schemes\": [\n          \"GIRO_ZRT\",\n          \"GIRO_ZRT\"\n        ],\n        \"assetTypes\": [\n          \"gbp\",\n          \"bgn\"\n        ],\n        \"holderBank\": \"string\",\n        \"holderBankAddress\": \"string\",\n        \"holderBankSWIFT\": \"string\",\n        \"correspondentBank\": \"string\",\n        \"correspondentBankAddress\": \"string\",\n        \"correspondentBankSWIFT\": \"string\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6754221-a213-4ec6-be61-08399d39bad0",
+              "name": "Custom exception",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "partnerProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "eb0a24df-b140-4dec-908f-05bbac8771d1",
+    "name": "Accounts Account Provider API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Client information API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Client information",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients",
+            "params": [
+              {
+                "name": "clientType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "kyxStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Allows to get the different clients of a customer"
+        },
+        {
+          "info": {
+            "name": "Get client",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "clientId"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              }
+            ]
+          },
+          "docs": "Allows to get the client information"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account MeaWallet API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MeaWallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Mea Wallet API Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/meaWallet",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deprecated"
+        },
+        {
+          "info": {
+            "name": "Update MEA Wallet API Configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/meaWallet",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated"
+        },
+        {
+          "info": {
+            "name": "Delete Mea Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/meaWallet",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deprecated"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

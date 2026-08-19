@@ -1,0 +1,249 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Beneficiary API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Beneficiary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Find Beneficiary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "accountBankDetailsRequest",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deprecated"
+        },
+        {
+          "info": {
+            "name": "Create a new beneficiary",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new beneficiary"
+        },
+        {
+          "info": {
+            "name": "Update Beneficiary",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries/:accountId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing beneficiary. Profile fields (name, address and visibility) can be edited. Bank-account detail fields are immutable: they are captured at creation and marked read-only on the update request body, so any value supplied for them is ignored and the stored value is preserved before the request is forwarded to the provider."
+        },
+        {
+          "info": {
+            "name": "Delete Beneficiary",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries/:accountId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Beneficiary"
+        },
+        {
+          "info": {
+            "name": "Get Beneficiary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/account/:accountId/beneficiaries/:beneficiaryId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "beneficiaryId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Beneficiary"
+        },
+        {
+          "info": {
+            "name": "Get Beneficiary Filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries/filters",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the available filters for beneficiary operations (payments, beneficiary listing, and beneficiary creation). The response includes the permitted asset types (currencies) and countries based on the source account characteristics. This allows the client to filter beneficiaries by supported currencies and countries according to the integration's business rules."
+        },
+        {
+          "info": {
+            "name": "Search Beneficiaries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries/search",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deprecated"
+        },
+        {
+          "info": {
+            "name": "Verify beneficiary for a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/beneficiaries/verify",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the company"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verifies beneficiary information for a client before proceeding with a payment. This endpoint validates beneficiary details and returns verification status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

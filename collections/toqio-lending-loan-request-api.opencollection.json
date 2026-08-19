@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Lending - Loan - Request API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending - Loan - Request",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a lending request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/requests",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "lendingRequestRequest",
+                "value": "",
+                "type": "query",
+                "description": "Lending request request. Cannot be null."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a lending request"
+        },
+        {
+          "info": {
+            "name": "Get a lending request",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/requests/:lendingRequestId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "lendingRequestId",
+                "value": "",
+                "type": "path",
+                "description": "Lending request ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get a lending request"
+        },
+        {
+          "info": {
+            "name": "Update a lending request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/requests/:lendingRequestId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "lendingRequestId",
+                "value": "",
+                "type": "path",
+                "description": "Lending request ID. Cannot be null or empty."
+              },
+              {
+                "name": "lendingRequestRequest",
+                "value": "",
+                "type": "query",
+                "description": "Lending request request. Cannot be null."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a lending request"
+        },
+        {
+          "info": {
+            "name": "Get lending requests by filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/requests/find",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "lendingRequestFilter",
+                "value": "",
+                "type": "query",
+                "description": "Lending request filter. Cannot be null."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get lending requests by filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

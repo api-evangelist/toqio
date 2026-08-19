@@ -1,0 +1,226 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Transaction API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transaction",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch transactions"
+        },
+        {
+          "info": {
+            "name": "Save Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Save Transfer"
+        },
+        {
+          "info": {
+            "name": "Get bank payment schemes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/bankPaymentSchemes",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get bank payment schemes"
+        },
+        {
+          "info": {
+            "name": "Get bank statement footer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/ledgerType/:ledgerType/bankStatement/footer/:locale",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID"
+              },
+              {
+                "name": "ledgerType",
+                "value": "",
+                "type": "path",
+                "description": "Ledger type (regular, acquiring, lending, pos, insurance, deposit, credit)"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "path",
+                "description": "Locale in the format language_COUNTRY (e.g., es-ES, en-US)"
+              }
+            ]
+          },
+          "docs": "Returns the footer text for a customer's bank statement based, ledger type, and locale."
+        },
+        {
+          "info": {
+            "name": "Get Dynamic Button configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/:transactionId/dynamicButton",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Dynamic Button configuration"
+        },
+        {
+          "info": {
+            "name": "Get quote for currency pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/fx/quote",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get quote for currency pair"
+        },
+        {
+          "info": {
+            "name": "Get Transaction Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/:transactionId/status",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Transaction Status"
+        },
+        {
+          "info": {
+            "name": "Sync Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/sync",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deprecated"
+        },
+        {
+          "info": {
+            "name": "Sync Transaction Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/syncTxStatus"
+          },
+          "docs": "Deprecated"
+        },
+        {
+          "info": {
+            "name": "Sync Transaction Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/syncStatus",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deprecated"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

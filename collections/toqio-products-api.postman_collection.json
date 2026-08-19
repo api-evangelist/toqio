@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "b7c0c239-1f0a-400d-aaf8-477edfa785f3",
+      "name": "Products",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c9a6d02-1775-446b-a2b1-a005c41767a8",
+          "name": "Notify product changes for a customer",
+          "request": {
+            "name": "Notify product changes for a customer",
+            "description": {
+              "content": "This endpoint is called by Integration Hub to notify downstream banking provider systems about product changes that occurred in the Wallet system. The endpoint should be implemented by third-party banking providers to receive and process product change notifications.\n\nWhen this endpoint is called, it indicates that products associated with a customer have been modified in the Wallet system and need to be synchronized in the banking provider's system. The notification can contain:\n\n- **Products to upsert**: A list of products that should be created if they don't exist, or updated if they already exist in the provider's system. Each product contains complete information including account details, balances, status, and metadata.\n\n- **Products to delete**: A list of product IDs that should be removed from the provider's system. These are products that have been deleted or deactivated in the Wallet and should no longer be accessible.\n\nThe provider system receiving this notification should:\n1. Validate that the customerId corresponds to an existing customer in their system\n2. Process all product upserts by creating new products or updating existing ones based on the product ID\n3. Process all product deletions by removing or deactivating the specified products\n4. Return a successful response (HTTP 200) if all operations completed successfully\n5. Return an error response (HTTP 400/404) if validation fails or operations cannot be completed\n\nThe endpoint is idempotent - calling it multiple times with the same data should produce the same result. Product upserts should use the product ID as the unique identifier to determine whether to create or update.\n\nThis is a critical synchronization point to ensure consistency between Toqio and the integration products catalog for each customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "products",
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) The unique identifier of the customer in the banking provider's system. This ID must correspond to an existing customer record. All product changes in the request will be associated with this customer."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"<string>\",\n      \"bankingProvider\": \"<string>\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"<string>\",\n      \"visible\": \"<boolean>\",\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": \"<boolean>\",\n      \"productImageUrl\": \"<uri>\",\n      \"marketplaceKey\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"<string>\",\n      \"bankingProvider\": \"<string>\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"<string>\",\n      \"visible\": \"<boolean>\",\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": \"<boolean>\",\n      \"productImageUrl\": \"<uri>\",\n      \"marketplaceKey\": \"<string>\"\n    }\n  ],\n  \"deleteProductIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "650f6f09-3fac-4fde-be47-1423e263bca9",
+              "name": "Product changes were successfully processed. All upsert and delete operations completed successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The unique identifier of the customer in the banking provider's system. This ID must correspond to an existing customer record. All product changes in the request will be associated with this customer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"EUR\",\n      \"bankingProvider\": \"provider_xyz\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"ledger_standard_checking\",\n      \"visible\": true,\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": true,\n      \"productImageUrl\": \"https://cdn.toqio.com/products/current-account.png\",\n      \"marketplaceKey\": \"marketplace_insurance_home_basic\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"EUR\",\n      \"bankingProvider\": \"provider_xyz\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"ledger_standard_checking\",\n      \"visible\": true,\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": true,\n      \"productImageUrl\": \"https://cdn.toqio.com/products/current-account.png\",\n      \"marketplaceKey\": \"marketplace_insurance_home_basic\"\n    }\n  ],\n  \"deleteProductIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "834ed285-e6f6-407c-96c0-54be3cd98a02",
+              "name": "Bad request. The request body is invalid, malformed, or contains invalid product data. This may occur if required fields are missing, field values are out of valid ranges, or the request structure doesn't match the expected schema.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The unique identifier of the customer in the banking provider's system. This ID must correspond to an existing customer record. All product changes in the request will be associated with this customer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"EUR\",\n      \"bankingProvider\": \"provider_xyz\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"ledger_standard_checking\",\n      \"visible\": true,\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": true,\n      \"productImageUrl\": \"https://cdn.toqio.com/products/current-account.png\",\n      \"marketplaceKey\": \"marketplace_insurance_home_basic\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"EUR\",\n      \"bankingProvider\": \"provider_xyz\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"ledger_standard_checking\",\n      \"visible\": true,\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": true,\n      \"productImageUrl\": \"https://cdn.toqio.com/products/current-account.png\",\n      \"marketplaceKey\": \"marketplace_insurance_home_basic\"\n    }\n  ],\n  \"deleteProductIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Invalid request body: required field 'id' is missing in product at index 0\",\n  \"httpStatus\": 400,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T10:30:00.000Z\",\n  \"errorOrigin\": \"INTEGRATION_HUB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54668ae0-b1ea-4fd7-a376-65acec375c30",
+              "name": "Customer not found. The specified customerId does not exist in the banking provider's system. Product changes cannot be processed for non-existent customers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "products",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) The unique identifier of the customer in the banking provider's system. This ID must correspond to an existing customer record. All product changes in the request will be associated with this customer."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"products\": [\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"EUR\",\n      \"bankingProvider\": \"provider_xyz\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"ledger_standard_checking\",\n      \"visible\": true,\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": true,\n      \"productImageUrl\": \"https://cdn.toqio.com/products/current-account.png\",\n      \"marketplaceKey\": \"marketplace_insurance_home_basic\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"customerId\": \"<string>\",\n      \"partnerProduct\": \"EUR\",\n      \"bankingProvider\": \"provider_xyz\",\n      \"name\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"ledgerTypeId\": \"ledger_standard_checking\",\n      \"visible\": true,\n      \"description\": {\n        \"es\": \"<string>\",\n        \"en\": \"<string>\",\n        \"de\": \"<string>\",\n        \"it\": \"<string>\",\n        \"zh\": \"<string>\",\n        \"pt\": \"<string>\"\n      },\n      \"isCore\": true,\n      \"productImageUrl\": \"https://cdn.toqio.com/products/current-account.png\",\n      \"marketplaceKey\": \"marketplace_insurance_home_basic\"\n    }\n  ],\n  \"deleteProductIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"CUSTOMER_NOT_FOUND\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Customer with ID 'cust_123' does not exist in the system\",\n  \"httpStatus\": 404,\n  \"requestId\": \"7c8d9e0f-12a3-45b6-c789-d0e1f2a3b4c5\",\n  \"date\": \"2024-08-01T10:30:00.000Z\",\n  \"errorOrigin\": \"INTEGRATION_HUB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a8528ae7-caf5-4f80-ba1f-b52b0160ec00",
+    "name": "Accounts Account Products API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

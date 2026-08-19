@@ -1,0 +1,1726 @@
+{
+  "item": [
+    {
+      "id": "133e2fa2-420b-4dfc-9a2f-a92199f7120f",
+      "name": "Transaction",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aaa0ca99-a4a1-4143-a4b9-7d016a63ee46",
+          "name": "Fetch transactions",
+          "request": {
+            "name": "Fetch transactions",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4422ebc-d1f9-4a59-836d-b0e981cfa375",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": [\n      {\n        \"amount\": 7856.283506498916,\n        \"invoices\": [\n          {\n            \"description\": \"string\",\n            \"created_at\": \"2003-12-21T11:36:27.877Z\",\n            \"document_id\": \"string\"\n          },\n          {\n            \"description\": \"string\",\n            \"created_at\": \"1965-09-06T06:31:40.829Z\",\n            \"document_id\": \"string\"\n          }\n        ],\n        \"reason\": \"string\",\n        \"reference\": \"string\",\n        \"additional_info\": \"string\",\n        \"amount_beneficiary_account\": 2021.7868365251513,\n        \"amount_ledger_from\": 4270.997209135353,\n        \"amount_local_currency\": 6469.903504494713,\n        \"asset_class\": \"currency\",\n        \"asset_type\": \"aed\",\n        \"beneficiary_account_id\": \"string\",\n        \"beneficiary_id\": \"string\",\n        \"card_currency\": \"string\",\n        \"card_entry_method\": \"string\",\n        \"card_expiry_date\": \"string\",\n        \"card_rules_breached\": [\n          \"string\",\n          \"string\"\n        ],\n        \"card_transaction_type\": \"Purchase Return/Refund\",\n        \"card_used\": \"string\",\n        \"conversion_date\": \"string\",\n        \"conversion_rate\": 1988.8069483281945,\n        \"created_at\": \"1988-04-27T21:01:21.935Z\",\n        \"daily_unique_refence\": \"string\",\n        \"failure_reasons\": [\n          \"insufficient-funds\",\n          \"card-not-active\"\n        ],\n        \"fixed_side\": \"sender\",\n        \"ledger_from_id\": \"string\",\n        \"ledger_to_id\": \"string\",\n        \"mcc_description\": \"string\",\n        \"merchant_category_code\": \"string\",\n        \"merchant_details\": \"string\",\n        \"merchant_id\": \"string\",\n        \"merchantbank_id\": \"string\",\n        \"missing_data\": [\n          \"string\",\n          \"string\"\n        ],\n        \"partner_product\": \"Railsbank-Credit-Card-1\",\n        \"partner_product_fx\": \"PayrNet-FX-1\",\n        \"payment_info\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {},\n          \"key_4\": {}\n        },\n        \"payment_method\": \"local\",\n        \"payment_type\": \"TRANSFOND_SENT_ACH\",\n        \"point_of_sale_country_code\": \"string\",\n        \"point_of_sale_info\": \"string\",\n        \"point_of_sale_reference\": \"string\",\n        \"receipt_id\": \"string\",\n        \"rejection_reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"return_info\": {\n          \"key_0\": {}\n        },\n        \"settlement_date\": \"string\",\n        \"swift_charge_bearer\": \"charge-bearer-service-level\",\n        \"swift_service_level\": \"service-level-eba-priority-service\",\n        \"transaction_audit_number\": \"string\",\n        \"transaction_currency\": \"string\",\n        \"transaction_fee\": 6103.185147505912,\n        \"transaction_id\": \"string\",\n        \"transaction_info\": {\n          \"amount\": 8104.667380343239,\n          \"currency\": \"string\",\n          \"purpose\": \"string\",\n          \"receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"charge_bearer\": \"string\",\n          \"clearing_system\": \"string\",\n          \"clearing_system_proprietary\": \"string\",\n          \"created_at\": \"2013-12-31T06:21:11.628Z\",\n          \"end_to_end_id\": \"string\",\n          \"instructed_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instructing_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instruction_id\": \"string\",\n          \"local_instrument\": \"string\",\n          \"local_instrument_proprietary\": \"string\",\n          \"message_id\": \"string\",\n          \"message_schema\": \"string\",\n          \"purpose_category\": \"string\",\n          \"purpose_category_proprietary\": \"string\",\n          \"receiver_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"receiver_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"remittance_information_unstructured\": \"string\",\n          \"sender_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_account_number\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_sort_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service_level\": \"string\",\n          \"settlement_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settlement_date\": \"string\",\n          \"settlement_method\": \"string\",\n          \"transaction_id\": \"string\",\n          \"ultimate_receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ultimate_sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"transaction_meta\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        },\n        \"transaction_printout\": {\n          \"key_0\": {}\n        },\n        \"transaction_status\": \"string\",\n        \"transaction_type\": \"transaction-type-inter-ledger-omnibus\",\n        \"event_group_id\": \"string\",\n        \"event_group_created_at\": \"2015-07-23T12:02:05.333Z\"\n      },\n      {\n        \"amount\": 5772.657611398306,\n        \"invoices\": [\n          {\n            \"description\": \"string\",\n            \"created_at\": \"1969-11-22T07:28:14.765Z\",\n            \"document_id\": \"string\"\n          },\n          {\n            \"description\": \"string\",\n            \"created_at\": \"1976-01-11T21:19:30.252Z\",\n            \"document_id\": \"string\"\n          }\n        ],\n        \"reason\": \"string\",\n        \"reference\": \"string\",\n        \"additional_info\": \"string\",\n        \"amount_beneficiary_account\": 9266.887982640354,\n        \"amount_ledger_from\": 7485.057265842514,\n        \"amount_local_currency\": 2402.9181404372034,\n        \"asset_class\": \"commodity\",\n        \"asset_type\": \"rub\",\n        \"beneficiary_account_id\": \"string\",\n        \"beneficiary_id\": \"string\",\n        \"card_currency\": \"string\",\n        \"card_entry_method\": \"string\",\n        \"card_expiry_date\": \"string\",\n        \"card_rules_breached\": [\n          \"string\",\n          \"string\"\n        ],\n        \"card_transaction_type\": \"Adjustment Credit\",\n        \"card_used\": \"string\",\n        \"conversion_date\": \"string\",\n        \"conversion_rate\": 4356.901175953143,\n        \"created_at\": \"1976-06-23T06:44:39.775Z\",\n        \"daily_unique_refence\": \"string\",\n        \"failure_reasons\": [\n          \"declined-by-compliance-firewall\",\n          \"card-rules-breached\"\n        ],\n        \"fixed_side\": \"beneficiary\",\n        \"ledger_from_id\": \"string\",\n        \"ledger_to_id\": \"string\",\n        \"mcc_description\": \"string\",\n        \"merchant_category_code\": \"string\",\n        \"merchant_details\": \"string\",\n        \"merchant_id\": \"string\",\n        \"merchantbank_id\": \"string\",\n        \"missing_data\": [\n          \"string\",\n          \"string\"\n        ],\n        \"partner_product\": \"Railsbank-Credit-Card-1\",\n        \"partner_product_fx\": \"PayrNet-FX-1\",\n        \"payment_info\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"payment_method\": \"local\",\n        \"payment_type\": \"FEDWIRE\",\n        \"point_of_sale_country_code\": \"string\",\n        \"point_of_sale_info\": \"string\",\n        \"point_of_sale_reference\": \"string\",\n        \"receipt_id\": \"string\",\n        \"rejection_reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"return_info\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"settlement_date\": \"string\",\n        \"swift_charge_bearer\": \"charge-bearer-creditor\",\n        \"swift_service_level\": \"service-level-sepa\",\n        \"transaction_audit_number\": \"string\",\n        \"transaction_currency\": \"string\",\n        \"transaction_fee\": 1151.723930391797,\n        \"transaction_id\": \"string\",\n        \"transaction_info\": {\n          \"amount\": 7196.1003220899975,\n          \"currency\": \"string\",\n          \"purpose\": \"string\",\n          \"receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"charge_bearer\": \"string\",\n          \"clearing_system\": \"string\",\n          \"clearing_system_proprietary\": \"string\",\n          \"created_at\": \"2024-08-18T13:25:29.088Z\",\n          \"end_to_end_id\": \"string\",\n          \"instructed_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instructing_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instruction_id\": \"string\",\n          \"local_instrument\": \"string\",\n          \"local_instrument_proprietary\": \"string\",\n          \"message_id\": \"string\",\n          \"message_schema\": \"string\",\n          \"purpose_category\": \"string\",\n          \"purpose_category_proprietary\": \"string\",\n          \"receiver_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"receiver_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"remittance_information_unstructured\": \"string\",\n          \"sender_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_account_number\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_sort_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service_level\": \"string\",\n          \"settlement_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settlement_date\": \"string\",\n          \"settlement_method\": \"string\",\n          \"transaction_id\": \"string\",\n          \"ultimate_receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ultimate_sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"transaction_meta\": {\n          \"key_0\": {}\n        },\n        \"transaction_printout\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"transaction_status\": \"string\",\n        \"transaction_type\": \"transaction-type-card-send\",\n        \"event_group_id\": \"string\",\n        \"event_group_created_at\": \"1988-06-14T20:58:55.143Z\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": [\n      {\n        \"amount\": 5693.555088439789,\n        \"invoices\": [\n          {\n            \"description\": \"string\",\n            \"created_at\": \"1950-10-09T13:19:28.298Z\",\n            \"document_id\": \"string\"\n          },\n          {\n            \"description\": \"string\",\n            \"created_at\": \"2018-06-25T02:08:40.278Z\",\n            \"document_id\": \"string\"\n          }\n        ],\n        \"reason\": \"string\",\n        \"reference\": \"string\",\n        \"additional_info\": \"string\",\n        \"amount_beneficiary_account\": 8950.68935118856,\n        \"amount_ledger_from\": 646.481909027905,\n        \"amount_local_currency\": 2376.4173832060796,\n        \"asset_class\": \"commodity\",\n        \"asset_type\": \"huf\",\n        \"beneficiary_account_id\": \"string\",\n        \"beneficiary_id\": \"string\",\n        \"card_currency\": \"string\",\n        \"card_entry_method\": \"string\",\n        \"card_expiry_date\": \"string\",\n        \"card_rules_breached\": [\n          \"string\",\n          \"string\"\n        ],\n        \"card_transaction_type\": \"Account Funding\",\n        \"card_used\": \"string\",\n        \"conversion_date\": \"string\",\n        \"conversion_rate\": 7715.711112093345,\n        \"created_at\": \"2004-06-11T17:52:32.304Z\",\n        \"daily_unique_refence\": \"string\",\n        \"failure_reasons\": [\n          \"card-rules-breached\",\n          \"card-rules-breached\"\n        ],\n        \"fixed_side\": \"sender\",\n        \"ledger_from_id\": \"string\",\n        \"ledger_to_id\": \"string\",\n        \"mcc_description\": \"string\",\n        \"merchant_category_code\": \"string\",\n        \"merchant_details\": \"string\",\n        \"merchant_id\": \"string\",\n        \"merchantbank_id\": \"string\",\n        \"missing_data\": [\n          \"string\",\n          \"string\"\n        ],\n        \"partner_product\": \"PayrNet-EUR-1\",\n        \"partner_product_fx\": \"PayrNet-FX-1\",\n        \"payment_info\": {\n          \"key_0\": {}\n        },\n        \"payment_method\": \"local\",\n        \"payment_type\": \"payment-type-EU-Target2\",\n        \"point_of_sale_country_code\": \"string\",\n        \"point_of_sale_info\": \"string\",\n        \"point_of_sale_reference\": \"string\",\n        \"receipt_id\": \"string\",\n        \"rejection_reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"return_info\": {\n          \"key_0\": {}\n        },\n        \"settlement_date\": \"string\",\n        \"swift_charge_bearer\": \"charge-bearer-shared\",\n        \"swift_service_level\": \"service-level-non-urgent-priority-payment\",\n        \"transaction_audit_number\": \"string\",\n        \"transaction_currency\": \"string\",\n        \"transaction_fee\": 3459.0929650497983,\n        \"transaction_id\": \"string\",\n        \"transaction_info\": {\n          \"amount\": 680.4907749408607,\n          \"currency\": \"string\",\n          \"purpose\": \"string\",\n          \"receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"charge_bearer\": \"string\",\n          \"clearing_system\": \"string\",\n          \"clearing_system_proprietary\": \"string\",\n          \"created_at\": \"1994-06-08T13:14:58.853Z\",\n          \"end_to_end_id\": \"string\",\n          \"instructed_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instructing_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instruction_id\": \"string\",\n          \"local_instrument\": \"string\",\n          \"local_instrument_proprietary\": \"string\",\n          \"message_id\": \"string\",\n          \"message_schema\": \"string\",\n          \"purpose_category\": \"string\",\n          \"purpose_category_proprietary\": \"string\",\n          \"receiver_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"receiver_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"remittance_information_unstructured\": \"string\",\n          \"sender_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_account_number\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_sort_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service_level\": \"string\",\n          \"settlement_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settlement_date\": \"string\",\n          \"settlement_method\": \"string\",\n          \"transaction_id\": \"string\",\n          \"ultimate_receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ultimate_sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"transaction_meta\": {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        \"transaction_printout\": {\n          \"key_0\": {}\n        },\n        \"transaction_status\": \"string\",\n        \"transaction_type\": \"transaction-type-manual-debit\",\n        \"event_group_id\": \"string\",\n        \"event_group_created_at\": \"1955-07-15T04:36:30.698Z\"\n      },\n      {\n        \"amount\": 690.4422049387848,\n        \"invoices\": [\n          {\n            \"description\": \"string\",\n            \"created_at\": \"1985-04-04T21:13:14.583Z\",\n            \"document_id\": \"string\"\n          },\n          {\n            \"description\": \"string\",\n            \"created_at\": \"1970-11-01T03:25:19.868Z\",\n            \"document_id\": \"string\"\n          }\n        ],\n        \"reason\": \"string\",\n        \"reference\": \"string\",\n        \"additional_info\": \"string\",\n        \"amount_beneficiary_account\": 938.4767622536916,\n        \"amount_ledger_from\": 2595.1533885868816,\n        \"amount_local_currency\": 4860.722630554337,\n        \"asset_class\": \"currency\",\n        \"asset_type\": \"czk\",\n        \"beneficiary_account_id\": \"string\",\n        \"beneficiary_id\": \"string\",\n        \"card_currency\": \"string\",\n        \"card_entry_method\": \"string\",\n        \"card_expiry_date\": \"string\",\n        \"card_rules_breached\": [\n          \"string\",\n          \"string\"\n        ],\n        \"card_transaction_type\": \"Withdrawal\",\n        \"card_used\": \"string\",\n        \"conversion_date\": \"string\",\n        \"conversion_rate\": 5668.7157027277935,\n        \"created_at\": \"2005-05-10T18:29:40.571Z\",\n        \"daily_unique_refence\": \"string\",\n        \"failure_reasons\": [\n          \"insufficient-funds\",\n          \"fx-issue\"\n        ],\n        \"fixed_side\": \"beneficiary\",\n        \"ledger_from_id\": \"string\",\n        \"ledger_to_id\": \"string\",\n        \"mcc_description\": \"string\",\n        \"merchant_category_code\": \"string\",\n        \"merchant_details\": \"string\",\n        \"merchant_id\": \"string\",\n        \"merchantbank_id\": \"string\",\n        \"missing_data\": [\n          \"string\",\n          \"string\"\n        ],\n        \"partner_product\": \"Railsbank-Rewards-1\",\n        \"partner_product_fx\": \"PayrNet-FX-1\",\n        \"payment_info\": {\n          \"key_0\": {}\n        },\n        \"payment_method\": \"local\",\n        \"payment_type\": \"SKN\",\n        \"point_of_sale_country_code\": \"string\",\n        \"point_of_sale_info\": \"string\",\n        \"point_of_sale_reference\": \"string\",\n        \"receipt_id\": \"string\",\n        \"rejection_reasons\": [\n          \"string\",\n          \"string\"\n        ],\n        \"return_info\": {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        \"settlement_date\": \"string\",\n        \"swift_charge_bearer\": \"charge-bearer-debtor\",\n        \"swift_service_level\": \"service-level-urgent-payment-net-settlement\",\n        \"transaction_audit_number\": \"string\",\n        \"transaction_currency\": \"string\",\n        \"transaction_fee\": 3092.170417567235,\n        \"transaction_id\": \"string\",\n        \"transaction_info\": {\n          \"amount\": 9773.663068643084,\n          \"currency\": \"string\",\n          \"purpose\": \"string\",\n          \"receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"charge_bearer\": \"string\",\n          \"clearing_system\": \"string\",\n          \"clearing_system_proprietary\": \"string\",\n          \"created_at\": \"2006-10-21T00:29:40.094Z\",\n          \"end_to_end_id\": \"string\",\n          \"instructed_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instructing_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"instruction_id\": \"string\",\n          \"local_instrument\": \"string\",\n          \"local_instrument_proprietary\": \"string\",\n          \"message_id\": \"string\",\n          \"message_schema\": \"string\",\n          \"purpose_category\": \"string\",\n          \"purpose_category_proprietary\": \"string\",\n          \"receiver_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"receiver_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"remittance_information_unstructured\": \"string\",\n          \"sender_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_account_number\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"uk_sort_code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"sender_agent\": {\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"service_level\": \"string\",\n          \"settlement_account\": {\n            \"iban\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"settlement_date\": \"string\",\n          \"settlement_method\": \"string\",\n          \"transaction_id\": \"string\",\n          \"ultimate_receiver\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"ultimate_sender\": {\n            \"address\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"bic\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"issuer\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_city\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_country\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_date\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"birth_province\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"scheme_proprietary\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"transaction_meta\": {\n          \"key_0\": {}\n        },\n        \"transaction_printout\": {\n          \"key_0\": {}\n        },\n        \"transaction_status\": \"string\",\n        \"transaction_type\": \"transaction-type-inter-ledger-omnibus\",\n        \"event_group_id\": \"string\",\n        \"event_group_created_at\": \"2011-08-11T01:02:04.495Z\"\n      }\n    ],\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a729d9a-d3c6-4311-8215-f3c1cc12fb69",
+              "name": "FUNCTION_NOT_IMPLEMENTED_YET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "815f9084-475f-41dd-a9d0-49a345ecce87",
+          "name": "Save Transfer",
+          "request": {
+            "name": "Save Transfer",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<double>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"concept\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"billing\": \"<boolean>\",\n  \"billingCode\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"purposeCode\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"payer\": {\n    \"companyOrganisationType\": \"<string>\",\n    \"companyType\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"companyCreatedAt\": \"<dateTime>\",\n    \"companyNumber\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"city\": \"<string>\",\n    \"address\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"identificationType\": \"<string>\",\n    \"identificationValue\": \"<string>\"\n  },\n  \"baseAmount\": \"<double>\",\n  \"operationId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"payType\": \"<string>\",\n  \"isExpense\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e38c849d-8fe3-4b43-a8bb-30bb9a9e0c36",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"concept\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"billing\": \"<boolean>\",\n  \"billingCode\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"purposeCode\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"payer\": {\n    \"companyOrganisationType\": \"<string>\",\n    \"companyType\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"companyCreatedAt\": \"<dateTime>\",\n    \"companyNumber\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"city\": \"<string>\",\n    \"address\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"identificationType\": \"<string>\",\n    \"identificationValue\": \"<string>\"\n  },\n  \"baseAmount\": \"<double>\",\n  \"operationId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"payType\": \"<string>\",\n  \"isExpense\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"FAILED\",\n    \"failureReason\": \"string\",\n    \"corePaymentType\": \"NORWEGIAN-INTERBANK-CLEARING-SYSTEM\",\n    \"cardTransactionType\": \"Account Verification\",\n    \"balance\": 3820.6394884734596,\n    \"date\": \"1987-08-05T21:59:28.811Z\",\n    \"baseTotal\": 5247.907787070702,\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"settlementDate\": \"2023-04-02T14:39:35.609Z\",\n      \"rate\": 2121.1139266750088\n    }\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c9dde03-2c36-47a5-aa22-d62788eeb2a1",
+              "name": "ERROR_ACCOUNT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"concept\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"billing\": \"<boolean>\",\n  \"billingCode\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"purposeCode\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"payer\": {\n    \"companyOrganisationType\": \"<string>\",\n    \"companyType\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"companyCreatedAt\": \"<dateTime>\",\n    \"companyNumber\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"city\": \"<string>\",\n    \"address\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"identificationType\": \"<string>\",\n    \"identificationValue\": \"<string>\"\n  },\n  \"baseAmount\": \"<double>\",\n  \"operationId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"payType\": \"<string>\",\n  \"isExpense\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1a4bc2e-5fe1-42bb-9bc7-0b4f0c341d2b",
+              "name": "INVALID_REMOTE_ACCOUNT_CONFIGURATION",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": \"<double>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"sourceAccountId\": \"<string>\",\n  \"concept\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"bankPaymentScheme\": \"<string>\",\n  \"billing\": \"<boolean>\",\n  \"billingCode\": \"<string>\",\n  \"advancedInvoiceId\": \"<string>\",\n  \"purposeCode\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"assetType\": \"<string>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"payer\": {\n    \"companyOrganisationType\": \"<string>\",\n    \"companyType\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"companyCreatedAt\": \"<dateTime>\",\n    \"companyNumber\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"city\": \"<string>\",\n    \"address\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\",\n    \"dateOfBirth\": \"<string>\",\n    \"identificationType\": \"<string>\",\n    \"identificationValue\": \"<string>\"\n  },\n  \"baseAmount\": \"<double>\",\n  \"operationId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"payType\": \"<string>\",\n  \"isExpense\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "beb7399c-dd9c-4786-8236-a58e62e45b85",
+          "name": "Get bank payment schemes",
+          "request": {
+            "name": "Get bank payment schemes",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                "bankPaymentSchemes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiary\": {\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"bank\": \"<string>\",\n    \"bsbCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"caRoutingNumber\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"aba\": \"<string>\",\n    \"cnaps\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"type\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"name\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"id\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"companyId\": \"<string>\",\n    \"beneficiaryAccountId\": \"<string>\",\n    \"visible\": \"<boolean>\",\n    \"bankingProviderBeneficiaryId\": \"<string>\",\n    \"baasOTP\": \"<string>\",\n    \"operationId\": \"<string>\",\n    \"sourceAccount\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"nameOrFullName\": \"<string>\",\n    \"fullAddress\": \"<string>\",\n    \"addressLine\": \"<string>\"\n  },\n  \"amount\": \"<double>\",\n  \"clientId\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"canSeeFxPayments\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c9ceb59-7d2e-4724-8865-3c64ba31213e",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiary\": {\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"bank\": \"<string>\",\n    \"bsbCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"caRoutingNumber\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"aba\": \"<string>\",\n    \"cnaps\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"type\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"name\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"id\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"companyId\": \"<string>\",\n    \"beneficiaryAccountId\": \"<string>\",\n    \"visible\": \"<boolean>\",\n    \"bankingProviderBeneficiaryId\": \"<string>\",\n    \"baasOTP\": \"<string>\",\n    \"operationId\": \"<string>\",\n    \"sourceAccount\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"nameOrFullName\": \"<string>\",\n    \"fullAddress\": \"<string>\",\n    \"addressLine\": \"<string>\"\n  },\n  \"amount\": \"<double>\",\n  \"clientId\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"canSeeFxPayments\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"data\": [\n    {\n      \"code\": \"string\"\n    },\n    {\n      \"code\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f7448a4e-a83e-48df-9a02-d33e803141a0",
+              "name": "BANK_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiary\": {\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"bank\": \"<string>\",\n    \"bsbCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"caRoutingNumber\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"aba\": \"<string>\",\n    \"cnaps\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"type\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"name\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"id\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"companyId\": \"<string>\",\n    \"beneficiaryAccountId\": \"<string>\",\n    \"visible\": \"<boolean>\",\n    \"bankingProviderBeneficiaryId\": \"<string>\",\n    \"baasOTP\": \"<string>\",\n    \"operationId\": \"<string>\",\n    \"sourceAccount\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"nameOrFullName\": \"<string>\",\n    \"fullAddress\": \"<string>\",\n    \"addressLine\": \"<string>\"\n  },\n  \"amount\": \"<double>\",\n  \"clientId\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"canSeeFxPayments\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e90daaa9-7575-407c-b76f-e599a5205289",
+              "name": "INTERNAL_SERVER_ERROR",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"beneficiary\": {\n    \"ukAccountNumber\": \"<string>\",\n    \"ukSortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bicSwift\": \"<string>\",\n    \"bank\": \"<string>\",\n    \"bsbCode\": \"<string>\",\n    \"routingNumber\": \"<string>\",\n    \"caRoutingNumber\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"clabe\": \"<string>\",\n    \"aba\": \"<string>\",\n    \"cnaps\": \"<string>\",\n    \"ifsc\": \"<string>\",\n    \"bankCode\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"type\": \"<string>\",\n    \"assetType\": \"<string>\",\n    \"name\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"addressStreet\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressCity\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"bankCountry\": \"<string>\",\n    \"id\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"companyId\": \"<string>\",\n    \"beneficiaryAccountId\": \"<string>\",\n    \"visible\": \"<boolean>\",\n    \"bankingProviderBeneficiaryId\": \"<string>\",\n    \"baasOTP\": \"<string>\",\n    \"operationId\": \"<string>\",\n    \"sourceAccount\": \"<string>\",\n    \"customerId\": \"<string>\",\n    \"fullName\": \"<string>\",\n    \"nameOrFullName\": \"<string>\",\n    \"fullAddress\": \"<string>\",\n    \"addressLine\": \"<string>\"\n  },\n  \"amount\": \"<double>\",\n  \"clientId\": \"<string>\",\n  \"isFxTransaction\": \"<boolean>\",\n  \"areOwnAccounts\": \"<boolean>\",\n  \"canSeeFxPayments\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bd2c7b2-5e82-463d-8bec-cda699115a3a",
+          "name": "Get bank statement footer",
+          "request": {
+            "name": "Get bank statement footer",
+            "description": {
+              "content": "Returns the footer text for a customer's bank statement based, ledger type, and locale.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "ledgerType",
+                ":ledgerType",
+                "bankStatement",
+                "footer",
+                ":locale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "ledgerType",
+                  "description": "(Required) Ledger type (regular, acquiring, lending, pos, insurance, deposit, credit)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "locale",
+                  "description": "(Required) Locale in the format language_COUNTRY (e.g., es-ES, en-US)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d704b0b7-83d2-4dd8-b780-7bc3aee22fd1",
+              "name": "Successful operation - footer text returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgerType",
+                    ":ledgerType",
+                    "bankStatement",
+                    "footer",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ledgerType",
+                      "description": "(Required) Ledger type (regular, acquiring, lending, pos, insurance, deposit, credit)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Locale in the format language_COUNTRY (e.g., es-ES, en-US)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\",\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07d72e69-1271-4650-b449-50dc8095805f",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgerType",
+                    ":ledgerType",
+                    "bankStatement",
+                    "footer",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ledgerType",
+                      "description": "(Required) Ledger type (regular, acquiring, lending, pos, insurance, deposit, credit)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Locale in the format language_COUNTRY (e.g., es-ES, en-US)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5e107c36-7305-4ba9-8316-bb3b0d5c1a1e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "ledgerType",
+                    ":ledgerType",
+                    "bankStatement",
+                    "footer",
+                    ":locale"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "ledgerType",
+                      "description": "(Required) Ledger type (regular, acquiring, lending, pos, insurance, deposit, credit)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "locale",
+                      "description": "(Required) Locale in the format language_COUNTRY (e.g., es-ES, en-US)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3ecb436-da79-4e1d-b909-08ec6886ae38",
+          "name": "Get Dynamic Button configuration",
+          "request": {
+            "name": "Get Dynamic Button configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                ":transactionId",
+                "dynamicButton"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be66d02b-deb6-4f74-a0b3-8963e12a3da1",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "dynamicButton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"marketplaceKey\": \"string\",\n  \"texts\": {\n    \"es\": \"string\",\n    \"en\": \"string\",\n    \"zh\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b260a8c-7ea3-40be-9145-7ec8d9a3c55e",
+              "name": "FUNCTION_NOT_IMPLEMENTED_YET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "dynamicButton"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "990b1dff-b279-4234-8660-dc0fdebda8c2",
+          "name": "Get quote for currency pair",
+          "request": {
+            "name": "Get quote for currency pair",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                "fx",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceCurrency\": \"<string>\",\n  \"beneficiaryCurrency\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"amount\": \"<double>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eef0494e-607e-4db4-ad8c-4e74b65de924",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCurrency\": \"<string>\",\n  \"beneficiaryCurrency\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"amount\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"sourceCurrencyAmount\": 1352.4485029958632,\n    \"beneficiaryCurrencyAmount\": 9295.344535030661,\n    \"beneficiaryCurrency\": \"string\",\n    \"sourceCurrency\": \"string\",\n    \"fxRate\": 547.9580297513553\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90519ab4-fc9c-4a2d-a536-31f93137965d",
+              "name": "FUNCTION_NOT_IMPLEMENTED_YET",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceCurrency\": \"<string>\",\n  \"beneficiaryCurrency\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"amount\": \"<double>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7d0d677-e087-4feb-aae0-7c0e4302a775",
+          "name": "Get Transaction Status",
+          "request": {
+            "name": "Get Transaction Status",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                ":transactionId",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c1ba035-93c1-4743-961d-793754581a11",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"value\": \"AUTHORIZED\",\n    \"key\": \"string\",\n    \"left\": \"string\",\n    \"right\": \"FAILED\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3bdef1a-17d8-40a4-867a-ec7bf29d2237",
+              "name": "Document Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "501b5f0b-5f4d-4c58-b027-f4f65ccd8341",
+          "name": "Sync Transactions",
+          "request": {
+            "name": "Sync Transactions",
+            "description": {
+              "content": "Deprecated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "36deff97-780e-4aa9-a8d5-9b528ed3b8a6",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": 8077,\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4109df0c-32f6-4a1d-a103-ce50d52f6372",
+              "name": "Customer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5875941-6a7b-4c4f-bf1d-a4b3b8d8e574",
+          "name": "Sync Transaction Status",
+          "request": {
+            "name": "Sync Transaction Status",
+            "description": {
+              "content": "Deprecated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "syncTxStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5481d0a-9dd8-4e98-b958-b23eee985575",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "syncTxStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77fe0f12-d097-4411-97bc-733732ec5173",
+          "name": "Sync Transaction Status",
+          "request": {
+            "name": "Sync Transaction Status",
+            "description": {
+              "content": "Deprecated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                "syncStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84029b82-cb90-45b7-bd29-08ea3d91e674",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "syncStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": 8077,\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e2e1a34-938e-46a3-a49c-db5adda1da49",
+              "name": "Invalid configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "syncStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dccf79c7-29f5-4750-bace-ca924f122de0",
+              "name": "Customer not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "syncStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b315007-9704-418e-8e37-b80bf05d2d5d",
+              "name": "Not implemented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    "syncStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "21a6203e-066e-42d2-b5c5-a1dee21c5d9e",
+    "name": "Accounts Account Transaction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

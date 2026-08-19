@@ -1,0 +1,659 @@
+{
+  "item": [
+    {
+      "id": "e56c7c6c-dd96-4966-9b9b-b5f456cd107a",
+      "name": "Client information",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d0bd572-3a3f-4fd5-bf0d-e32762cf3935",
+          "name": "Get clients",
+          "request": {
+            "name": "Get clients",
+            "description": {
+              "content": "Allows to get the different clients of a customer",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clientType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "customerId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "kyxStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "46da0ab7-6802-4af2-849a-d5aba2bec611",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kyxStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"cif\": \"string\",\n      \"clientType\": \"BUSINESS\",\n      \"createdAt\": \"1955-09-26T22:22:38.784Z\",\n      \"createdBy\": {\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"id\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"customerName\": \"string\",\n      \"id\": \"string\",\n      \"kyxStatus\": \"DECLINE\",\n      \"name\": \"string\",\n      \"status\": \"LEAD\",\n      \"paymentProvider\": \"string\",\n      \"legalPhoneNumber\": \"string\",\n      \"legalPhoneCountry\": \"string\",\n      \"legalIntnlPhoneNumber\": \"string\",\n      \"statementDescriptor\": \"string\"\n    },\n    {\n      \"cif\": \"string\",\n      \"clientType\": \"BUSINESS\",\n      \"createdAt\": \"1979-06-24T01:08:05.071Z\",\n      \"createdBy\": {\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"id\": \"string\",\n        \"lastName\": \"string\"\n      },\n      \"customerName\": \"string\",\n      \"id\": \"string\",\n      \"kyxStatus\": \"PENDING_EXTERNAL_APPROVAL\",\n      \"name\": \"string\",\n      \"status\": \"REJECTED\",\n      \"paymentProvider\": \"string\",\n      \"legalPhoneNumber\": \"string\",\n      \"legalPhoneCountry\": \"string\",\n      \"legalIntnlPhoneNumber\": \"string\",\n      \"statementDescriptor\": \"string\"\n    }\n  ],\n  \"paging\": {\n    \"hasNextPage\": true,\n    \"hasPreviousPage\": true,\n    \"pageNumber\": 4027,\n    \"pageSize\": 7557,\n    \"sortingCriteria\": \"string\",\n    \"totalNumberOfPages\": 3317,\n    \"totalNumberOfRecords\": 7866\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea05980d-5566-488e-ab88-a63a69ca954e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kyxStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e174c292-84b1-4715-b22d-9ade627b31d8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kyxStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "af8f6d17-e1bf-4450-a821-0e43f57c82c5",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "kyxStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5adf31ed-6d91-4375-94b4-9fe9cc3d4d8c",
+          "name": "Get client",
+          "request": {
+            "name": "Get client",
+            "description": {
+              "content": "Allows to get the client information",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d33974e-f830-45e4-a2d7-4d82ab5d083b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountId\": \"string\",\n    \"amount\": 3246.7267378869556,\n    \"bicSwift\": \"string\",\n    \"bicSwiftForSEPA\": \"string\",\n    \"bicSwiftForSWIFT\": \"string\",\n    \"currency\": {\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\"\n  },\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"billing\": {\n    \"name\": \"string\",\n    \"products\": {\n      \"key_0\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 8077.883868974881,\n          \"frequency\": \"WEEKLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 4001.4831995941568,\n          \"minimumFee\": 2920.124785621141,\n          \"product\": \"string\",\n          \"type\": \"FASTER_PAYMENTS_INBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 721.4022262682862\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 8961.111197906914,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6697.442235422678,\n          \"minimumFee\": 1106.8598077979518,\n          \"product\": \"string\",\n          \"type\": \"ACCOUNT_FEE\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5709.947820672968\n        }\n      ],\n      \"key_1\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 6675.133245931378,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 4434.598667939188,\n          \"minimumFee\": 7963.907941551329,\n          \"product\": \"string\",\n          \"type\": \"FASTER_PAYMENTS_OUTBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 8192.589555198405\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 712.7408470158169,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 7252.094454164372,\n          \"minimumFee\": 3355.24785325241,\n          \"product\": \"string\",\n          \"type\": \"ATM_WITHDRAWALS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 6092.893433878525\n        }\n      ],\n      \"key_2\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 6132.2052547024605,\n          \"frequency\": \"WEEKLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 819.2501213189929,\n          \"minimumFee\": 5655.921954122079,\n          \"product\": \"string\",\n          \"type\": \"INTER_LEDGER_OUTBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 8690.972625805296\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 2357.0615602552202,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 5822.4807445147,\n          \"minimumFee\": 4304.614693270166,\n          \"product\": \"string\",\n          \"type\": \"SEPA_OUTBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 2051.5386703100357\n        }\n      ],\n      \"key_3\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 8863.89982051004,\n          \"frequency\": \"MONTHLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 4994.294607584443,\n          \"minimumFee\": 4918.180287301513,\n          \"product\": \"string\",\n          \"type\": \"FASTER_PAYMENTS_OUTBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 2045.6002019621633\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 6012.283997639574,\n          \"frequency\": \"MONTHLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 5222.572120761093,\n          \"minimumFee\": 6830.090118141126,\n          \"product\": \"string\",\n          \"type\": \"SEPA_INBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 8528.413750041662\n        }\n      ]\n    }\n  },\n  \"cif\": \"string\",\n  \"city\": \"string\",\n  \"clientType\": \"CONSUMER\",\n  \"complianceHistory\": [\n    {\n      \"company\": \"string\",\n      \"date\": \"1993-09-23T09:00:06.726Z\",\n      \"ipAddress\": \"string\",\n      \"kyxStatus\": \"REFERRED\",\n      \"message\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\"\n      },\n      \"type\": \"CUSTOMER_LIVE\",\n      \"user\": \"string\"\n    },\n    {\n      \"company\": \"string\",\n      \"date\": \"1951-03-24T15:39:20.972Z\",\n      \"ipAddress\": \"string\",\n      \"kyxStatus\": \"ACCEPT\",\n      \"message\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\"\n      },\n      \"type\": \"CUSTOMER_FROZEN\",\n      \"user\": \"string\"\n    }\n  ],\n  \"country\": {\n    \"code\": \"string\",\n    \"isoCode\": \"string\",\n    \"name\": {\n      \"de\": \"string\",\n      \"default\": \"string\",\n      \"en\": \"string\",\n      \"es\": \"string\"\n    },\n    \"prefix\": \"string\"\n  },\n  \"createdBy\": \"string\",\n  \"customer\": \"string\",\n  \"description\": \"string\",\n  \"directors\": [\n    {\n      \"alias\": \"string\",\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"id\": \"string\",\n      \"intnlPhoneNumber\": \"string\",\n      \"kycStatus\": \"REFERRED\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"onboardedAt\": \"2004-10-15T05:47:06.809Z\",\n      \"onboardingStatus\": \"PENDING_KYB\",\n      \"phoneCountry\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"pushEnabled\": true,\n      \"truNarrativeLink\": \"string\"\n    },\n    {\n      \"alias\": \"string\",\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"id\": \"string\",\n      \"intnlPhoneNumber\": \"string\",\n      \"kycStatus\": \"DECLINE\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"onboardedAt\": \"2014-06-10T10:44:45.838Z\",\n      \"onboardingStatus\": \"DECLINED\",\n      \"phoneCountry\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"pushEnabled\": true,\n      \"truNarrativeLink\": \"string\"\n    }\n  ],\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"hasWebsite\": true,\n  \"id\": \"string\",\n  \"invitationHistory\": [\n    {\n      \"company\": \"string\",\n      \"date\": \"1979-04-27T04:16:14.921Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"type\": \"CUSTOMER_UPDATED\",\n      \"user\": \"string\"\n    },\n    {\n      \"company\": \"string\",\n      \"date\": \"1955-04-26T13:54:53.464Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"type\": \"ACCEPT_TNC\",\n      \"user\": \"string\"\n    }\n  ],\n  \"kybDocuments\": [\n    {\n      \"available\": true,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"DECLINED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    },\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"COMPLETED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    }\n  ],\n  \"kycDocuments\": [\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"COMPLETED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    },\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"IN_PROGRESS\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    }\n  ],\n  \"kyxStatus\": \"ACCEPT\",\n  \"lastName\": \"string\",\n  \"legislationCountry\": {\n    \"code\": \"string\",\n    \"isoCode\": \"string\",\n    \"name\": {\n      \"de\": \"string\",\n      \"default\": \"string\",\n      \"en\": \"string\",\n      \"es\": \"string\"\n    },\n    \"prefix\": \"string\"\n  },\n  \"middleName\": \"string\",\n  \"name\": \"string\",\n  \"onboardingStatus\": \"NOT_ONBOARDING\",\n  \"organisationType\": \"REGISTERED\",\n  \"phoneNumber\": \"string\",\n  \"postalCode\": \"string\",\n  \"roles\": [\n    \"ROLE_OWNER\",\n    \"ROLE_ACCOUNTANT\"\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"2023-06-18T03:40:05.567Z\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"id\": \"string\",\n      \"kyc\": {\n        \"accountId\": 1640,\n        \"accountReference\": \"string\",\n        \"auditReference\": \"string\",\n        \"clientApplicationReference\": \"string\",\n        \"date\": \"1970-01-19T23:53:33.675Z\",\n        \"documents\": [\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          },\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          }\n        ],\n        \"journey\": {\n          \"id\": 9763,\n          \"name\": \"string\"\n        },\n        \"journeyType\": {\n          \"id\": 8299,\n          \"label\": \"string\"\n        },\n        \"kyxType\": \"KYB\",\n        \"previousStatus\": \"CLOSE\",\n        \"referralReference\": \"string\",\n        \"riskLevel\": \"string\",\n        \"status\": \"PENDING_EXTERNAL_APPROVAL\",\n        \"uid\": \"string\",\n        \"updatedAt\": \"1987-01-01T12:51:44.166Z\"\n      },\n      \"name\": \"string\",\n      \"percentageOfShares\": \"string\",\n      \"postalCode\": \"string\",\n      \"s3DocumentURL\": \"string\",\n      \"surname\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1992-04-21T18:56:35.373Z\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"id\": \"string\",\n      \"kyc\": {\n        \"accountId\": 8721,\n        \"accountReference\": \"string\",\n        \"auditReference\": \"string\",\n        \"clientApplicationReference\": \"string\",\n        \"date\": \"2003-04-29T01:34:03.648Z\",\n        \"documents\": [\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          },\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          }\n        ],\n        \"journey\": {\n          \"id\": 3491,\n          \"name\": \"string\"\n        },\n        \"journeyType\": {\n          \"id\": 649,\n          \"label\": \"string\"\n        },\n        \"kyxType\": \"KYC\",\n        \"previousStatus\": \"STACLR\",\n        \"referralReference\": \"string\",\n        \"riskLevel\": \"string\",\n        \"status\": \"STACLR\",\n        \"uid\": \"string\",\n        \"updatedAt\": \"2001-05-25T20:35:59.617Z\"\n      },\n      \"name\": \"string\",\n      \"percentageOfShares\": \"string\",\n      \"postalCode\": \"string\",\n      \"s3DocumentURL\": \"string\",\n      \"surname\": \"string\"\n    }\n  ],\n  \"status\": \"ONBOARDING\",\n  \"subOrganisationType\": \"ASSOCIATION\",\n  \"truNarrativeLink\": \"string\",\n  \"users\": [\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1986-09-28T20:50:59.087Z\",\n      \"city\": \"string\",\n      \"country\": {\n        \"code\": \"string\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"de\": \"string\",\n          \"default\": \"string\",\n          \"en\": \"string\",\n          \"es\": \"string\"\n        },\n        \"prefix\": \"string\"\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"onboarded\": true,\n      \"profileImage\": \"string\",\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"username\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"2026-02-08T01:43:15.946Z\",\n      \"city\": \"string\",\n      \"country\": {\n        \"code\": \"string\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"de\": \"string\",\n          \"default\": \"string\",\n          \"en\": \"string\",\n          \"es\": \"string\"\n        },\n        \"prefix\": \"string\"\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"onboarded\": false,\n      \"profileImage\": \"string\",\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"username\": \"string\"\n    }\n  ],\n  \"websiteUrl\": \"string\",\n  \"paymentProvider\": \"string\",\n  \"statementDescriptor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a2b6736-d00b-4614-8511-687c908bb8ae",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d1494e17-d8cb-4eda-bafa-4380b60a35b7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e8ef3cf2-dded-4382-8c6b-4fd55375edd6",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f9ae77b8-ec94-47e0-9d90-159cd8fd3090",
+    "name": "Accounts Account Client information API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

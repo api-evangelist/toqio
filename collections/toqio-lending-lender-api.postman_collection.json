@@ -1,0 +1,810 @@
+{
+  "item": [
+    {
+      "id": "5a4feadd-1a4d-4aa4-8f7e-165546142ae7",
+      "name": "Lending - Lender",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b910df16-172c-4ada-921f-5ba507185c24",
+          "name": "Create a lender configuration",
+          "request": {
+            "name": "Create a lender configuration",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "lender"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "productTypes",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "privacyUrl",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "webhookUrl",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f7c2106-0e2f-4937-a7a8-b159df35b231",
+              "name": "Lender configuration created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "privacyUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"productTypes\": [\n      \"CASH_ADVANCE\",\n      \"SHORT_TERM_LOAN\"\n    ],\n    \"privacyUrl\": \"string\",\n    \"webhookUrl\": \"string\",\n    \"key\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5390b618-a353-44df-9728-4e5e3c0f49a1",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "privacyUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73a96feb-aa47-4684-856c-300f0e1413b4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "privacyUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84c643eb-8074-4661-a583-1a81be8e919f",
+          "name": "Get a lender configuration",
+          "request": {
+            "name": "Get a lender configuration",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "lender"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "882c1fdb-b7f0-4136-a292-fc8ed09b5f25",
+              "name": "Lender configuration retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"productTypes\": [\n      \"CASH_ADVANCE\",\n      \"CASH_ADVANCE\"\n    ],\n    \"privacyUrl\": \"string\",\n    \"webhookUrl\": \"string\",\n    \"key\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd46b907-c718-4b27-a2d6-ab7b6eae8329",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "546d0dde-be96-41f9-8751-942d87e558b4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fa079a7-7b8a-4241-be92-581abf86e00e",
+          "name": "Update a lender configuration",
+          "request": {
+            "name": "Update a lender configuration",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "lender"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "productTypes",
+                  "value": "[\"<string>\",\"<string>\"]",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "privacyUrl",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "webhookUrl",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "key",
+                  "value": "<string>",
+                  "description": "(Required) Lender configuration request. Cannot be null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df2a7c90-a54b-4791-b37b-a8ca471b28a9",
+              "name": "Lender configuration updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "privacyUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"productTypes\": [\n      \"CASH_ADVANCE\",\n      \"CASH_ADVANCE\"\n    ],\n    \"privacyUrl\": \"string\",\n    \"webhookUrl\": \"string\",\n    \"key\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45fe69f6-3d39-4812-9630-f1f87603c1f2",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "privacyUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "528af214-252d-44a2-9891-4587c9296648",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "lender"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productTypes",
+                      "value": "<string>,<string>"
+                    },
+                    {
+                      "key": "privacyUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "webhookUrl",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "key",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"productTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"privacyUrl\": \"<string>\",\n  \"webhookUrl\": \"<string>\",\n  \"key\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1b9fb98e-c40d-43b3-ad0e-bb0fb2b22425",
+    "name": "Accounts Account Lending - Lender API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

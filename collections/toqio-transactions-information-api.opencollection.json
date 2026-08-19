@@ -1,0 +1,521 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Transactions information API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions information",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/:transactionId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path",
+                "description": "transactionId"
+              }
+            ]
+          },
+          "docs": "Returns the full detail of a single transaction by its identifier, including the source/beneficiary accounts, amounts, status, attached invoice metadata and any associated expense or category information."
+        },
+        {
+          "info": {
+            "name": "Cancel Transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/:transactionId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path",
+                "description": "transactionId"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Cancels a previously created transaction that has not yet been settled by the bank (e.g. a pending or scheduled transfer). Once the underlying transfer is in flight or has settled, the transaction can no longer be cancelled through this endpoint."
+        },
+        {
+          "info": {
+            "name": "Get Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Bank Account ID (source or target account). I.e: 5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+              },
+              {
+                "name": "baseCurrency",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the base currency (ISO 4217 code) of the bank account. I.e: in:GBP,EUR"
+              },
+              {
+                "name": "billable",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the transaction is billable or not. I.e: true"
+              },
+              {
+                "name": "card",
+                "value": "",
+                "type": "query",
+                "description": "Filter by card ID. I.e: 5c614183-ffdd-4487-ab66-ca20d6806698"
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by category code. I.e: in:meals,internet"
+              },
+              {
+                "name": "client",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a client"
+              },
+              {
+                "name": "clientType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the type of client"
+              },
+              {
+                "name": "closedPeriod",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the transaction is in a closed period or not. I.e: false"
+              },
+              {
+                "name": "closingDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by closing date. I.e: btn:2018-06-18,2018-07-18"
+              },
+              {
+                "name": "company",
+                "value": "",
+                "type": "query",
+                "description": "Filter: Show team expenses (company=true) if the user has the required permission or only personal expenses (company=false)"
+              },
+              {
+                "name": "companyId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by company ID"
+              },
+              {
+                "name": "currency",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the currency (ISO 4217 code) in which the payment was made. It might be same as the currency of the bank account or not. I.e: in:GBP,EUR"
+              },
+              {
+                "name": "customer",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a customer"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Filter by creation date. I.e: btn:2018-06-18,2018-07-18"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Filter transactions with notes containing the given text. I.e: like:market"
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Filter by INBOUND, OUTBOUND. I.e: OUTBOUND"
+              },
+              {
+                "name": "dueDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by due date. I.e: btn:2018-06-18,2018-07-18"
+              },
+              {
+                "name": "hasReceipt",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the transaction has an attached receipt or not. I.e: false"
+              },
+              {
+                "name": "hideDismissedPendingReceipt",
+                "value": "",
+                "type": "query",
+                "description": "If set to true, the transactions without receipt that have been dismissed are filtered out"
+              },
+              {
+                "name": "invoice",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the transaction is an invoice or not"
+              },
+              {
+                "name": "invoiceDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter by invoice date. I.e: btn:2018-06-18,2018-07-18"
+              },
+              {
+                "name": "managementStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the expense status. I.e: PAID"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transactions created during the given month. Jan=1, Feb=2, ..., Dec=12. -1 for Year to Date"
+              },
+              {
+                "name": "movementType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by movement type"
+              },
+              {
+                "name": "pageNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "paymentType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payment type. I.e: CARD"
+              },
+              {
+                "name": "recurring",
+                "value": "",
+                "type": "query",
+                "description": "Filter by whether the transaction is recurring or executed only once. I.e: true"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the transaction status. I.e: neq:FAILED"
+              },
+              {
+                "name": "superCustomer",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "syncStatus",
+                "value": "",
+                "type": "query",
+                "description": "Filter by the sync expense with [AccountingProvider]. I.e: SYNCED"
+              },
+              {
+                "name": "tags",
+                "value": "",
+                "type": "query",
+                "description": "Filter by tag ID. I.e: in:5c482f7a46e0fb0005d78a2e,5c482f7a46e0fb0005d78a2d"
+              },
+              {
+                "name": "text",
+                "value": "",
+                "type": "query",
+                "description": "Text filter to search in `merchant`, `concept`, `address` and `notes`, containing any terms from the provided query string. In order to search for exact phrases, wrap them in double-quotes. To exclude a word, you can prepend a \"-\" character. I.e: Mercado Barcelona"
+              },
+              {
+                "name": "timeZone",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "total",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transaction amount. lt (<), gt (>), btn (between), etc. I.e: btn:10,45"
+              },
+              {
+                "name": "triggerType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transfer trigger type. I.e: RECURRING"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transaction type. I.e: EXPENSE"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user ID"
+              },
+              {
+                "name": "vatPercentage",
+                "value": "",
+                "type": "query",
+                "description": "Filter by VAT percent value"
+              },
+              {
+                "name": "withTotal",
+                "value": "",
+                "type": "query",
+                "description": "This flag determines whether a total of all transactions must be computed or not. For performance reasons, do not activate the flag unless required."
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query",
+                "description": "Filter by transactions created during the given year. I.e: 2019"
+              },
+              {
+                "name": "billingTx",
+                "value": "",
+                "type": "query",
+                "description": "Filter by billing transaction"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of transactions for the customer, filtered by the provided query parameters (account, company, dates, status, amount range, currency, etc.). Use this endpoint to retrieve the transaction history that powers statements, expense lists and reconciliation views."
+        },
+        {
+          "info": {
+            "name": "Execute Four-Eyes Payment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/executePayment",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "clientId"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Executes a previously created transaction that was held for four-eyes approval. The referenced transaction must be in pending-approval status; once executed, the underlying payment is sent to the bank provider and the transaction transitions to the standard payment lifecycle."
+        },
+        {
+          "info": {
+            "name": "Generate statement",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/transactions/:transactionId/paymentStatement",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query",
+                "description": "locale"
+              },
+              {
+                "name": "transactionId",
+                "value": "",
+                "type": "path",
+                "description": "transactionId"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Generates a PDF payment statement for a single transaction in the requested locale and returns it base64-encoded. Only applies to card payments and inbound/outbound bank transfers; other payment types are rejected with 417."
+        },
+        {
+          "info": {
+            "name": "Get Bank Payment Schemes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/clients/:clientId/provider/:provider/transactions/bankPaymentSchemes",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "clientId"
+              },
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path",
+                "description": "Bank provider identifier (e.g. railsbank, modulr)"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "beneficiaryAccountId",
+                "value": "",
+                "type": "query",
+                "description": "This value can be the beneficiary account id or the beneficiary id. Account must be active"
+              },
+              {
+                "name": "sourceAccountId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Returns the list of bank payment schemes (SEPA, SWIFT, UK Faster Payments, FX, etc.) available for sending the given amount from the source account to the beneficiary account through the specified provider. The returned code should be passed as the bankPaymentScheme when calling Create Transaction."
+        },
+        {
+          "info": {
+            "name": "Get Quote For Currency Pair",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/provider/:provider/transactions/quote",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "provider",
+                "value": "",
+                "type": "path",
+                "description": "Bank provider identifier (e.g. railsbank, modulr)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "oauth2",
+              "flow": "client_credentials",
+              "accessTokenUrl": "https://api.toq.io/iam/oauth/token",
+              "credentials": {
+                "clientId": "{{clientId}}",
+                "clientSecret": "{{clientSecret}}"
+              }
+            }
+          },
+          "docs": "Requests an FX quote from the specified provider for converting between two currencies. Returns the indicative rate, fees and the quote identifier that should be referenced when issuing the corresponding FX payment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,237 @@
+{
+  "item": [
+    {
+      "id": "ab0fe521-0c46-4e84-9e9a-ae9a7ffac629",
+      "name": "Receive request payment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "16b95d12-b650-467e-8f3b-3bd5271e26ff",
+          "name": "Add payment account details",
+          "request": {
+            "name": "Add payment account details",
+            "description": {
+              "content": "This endpoint allows customers to add their bank account information for receiving invoice payments. Each customer can add one account per currency, ensuring that payments are routed to the appropriate account based on the currency of the transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue",
+                "account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bankCountry\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "463c0ff1-bdc1-4b0c-901a-070293b78d99",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue",
+                    "account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bankCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"customerId\": \"string\",\n  \"assetType\": \"huf\",\n  \"bankCountry\": \"string\",\n  \"iban\": \"string\",\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"bicSwift\": \"string\",\n  \"bank\": \"string\",\n  \"accountType\": \"REVENUE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3326033c-34ce-4eaf-8662-369eec9bcfc2",
+          "name": "Get payment accounts",
+          "request": {
+            "name": "Get payment accounts",
+            "description": {
+              "content": "This endpoint allows customers to retrieve a list of their bank account details that have been added for receiving invoice payments. Customers can view the accounts associated with different currencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "revenue",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6fd5abbe-5d9c-415d-8cee-473d0ffee74f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "revenue",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"customerId\": \"string\",\n    \"assetType\": \"rub\",\n    \"bankCountry\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bank\": \"string\",\n    \"accountType\": \"REVENUE\"\n  },\n  {\n    \"id\": \"string\",\n    \"customerId\": \"string\",\n    \"assetType\": \"idr\",\n    \"bankCountry\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bank\": \"string\",\n    \"accountType\": \"REVENUE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9bb24d7f-af93-4444-a5f7-f45b2ba4ee17",
+    "name": "Accounts Account Receive request payment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

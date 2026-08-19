@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Manage requests API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Manage requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update request status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/revenue/:id/merchant/:merchantId/status",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "merchantId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This endpoint allows customers to modify the status of a selected payment request. Customers can update the status of a request to reflect its current state. Currently the system supports the following status: PAID, UNPAID, REJECTED, NOT_SENT."
+        },
+        {
+          "info": {
+            "name": "Get request details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/revenue",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the request"
+              }
+            ]
+          },
+          "docs": "This endpoint allows customers to retrieve detailed information about a specific request by its unique request ID. The response will include the status of the request, available options for the request, the option that was selected (if applicable), and detailed line data associated with the request."
+        },
+        {
+          "info": {
+            "name": "Send payment request to merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/revenue",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allows customers to send out payment requests to all the merchants included in a previously validated collection file. Each merchant in the collection will receive a request for payment based on the details provided in the validated invoice data. Once the request is sent, merchants will receive these payment requests via email and through their notification centre in the portal."
+        },
+        {
+          "info": {
+            "name": "Get requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/revenue/filters",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This endpoint returns a list of requests based on the filters used"
+        },
+        {
+          "info": {
+            "name": "Pay payment request",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/revenue/:id/pay",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint allows merchants to make immediate payments for invoice payment requests. When the endpoint is called, the system will generate an immediate payment from the merchant's selected source account to the previously added receiver account, which was set up by the customer for receiving invoice payments. Once the payment is made successfully, the status of the corresponding request will be updated to PAID. "
+        },
+        {
+          "info": {
+            "name": "Validate collection data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/revenue/validate",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a collection of unpaid invoice requests before they are sent to merchants. A collection represents a group of requests, each containing basic details about unpaid invoices."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

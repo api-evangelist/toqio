@@ -1,0 +1,1652 @@
+{
+  "item": [
+    {
+      "id": "0549eb3e-27c0-458e-94d7-1dc2196df403",
+      "name": "Card Lifecycle",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc29d969-ab19-40e6-86f9-7af22d086420",
+          "name": "Activate card",
+          "request": {
+            "name": "Activate card",
+            "description": {
+              "content": "Activates (unfreezes) a suspended card. Requires card token for activation.\n\n**Business Context**: Called when a cardholder or administrator wants to activate a suspended card. The activation reason is determined by the requester's role (owner, director, or admin). Requires security code verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "activate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"<string>\",\n  \"securityCode\": {\n    \"encryptedSecurityCode\": \"<string>\",\n    \"iv\": \"<string>\",\n    \"tag\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0bbbf47-226e-4063-9c44-b037eeb54a49",
+              "name": "Card activated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"token\": \"<string>\",\n  \"securityCode\": {\n    \"encryptedSecurityCode\": \"<string>\",\n    \"iv\": \"<string>\",\n    \"tag\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 1594.9417315709002,\n    \"limit\": 8128.164272460395,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 7250\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cbdd3ac-b2a6-4344-8544-e442606eee08",
+          "name": "Activate card with OTP verification",
+          "request": {
+            "name": "Activate card with OTP verification",
+            "description": {
+              "content": "Activates a card using OTP (One-Time Password) verification for enhanced security.\n\n**Business Context**: Used when the banking provider requires OTP verification for card activation (e.g., first-time activation).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "activateOTP"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"cardTokenRequest\": {\n    \"token\": \"<string>\",\n    \"securityCode\": {\n      \"encryptedSecurityCode\": \"<string>\",\n      \"iv\": \"<string>\",\n      \"tag\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "99573c29-f716-4c0c-858f-7bab17b307b0",
+              "name": "Card activated successfully with OTP",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activateOTP"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"baasOTP\": \"123456\",\n  \"operationId\": \"op-12345\",\n  \"userId\": \"user-789\",\n  \"cardTokenRequest\": {\n    \"token\": \"activation-token-xyz\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 1594.9417315709002,\n    \"limit\": 8128.164272460395,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 7250\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe096d29-15ef-418f-a46d-f6372df258b3",
+              "name": "Invalid OTP",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "activateOTP"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"baasOTP\": \"123456\",\n  \"operationId\": \"op-12345\",\n  \"userId\": \"user-789\",\n  \"cardTokenRequest\": {\n    \"token\": \"activation-token-xyz\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16316259-4a30-487b-938d-f33c0bf3725d",
+          "name": "Cancel card",
+          "request": {
+            "name": "Cancel card",
+            "description": {
+              "content": "Permanently cancels a card. Unlike suspend, a cancelled card cannot be reactivated.\n\n**Business Context**: Used when permanently deactivating a card (e.g., employee termination, compromised card). The card is removed from the available cards list in the frontend but remains in the system for audit purposes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66a38e2e-6d88-4afb-a2c5-8faa75bc8a2b",
+              "name": "Card cancelled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 1594.9417315709002,\n    \"limit\": 8128.164272460395,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 7250\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a00142c9-f16e-4ea4-84ae-894ec6b8d301",
+          "name": "Delete card",
+          "request": {
+            "name": "Delete card",
+            "description": {
+              "content": "Permanently deletes a card from the system.\n\n**Business Context**: Used for complete card removal from both the system and banking provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9381b46-7353-4d8d-be6c-a334b5a5048f",
+              "name": "Card deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 1594.9417315709002,\n    \"limit\": 8128.164272460395,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 7250\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d9d1671-6bca-4a4e-8122-900d344239eb",
+          "name": "Get card details",
+          "request": {
+            "name": "Get card details",
+            "description": {
+              "content": "Retrieves detailed information about a specific card. Automatically syncs the card status from the banking provider to ensure consistency.\n\n**Business Context**: Called when viewing card details in the frontend application. Returns full card information including limits, status, and associated account details that are displayed to the user.\n\n**IMPORTANT - Card Limits**: The integration MUST return all card limits that are currently defined for the card (i.e. cardLimitDaily, cardLimitMonthly, cardLimitTransaction, or any custom limits). If a limit is defined for the card but not returned in the response, the system will not be able to display it correctly or will show outdated information. Only return the limits that are actually configured for this specific card - do not return limits that have not been set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82ff1453-1ab9-4a9d-9308-5b9f47180a83",
+              "name": "Card details retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"ACTIVE\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"string\",\n      \"addressNumber\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressRegion\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"addressRefinement\": \"string\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 1594.9417315709002,\n    \"limit\": 8128.164272460395,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 7250\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86dc8c7b-9eed-4836-bc5a-c214cf538c2b",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"404\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Card not found\",\n  \"httpStatus\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d1e4d5e2-2b0d-4486-8e32-4fe75ad26400",
+          "name": "Issue a new card",
+          "request": {
+            "name": "Issue a new card",
+            "description": {
+              "content": "Creates and issues a new physical or virtual card for a customer. This endpoint handles both debit and credit cards, supports custom card designs, delivery addresses, and limit configurations. The card will be created in the banking provider system.\n\n**Business Context**: Used when issuing a card to a user or creating a company card. The card details returned are displayed in the frontend application. Supports multi-company scenarios where different merchants can issue cards.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer (top-level entity)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"<string>\",\n  \"cardLimitDaily\": \"<integer>\",\n  \"cardLimitMonthly\": \"<integer>\",\n  \"cardLimitTransaction\": \"<number>\",\n  \"lifetimeSpendLimit\": \"<double>\",\n  \"cardMinLimitTransaction\": \"<double>\",\n  \"cardMinLimitTransactionForPhysicalBusiness\": \"<double>\",\n  \"fundingType\": \"DEBIT\",\n  \"companyId\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"physical\": false,\n  \"nameOnCard\": \"<string>\",\n  \"cardDeliveryName\": \"<string>\",\n  \"cardDeliveryAddress\": {\n    \"addressStreet\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressCity\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressRefinement\": \"<string>\"\n  },\n  \"cardBillingAddress\": {\n    \"addressStreet\": \"<string>\",\n    \"addressNumber\": \"<string>\",\n    \"addressCity\": \"<string>\",\n    \"addressRegion\": \"<string>\",\n    \"addressPostalCode\": \"<string>\",\n    \"addressIsoCountry\": \"<string>\",\n    \"addressRefinement\": \"<string>\"\n  },\n  \"dateOfBirth\": \"<long>\",\n  \"phone\": {\n    \"countryCode\": \"<string>\",\n    \"number\": \"<string>\"\n  },\n  \"email\": \"<email>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"cardProgramme\": \"<string>\",\n  \"cardDesign\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"readOnly\": \"<boolean>\",\n  \"billingAccountId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c73d5c7-61cf-4e25-9382-3027381601b4",
+              "name": "Card issued successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer (top-level entity)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"acc-789\",\n  \"userId\": \"user-456\",\n  \"companyId\": \"company-123\",\n  \"physical\": false,\n  \"nameOnCard\": \"John Doe\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitTransaction\": 500,\n  \"currency\": \"EUR\",\n  \"cardProgramme\": \"STANDARD\",\n  \"cardDesign\": \"corporate-blue\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"card-abc123\",\n    \"token\": \"tok_card_xyz789\",\n    \"status\": \"PENDING\",\n    \"provider\": \"MODULR\",\n    \"nameOnCard\": \"John Doe\",\n    \"truncatedPan\": \"4321\",\n    \"expiryDate\": \"12/27\",\n    \"cardProgramme\": \"STANDARD\",\n    \"showCustomCardDesign\": true,\n    \"activationCodeLength\": 6\n  },\n  \"code\": \"200\",\n  \"message\": \"Card issued successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b4c40d0-0f80-4a18-9593-d32f5deae153",
+              "name": "Bad request - Invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer (top-level entity)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"acc-789\",\n  \"userId\": \"user-456\",\n  \"companyId\": \"company-123\",\n  \"physical\": false,\n  \"nameOnCard\": \"John Doe\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitTransaction\": 500,\n  \"currency\": \"EUR\",\n  \"cardProgramme\": \"STANDARD\",\n  \"cardDesign\": \"corporate-blue\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Invalid card limit values\",\n  \"httpStatus\": 400,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b850edb3-af0f-4a78-88e5-7d923fc60cd2",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer (top-level entity)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"acc-789\",\n  \"userId\": \"user-456\",\n  \"companyId\": \"company-123\",\n  \"physical\": false,\n  \"nameOnCard\": \"John Doe\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitTransaction\": 500,\n  \"currency\": \"EUR\",\n  \"cardProgramme\": \"STANDARD\",\n  \"cardDesign\": \"corporate-blue\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"404\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Card not found\",\n  \"httpStatus\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54115a66-6629-463e-9d1b-24ce51454004",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer (top-level entity)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"acc-789\",\n  \"userId\": \"user-456\",\n  \"companyId\": \"company-123\",\n  \"physical\": false,\n  \"nameOnCard\": \"John Doe\",\n  \"cardLimitDaily\": 1000,\n  \"cardLimitMonthly\": 5000,\n  \"cardLimitTransaction\": 500,\n  \"currency\": \"EUR\",\n  \"cardProgramme\": \"STANDARD\",\n  \"cardDesign\": \"corporate-blue\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"500\",\n  \"errorSeverity\": \"FATAL\",\n  \"message\": \"Internal server error occurred\",\n  \"httpStatus\": 500,\n  \"debugTrace\": \"Stack trace information\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e88a0674-9d45-4dd1-8972-426056da3066",
+          "name": "Suspend card",
+          "request": {
+            "name": "Suspend card",
+            "description": {
+              "content": "Suspends (freezes) a card temporarily. The card can be reactivated later.\n\n**Business Context**: Called when a cardholder temporarily freezes their card (e.g., lost wallet) or when a director/admin suspends an employee's card. Requires security code verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "suspend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "235ac236-4422-411f-bd9a-afbeb011cd99",
+              "name": "Card suspended successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"token\": \"string\",\n    \"status\": \"PENDING\",\n    \"fundingType\": \"DEBIT\",\n    \"provider\": \"string\",\n    \"nameOnCard\": \"string\",\n    \"truncatedPan\": \"string\",\n    \"expiryDate\": \"string\",\n    \"cardDeliveryAddress\": {\n      \"addressStreet\": \"<string>\",\n      \"addressNumber\": \"<string>\",\n      \"addressCity\": \"<string>\",\n      \"addressRegion\": \"<string>\",\n      \"addressPostalCode\": \"<string>\",\n      \"addressIsoCountry\": \"<string>\",\n      \"addressRefinement\": \"<string>\"\n    },\n    \"cardDeliveryMethod\": \"string\",\n    \"spend\": 2727.0625029619,\n    \"limit\": 783.4442983814372,\n    \"cardProgramme\": \"string\",\n    \"externalId\": \"string\",\n    \"showCustomCardDesign\": false,\n    \"activationCodeLength\": 825\n  },\n  \"code\": \"200\",\n  \"errorSeverity\": \"INFO\",\n  \"message\": \"Card operation completed successfully\",\n  \"httpStatus\": 200,\n  \"debugTrace\": \"string\",\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000,\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49cf6e08-96d6-4e2f-8135-18113daf9684",
+          "name": "Update card details and limits",
+          "request": {
+            "name": "Update card details and limits",
+            "description": {
+              "content": "Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.\n\n**Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.\n\n**Important**: \n- This endpoint extends AdditionalParams, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover which custom limits are available in your system.\n- To update card alias, use the dedicated endpoint PUT /customers/{customerId}/cards/{cardId}/alias instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardLimitDaily\": \"<integer>\",\n  \"cardLimitMonthly\": \"<integer>\",\n  \"cardLimitTransaction\": \"<number>\",\n  \"lifetimeSpendLimit\": \"<double>\",\n  \"cardMinLimitTransaction\": \"<double>\",\n  \"cardMinLimitTransactionForPhysicalBusiness\": \"<double>\",\n  \"alias\": \"<string>\",\n  \"currency\": \"<string>\",\n  \"clientType\": \"<string>\",\n  \"cardOTP\": {\n    \"baasOTP\": \"<string>\",\n    \"operationId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"cardTokenRequest\": {\n      \"token\": \"<string>\",\n      \"securityCode\": {\n        \"encryptedSecurityCode\": \"<string>\",\n        \"iv\": \"<string>\",\n        \"tag\": \"<string>\"\n      }\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47fd06f8-6821-4d61-a25c-58c668921df5",
+              "name": "Card updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"card-abc123\",\n    \"token\": \"tok_card_xyz789\",\n    \"status\": \"ACTIVE\",\n    \"provider\": \"MODULR\",\n    \"nameOnCard\": \"John Doe\",\n    \"truncatedPan\": \"4321\",\n    \"expiryDate\": \"12/27\",\n    \"spend\": 2500,\n    \"limit\": 5000\n  },\n  \"code\": \"200\",\n  \"message\": \"Card updated successfully\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65265796-34fb-4a53-9301-f54e0d673058",
+          "name": "Update card alias",
+          "request": {
+            "name": "Update card alias",
+            "description": {
+              "content": "Updates the friendly name (alias) of a specific card. This endpoint allows modifying only the card's display name without affecting other card properties.\n\n**Business Context**: Called when a user wants to rename their card for easier identification in the frontend application. The updated alias is displayed across all card views and helps users distinguish between multiple cards.\n\n**Important**: \n- This endpoint will only be called if the integration has the capability `hasCardAlias` set to `true`. If this capability is not enabled, the platform will not invoke this endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "alias"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alias\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1c584436-85c4-46be-89bc-0143435c0fe4",
+              "name": "Card alias updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"My Business Card\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "507b4e9b-159d-4751-9c2a-7b98bd94d2a4",
+              "name": "Bad request - Invalid input parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"My Business Card\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"400\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Invalid card limit values\",\n  \"httpStatus\": 400,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": 1736935800000\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae2ad0a3-dfa0-4cf3-a5e1-a906f55bf0f5",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"My Business Card\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"404\",\n  \"errorSeverity\": \"ERROR\",\n  \"message\": \"Card not found\",\n  \"httpStatus\": 404\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bedf4595-ab99-449e-83ce-8b868128a9db",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "alias"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"alias\": \"My Business Card\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"500\",\n  \"errorSeverity\": \"FATAL\",\n  \"message\": \"Internal server error occurred\",\n  \"httpStatus\": 500,\n  \"debugTrace\": \"Stack trace information\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8aec84df-13e3-43a2-8ded-161079abb2b1",
+          "name": "Update card read-only status",
+          "request": {
+            "name": "Update card read-only status",
+            "description": {
+              "content": "Sets a card to read-only mode, typically used for direct debit card accounts.\n\n**Business Context**: Used when configuring cards for specific payment methods like direct debit where the card should not allow active spending.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "cards",
+                ":cardId",
+                "updateReadOnly"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cardId",
+                  "description": "(Required) Unique identifier of the card"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"readOnly\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "242e99af-4256-434a-aeb9-5868217f3757",
+              "name": "Card read-only status updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "cards",
+                    ":cardId",
+                    "updateReadOnly"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cardId",
+                      "description": "(Required) Unique identifier of the card"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"readOnly\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6823a0fc-5dbf-4817-9e09-cc0c39b7de76",
+    "name": "Accounts Account Card Lifecycle API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

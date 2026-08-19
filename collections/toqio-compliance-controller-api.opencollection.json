@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account compliance-controller API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "compliance-controller",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload KYB documents for a merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/merchant/:merchantId/provider/:complianceProvider/uploadKybDocument",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "customerId"
+              },
+              {
+                "name": "merchantId",
+                "value": "",
+                "type": "path",
+                "description": "merchantId"
+              },
+              {
+                "name": "complianceProvider",
+                "value": "",
+                "type": "path",
+                "description": "complianceProvider"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload KYB documents for a merchant"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

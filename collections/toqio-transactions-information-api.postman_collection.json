@@ -1,0 +1,3327 @@
+{
+  "item": [
+    {
+      "id": "f0506d41-e4af-4f2a-b349-a4babffcc796",
+      "name": "Transactions information",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f494de7-4d66-4349-abe9-54dad9fe0a29",
+          "name": "Cancel Transfer",
+          "request": {
+            "name": "Cancel Transfer",
+            "description": {
+              "content": "Cancels a previously created transaction that has not yet been settled by the bank (e.g. a pending or scheduled transfer). Once the underlying transfer is in flight or has settled, the transaction can no longer be cancelled through this endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                ":transactionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) transactionId"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f406e4b4-5aef-4d2b-897d-3f7a1e4fae0e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "425f8fae-20ba-4bba-b26e-71ebf2f21429",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3144e068-5af2-4f17-abe0-b14d25b39611",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91825327-7e06-4ae8-815e-79d27826ccd5",
+          "name": "Get Transaction",
+          "request": {
+            "name": "Get Transaction",
+            "description": {
+              "content": "Returns the full detail of a single transaction by its identifier, including the source/beneficiary accounts, amounts, status, attached invoice metadata and any associated expense or category information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                ":transactionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) transactionId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e25076e2-4486-4bba-bf1d-a90ad303cc96",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"address\": \"string\",\n  \"balance\": 6366.412173144049,\n  \"bankPaymentScheme\": {\n    \"code\": \"STRAKSCLEARING_INSTANT\",\n    \"name\": \"string\",\n    \"key_0\": 1252,\n    \"key_1\": 653.2353554486881\n  },\n  \"baseCurrency\": \"string\",\n  \"baseTotal\": 1262.4225427585889,\n  \"beneficiaryCurrencyAmount\": 223.343481038204,\n  \"billable\": true,\n  \"billedTxId\": \"string\",\n  \"billingTx\": true,\n  \"canDownloadPaymentStatement\": false,\n  \"card\": \"string\",\n  \"categoryCode\": \"string\",\n  \"categoryLabel\": {\n    \"de\": \"string\",\n    \"en\": \"string\",\n    \"es\": \"string\",\n    \"it\": \"string\",\n    \"zh\": \"string\",\n    \"pt\": \"string\"\n  },\n  \"charityPayment\": false,\n  \"concept\": \"string\",\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"date\": \"1964-12-06T00:33:23.923Z\",\n  \"description\": \"string\",\n  \"destinationAccount\": {\n    \"accountAlias\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"bank\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"cnaps\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"id\": \"string\",\n    \"ifsc\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"AUD\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"purposeCode\": \"string\",\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"rate\": \"string\",\n      \"settlementDate\": \"1947-07-21T13:44:36.476Z\"\n    }\n  },\n  \"destinationAccountInfo\": \"string\",\n  \"destinationAccountType\": \"BA\",\n  \"directDebit\": true,\n  \"discountAmount\": 1736.4641723089958,\n  \"discountPercentage\": 7637.226965975302,\n  \"files\": [\n    {\n      \"extension\": \"string\",\n      \"fileUrl\": \"string\",\n      \"id\": \"string\",\n      \"invoiceId\": \"string\",\n      \"key\": \"string\",\n      \"mime\": \"string\",\n      \"name\": \"string\",\n      \"size\": 385,\n      \"thumbnailUrl\": \"string\"\n    },\n    {\n      \"extension\": \"string\",\n      \"fileUrl\": \"string\",\n      \"id\": \"string\",\n      \"invoiceId\": \"string\",\n      \"key\": \"string\",\n      \"mime\": \"string\",\n      \"name\": \"string\",\n      \"size\": 9689,\n      \"thumbnailUrl\": \"string\"\n    }\n  ],\n  \"group\": \"OUTBOUND\",\n  \"hasComments\": true,\n  \"id\": \"string\",\n  \"inClosedPeriod\": true,\n  \"integrityOk\": true,\n  \"invoice\": true,\n  \"invoices\": [\n    {\n      \"amount\": 4903.058938002819,\n      \"cif\": \"string\",\n      \"discountAmount\": 6945.100385956738,\n      \"discountPercentage\": 2261.0635039228086,\n      \"dueDate\": \"string\",\n      \"files\": [\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 281,\n          \"thumbnailUrl\": \"string\"\n        },\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 6400,\n          \"thumbnailUrl\": \"string\"\n        }\n      ],\n      \"hasInvoice\": true,\n      \"id\": \"string\",\n      \"invoiceDate\": \"string\",\n      \"invoiceNumber\": \"string\",\n      \"isTotalWithoutVatEdited\": true,\n      \"lines\": [\n        {\n          \"amount\": 3056.4878977947674,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 3135.7374935239854,\n          \"vatPercentage\": 2047.944845720403\n        },\n        {\n          \"amount\": 8134.585935139213,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 1946.3180972184268,\n          \"vatPercentage\": 3323.60989055413\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"supplier\": \"string\",\n      \"totalWithoutVat\": 8991.648832819807,\n      \"vatPercentage\": 3089.4719217038323\n    },\n    {\n      \"amount\": 1842.1750079535993,\n      \"cif\": \"string\",\n      \"discountAmount\": 225.66777287091443,\n      \"discountPercentage\": 6348.272437412489,\n      \"dueDate\": \"string\",\n      \"files\": [\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 8589,\n          \"thumbnailUrl\": \"string\"\n        },\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 5264,\n          \"thumbnailUrl\": \"string\"\n        }\n      ],\n      \"hasInvoice\": true,\n      \"id\": \"string\",\n      \"invoiceDate\": \"string\",\n      \"invoiceNumber\": \"string\",\n      \"isTotalWithoutVatEdited\": true,\n      \"lines\": [\n        {\n          \"amount\": 3053.96853397332,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 1344.091569149618,\n          \"vatPercentage\": 8357.026374380168\n        },\n        {\n          \"amount\": 1727.4569542438712,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 5840.227209581513,\n          \"vatPercentage\": 3388.3416974075876\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"supplier\": \"string\",\n      \"totalWithoutVat\": 646.3309997056921,\n      \"vatPercentage\": 3305.184515901577\n    }\n  ],\n  \"isBaseTotalEdited\": true,\n  \"isTotalWithoutVatEdited\": true,\n  \"lat\": 585.3167665399983,\n  \"lng\": 8042.768616056306,\n  \"localDate\": \"string\",\n  \"manualTransaction\": false,\n  \"meta\": {\n    \"key_0\": \"string\"\n  },\n  \"payType\": \"MANUAL\",\n  \"profileImage\": \"string\",\n  \"reference\": \"string\",\n  \"refund\": true,\n  \"sourceAccount\": {\n    \"accountAlias\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"bank\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"cnaps\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"id\": \"string\",\n    \"ifsc\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"CAD\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"purposeCode\": \"string\",\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"rate\": \"string\",\n      \"settlementDate\": \"2008-04-09T09:59:04.282Z\"\n    }\n  },\n  \"sourceAccountInfo\": \"string\",\n  \"sourceAccountType\": \"SA\",\n  \"status\": \"POSTED\",\n  \"syncExpense\": \"SYNCING\",\n  \"tags\": [\n    {\n      \"id\": \"5c473c5046e0fb0005c436af\",\n      \"name\": \"My tag\"\n    },\n    {\n      \"id\": \"5c473c5046e0fb0005c436af\",\n      \"name\": \"My tag\"\n    }\n  ],\n  \"timeZone\": \"string\",\n  \"total\": 2539.917345443481,\n  \"totalWithoutVat\": 3237.423688547315,\n  \"transactionNumber\": \"string\",\n  \"txTitle\": \"string\",\n  \"type\": \"PAYMENT\",\n  \"unreadComment\": 5015,\n  \"userId\": \"string\",\n  \"userName\": \"string\",\n  \"vatPercentage\": 36.39333824626334,\n  \"purposeCode\": \"string\",\n  \"paymentProviderDetails\": {\n    \"shortReference\": \"string\",\n    \"internalReference\": \"string\",\n    \"paymentId\": \"string\",\n    \"conversionId\": \"string\",\n    \"rate\": \"string\",\n    \"settlementDate\": \"1966-12-01T16:35:23.716Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36b49d1f-c22e-4f6f-8b0e-9b9fa0693e5f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e94c463e-3c53-430c-87da-7b11350624e9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "62e4244c-bc5e-498e-a153-369899ae6bf3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5362ea5e-ac54-4864-91ee-e32325c81385",
+          "name": "Get Transactions",
+          "request": {
+            "name": "Get Transactions",
+            "description": {
+              "content": "Returns a paginated list of transactions for the customer, filtered by the provided query parameters (account, company, dates, status, amount range, currency, etc.). Use this endpoint to retrieve the transaction history that powers statements, expense lists and reconciliation views.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "Filter by Bank Account ID (source or target account). I.e: 5c3efbeb-b292-42ae-98c2-2a50a7829d05"
+                },
+                {
+                  "disabled": false,
+                  "key": "baseCurrency",
+                  "value": "<string>",
+                  "description": "Filter by the base currency (ISO 4217 code) of the bank account. I.e: in:GBP,EUR"
+                },
+                {
+                  "disabled": false,
+                  "key": "billable",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the transaction is billable or not. I.e: true"
+                },
+                {
+                  "disabled": false,
+                  "key": "card",
+                  "value": "<string>",
+                  "description": "Filter by card ID. I.e: 5c614183-ffdd-4487-ab66-ca20d6806698"
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by category code. I.e: in:meals,internet"
+                },
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "<string>",
+                  "description": "Filter by a client"
+                },
+                {
+                  "disabled": false,
+                  "key": "clientType",
+                  "value": "<string>",
+                  "description": "Filter by the type of client"
+                },
+                {
+                  "disabled": false,
+                  "key": "closedPeriod",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the transaction is in a closed period or not. I.e: false"
+                },
+                {
+                  "disabled": false,
+                  "key": "closingDate",
+                  "value": "<string>",
+                  "description": "Filter by closing date. I.e: btn:2018-06-18,2018-07-18"
+                },
+                {
+                  "disabled": false,
+                  "key": "company",
+                  "value": "<boolean>",
+                  "description": "Filter: Show team expenses (company=true) if the user has the required permission or only personal expenses (company=false)"
+                },
+                {
+                  "disabled": false,
+                  "key": "companyId",
+                  "value": "<string>",
+                  "description": "(Required) Filter by company ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "currency",
+                  "value": "<string>",
+                  "description": "Filter by the currency (ISO 4217 code) in which the payment was made. It might be same as the currency of the bank account or not. I.e: in:GBP,EUR"
+                },
+                {
+                  "disabled": false,
+                  "key": "customer",
+                  "value": "<string>",
+                  "description": "Filter by a customer"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "Filter by creation date. I.e: btn:2018-06-18,2018-07-18"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "Filter transactions with notes containing the given text. I.e: like:market"
+                },
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "<string>",
+                  "description": "Filter by INBOUND, OUTBOUND. I.e: OUTBOUND"
+                },
+                {
+                  "disabled": false,
+                  "key": "dueDate",
+                  "value": "<string>",
+                  "description": "Filter by due date. I.e: btn:2018-06-18,2018-07-18"
+                },
+                {
+                  "disabled": false,
+                  "key": "hasReceipt",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the transaction has an attached receipt or not. I.e: false"
+                },
+                {
+                  "disabled": false,
+                  "key": "hideDismissedPendingReceipt",
+                  "value": "<boolean>",
+                  "description": "If set to true, the transactions without receipt that have been dismissed are filtered out"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoice",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the transaction is an invoice or not"
+                },
+                {
+                  "disabled": false,
+                  "key": "invoiceDate",
+                  "value": "<string>",
+                  "description": "Filter by invoice date. I.e: btn:2018-06-18,2018-07-18"
+                },
+                {
+                  "disabled": false,
+                  "key": "managementStatus",
+                  "value": "<string>",
+                  "description": "Filter by the expense status. I.e: PAID"
+                },
+                {
+                  "disabled": false,
+                  "key": "month",
+                  "value": "<integer>",
+                  "description": "Filter by transactions created during the given month. Jan=1, Feb=2, ..., Dec=12. -1 for Year to Date"
+                },
+                {
+                  "disabled": false,
+                  "key": "movementType",
+                  "value": "<string>",
+                  "description": "Filter by movement type"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNumber",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "paymentType",
+                  "value": "<string>",
+                  "description": "Filter by payment type. I.e: CARD"
+                },
+                {
+                  "disabled": false,
+                  "key": "recurring",
+                  "value": "<boolean>",
+                  "description": "Filter by whether the transaction is recurring or executed only once. I.e: true"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by the transaction status. I.e: neq:FAILED"
+                },
+                {
+                  "disabled": false,
+                  "key": "superCustomer",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "syncStatus",
+                  "value": "<string>",
+                  "description": "Filter by the sync expense with [AccountingProvider]. I.e: SYNCED"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter by tag ID. I.e: in:5c482f7a46e0fb0005d78a2e,5c482f7a46e0fb0005d78a2d"
+                },
+                {
+                  "disabled": false,
+                  "key": "text",
+                  "value": "<string>",
+                  "description": "Text filter to search in `merchant`, `concept`, `address` and `notes`, containing any terms from the provided query string. In order to search for exact phrases, wrap them in double-quotes. To exclude a word, you can prepend a \"-\" character. I.e: Mercado Barcelona"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeZone",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "total",
+                  "value": "<string>",
+                  "description": "Filter by transaction amount. lt (<), gt (>), btn (between), etc. I.e: btn:10,45"
+                },
+                {
+                  "disabled": false,
+                  "key": "triggerType",
+                  "value": "<string>",
+                  "description": "Filter by transfer trigger type. I.e: RECURRING"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by transaction type. I.e: EXPENSE"
+                },
+                {
+                  "disabled": false,
+                  "key": "user",
+                  "value": "<string>",
+                  "description": "Filter by user ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "vatPercentage",
+                  "value": "<string>",
+                  "description": "Filter by VAT percent value"
+                },
+                {
+                  "disabled": false,
+                  "key": "withTotal",
+                  "value": "<boolean>",
+                  "description": "This flag determines whether a total of all transactions must be computed or not. For performance reasons, do not activate the flag unless required."
+                },
+                {
+                  "disabled": false,
+                  "key": "year",
+                  "value": "<integer>",
+                  "description": "Filter by transactions created during the given year. I.e: 2019"
+                },
+                {
+                  "disabled": false,
+                  "key": "billingTx",
+                  "value": "<boolean>",
+                  "description": "Filter by billing transaction"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "061b71b7-92d8-4e9a-92f7-d420e7203d44",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "closedPeriod",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "closingDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hideDismissedPendingReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoice",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoiceDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managementStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "movementType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "paymentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recurring",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "superCustomer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "syncStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeZone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "total",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vatPercentage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withTotal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "billingTx",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"accountAlias\": \"My account\",\n      \"accountId\": \"string\",\n      \"balance\": 1500.45,\n      \"baseCurrency\": \"GBP\",\n      \"baseTotal\": 45.05,\n      \"card\": false,\n      \"categoryCode\": \"legal\",\n      \"categoryLabel\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\",\n        \"zh\": \"string\",\n        \"pt\": \"string\"\n      },\n      \"concept\": \"string\",\n      \"confirmed\": true,\n      \"currency\": \"GBP\",\n      \"executionDate\": \"1951-06-26T18:04:35.159Z\",\n      \"date\": \"2003-04-13T05:58:33.793Z\",\n      \"day\": \"7 March\",\n      \"directDebit\": false,\n      \"group\": \"OUTBOUND\",\n      \"id\": \"5c8133ecc9e77c0005751963\",\n      \"managementStatus\": \"PAID\",\n      \"localDate\": \"2019-02-09T05:58:38.022\",\n      \"payable\": true,\n      \"paidBy\": \"string\",\n      \"payType\": \"OUTBOUND_BANK_TRANSFER\",\n      \"profileImage\": \"https://s3-eu-west-1.amazonaws.com/olivo-public/profile_images/5c348eb84cedfd000567a6be.jpg\",\n      \"receipt\": false,\n      \"refund\": false,\n      \"status\": \"FAILED\",\n      \"tagged\": false,\n      \"time\": \"15:08\",\n      \"timeZone\": \"+00:00\",\n      \"total\": 45.05,\n      \"transactionNumber\": \"bf9-34a1120864f0\",\n      \"triggerType\": \"RECURRING\",\n      \"txTitle\": \"Starbucks\",\n      \"type\": \"PAYMENT\",\n      \"unreadComments\": true,\n      \"userName\": \"Howard Hamlin\",\n      \"billingTx\": false,\n      \"billedTxId\": \"string\"\n    },\n    {\n      \"accountAlias\": \"My account\",\n      \"accountId\": \"string\",\n      \"balance\": 1500.45,\n      \"baseCurrency\": \"GBP\",\n      \"baseTotal\": 45.05,\n      \"card\": false,\n      \"categoryCode\": \"train\",\n      \"categoryLabel\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\",\n        \"zh\": \"string\",\n        \"pt\": \"string\"\n      },\n      \"concept\": \"string\",\n      \"confirmed\": true,\n      \"currency\": \"GBP\",\n      \"executionDate\": \"1986-06-05T23:53:15.080Z\",\n      \"date\": \"1954-05-20T15:09:28.485Z\",\n      \"day\": \"7 March\",\n      \"directDebit\": true,\n      \"group\": \"OUTBOUND\",\n      \"id\": \"5c8133ecc9e77c0005751963\",\n      \"managementStatus\": \"UNPAID\",\n      \"localDate\": \"2019-02-09T05:58:38.022\",\n      \"payable\": false,\n      \"paidBy\": \"string\",\n      \"payType\": \"CARD\",\n      \"profileImage\": \"https://s3-eu-west-1.amazonaws.com/olivo-public/profile_images/5c348eb84cedfd000567a6be.jpg\",\n      \"receipt\": true,\n      \"refund\": false,\n      \"status\": \"PENDING_APPROVAL\",\n      \"tagged\": false,\n      \"time\": \"15:08\",\n      \"timeZone\": \"+00:00\",\n      \"total\": 45.05,\n      \"transactionNumber\": \"bf9-34a1120864f0\",\n      \"triggerType\": \"ONCE_FUTURE_DATE\",\n      \"txTitle\": \"Starbucks\",\n      \"type\": \"TAX\",\n      \"unreadComments\": false,\n      \"userName\": \"Howard Hamlin\",\n      \"billingTx\": false,\n      \"billedTxId\": \"string\"\n    }\n  ],\n  \"paging\": {\n    \"hasNextPage\": true,\n    \"hasPreviousPage\": true,\n    \"pageNumber\": 175,\n    \"pageSize\": 5862,\n    \"sortingCriteria\": \"string\",\n    \"totalNumberOfPages\": 972,\n    \"totalNumberOfRecords\": 1638\n  },\n  \"total\": 6394.014076298143\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b275ae8-9c59-49b1-98d9-f5198258bb59",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "closedPeriod",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "closingDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hideDismissedPendingReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoice",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoiceDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managementStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "movementType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "paymentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recurring",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "superCustomer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "syncStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeZone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "total",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vatPercentage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withTotal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "billingTx",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "41b07b25-f04f-45a6-a4bb-abec92dd36df",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "closedPeriod",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "closingDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hideDismissedPendingReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoice",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoiceDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managementStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "movementType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "paymentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recurring",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "superCustomer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "syncStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeZone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "total",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vatPercentage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withTotal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "billingTx",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "114fd135-8586-4bb1-bba9-34f3968f88e9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "baseCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billable",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "card",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "client",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clientType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "closedPeriod",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "closingDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "company",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "companyId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "customer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "direction",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dueDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hasReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "hideDismissedPendingReceipt",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoice",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "invoiceDate",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "managementStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "month",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "movementType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageNumber",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "paymentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "recurring",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "superCustomer",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "syncStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "text",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "timeZone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "total",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "triggerType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "vatPercentage",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "withTotal",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "year",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "billingTx",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76b3132c-e470-43bb-9a77-5cfc54aca93c",
+          "name": "Execute Four-Eyes Payment",
+          "request": {
+            "name": "Execute Four-Eyes Payment",
+            "description": {
+              "content": "Executes a previously created transaction that was held for four-eyes approval. The referenced transaction must be in pending-approval status; once executed, the underlying payment is sent to the bank provider and the transaction transitions to the standard payment lifecycle.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "executePayment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transactionId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b7b30ffb-85d2-4a63-b045-fdaeb067a831",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "executePayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"address\": \"string\",\n  \"balance\": 42.332687387709456,\n  \"bankPaymentScheme\": {\n    \"code\": \"GIRO_ZRT\",\n    \"name\": \"string\",\n    \"key_0\": \"string\"\n  },\n  \"baseCurrency\": \"string\",\n  \"baseTotal\": 437.1186097665702,\n  \"beneficiaryCurrencyAmount\": 8401.096792818702,\n  \"billable\": false,\n  \"billedTxId\": \"string\",\n  \"billingTx\": true,\n  \"canDownloadPaymentStatement\": false,\n  \"card\": \"string\",\n  \"categoryCode\": \"string\",\n  \"categoryLabel\": {\n    \"de\": \"string\",\n    \"en\": \"string\",\n    \"es\": \"string\",\n    \"it\": \"string\",\n    \"zh\": \"string\",\n    \"pt\": \"string\"\n  },\n  \"charityPayment\": false,\n  \"concept\": \"string\",\n  \"country\": \"string\",\n  \"currency\": \"string\",\n  \"date\": \"2003-12-27T22:21:58.340Z\",\n  \"description\": \"string\",\n  \"destinationAccount\": {\n    \"accountAlias\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"bank\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"cnaps\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"id\": \"string\",\n    \"ifsc\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"SEK\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"purposeCode\": \"string\",\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"rate\": \"string\",\n      \"settlementDate\": \"2005-03-30T03:14:49.295Z\"\n    }\n  },\n  \"destinationAccountInfo\": \"string\",\n  \"destinationAccountType\": \"RA\",\n  \"directDebit\": false,\n  \"discountAmount\": 5571.571691215438,\n  \"discountPercentage\": 1658.7955308271253,\n  \"files\": [\n    {\n      \"extension\": \"string\",\n      \"fileUrl\": \"string\",\n      \"id\": \"string\",\n      \"invoiceId\": \"string\",\n      \"key\": \"string\",\n      \"mime\": \"string\",\n      \"name\": \"string\",\n      \"size\": 6982,\n      \"thumbnailUrl\": \"string\"\n    },\n    {\n      \"extension\": \"string\",\n      \"fileUrl\": \"string\",\n      \"id\": \"string\",\n      \"invoiceId\": \"string\",\n      \"key\": \"string\",\n      \"mime\": \"string\",\n      \"name\": \"string\",\n      \"size\": 80,\n      \"thumbnailUrl\": \"string\"\n    }\n  ],\n  \"group\": \"INBOUND\",\n  \"hasComments\": false,\n  \"id\": \"string\",\n  \"inClosedPeriod\": true,\n  \"integrityOk\": true,\n  \"invoice\": false,\n  \"invoices\": [\n    {\n      \"amount\": 5284.955893517943,\n      \"cif\": \"string\",\n      \"discountAmount\": 7397.535459786672,\n      \"discountPercentage\": 9872.694029594502,\n      \"dueDate\": \"string\",\n      \"files\": [\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 9729,\n          \"thumbnailUrl\": \"string\"\n        },\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 646,\n          \"thumbnailUrl\": \"string\"\n        }\n      ],\n      \"hasInvoice\": false,\n      \"id\": \"string\",\n      \"invoiceDate\": \"string\",\n      \"invoiceNumber\": \"string\",\n      \"isTotalWithoutVatEdited\": true,\n      \"lines\": [\n        {\n          \"amount\": 9876.56359900805,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 4776.719464000646,\n          \"vatPercentage\": 1078.469963444032\n        },\n        {\n          \"amount\": 9357.840882471924,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 2486.155290537563,\n          \"vatPercentage\": 8293.592455787035\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"supplier\": \"string\",\n      \"totalWithoutVat\": 5202.329571178123,\n      \"vatPercentage\": 1399.0094259662987\n    },\n    {\n      \"amount\": 6005.059682709573,\n      \"cif\": \"string\",\n      \"discountAmount\": 5282.534230128944,\n      \"discountPercentage\": 5466.956699976965,\n      \"dueDate\": \"string\",\n      \"files\": [\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 7630,\n          \"thumbnailUrl\": \"string\"\n        },\n        {\n          \"extension\": \"string\",\n          \"fileUrl\": \"string\",\n          \"id\": \"string\",\n          \"invoiceId\": \"string\",\n          \"key\": \"string\",\n          \"mime\": \"string\",\n          \"name\": \"string\",\n          \"size\": 1003,\n          \"thumbnailUrl\": \"string\"\n        }\n      ],\n      \"hasInvoice\": true,\n      \"id\": \"string\",\n      \"invoiceDate\": \"string\",\n      \"invoiceNumber\": \"string\",\n      \"isTotalWithoutVatEdited\": true,\n      \"lines\": [\n        {\n          \"amount\": 8043.373799645991,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 8704.23527933149,\n          \"vatPercentage\": 4605.138447425305\n        },\n        {\n          \"amount\": 1114.8957710336372,\n          \"description\": \"string\",\n          \"id\": \"string\",\n          \"totalWithoutVat\": 8609.404112858807,\n          \"vatPercentage\": 8159.352104656513\n        }\n      ],\n      \"postalCode\": \"string\",\n      \"supplier\": \"string\",\n      \"totalWithoutVat\": 771.5460658029094,\n      \"vatPercentage\": 6400.635169373884\n    }\n  ],\n  \"isBaseTotalEdited\": true,\n  \"isTotalWithoutVatEdited\": true,\n  \"lat\": 9116.97572941499,\n  \"lng\": 6480.488596497164,\n  \"localDate\": \"string\",\n  \"manualTransaction\": true,\n  \"meta\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"payType\": \"CARD\",\n  \"profileImage\": \"string\",\n  \"reference\": \"string\",\n  \"refund\": true,\n  \"sourceAccount\": {\n    \"accountAlias\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"bank\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"cnaps\": \"string\",\n    \"fullName\": \"string\",\n    \"iban\": \"string\",\n    \"id\": \"string\",\n    \"ifsc\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"GBP\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"purposeCode\": \"string\",\n    \"paymentProviderDetails\": {\n      \"shortReference\": \"string\",\n      \"internalReference\": \"string\",\n      \"paymentId\": \"string\",\n      \"conversionId\": \"string\",\n      \"rate\": \"string\",\n      \"settlementDate\": \"2017-02-13T00:37:50.583Z\"\n    }\n  },\n  \"sourceAccountInfo\": \"string\",\n  \"sourceAccountType\": \"CRA\",\n  \"status\": \"EXPIRED\",\n  \"syncExpense\": \"SYNCED\",\n  \"tags\": [\n    {\n      \"id\": \"5c473c5046e0fb0005c436af\",\n      \"name\": \"My tag\"\n    },\n    {\n      \"id\": \"5c473c5046e0fb0005c436af\",\n      \"name\": \"My tag\"\n    }\n  ],\n  \"timeZone\": \"string\",\n  \"total\": 2688.458127357758,\n  \"totalWithoutVat\": 5337.442907205074,\n  \"transactionNumber\": \"string\",\n  \"txTitle\": \"string\",\n  \"type\": \"PAYMENT\",\n  \"unreadComment\": 2289,\n  \"userId\": \"string\",\n  \"userName\": \"string\",\n  \"vatPercentage\": 2300.9485807566534,\n  \"purposeCode\": \"string\",\n  \"paymentProviderDetails\": {\n    \"shortReference\": \"string\",\n    \"internalReference\": \"string\",\n    \"paymentId\": \"string\",\n    \"conversionId\": \"string\",\n    \"rate\": \"string\",\n    \"settlementDate\": \"1951-02-09T06:38:09.009Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78d7cd80-b063-4c75-85ad-8b86c2fb6610",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "executePayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8bc2a3eb-3c24-4089-9bc4-b468b3e539e7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "executePayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3132516c-f57c-474d-b60a-109051205146",
+              "name": "Transaction not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "executePayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94a053e3-b452-4e7d-913c-db193ac3bcef",
+              "name": "Transaction is not in pending-approval status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "executePayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transactionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Precondition Failed",
+              "code": 412,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f28a836-145b-45b0-8a2c-554d1a7338a3",
+          "name": "Generate statement",
+          "request": {
+            "name": "Generate statement",
+            "description": {
+              "content": "Generates a PDF payment statement for a single transaction in the requested locale and returns it base64-encoded. Only applies to card payments and inbound/outbound bank transfers; other payment types are rejected with 417.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "transactions",
+                ":transactionId",
+                "paymentStatement"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locale",
+                  "value": "<string>",
+                  "description": "(Required) locale"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transactionId",
+                  "description": "(Required) transactionId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "33a6acfc-e263-40e4-b345-88188a6a008a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "paymentStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": \"string\",\n  \"mime\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1421334-657b-4132-85af-a59995806314",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "paymentStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b42d1ffc-2afd-43cc-bfda-6ca7f0b9c7e4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "paymentStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64cdb168-3130-40c7-9827-91d26f6a48c8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "transactions",
+                    ":transactionId",
+                    "paymentStatement"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locale",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transactionId",
+                      "description": "(Required) transactionId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1302710e-ce59-476a-8114-a1b4698cf25f",
+          "name": "Get Bank Payment Schemes",
+          "request": {
+            "name": "Get Bank Payment Schemes",
+            "description": {
+              "content": "Returns the list of bank payment schemes (SEPA, SWIFT, UK Faster Payments, FX, etc.) available for sending the given amount from the source account to the beneficiary account through the specified provider. The returned code should be passed as the bankPaymentScheme when calling Create Transaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "provider",
+                ":provider",
+                "transactions",
+                "bankPaymentSchemes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "beneficiaryAccountId",
+                  "value": "<string>",
+                  "description": "(Required) This value can be the beneficiary account id or the beneficiary id. Account must be active"
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceAccountId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9724501e-be52-4d90-b5f9-b5290848891a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "beneficiaryAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"UK_FASTER_PAYMENTS\",\n    \"name\": \"string\",\n    \"key_0\": 6161.1535226771575,\n    \"key_1\": \"string\"\n  },\n  {\n    \"code\": \"AUS_PAY_NET\",\n    \"name\": \"string\",\n    \"key_0\": 2239,\n    \"key_1\": 8012\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d374269-8552-4a24-954a-c64b45b9c87c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "beneficiaryAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe42595e-8ca5-423d-8607-6fcb0e1e8300",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "beneficiaryAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f94eeba-c951-4765-9164-f07047eb10d1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "beneficiaryAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f5726cf-1b2d-4517-a19c-3ae40c611cb4",
+              "name": "Account not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "bankPaymentSchemes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "key": "beneficiaryAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceAccountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Expectation Failed",
+              "code": 417,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "308aa1ec-8b97-4785-bfc5-d619b9f7bbf6",
+          "name": "Get Quote For Currency Pair",
+          "request": {
+            "name": "Get Quote For Currency Pair",
+            "description": {
+              "content": "Requests an FX quote from the specified provider for converting between two currencies. Returns the indicative rate, fees and the quote identifier that should be referenced when issuing the corresponding FX payment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "provider",
+                ":provider",
+                "transactions",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "provider",
+                  "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": \"<double>\",\n  \"beneficiaryCurrency\": \"<string>\",\n  \"fixedSide\": \"<string>\",\n  \"sourceCurrency\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff7690ec-6786-4545-8dfd-5998f49269f8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 3.45,\n  \"beneficiaryCurrency\": \"EUR\",\n  \"fixedSide\": \"<string>\",\n  \"sourceCurrency\": \"GBP\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"beneficiaryCurrency\": \"string\",\n  \"beneficiaryCurrencyAmount\": 3996.4672193864017,\n  \"fxRate\": 7172.0007576821545,\n  \"sourceCurrency\": \"string\",\n  \"sourceCurrencyAmount\": 8400.133795615444\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea6cb259-525e-4062-8dbd-e5907c3e8a5a",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 3.45,\n  \"beneficiaryCurrency\": \"EUR\",\n  \"fixedSide\": \"<string>\",\n  \"sourceCurrency\": \"GBP\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfc03e7c-c85e-4d56-bc7d-884ebc41dda8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 3.45,\n  \"beneficiaryCurrency\": \"EUR\",\n  \"fixedSide\": \"<string>\",\n  \"sourceCurrency\": \"GBP\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "448847e0-bbc5-4cfd-bd17-09b14b278d2c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 3.45,\n  \"beneficiaryCurrency\": \"EUR\",\n  \"fixedSide\": \"<string>\",\n  \"sourceCurrency\": \"GBP\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "341bf1a8-cc4f-47f0-9c02-cc7e0cc5098f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "provider",
+                    ":provider",
+                    "transactions",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "provider",
+                      "description": "(Required) Bank provider identifier (e.g. railsbank, modulr)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"amount\": 3.45,\n  \"beneficiaryCurrency\": \"EUR\",\n  \"fixedSide\": \"<string>\",\n  \"sourceCurrency\": \"GBP\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d259e42d-7041-48fb-ae4d-86a70e914958",
+    "name": "Accounts Account Transactions information API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

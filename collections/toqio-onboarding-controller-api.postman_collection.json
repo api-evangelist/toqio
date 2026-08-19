@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "45521f5a-26f1-4369-8781-acb1dd96bb0f",
+      "name": "onboarding-controller",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4242747a-7eeb-41de-85ee-a09787a85b7d",
+          "name": "Create Client Lead Via API without documents",
+          "request": {
+            "name": "Create Client Lead Via API without documents",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"billingModelId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cd8db4a-da0b-47bd-89f6-57f09ca00559",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"billingModelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"clientType\": \"CONSUMER\",\n    \"complianceBlocksStatuses\": {\n      \"boardOfDirectorsStatus\": \"UNDER_REVIEW\",\n      \"businessDetailsStatus\": \"DECLINED\",\n      \"overallComplianceStatus\": \"DECLINED\",\n      \"shareholdersStatus\": \"IN_PROGRESS\",\n      \"supportingDocumentsStatus\": \"IN_PROGRESS\"\n    },\n    \"countryCode\": \"string\",\n    \"customerId\": \"string\",\n    \"directors\": [\n      {\n        \"alias\": \"string\",\n        \"cards\": [\n          \"string\",\n          \"string\"\n        ],\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"id\": \"string\",\n        \"intnlPhoneNumber\": \"string\",\n        \"kycStatus\": \"REFQUE\",\n        \"lastName\": \"string\",\n        \"locale\": \"string\",\n        \"onboardedAt\": \"1977-03-08T08:33:27.075Z\",\n        \"onboardingStatus\": \"PENDING_KYB_RESULTS\",\n        \"phoneCountry\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"pushEnabled\": true,\n        \"truNarrativeLink\": \"string\",\n        \"enabled\": true,\n        \"tin\": \"string\"\n      },\n      {\n        \"alias\": \"string\",\n        \"cards\": [\n          \"string\",\n          \"string\"\n        ],\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"id\": \"string\",\n        \"intnlPhoneNumber\": \"string\",\n        \"kycStatus\": \"STADEC\",\n        \"lastName\": \"string\",\n        \"locale\": \"string\",\n        \"onboardedAt\": \"1985-05-01T13:13:00.634Z\",\n        \"onboardingStatus\": \"PENDING_USER_INFO\",\n        \"phoneCountry\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"pushEnabled\": true,\n        \"truNarrativeLink\": \"string\",\n        \"enabled\": true,\n        \"tin\": \"string\"\n      }\n    ],\n    \"externalFinanceId\": \"string\",\n    \"externalId\": \"string\",\n    \"id\": \"string\",\n    \"kyxStatus\": \"CLOSE\",\n    \"legislationCountry\": \"string\",\n    \"logo\": \"string\",\n    \"name\": \"string\",\n    \"onboardingStatus\": \"NOT_ONBOARDING\",\n    \"organisationType\": \"REGISTERED\",\n    \"primaryContactId\": \"string\",\n    \"registrationDate\": \"string\",\n    \"shareholders\": [\n      {\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"birthDate\": \"1946-11-01T23:23:44.623Z\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"id\": \"string\",\n        \"kyc\": {\n          \"accountId\": 5436,\n          \"accountReference\": \"string\",\n          \"auditReference\": \"string\",\n          \"clientApplicationReference\": \"string\",\n          \"date\": \"2026-01-28T19:50:09.296Z\",\n          \"documents\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"journey\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"journeyType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"kyxType\": \"KYC\",\n          \"previousStatus\": \"REFQUE\",\n          \"referralReference\": \"string\",\n          \"riskLevel\": \"string\",\n          \"status\": \"STADEC\",\n          \"uid\": \"string\",\n          \"updatedAt\": \"1971-01-27T06:08:35.268Z\"\n        },\n        \"name\": \"string\",\n        \"percentageOfShares\": \"string\",\n        \"postalCode\": \"string\",\n        \"s3DocumentURL\": \"string\",\n        \"surname\": \"string\"\n      },\n      {\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"birthDate\": \"1992-07-25T11:45:53.463Z\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"id\": \"string\",\n        \"kyc\": {\n          \"accountId\": 556,\n          \"accountReference\": \"string\",\n          \"auditReference\": \"string\",\n          \"clientApplicationReference\": \"string\",\n          \"date\": \"1980-12-03T02:00:04.869Z\",\n          \"documents\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"journey\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"journeyType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"kyxType\": \"KYB\",\n          \"previousStatus\": \"STACLR\",\n          \"referralReference\": \"string\",\n          \"riskLevel\": \"string\",\n          \"status\": \"STACLR\",\n          \"uid\": \"string\",\n          \"updatedAt\": \"1988-09-07T04:51:32.285Z\"\n        },\n        \"name\": \"string\",\n        \"percentageOfShares\": \"string\",\n        \"postalCode\": \"string\",\n        \"s3DocumentURL\": \"string\",\n        \"surname\": \"string\"\n      }\n    ],\n    \"status\": \"LEAD\",\n    \"subOrganisationType\": \"PARTNERSHIP\",\n    \"superCustomerId\": \"string\",\n    \"thirdParty\": {\n      \"code\": \"anfix\",\n      \"mappedCategories\": false,\n      \"name\": \"string\"\n    },\n    \"tradingAddress\": \"string\",\n    \"tradingAddress2\": \"string\",\n    \"tradingCity\": \"string\",\n    \"tradingCountry\": \"string\",\n    \"tradingName\": \"string\",\n    \"tradingPostalCode\": \"string\",\n    \"viewAlertThirdParty\": false,\n    \"hasAccountCreated\": false,\n    \"externalAccountId\": \"string\",\n    \"tnAccountId\": \"string\"\n  },\n  \"status\": {\n    \"account\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"billing\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": true\n    },\n    \"client\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"directors\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": true\n    },\n    \"documents\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"kyb\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"shareholders\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": true\n    },\n    \"user\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f239877b-5f0e-4831-b126-63bc97e7f470",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"billingModelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d7aeb59-7c0a-467a-b2d1-db4c3f5b0684",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"billingModelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c46f1009-4e24-403e-9cd1-7ca18042f8e8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"billingModelId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0e333e5-330a-461e-b532-2fdd94791320",
+          "name": "Create Client Lead Via API",
+          "request": {
+            "name": "Create Client Lead Via API",
+            "description": {},
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"<string>\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"runKYC\": \"<boolean>\",\n  \"sendInvite\": \"<boolean>\",\n  \"billingModelId\": \"<string>\",\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c6acef8-5dc7-4645-919f-7e673f1f4d7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"runKYC\": \"<boolean>\",\n  \"sendInvite\": \"<boolean>\",\n  \"billingModelId\": \"<string>\",\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"clientType\": \"BUSINESS\",\n    \"complianceBlocksStatuses\": {\n      \"boardOfDirectorsStatus\": \"DECLINED\",\n      \"businessDetailsStatus\": \"DECLINED\",\n      \"overallComplianceStatus\": \"VERIFIED\",\n      \"shareholdersStatus\": \"COMPLETED\",\n      \"supportingDocumentsStatus\": \"IN_PROGRESS\"\n    },\n    \"countryCode\": \"string\",\n    \"customerId\": \"string\",\n    \"directors\": [\n      {\n        \"alias\": \"string\",\n        \"cards\": [\n          \"string\",\n          \"string\"\n        ],\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"id\": \"string\",\n        \"intnlPhoneNumber\": \"string\",\n        \"kycStatus\": \"CLOSE\",\n        \"lastName\": \"string\",\n        \"locale\": \"string\",\n        \"onboardedAt\": \"1978-07-09T14:28:14.770Z\",\n        \"onboardingStatus\": \"PENDING_KYC_DOCUMENTS\",\n        \"phoneCountry\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"pushEnabled\": true,\n        \"truNarrativeLink\": \"string\",\n        \"enabled\": true,\n        \"tin\": \"string\"\n      },\n      {\n        \"alias\": \"string\",\n        \"cards\": [\n          \"string\",\n          \"string\"\n        ],\n        \"email\": \"string\",\n        \"firstName\": \"string\",\n        \"id\": \"string\",\n        \"intnlPhoneNumber\": \"string\",\n        \"kycStatus\": \"CLOSE\",\n        \"lastName\": \"string\",\n        \"locale\": \"string\",\n        \"onboardedAt\": \"1951-11-10T16:20:44.305Z\",\n        \"onboardingStatus\": \"DECLINED\",\n        \"phoneCountry\": \"string\",\n        \"phoneNumber\": \"string\",\n        \"pushEnabled\": true,\n        \"truNarrativeLink\": \"string\",\n        \"enabled\": true,\n        \"tin\": \"string\"\n      }\n    ],\n    \"externalFinanceId\": \"string\",\n    \"externalId\": \"string\",\n    \"id\": \"string\",\n    \"kyxStatus\": \"ACCEPT\",\n    \"legislationCountry\": \"string\",\n    \"logo\": \"string\",\n    \"name\": \"string\",\n    \"onboardingStatus\": \"PENDING_KYB_RESULTS\",\n    \"organisationType\": \"NON_REGISTERED\",\n    \"primaryContactId\": \"string\",\n    \"registrationDate\": \"string\",\n    \"shareholders\": [\n      {\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"birthDate\": \"1967-07-01T10:18:59.626Z\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"id\": \"string\",\n        \"kyc\": {\n          \"accountId\": 6561,\n          \"accountReference\": \"string\",\n          \"auditReference\": \"string\",\n          \"clientApplicationReference\": \"string\",\n          \"date\": \"2009-01-25T10:40:45.485Z\",\n          \"documents\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"journey\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"journeyType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"kyxType\": \"KYC\",\n          \"previousStatus\": \"ACCEPT\",\n          \"referralReference\": \"string\",\n          \"riskLevel\": \"string\",\n          \"status\": \"ACCEPT\",\n          \"uid\": \"string\",\n          \"updatedAt\": \"2022-09-13T17:27:37.422Z\"\n        },\n        \"name\": \"string\",\n        \"percentageOfShares\": \"string\",\n        \"postalCode\": \"string\",\n        \"s3DocumentURL\": \"string\",\n        \"surname\": \"string\"\n      },\n      {\n        \"address\": \"string\",\n        \"address2\": \"string\",\n        \"birthDate\": \"1955-04-29T01:24:27.684Z\",\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"id\": \"string\",\n        \"kyc\": {\n          \"accountId\": 2803,\n          \"accountReference\": \"string\",\n          \"auditReference\": \"string\",\n          \"clientApplicationReference\": \"string\",\n          \"date\": \"1973-04-19T18:30:24.180Z\",\n          \"documents\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"journey\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"journeyType\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"label\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"kyxType\": \"KYC\",\n          \"previousStatus\": \"PENDING_EXTERNAL_APPROVAL\",\n          \"referralReference\": \"string\",\n          \"riskLevel\": \"string\",\n          \"status\": \"CLOSE\",\n          \"uid\": \"string\",\n          \"updatedAt\": \"1968-12-18T02:06:51.330Z\"\n        },\n        \"name\": \"string\",\n        \"percentageOfShares\": \"string\",\n        \"postalCode\": \"string\",\n        \"s3DocumentURL\": \"string\",\n        \"surname\": \"string\"\n      }\n    ],\n    \"status\": \"ONBOARDING\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"superCustomerId\": \"string\",\n    \"thirdParty\": {\n      \"code\": \"xero\",\n      \"mappedCategories\": false,\n      \"name\": \"string\"\n    },\n    \"tradingAddress\": \"string\",\n    \"tradingAddress2\": \"string\",\n    \"tradingCity\": \"string\",\n    \"tradingCountry\": \"string\",\n    \"tradingName\": \"string\",\n    \"tradingPostalCode\": \"string\",\n    \"viewAlertThirdParty\": true,\n    \"hasAccountCreated\": false,\n    \"externalAccountId\": \"string\",\n    \"tnAccountId\": \"string\"\n  },\n  \"status\": {\n    \"account\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"billing\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": true\n    },\n    \"client\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"directors\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"documents\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"kyb\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": true\n    },\n    \"shareholders\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    },\n    \"user\": {\n      \"errors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"success\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2a848c6-73e8-49b1-9187-9e0b96e1a9b1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"runKYC\": \"<boolean>\",\n  \"sendInvite\": \"<boolean>\",\n  \"billingModelId\": \"<string>\",\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ad40017-12f2-4596-ae78-945e96c48870",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"runKYC\": \"<boolean>\",\n  \"sendInvite\": \"<boolean>\",\n  \"billingModelId\": \"<string>\",\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "016b9a06-c97d-4eee-ae85-720958b68407",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerId\": \"<string>\",\n  \"client\": {\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"clientType\": \"BUSINESS\",\n    \"countryCode\": \"<string>\",\n    \"legislationCountry\": \"GB\",\n    \"name\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"businessCode\": \"<string>\",\n    \"organisationType\": \"REGISTERED\",\n    \"subOrganisationType\": \"LIMITED\",\n    \"industryCode\": \"I\",\n    \"cif\": \"<string>\",\n    \"registrationDate\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"tradingName\": \"<string>\",\n    \"tradingAddress\": \"<string>\",\n    \"tradingAddress2\": \"<string>\",\n    \"tradingCity\": \"<string>\",\n    \"tradingCountry\": \"<string>\",\n    \"tradingPostalCode\": \"<string>\",\n    \"accountPurposes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"legalPhoneNumber\": \"<string>\",\n    \"legalPhoneCountry\": \"<string>\",\n    \"statementDescriptor\": \"<string>\",\n    \"expectedVolume\": {\n      \"currency\": \"GBP\",\n      \"range\": \"5001-10000\",\n      \"type\": \"monthly\"\n    }\n  },\n  \"user\": {\n    \"role\": \"ROLE_COMPANY_ADMIN\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"birthDate\": \"yyyy-MM-dd\",\n    \"email\": \"<string>\",\n    \"phoneCountry\": \"<string>\",\n    \"phoneNumber\": \"<string>\",\n    \"personalAddress\": \"<string>\",\n    \"personalCity\": \"<string>\",\n    \"residenceCountry\": \"<string>\",\n    \"personalPostalCode\": \"<string>\",\n    \"middleName\": \"<string>\",\n    \"personalAddress2\": \"<string>\"\n  },\n  \"overrideCompliance\": \"<boolean>\",\n  \"runKYC\": \"<boolean>\",\n  \"sendInvite\": \"<boolean>\",\n  \"billingModelId\": \"<string>\",\n  \"directors\": [\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"email\": \"<string>\",\n      \"phoneCountry\": \"<string>\",\n      \"phoneNumber\": \"<string>\",\n      \"address\": \"<string>\",\n      \"birthDate\": \"yyyy-MM-dd\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"role\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    },\n    {\n      \"address\": \"<string>\",\n      \"city\": \"<string>\",\n      \"country\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"frontSideBase64\": \"<string>\",\n      \"postalCode\": \"<string>\",\n      \"name\": \"<string>\",\n      \"surname\": \"<string>\",\n      \"percentageOfShares\": \"<string>\",\n      \"birthDate\": \"<string>\",\n      \"backSideBase64\": \"<string>\",\n      \"address2\": \"<string>\"\n    }\n  ],\n  \"documents\": [\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"documentPageBase64EncodedString\": \"<string>\",\n      \"documentType\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9693a346-ba82-4cd3-b1bd-fb307993fd37",
+    "name": "Accounts Account onboarding-controller API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

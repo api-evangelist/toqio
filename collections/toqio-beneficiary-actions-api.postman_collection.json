@@ -1,0 +1,2300 @@
+{
+  "item": [
+    {
+      "id": "2d36ade5-5e56-4a1a-8537-06fb05c516a9",
+      "name": "Beneficiary actions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f2008027-5429-4441-9288-8ebcd9b6ed41",
+          "name": "Create beneficiary",
+          "request": {
+            "name": "Create beneficiary",
+            "description": {
+              "content": "Creates a new beneficiary for the given client. The beneficiary can be either external (identified by account details such as IBAN/account number plus bank details) or internal (linked to another Toqio account). Once created the beneficiary can be used as the destination of a payment via the Create Transaction endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4aa0a56c-9a70-48a0-befb-591c5c933d46",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"accountNumber\": \"string\",\n  \"addressCity\": \"string\",\n  \"addressIsoCountry\": \"string\",\n  \"addressPostalCode\": \"string\",\n  \"addressStreet\": \"string\",\n  \"assetType\": \"EUR\",\n  \"bank\": \"string\",\n  \"bankCountry\": \"string\",\n  \"bicSwift\": \"string\",\n  \"bsbCode\": \"string\",\n  \"caRoutingNumber\": \"string\",\n  \"iban\": \"string\",\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"companyId\": \"string\",\n  \"createdAt\": \"1949-12-06T16:34:47.091Z\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"fullName\": \"string\",\n  \"name\": \"string\",\n  \"routingNumber\": \"string\",\n  \"type\": \"COMPANY\",\n  \"aba\": \"string\",\n  \"clabe\": \"string\",\n  \"ifsc\": \"string\",\n  \"cnaps\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75362548-073d-4d53-b903-b1d6752d7287",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9085cb93-4d43-4f72-abfa-de46f6daf051",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65d4e2b2-fe82-4412-939f-cabf7c4c70db",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a8a453d8-7cc3-44b5-8b14-c9c7e1621665",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d246a55-cfc0-4ef2-bcee-4c2b2a3ea2f0",
+          "name": "Get beneficiaries",
+          "request": {
+            "name": "Get beneficiaries",
+            "description": {
+              "content": "Returns the list of beneficiaries registered for a client. All filter query parameters (accountId, sourceCurrency, visible) are optional: omit them to retrieve every beneficiary the client can pay; pass them to narrow the result to a specific source account or currency. By default only visible (non-hidden) beneficiaries are returned — pass visible=ALL or visible=FALSE to include or restrict to hidden ones.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "Optional. Filter beneficiaries reachable from this source account ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "sourceCurrency",
+                  "value": "<string>",
+                  "description": "Optional. Filter beneficiaries reachable when sending from this currency (ISO 4217 code)."
+                },
+                {
+                  "disabled": false,
+                  "key": "visible",
+                  "value": "<string>",
+                  "description": "Filter the list of beneficiaries based on their visibility status. If set to TRUE, only visible beneficiaries are returned. If set to FALSE, only hidden beneficiaries are returned. If set to ALL, all beneficiaries, both visible and hidden, are returned. If the parameter is left empty, only visible beneficiaries are returned by default."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d5f2e651-3a10-4255-b2c0-fa11f86dadfe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visible",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"assetType\": \"NZD\",\n    \"bank\": \"string\",\n    \"bankCountry\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"companyId\": \"string\",\n    \"createdAt\": \"1983-10-09T22:34:44.874Z\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"fullName\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"PERSON\",\n    \"aba\": \"string\",\n    \"clabe\": \"string\",\n    \"ifsc\": \"string\",\n    \"cnaps\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"accountNumber\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressStreet\": \"string\",\n    \"assetType\": \"CAD\",\n    \"bank\": \"string\",\n    \"bankCountry\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bsbCode\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"companyId\": \"string\",\n    \"createdAt\": \"2020-06-15T09:15:12.258Z\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"fullName\": \"string\",\n    \"name\": \"string\",\n    \"routingNumber\": \"string\",\n    \"type\": \"PERSON\",\n    \"aba\": \"string\",\n    \"clabe\": \"string\",\n    \"ifsc\": \"string\",\n    \"cnaps\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccf22180-bcea-4f1e-bda5-b184aeb88a36",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visible",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "129bf24d-43c9-4d4b-a6d7-69352b2a3c46",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visible",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2968b680-dae3-4253-98f9-c61642936e9d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sourceCurrency",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "visible",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62cd58a8-cfcc-4a29-b95a-86350f87265c",
+          "name": "Delete beneficiary",
+          "request": {
+            "name": "Delete beneficiary",
+            "description": {
+              "content": "Removes a beneficiary from the client's address book. The beneficiary is logically deleted and will no longer appear in Get Beneficiaries; historical transactions that referenced it remain unaffected.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                ":beneficiaryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "beneficiaryId",
+                  "description": "(Required) beneficiaryId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3f1bae72-10af-4d59-90d1-a0ce7d934a57",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "15c32190-0658-48c7-b407-e2ab902bcedd",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5aba0d7e-5657-4d60-8632-654340537e68",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ebadb1e0-218e-419d-b81b-777e661c85ae",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e45de6dd-2b16-40b8-9d3c-badd28c05b41",
+          "name": "Get beneficiary",
+          "request": {
+            "name": "Get beneficiary",
+            "description": {
+              "content": "Returns the full detail of a single beneficiary by identifier, including bank account details, address, asset type and visibility flags.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                ":beneficiaryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "beneficiaryId",
+                  "description": "(Required) beneficiaryId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f5a4cac2-2733-4779-a276-c31736202021",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"accountNumber\": \"string\",\n  \"addressCity\": \"string\",\n  \"addressIsoCountry\": \"string\",\n  \"addressPostalCode\": \"string\",\n  \"addressStreet\": \"string\",\n  \"assetType\": \"EUR\",\n  \"bank\": \"string\",\n  \"bankCountry\": \"string\",\n  \"bicSwift\": \"string\",\n  \"bsbCode\": \"string\",\n  \"caRoutingNumber\": \"string\",\n  \"iban\": \"string\",\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"companyId\": \"string\",\n  \"createdAt\": \"1949-12-06T16:34:47.091Z\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"fullName\": \"string\",\n  \"name\": \"string\",\n  \"routingNumber\": \"string\",\n  \"type\": \"COMPANY\",\n  \"aba\": \"string\",\n  \"clabe\": \"string\",\n  \"ifsc\": \"string\",\n  \"cnaps\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7473c7bc-f4fd-47f1-87b5-d8584e8904fb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f353081a-c47a-4c8a-a214-eab400e6d6bb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03320721-b2ac-4735-95c9-28ac87eb4e69",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7f51c47-3af4-42db-8654-81daef3dab44",
+          "name": "Update beneficiary",
+          "request": {
+            "name": "Update beneficiary",
+            "description": {
+              "content": "Updates the details of an existing beneficiary. Only profile fields (name, address, city, postal code, country and visibility) can be edited. Bank account details captured at creation (currency/asset type, bank country, IBAN, account numbers, sort/routing codes, BIC/SWIFT and the Currencycloud-specific identifiers) are immutable: they are marked read-only and any value supplied for them is ignored, the stored value is preserved. To change bank details, delete the beneficiary and create a new one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                ":beneficiaryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "beneficiaryId",
+                  "description": "(Required) beneficiaryId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f8c38ffa-90fd-4329-ac11-c7bc7afc1c77",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"accountNumber\": \"string\",\n  \"addressCity\": \"string\",\n  \"addressIsoCountry\": \"string\",\n  \"addressPostalCode\": \"string\",\n  \"addressStreet\": \"string\",\n  \"assetType\": \"EUR\",\n  \"bank\": \"string\",\n  \"bankCountry\": \"string\",\n  \"bicSwift\": \"string\",\n  \"bsbCode\": \"string\",\n  \"caRoutingNumber\": \"string\",\n  \"iban\": \"string\",\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"companyId\": \"string\",\n  \"createdAt\": \"1949-12-06T16:34:47.091Z\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"fullName\": \"string\",\n  \"name\": \"string\",\n  \"routingNumber\": \"string\",\n  \"type\": \"COMPANY\",\n  \"aba\": \"string\",\n  \"clabe\": \"string\",\n  \"ifsc\": \"string\",\n  \"cnaps\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "daf756fb-2c1d-4d67-a0cc-cf39d1017b5a",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e940054-ccfe-4932-aa32-da20f5fdade0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f16a18bc-af03-43a9-b3b5-1274ab4d1bb5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ace61721-193c-4ef7-87b2-f5368caf901d",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) beneficiaryId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"companyId\": \"<string>\",\n  \"type\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"name\": \"<string>\",\n  \"visible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8da7492d-fc67-4ae9-9015-dc7f0c8d96c7",
+          "name": "Get or create internal beneficiary",
+          "request": {
+            "name": "Get or create internal beneficiary",
+            "description": {
+              "content": "Returns the internal beneficiary pointing to the given Toqio account, creating it on the fly if one does not yet exist. Internal beneficiaries are used for transfers between two accounts that both live on Toqio (intra-platform payments) and avoid duplicating bank details across the address book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                ":accountId",
+                "internal"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) Id of the internal account for which you want to obtain the corresponding beneficiary"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "77d838a6-d2e1-4432-baf2-4c89a2eed124",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId",
+                    "internal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Id of the internal account for which you want to obtain the corresponding beneficiary"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"accountNumber\": \"string\",\n  \"addressCity\": \"string\",\n  \"addressIsoCountry\": \"string\",\n  \"addressPostalCode\": \"string\",\n  \"addressStreet\": \"string\",\n  \"assetType\": \"EUR\",\n  \"bank\": \"string\",\n  \"bankCountry\": \"string\",\n  \"bicSwift\": \"string\",\n  \"bsbCode\": \"string\",\n  \"caRoutingNumber\": \"string\",\n  \"iban\": \"string\",\n  \"ukAccountNumber\": \"string\",\n  \"ukSortCode\": \"string\",\n  \"companyId\": \"string\",\n  \"createdAt\": \"1949-12-06T16:34:47.091Z\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"fullName\": \"string\",\n  \"name\": \"string\",\n  \"routingNumber\": \"string\",\n  \"type\": \"COMPANY\",\n  \"aba\": \"string\",\n  \"clabe\": \"string\",\n  \"ifsc\": \"string\",\n  \"cnaps\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f7e9c0c-846a-4200-ad7d-f70d2ae79f1e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId",
+                    "internal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Id of the internal account for which you want to obtain the corresponding beneficiary"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f790b6b5-49a3-4883-bd0c-b8f0bc273ef4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId",
+                    "internal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Id of the internal account for which you want to obtain the corresponding beneficiary"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48f28d5b-6489-4109-b100-e6e615105ee3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId",
+                    "internal"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) Id of the internal account for which you want to obtain the corresponding beneficiary"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b3b551d2-fc79-4c4c-9dba-4856f91380aa",
+    "name": "Accounts Account Beneficiary actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

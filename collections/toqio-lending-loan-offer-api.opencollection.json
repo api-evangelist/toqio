@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Lending - Loan - Offer API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lending - Loan - Offer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Accept a loan offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/loans/offers/:loanOfferId/accept",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "loanOfferId",
+                "value": "",
+                "type": "path",
+                "description": "Loan offer ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Accept a loan offer"
+        },
+        {
+          "info": {
+            "name": "Get a loan offer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/lending/loans/offers/:loanOfferId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "",
+                "type": "path",
+                "description": "Customer ID. Cannot be null or empty."
+              },
+              {
+                "name": "loanOfferId",
+                "value": "",
+                "type": "path",
+                "description": "Loan offer ID. Cannot be null or empty."
+              }
+            ]
+          },
+          "docs": "Get a loan offer"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

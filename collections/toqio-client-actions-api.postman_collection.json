@@ -1,0 +1,1311 @@
+{
+  "item": [
+    {
+      "id": "d9a20b45-5dfb-476e-900a-20b77b903091",
+      "name": "Client actions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11813508-6303-46ab-bf2f-c0f978f2442b",
+          "name": "Delete company",
+          "request": {
+            "name": "Delete company",
+            "description": {
+              "content": "This endpoint allows deleting a company. Only companies under 'Lead' and 'Rejected' status can be rejected",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "companies",
+                ":clientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "406ff215-2701-44f3-b5c3-f34fabb8668f",
+              "name": "The client was deleted successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "companies",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d60b6c0-31a3-4534-b064-e54759925402",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "companies",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba291808-28cc-4982-9336-20008c7b677b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "companies",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ebcda3aa-c8c6-4fd8-80e5-122c98d8c953",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "companies",
+                    ":clientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51932bc1-ece5-4327-8df4-24648ad86128",
+          "name": "Freeze company",
+          "request": {
+            "name": "Freeze company",
+            "description": {
+              "content": "Allow to freeze a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "freeze"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "931875a1-10a2-4645-b8df-bd116ef31cd9",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountId\": \"string\",\n    \"amount\": 3724.6836823757544,\n    \"bicSwift\": \"string\",\n    \"bicSwiftForSEPA\": \"string\",\n    \"bicSwiftForSWIFT\": \"string\",\n    \"currency\": {\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\"\n  },\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"billing\": {\n    \"name\": \"string\",\n    \"products\": {\n      \"key_0\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 1772.0896112742034,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 7399.849867947477,\n          \"minimumFee\": 1340.5315097228088,\n          \"product\": \"string\",\n          \"type\": \"NEW_PHYSICAL_CARD\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5774.782411660653\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 7319.213510152682,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 8058.239772938165,\n          \"minimumFee\": 6314.408214247604,\n          \"product\": \"string\",\n          \"type\": \"FASTER_PAYMENTS_OUTBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 2368.274345193747\n        }\n      ],\n      \"key_1\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 6523.598363031435,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 8978.992385115334,\n          \"minimumFee\": 8288.12090152941,\n          \"product\": \"string\",\n          \"type\": \"CHAPS_INBOUNDS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 1396.656199392462\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 73.04210287055524,\n          \"frequency\": \"WEEKLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6841.604623944389,\n          \"minimumFee\": 2585.005854337268,\n          \"product\": \"string\",\n          \"type\": \"SWIFT_INBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 9762.997029842216\n        }\n      ],\n      \"key_2\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 5609.3739619580765,\n          \"frequency\": \"MONTHLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 7346.044093781186,\n          \"minimumFee\": 8899.201286700802,\n          \"product\": \"string\",\n          \"type\": \"ACCOUNT_FEE\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 4463.8960228104515\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 1299.9786247885258,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6281.3388853448705,\n          \"minimumFee\": 4686.9416709101015,\n          \"product\": \"string\",\n          \"type\": \"VIRTUAL_CARD_FEE\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 4147.374698331857\n        }\n      ],\n      \"key_3\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 7669.640620811314,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6622.720683658659,\n          \"minimumFee\": 7120.97532786849,\n          \"product\": \"string\",\n          \"type\": \"BACS_INBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5170.48575897578\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 3873.3292427923716,\n          \"frequency\": \"MONTHLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 103.53004090872363,\n          \"minimumFee\": 3874.952258868938,\n          \"product\": \"string\",\n          \"type\": \"ATM_WITHDRAWALS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 3442.725031651662\n        }\n      ],\n      \"key_4\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 8451.586878823467,\n          \"frequency\": \"WEEKLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 2699.311237757713,\n          \"minimumFee\": 7684.204552933117,\n          \"product\": \"string\",\n          \"type\": \"ATM_WITHDRAWALS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5868.25855803808\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 3106.8505476721352,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 4469.190332435003,\n          \"minimumFee\": 5797.001815228476,\n          \"product\": \"string\",\n          \"type\": \"NEW_PHYSICAL_CARD\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 802.1533846678952\n        }\n      ]\n    }\n  },\n  \"cif\": \"string\",\n  \"city\": \"string\",\n  \"clientType\": \"BUSINESS\",\n  \"complianceHistory\": [\n    {\n      \"company\": \"string\",\n      \"date\": \"2004-05-16T18:05:39.616Z\",\n      \"ipAddress\": \"string\",\n      \"kyxStatus\": \"REFQUE\",\n      \"message\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\"\n      },\n      \"type\": \"ONBOARDING_EMAIL\",\n      \"user\": \"string\"\n    },\n    {\n      \"company\": \"string\",\n      \"date\": \"2009-06-23T01:01:45.422Z\",\n      \"ipAddress\": \"string\",\n      \"kyxStatus\": \"AWAITING_RESPONSE\",\n      \"message\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\"\n      },\n      \"type\": \"CUSTOMER_FROZEN\",\n      \"user\": \"string\"\n    }\n  ],\n  \"country\": {\n    \"code\": \"string\",\n    \"isoCode\": \"string\",\n    \"name\": {\n      \"de\": \"string\",\n      \"default\": \"string\",\n      \"en\": \"string\",\n      \"es\": \"string\"\n    },\n    \"prefix\": \"string\"\n  },\n  \"createdBy\": \"string\",\n  \"customer\": \"string\",\n  \"description\": \"string\",\n  \"directors\": [\n    {\n      \"alias\": \"string\",\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"id\": \"string\",\n      \"intnlPhoneNumber\": \"string\",\n      \"kycStatus\": \"REFERRED\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"onboardedAt\": \"2023-06-29T20:35:58.974Z\",\n      \"onboardingStatus\": \"INCOMPLETE\",\n      \"phoneCountry\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"pushEnabled\": true,\n      \"truNarrativeLink\": \"string\"\n    },\n    {\n      \"alias\": \"string\",\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"id\": \"string\",\n      \"intnlPhoneNumber\": \"string\",\n      \"kycStatus\": \"REFERRED\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"onboardedAt\": \"1982-06-11T11:49:16.055Z\",\n      \"onboardingStatus\": \"PENDING_KYC\",\n      \"phoneCountry\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"pushEnabled\": false,\n      \"truNarrativeLink\": \"string\"\n    }\n  ],\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"hasWebsite\": true,\n  \"id\": \"string\",\n  \"invitationHistory\": [\n    {\n      \"company\": \"string\",\n      \"date\": \"2016-06-09T07:14:35.607Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"type\": \"IMPERSONATION\",\n      \"user\": \"string\"\n    },\n    {\n      \"company\": \"string\",\n      \"date\": \"1961-08-04T00:05:26.835Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"type\": \"ACCEPT_TNC\",\n      \"user\": \"string\"\n    }\n  ],\n  \"kybDocuments\": [\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"UNDER_REVIEW\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    },\n    {\n      \"available\": true,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"IN_PROGRESS\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    }\n  ],\n  \"kycDocuments\": [\n    {\n      \"available\": true,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"DECLINED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    },\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"COMPLETED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    }\n  ],\n  \"kyxStatus\": \"CLOSE\",\n  \"lastName\": \"string\",\n  \"legislationCountry\": {\n    \"code\": \"string\",\n    \"isoCode\": \"string\",\n    \"name\": {\n      \"de\": \"string\",\n      \"default\": \"string\",\n      \"en\": \"string\",\n      \"es\": \"string\"\n    },\n    \"prefix\": \"string\"\n  },\n  \"middleName\": \"string\",\n  \"name\": \"string\",\n  \"onboardingStatus\": \"PENDING_KYC\",\n  \"organisationType\": \"REGISTERED\",\n  \"phoneNumber\": \"string\",\n  \"postalCode\": \"string\",\n  \"roles\": [\n    \"ROLE_SUPERCUSTOMER\",\n    \"ROLE_OWNER\"\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1955-11-10T20:44:44.659Z\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"id\": \"string\",\n      \"kyc\": {\n        \"accountId\": 6592,\n        \"accountReference\": \"string\",\n        \"auditReference\": \"string\",\n        \"clientApplicationReference\": \"string\",\n        \"date\": \"1998-03-24T23:01:20.938Z\",\n        \"documents\": [\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          },\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          }\n        ],\n        \"journey\": {\n          \"id\": 1730,\n          \"name\": \"string\"\n        },\n        \"journeyType\": {\n          \"id\": 4196,\n          \"label\": \"string\"\n        },\n        \"kyxType\": \"KYC\",\n        \"previousStatus\": \"CLOSE\",\n        \"referralReference\": \"string\",\n        \"riskLevel\": \"string\",\n        \"status\": \"CLOSE\",\n        \"uid\": \"string\",\n        \"updatedAt\": \"2011-12-26T18:20:12.895Z\"\n      },\n      \"name\": \"string\",\n      \"percentageOfShares\": \"string\",\n      \"postalCode\": \"string\",\n      \"s3DocumentURL\": \"string\",\n      \"surname\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1994-11-25T05:09:13.797Z\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"id\": \"string\",\n      \"kyc\": {\n        \"accountId\": 6727,\n        \"accountReference\": \"string\",\n        \"auditReference\": \"string\",\n        \"clientApplicationReference\": \"string\",\n        \"date\": \"1986-11-21T16:16:26.763Z\",\n        \"documents\": [\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          },\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          }\n        ],\n        \"journey\": {\n          \"id\": 9632,\n          \"name\": \"string\"\n        },\n        \"journeyType\": {\n          \"id\": 6747,\n          \"label\": \"string\"\n        },\n        \"kyxType\": \"KYC\",\n        \"previousStatus\": \"REFQUE\",\n        \"referralReference\": \"string\",\n        \"riskLevel\": \"string\",\n        \"status\": \"COMPLETE\",\n        \"uid\": \"string\",\n        \"updatedAt\": \"1947-12-03T15:47:08.237Z\"\n      },\n      \"name\": \"string\",\n      \"percentageOfShares\": \"string\",\n      \"postalCode\": \"string\",\n      \"s3DocumentURL\": \"string\",\n      \"surname\": \"string\"\n    }\n  ],\n  \"status\": \"REJECTED\",\n  \"subOrganisationType\": \"NOT_YET_REGISTERED\",\n  \"truNarrativeLink\": \"string\",\n  \"users\": [\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1988-08-02T00:22:44.974Z\",\n      \"city\": \"string\",\n      \"country\": {\n        \"code\": \"string\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"de\": \"string\",\n          \"default\": \"string\",\n          \"en\": \"string\",\n          \"es\": \"string\"\n        },\n        \"prefix\": \"string\"\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"onboarded\": true,\n      \"profileImage\": \"string\",\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"username\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1994-06-23T05:38:01.365Z\",\n      \"city\": \"string\",\n      \"country\": {\n        \"code\": \"string\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"de\": \"string\",\n          \"default\": \"string\",\n          \"en\": \"string\",\n          \"es\": \"string\"\n        },\n        \"prefix\": \"string\"\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"onboarded\": true,\n      \"profileImage\": \"string\",\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"username\": \"string\"\n    }\n  ],\n  \"websiteUrl\": \"string\",\n  \"paymentProvider\": \"string\",\n  \"statementDescriptor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "831f5262-9f54-48c0-8462-f812fe6b1749",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5ffe61f5-513b-4e2d-9c97-9e8b6fbe0630",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "01a62f71-f51a-4f4d-bd5e-e0ab6f8fb7a2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2bfe87a6-d742-41bd-ba01-28f03f6b5047",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99026109-6451-4af9-a369-727720c75df6",
+          "name": "Reject company",
+          "request": {
+            "name": "Reject company",
+            "description": {
+              "content": "This endpoint allows rejecting a company. Only companies under 'Onboarding', 'Live' and 'Quarantine' status can be rejected",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "reject"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "oauth2",
+              "oauth2": [
+                {
+                  "key": "accessTokenUrl",
+                  "value": "https://api.toq.io/iam/oauth/token"
+                },
+                {
+                  "key": "grant_type",
+                  "value": "client_credentials"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fdf0fd3a-1a00-4f99-b355-17433581328e",
+              "name": "The client was rejected successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "03fcb203-8862-4531-a417-78ec68ffccc7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "32032dbd-a6bf-4178-acb9-8d47160f0747",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc11ef62-80dc-40c4-b354-035985b86f64",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "reject"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9cafd808-679c-49bf-85e2-9b87efffa380",
+          "name": "Unfreeze company",
+          "request": {
+            "name": "Unfreeze company",
+            "description": {
+              "content": "Allows to unfreeze a company",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "unfreeze"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) clientId"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) customerId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d242797a-a748-4f2f-8e1d-009a710f2144",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "unfreeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"accountId\": \"string\",\n    \"amount\": 3724.6836823757544,\n    \"bicSwift\": \"string\",\n    \"bicSwiftForSEPA\": \"string\",\n    \"bicSwiftForSWIFT\": \"string\",\n    \"currency\": {\n      \"code\": \"string\",\n      \"country\": \"string\",\n      \"currency\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"iban\": \"string\",\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\"\n  },\n  \"address\": \"string\",\n  \"address2\": \"string\",\n  \"billing\": {\n    \"name\": \"string\",\n    \"products\": {\n      \"key_0\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 1772.0896112742034,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 7399.849867947477,\n          \"minimumFee\": 1340.5315097228088,\n          \"product\": \"string\",\n          \"type\": \"NEW_PHYSICAL_CARD\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5774.782411660653\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 7319.213510152682,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 8058.239772938165,\n          \"minimumFee\": 6314.408214247604,\n          \"product\": \"string\",\n          \"type\": \"FASTER_PAYMENTS_OUTBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 2368.274345193747\n        }\n      ],\n      \"key_1\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 6523.598363031435,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 8978.992385115334,\n          \"minimumFee\": 8288.12090152941,\n          \"product\": \"string\",\n          \"type\": \"CHAPS_INBOUNDS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 1396.656199392462\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 73.04210287055524,\n          \"frequency\": \"WEEKLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6841.604623944389,\n          \"minimumFee\": 2585.005854337268,\n          \"product\": \"string\",\n          \"type\": \"SWIFT_INBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 9762.997029842216\n        }\n      ],\n      \"key_2\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 5609.3739619580765,\n          \"frequency\": \"MONTHLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 7346.044093781186,\n          \"minimumFee\": 8899.201286700802,\n          \"product\": \"string\",\n          \"type\": \"ACCOUNT_FEE\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 4463.8960228104515\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 1299.9786247885258,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6281.3388853448705,\n          \"minimumFee\": 4686.9416709101015,\n          \"product\": \"string\",\n          \"type\": \"VIRTUAL_CARD_FEE\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 4147.374698331857\n        }\n      ],\n      \"key_3\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 7669.640620811314,\n          \"frequency\": \"YEARLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 6622.720683658659,\n          \"minimumFee\": 7120.97532786849,\n          \"product\": \"string\",\n          \"type\": \"BACS_INBOUND\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5170.48575897578\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 3873.3292427923716,\n          \"frequency\": \"MONTHLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 103.53004090872363,\n          \"minimumFee\": 3874.952258868938,\n          \"product\": \"string\",\n          \"type\": \"ATM_WITHDRAWALS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 3442.725031651662\n        }\n      ],\n      \"key_4\": [\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 8451.586878823467,\n          \"frequency\": \"WEEKLY\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 2699.311237757713,\n          \"minimumFee\": 7684.204552933117,\n          \"product\": \"string\",\n          \"type\": \"ATM_WITHDRAWALS\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 5868.25855803808\n        },\n        {\n          \"currency\": \"string\",\n          \"fixedFee\": 3106.8505476721352,\n          \"frequency\": \"IMMEDIATE\",\n          \"frequencyLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"maximumFee\": 4469.190332435003,\n          \"minimumFee\": 5797.001815228476,\n          \"product\": \"string\",\n          \"type\": \"NEW_PHYSICAL_CARD\",\n          \"typeLabel\": {\n            \"de\": \"string\",\n            \"en\": \"string\",\n            \"es\": \"string\",\n            \"it\": \"string\"\n          },\n          \"variableFee\": 802.1533846678952\n        }\n      ]\n    }\n  },\n  \"cif\": \"string\",\n  \"city\": \"string\",\n  \"clientType\": \"BUSINESS\",\n  \"complianceHistory\": [\n    {\n      \"company\": \"string\",\n      \"date\": \"2004-05-16T18:05:39.616Z\",\n      \"ipAddress\": \"string\",\n      \"kyxStatus\": \"REFQUE\",\n      \"message\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\"\n      },\n      \"type\": \"ONBOARDING_EMAIL\",\n      \"user\": \"string\"\n    },\n    {\n      \"company\": \"string\",\n      \"date\": \"2009-06-23T01:01:45.422Z\",\n      \"ipAddress\": \"string\",\n      \"kyxStatus\": \"AWAITING_RESPONSE\",\n      \"message\": {\n        \"de\": \"string\",\n        \"en\": \"string\",\n        \"es\": \"string\",\n        \"it\": \"string\"\n      },\n      \"type\": \"CUSTOMER_FROZEN\",\n      \"user\": \"string\"\n    }\n  ],\n  \"country\": {\n    \"code\": \"string\",\n    \"isoCode\": \"string\",\n    \"name\": {\n      \"de\": \"string\",\n      \"default\": \"string\",\n      \"en\": \"string\",\n      \"es\": \"string\"\n    },\n    \"prefix\": \"string\"\n  },\n  \"createdBy\": \"string\",\n  \"customer\": \"string\",\n  \"description\": \"string\",\n  \"directors\": [\n    {\n      \"alias\": \"string\",\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"id\": \"string\",\n      \"intnlPhoneNumber\": \"string\",\n      \"kycStatus\": \"REFERRED\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"onboardedAt\": \"2023-06-29T20:35:58.974Z\",\n      \"onboardingStatus\": \"INCOMPLETE\",\n      \"phoneCountry\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"pushEnabled\": true,\n      \"truNarrativeLink\": \"string\"\n    },\n    {\n      \"alias\": \"string\",\n      \"email\": \"string\",\n      \"firstName\": \"string\",\n      \"id\": \"string\",\n      \"intnlPhoneNumber\": \"string\",\n      \"kycStatus\": \"REFERRED\",\n      \"lastName\": \"string\",\n      \"locale\": \"string\",\n      \"onboardedAt\": \"1982-06-11T11:49:16.055Z\",\n      \"onboardingStatus\": \"PENDING_KYC\",\n      \"phoneCountry\": \"string\",\n      \"phoneNumber\": \"string\",\n      \"pushEnabled\": false,\n      \"truNarrativeLink\": \"string\"\n    }\n  ],\n  \"email\": \"string\",\n  \"firstName\": \"string\",\n  \"hasWebsite\": true,\n  \"id\": \"string\",\n  \"invitationHistory\": [\n    {\n      \"company\": \"string\",\n      \"date\": \"2016-06-09T07:14:35.607Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"type\": \"IMPERSONATION\",\n      \"user\": \"string\"\n    },\n    {\n      \"company\": \"string\",\n      \"date\": \"1961-08-04T00:05:26.835Z\",\n      \"message\": \"string\",\n      \"success\": false,\n      \"type\": \"ACCEPT_TNC\",\n      \"user\": \"string\"\n    }\n  ],\n  \"kybDocuments\": [\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"UNDER_REVIEW\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    },\n    {\n      \"available\": true,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"IN_PROGRESS\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    }\n  ],\n  \"kycDocuments\": [\n    {\n      \"available\": true,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"DECLINED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    },\n    {\n      \"available\": false,\n      \"documentName\": \"string\",\n      \"documentStatus\": \"COMPLETED\",\n      \"documentType\": \"string\",\n      \"documentURL\": \"string\",\n      \"id\": \"string\",\n      \"rejectReason\": \"string\"\n    }\n  ],\n  \"kyxStatus\": \"CLOSE\",\n  \"lastName\": \"string\",\n  \"legislationCountry\": {\n    \"code\": \"string\",\n    \"isoCode\": \"string\",\n    \"name\": {\n      \"de\": \"string\",\n      \"default\": \"string\",\n      \"en\": \"string\",\n      \"es\": \"string\"\n    },\n    \"prefix\": \"string\"\n  },\n  \"middleName\": \"string\",\n  \"name\": \"string\",\n  \"onboardingStatus\": \"PENDING_KYC\",\n  \"organisationType\": \"REGISTERED\",\n  \"phoneNumber\": \"string\",\n  \"postalCode\": \"string\",\n  \"roles\": [\n    \"ROLE_SUPERCUSTOMER\",\n    \"ROLE_OWNER\"\n  ],\n  \"shareholders\": [\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1955-11-10T20:44:44.659Z\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"id\": \"string\",\n      \"kyc\": {\n        \"accountId\": 6592,\n        \"accountReference\": \"string\",\n        \"auditReference\": \"string\",\n        \"clientApplicationReference\": \"string\",\n        \"date\": \"1998-03-24T23:01:20.938Z\",\n        \"documents\": [\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          },\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          }\n        ],\n        \"journey\": {\n          \"id\": 1730,\n          \"name\": \"string\"\n        },\n        \"journeyType\": {\n          \"id\": 4196,\n          \"label\": \"string\"\n        },\n        \"kyxType\": \"KYC\",\n        \"previousStatus\": \"CLOSE\",\n        \"referralReference\": \"string\",\n        \"riskLevel\": \"string\",\n        \"status\": \"CLOSE\",\n        \"uid\": \"string\",\n        \"updatedAt\": \"2011-12-26T18:20:12.895Z\"\n      },\n      \"name\": \"string\",\n      \"percentageOfShares\": \"string\",\n      \"postalCode\": \"string\",\n      \"s3DocumentURL\": \"string\",\n      \"surname\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1994-11-25T05:09:13.797Z\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"id\": \"string\",\n      \"kyc\": {\n        \"accountId\": 6727,\n        \"accountReference\": \"string\",\n        \"auditReference\": \"string\",\n        \"clientApplicationReference\": \"string\",\n        \"date\": \"1986-11-21T16:16:26.763Z\",\n        \"documents\": [\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          },\n          {\n            \"documentPageBase64EncodedString\": \"string\",\n            \"documentType\": \"string\",\n            \"id\": \"string\",\n            \"name\": \"string\",\n            \"pages\": [\n              {\n                \"filename\": \"string\"\n              },\n              {\n                \"filename\": \"string\"\n              }\n            ],\n            \"type\": \"string\"\n          }\n        ],\n        \"journey\": {\n          \"id\": 9632,\n          \"name\": \"string\"\n        },\n        \"journeyType\": {\n          \"id\": 6747,\n          \"label\": \"string\"\n        },\n        \"kyxType\": \"KYC\",\n        \"previousStatus\": \"REFQUE\",\n        \"referralReference\": \"string\",\n        \"riskLevel\": \"string\",\n        \"status\": \"COMPLETE\",\n        \"uid\": \"string\",\n        \"updatedAt\": \"1947-12-03T15:47:08.237Z\"\n      },\n      \"name\": \"string\",\n      \"percentageOfShares\": \"string\",\n      \"postalCode\": \"string\",\n      \"s3DocumentURL\": \"string\",\n      \"surname\": \"string\"\n    }\n  ],\n  \"status\": \"REJECTED\",\n  \"subOrganisationType\": \"NOT_YET_REGISTERED\",\n  \"truNarrativeLink\": \"string\",\n  \"users\": [\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1988-08-02T00:22:44.974Z\",\n      \"city\": \"string\",\n      \"country\": {\n        \"code\": \"string\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"de\": \"string\",\n          \"default\": \"string\",\n          \"en\": \"string\",\n          \"es\": \"string\"\n        },\n        \"prefix\": \"string\"\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"onboarded\": true,\n      \"profileImage\": \"string\",\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"username\": \"string\"\n    },\n    {\n      \"address\": \"string\",\n      \"address2\": \"string\",\n      \"birthDate\": \"1994-06-23T05:38:01.365Z\",\n      \"city\": \"string\",\n      \"country\": {\n        \"code\": \"string\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"de\": \"string\",\n          \"default\": \"string\",\n          \"en\": \"string\",\n          \"es\": \"string\"\n        },\n        \"prefix\": \"string\"\n      },\n      \"email\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"onboarded\": true,\n      \"profileImage\": \"string\",\n      \"role\": \"string\",\n      \"status\": \"string\",\n      \"username\": \"string\"\n    }\n  ],\n  \"websiteUrl\": \"string\",\n  \"paymentProvider\": \"string\",\n  \"statementDescriptor\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79f12528-49e3-40f3-99cf-12b01c057654",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "unfreeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c6799c8b-a88d-4f98-8cb1-7a576479c664",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "unfreeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6968b6e1-4366-4d72-bdf6-699c7151b860",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "unfreeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ac7e7d9-54c1-4de5-91f9-241a1af8b917",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "unfreeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) clientId"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) customerId"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b1285b24-0b5b-4b02-af2c-7cac5a44e2ae",
+    "name": "Accounts Account Client actions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Accounts Account Security API",
+    "version": "v1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Security",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Activate card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/activate",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activates (unfreezes) a suspended card. Requires card token for activation.\n\n**Business Context**: Called when a cardholder or administrator wants to activate a suspended card. The activation reason is determined by the requester's role (owner, director, or admin). Requires security code verification."
+        },
+        {
+          "info": {
+            "name": "Activate card with OTP verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/activateOTP",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activates a card using OTP (One-Time Password) verification for enhanced security.\n\n**Business Context**: Used when the banking provider requires OTP verification for card activation (e.g., first-time activation)."
+        },
+        {
+          "info": {
+            "name": "Get card PAN (Primary Account Number)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/pan",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves sensitive card details including PAN, CVV, and expiry date. Requires security verification (encrypted security code).\n\n**Business Context**: Called when user needs to view full card details. Security code is encrypted using RSA public key before transmission. Supports both standard encryption and MEA Wallet wrapped key encryption."
+        },
+        {
+          "info": {
+            "name": "Get partner token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/client/:clientId/partnerToken",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves a partner integration token for credit card operations.\n\n**Business Context**: Used when integrating with third-party services for credit card account linking and payments."
+        },
+        {
+          "info": {
+            "name": "Get card PIN",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/pin",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Retrieves the card PIN number. Requires elevated security permissions.\n\n**Business Context**: Used when cardholder needs to retrieve their PIN for ATM or POS transactions."
+        },
+        {
+          "info": {
+            "name": "Get card PIN asynchronously (POC only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/pin/async",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Asynchronous PIN retrieval endpoint for proof-of-concept testing only. Not for production use."
+        },
+        {
+          "info": {
+            "name": "Get TOTP secret for card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/card/:cardId/secret",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Retrieves the Time-based One-Time Password (TOTP) secret for the card. Used with authenticator apps for enhanced security.\n\n**Business Context**: Called when setting up TOTP-based authentication (e.g., Google Authenticator, Authy) for card transactions. Requires that the banking provider supports MEA Wallet configuration."
+        },
+        {
+          "info": {
+            "name": "Suspend card",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sandbox.toq.io/wallet/api/customers/:customerId/cards/:cardId/suspend",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "cust-123",
+                "type": "path",
+                "description": "Unique identifier of the customer"
+              },
+              {
+                "name": "cardId",
+                "value": "card-abc123",
+                "type": "path",
+                "description": "Unique identifier of the card"
+              }
+            ]
+          },
+          "docs": "Suspends (freezes) a card temporarily. The card can be reactivated later.\n\n**Business Context**: Called when a cardholder temporarily freezes their card (e.g., lost wallet) or when a director/admin suspends an employee's card. Requires security code verification."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

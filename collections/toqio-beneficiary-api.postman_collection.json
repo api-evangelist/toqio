@@ -1,0 +1,1764 @@
+{
+  "item": [
+    {
+      "id": "36a9775a-4e28-4db0-9619-cca1f4dd9d81",
+      "name": "Beneficiary",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "816c1855-8fde-4106-ab20-a932da115a5c",
+          "name": "Create a new beneficiary",
+          "request": {
+            "name": "Create a new beneficiary",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"aba\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"branchCode\": \"<string>\",\n  \"type\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"bankingProviderBeneficiaryId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"sourceAccount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff124450-12a3-423b-9cb2-4a6e49d573b8",
+              "name": "Beneficiary created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"aba\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"branchCode\": \"<string>\",\n  \"type\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"bankingProviderBeneficiaryId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"sourceAccount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bank\": \"string\",\n    \"bsbCode\": \"string\",\n    \"routingNumber\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"accountNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"aba\": \"string\",\n    \"cnaps\": \"string\",\n    \"ifsc\": \"string\",\n    \"bankCode\": \"string\",\n    \"branchCode\": \"string\",\n    \"type\": \"COMPANY\",\n    \"assetType\": \"pln\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"addressStreet\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"bankCountry\": \"string\",\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"companyId\": \"string\",\n    \"beneficiaryAccountId\": \"string\",\n    \"visible\": true,\n    \"bankingProviderBeneficiaryId\": \"string\",\n    \"baasOTP\": \"string\",\n    \"operationId\": \"string\",\n    \"sourceAccount\": \"string\",\n    \"createdAt\": \"2001-02-11T19:11:37.503Z\",\n    \"updatedAt\": \"2001-05-28T22:14:38.862Z\",\n    \"fullName\": \"string\",\n    \"nameOrFullName\": \"string\",\n    \"fullAddress\": \"string\",\n    \"addressLine\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a34e4b48-c728-4cc6-915e-9be7c2394a4e",
+              "name": "ERROR_CLIENT_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"aba\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"branchCode\": \"<string>\",\n  \"type\": \"<string>\",\n  \"assetType\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"bankCountry\": \"<string>\",\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"bankingProviderBeneficiaryId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"sourceAccount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "022a8539-7049-4546-bf86-857f4d024d98",
+          "name": "Find Beneficiary",
+          "request": {
+            "name": "Find Beneficiary",
+            "description": {
+              "content": "Deprecated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ukAccountNumber",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "ukSortCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "iban",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bicSwift",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bank",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bsbCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "routingNumber",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "caRoutingNumber",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "accountNumber",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "clabe",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "aba",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "cnaps",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "ifsc",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bankCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "branchCode",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ca5ca4e-3f2a-4e2d-a108-9c817ec12629",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ukAccountNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ukSortCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iban",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bicSwift",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bank",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bsbCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routingNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caRoutingNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clabe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aba",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnaps",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ifsc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bankCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"ukAccountNumber\": \"string\",\n      \"ukSortCode\": \"string\",\n      \"iban\": \"string\",\n      \"bicSwift\": \"string\",\n      \"bank\": \"string\",\n      \"bsbCode\": \"string\",\n      \"routingNumber\": \"string\",\n      \"caRoutingNumber\": \"string\",\n      \"accountNumber\": \"string\",\n      \"clabe\": \"string\",\n      \"aba\": \"string\",\n      \"cnaps\": \"string\",\n      \"ifsc\": \"string\",\n      \"bankCode\": \"string\",\n      \"branchCode\": \"string\",\n      \"type\": \"COMPANY\",\n      \"assetType\": \"nok\",\n      \"name\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"addressStreet\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"bankCountry\": \"string\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"companyId\": \"string\",\n      \"beneficiaryAccountId\": \"string\",\n      \"visible\": false,\n      \"bankingProviderBeneficiaryId\": \"string\",\n      \"baasOTP\": \"string\",\n      \"operationId\": \"string\",\n      \"sourceAccount\": \"string\",\n      \"createdAt\": \"2006-04-18T19:27:27.901Z\",\n      \"updatedAt\": \"1955-12-10T19:03:29.483Z\",\n      \"fullName\": \"string\",\n      \"nameOrFullName\": \"string\",\n      \"fullAddress\": \"string\",\n      \"addressLine\": \"string\"\n    },\n    {\n      \"ukAccountNumber\": \"string\",\n      \"ukSortCode\": \"string\",\n      \"iban\": \"string\",\n      \"bicSwift\": \"string\",\n      \"bank\": \"string\",\n      \"bsbCode\": \"string\",\n      \"routingNumber\": \"string\",\n      \"caRoutingNumber\": \"string\",\n      \"accountNumber\": \"string\",\n      \"clabe\": \"string\",\n      \"aba\": \"string\",\n      \"cnaps\": \"string\",\n      \"ifsc\": \"string\",\n      \"bankCode\": \"string\",\n      \"branchCode\": \"string\",\n      \"type\": \"PERSON\",\n      \"assetType\": \"jpy\",\n      \"name\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"addressStreet\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"bankCountry\": \"string\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"companyId\": \"string\",\n      \"beneficiaryAccountId\": \"string\",\n      \"visible\": true,\n      \"bankingProviderBeneficiaryId\": \"string\",\n      \"baasOTP\": \"string\",\n      \"operationId\": \"string\",\n      \"sourceAccount\": \"string\",\n      \"createdAt\": \"1985-09-30T13:52:18.649Z\",\n      \"updatedAt\": \"1985-10-20T14:23:22.991Z\",\n      \"fullName\": \"string\",\n      \"nameOrFullName\": \"string\",\n      \"fullAddress\": \"string\",\n      \"addressLine\": \"string\"\n    }\n  ],\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c08c108-ffd7-4e43-82ea-a326ff058a42",
+              "name": "Beneficiary not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ukAccountNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ukSortCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "iban",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bicSwift",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bank",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bsbCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "routingNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "caRoutingNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountNumber",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "clabe",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "aba",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cnaps",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ifsc",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bankCode",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "branchCode",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5aa31326-b900-4fec-b814-b384d9d93e2c",
+          "name": "Delete Beneficiary",
+          "request": {
+            "name": "Delete Beneficiary",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3048f53-18ba-47f5-a09f-f46214bc4562",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "698ce1cc-2aa7-449e-b146-5145c3f46e6f",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3feffb6-acfd-4d7a-a3bd-4673b57b811f",
+          "name": "Update Beneficiary",
+          "request": {
+            "name": "Update Beneficiary",
+            "description": {
+              "content": "Updates an existing beneficiary. Profile fields (name, address and visibility) can be edited. Bank-account detail fields are immutable: they are captured at creation and marked read-only on the update request body, so any value supplied for them is ignored and the stored value is preserved before the request is forwarded to the provider.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"bankingProviderBeneficiaryId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"sourceAccount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40ce0599-282d-472d-badd-b3d06e067bb8",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"bankingProviderBeneficiaryId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"sourceAccount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bank\": \"string\",\n    \"bsbCode\": \"string\",\n    \"routingNumber\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"accountNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"aba\": \"string\",\n    \"cnaps\": \"string\",\n    \"ifsc\": \"string\",\n    \"bankCode\": \"string\",\n    \"branchCode\": \"string\",\n    \"type\": \"COMPANY\",\n    \"assetType\": \"pln\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"addressStreet\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"bankCountry\": \"string\",\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"companyId\": \"string\",\n    \"beneficiaryAccountId\": \"string\",\n    \"visible\": true,\n    \"bankingProviderBeneficiaryId\": \"string\",\n    \"baasOTP\": \"string\",\n    \"operationId\": \"string\",\n    \"sourceAccount\": \"string\",\n    \"createdAt\": \"2001-02-11T19:11:37.503Z\",\n    \"updatedAt\": \"2001-05-28T22:14:38.862Z\",\n    \"fullName\": \"string\",\n    \"nameOrFullName\": \"string\",\n    \"fullAddress\": \"string\",\n    \"addressLine\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3aaaeed-77c2-4502-b178-1a4d8ecebbc4",
+              "name": "CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"addressStreet\": \"<string>\",\n  \"addressPostalCode\": \"<string>\",\n  \"addressCity\": \"<string>\",\n  \"addressIsoCountry\": \"<string>\",\n  \"id\": \"<string>\",\n  \"userId\": \"<string>\",\n  \"companyId\": \"<string>\",\n  \"beneficiaryAccountId\": \"<string>\",\n  \"visible\": \"<boolean>\",\n  \"bankingProviderBeneficiaryId\": \"<string>\",\n  \"baasOTP\": \"<string>\",\n  \"operationId\": \"<string>\",\n  \"sourceAccount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b782c2cd-48ff-4af5-b63c-12e25b316b0e",
+          "name": "Get Beneficiary",
+          "request": {
+            "name": "Get Beneficiary",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "account",
+                ":accountId",
+                "beneficiaries",
+                ":beneficiaryId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "beneficiaryId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8af2d4de-4892-4d4d-bea8-e8f2889bbf5f",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "account",
+                    ":accountId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"ukAccountNumber\": \"string\",\n    \"ukSortCode\": \"string\",\n    \"iban\": \"string\",\n    \"bicSwift\": \"string\",\n    \"bank\": \"string\",\n    \"bsbCode\": \"string\",\n    \"routingNumber\": \"string\",\n    \"caRoutingNumber\": \"string\",\n    \"accountNumber\": \"string\",\n    \"clabe\": \"string\",\n    \"aba\": \"string\",\n    \"cnaps\": \"string\",\n    \"ifsc\": \"string\",\n    \"bankCode\": \"string\",\n    \"branchCode\": \"string\",\n    \"type\": \"COMPANY\",\n    \"assetType\": \"pln\",\n    \"name\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"addressStreet\": \"string\",\n    \"addressPostalCode\": \"string\",\n    \"addressCity\": \"string\",\n    \"addressIsoCountry\": \"string\",\n    \"bankCountry\": \"string\",\n    \"id\": \"string\",\n    \"userId\": \"string\",\n    \"companyId\": \"string\",\n    \"beneficiaryAccountId\": \"string\",\n    \"visible\": true,\n    \"bankingProviderBeneficiaryId\": \"string\",\n    \"baasOTP\": \"string\",\n    \"operationId\": \"string\",\n    \"sourceAccount\": \"string\",\n    \"createdAt\": \"2001-02-11T19:11:37.503Z\",\n    \"updatedAt\": \"2001-05-28T22:14:38.862Z\",\n    \"fullName\": \"string\",\n    \"nameOrFullName\": \"string\",\n    \"fullAddress\": \"string\",\n    \"addressLine\": \"string\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6a7add2-d984-403e-8a63-996d6d76842d",
+              "name": "Beneficiary not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "account",
+                    ":accountId",
+                    "beneficiaries",
+                    ":beneficiaryId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "beneficiaryId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d63a3453-d9ba-4c69-9393-00b1c3af47a4",
+          "name": "Get Beneficiary Filters",
+          "request": {
+            "name": "Get Beneficiary Filters",
+            "description": {
+              "content": "Returns the available filters for beneficiary operations (payments, beneficiary listing, and beneficiary creation). The response includes the permitted asset types (currencies) and countries based on the source account characteristics. This allows the client to filter beneficiaries by supported currencies and countries according to the integration's business rules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"canSeeFxPayments\": \"<boolean>\",\n  \"ownAccount\": \"<boolean>\",\n  \"sourceAccountId\": \"<string>\",\n  \"sourceAssetType\": \"<string>\",\n  \"accountCountry\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d42f84d6-d4cf-4d08-ba7b-a0ea94fc60fe",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"canSeeFxPayments\": \"<boolean>\",\n  \"ownAccount\": \"<boolean>\",\n  \"sourceAccountId\": \"<string>\",\n  \"sourceAssetType\": \"<string>\",\n  \"accountCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"assetTypes\": [\n      \"cny\",\n      \"huf\"\n    ],\n    \"countries\": [\n      {\n        \"code\": \"GB\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"prefix\": \"string\",\n        \"iban\": true,\n        \"sendMoney\": false,\n        \"sepa\": true\n      },\n      {\n        \"code\": \"GB\",\n        \"isoCode\": \"string\",\n        \"name\": {\n          \"es\": \"string\",\n          \"en\": \"string\",\n          \"de\": \"string\",\n          \"it\": \"string\",\n          \"zh\": \"string\",\n          \"pt\": \"string\"\n        },\n        \"prefix\": \"string\",\n        \"iban\": false,\n        \"sendMoney\": false,\n        \"sepa\": false\n      }\n    ]\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2025-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8af8e446-26c5-414d-8eee-1b52af4e1d92",
+              "name": " CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"canSeeFxPayments\": \"<boolean>\",\n  \"ownAccount\": \"<boolean>\",\n  \"sourceAccountId\": \"<string>\",\n  \"sourceAssetType\": \"<string>\",\n  \"accountCountry\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62cea25b-b4ba-41dc-9d1e-38d9fc257baf",
+          "name": "Search Beneficiaries",
+          "request": {
+            "name": "Search Beneficiaries",
+            "description": {
+              "content": "Deprecated",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"aba\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"branchCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "200406dd-c669-424c-a0ae-0201ab0257ab",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"aba\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"branchCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "[\n  {\n    \"data\": {\n      \"ukAccountNumber\": \"string\",\n      \"ukSortCode\": \"string\",\n      \"iban\": \"string\",\n      \"bicSwift\": \"string\",\n      \"bank\": \"string\",\n      \"bsbCode\": \"string\",\n      \"routingNumber\": \"string\",\n      \"caRoutingNumber\": \"string\",\n      \"accountNumber\": \"string\",\n      \"clabe\": \"string\",\n      \"aba\": \"string\",\n      \"cnaps\": \"string\",\n      \"ifsc\": \"string\",\n      \"bankCode\": \"string\",\n      \"branchCode\": \"string\",\n      \"type\": \"COMPANY\",\n      \"assetType\": \"rub\",\n      \"name\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"addressStreet\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"bankCountry\": \"string\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"companyId\": \"string\",\n      \"beneficiaryAccountId\": \"string\",\n      \"visible\": true,\n      \"bankingProviderBeneficiaryId\": \"string\",\n      \"baasOTP\": \"string\",\n      \"operationId\": \"string\",\n      \"sourceAccount\": \"string\",\n      \"createdAt\": \"2024-03-10T05:29:32.998Z\",\n      \"updatedAt\": \"1972-09-15T07:20:25.102Z\",\n      \"fullName\": \"string\",\n      \"nameOrFullName\": \"string\",\n      \"fullAddress\": \"string\",\n      \"addressLine\": \"string\"\n    },\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  },\n  {\n    \"data\": {\n      \"ukAccountNumber\": \"string\",\n      \"ukSortCode\": \"string\",\n      \"iban\": \"string\",\n      \"bicSwift\": \"string\",\n      \"bank\": \"string\",\n      \"bsbCode\": \"string\",\n      \"routingNumber\": \"string\",\n      \"caRoutingNumber\": \"string\",\n      \"accountNumber\": \"string\",\n      \"clabe\": \"string\",\n      \"aba\": \"string\",\n      \"cnaps\": \"string\",\n      \"ifsc\": \"string\",\n      \"bankCode\": \"string\",\n      \"branchCode\": \"string\",\n      \"type\": \"PERSON\",\n      \"assetType\": \"points\",\n      \"name\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"addressStreet\": \"string\",\n      \"addressPostalCode\": \"string\",\n      \"addressCity\": \"string\",\n      \"addressIsoCountry\": \"string\",\n      \"bankCountry\": \"string\",\n      \"id\": \"string\",\n      \"userId\": \"string\",\n      \"companyId\": \"string\",\n      \"beneficiaryAccountId\": \"string\",\n      \"visible\": true,\n      \"bankingProviderBeneficiaryId\": \"string\",\n      \"baasOTP\": \"string\",\n      \"operationId\": \"string\",\n      \"sourceAccount\": \"string\",\n      \"createdAt\": \"1986-12-19T21:41:30.649Z\",\n      \"updatedAt\": \"1957-06-05T14:41:22.574Z\",\n      \"fullName\": \"string\",\n      \"nameOrFullName\": \"string\",\n      \"fullAddress\": \"string\",\n      \"addressLine\": \"string\"\n    },\n    \"code\": \"OK\",\n    \"errorSeverity\": \"NONE\",\n    \"message\": \"Ok\",\n    \"httpStatus\": 200,\n    \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n    \"date\": \"2024-08-01T00:00:00.000Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7f6ce5e8-b920-4705-8acf-5791a44915d9",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ukAccountNumber\": \"<string>\",\n  \"ukSortCode\": \"<string>\",\n  \"iban\": \"<string>\",\n  \"bicSwift\": \"<string>\",\n  \"bank\": \"<string>\",\n  \"bsbCode\": \"<string>\",\n  \"routingNumber\": \"<string>\",\n  \"caRoutingNumber\": \"<string>\",\n  \"accountNumber\": \"<string>\",\n  \"clabe\": \"<string>\",\n  \"aba\": \"<string>\",\n  \"cnaps\": \"<string>\",\n  \"ifsc\": \"<string>\",\n  \"bankCode\": \"<string>\",\n  \"branchCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\",\n  \"errorOrigin\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3ccd41f7-918b-4037-99cd-e798f334ed9f",
+          "name": "Verify beneficiary for a client",
+          "request": {
+            "name": "Verify beneficiary for a client",
+            "description": {
+              "content": "Verifies beneficiary information for a client before proceeding with a payment. This endpoint validates beneficiary details and returns verification status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "clients",
+                ":clientId",
+                "beneficiaries",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Unique identifier of the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "clientId",
+                  "description": "(Required) Unique identifier of the company"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "*/*"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sourceAccountId\": \"<string>\",\n  \"paymentType\": \"<string>\",\n  \"beneficiaryId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "331ca8a6-d4b5-4045-9c8f-1941669162f3",
+              "name": "Beneficiary verification completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Unique identifier of the company"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceAccountId\": \"acc-12345\",\n  \"paymentType\": \"PAYMENT_TYPE_EU_SEPA_INSTANT\",\n  \"beneficiaryId\": \"ben-67890\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "*/*"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"status\": \"MATCHED\",\n    \"reasonCode\": \"FULL_MATCH\",\n    \"reasonDescription\": \"All beneficiary details matched successfully\",\n    \"allowProceedPayment\": true\n  },\n  \"code\": \"200\",\n  \"message\": \"Beneficiary verified\",\n  \"httpStatus\": 200,\n  \"requestId\": \"req-987654\",\n  \"date\": \"2025-11-14T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49be2957-3632-4925-a8a8-15dd23db95a3",
+              "name": " CUSTOMER_NOT_FOUND",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "clients",
+                    ":clientId",
+                    "beneficiaries",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Unique identifier of the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "clientId",
+                      "description": "(Required) Unique identifier of the company"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sourceAccountId\": \"acc-12345\",\n  \"paymentType\": \"PAYMENT_TYPE_EU_SEPA_INSTANT\",\n  \"beneficiaryId\": \"ben-67890\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8062f504-eefe-4666-9463-cdd5199abcf4",
+    "name": "Accounts Account Beneficiary API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}

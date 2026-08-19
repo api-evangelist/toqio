@@ -1,0 +1,1181 @@
+{
+  "item": [
+    {
+      "id": "a15445c2-a035-4e76-b005-c00fc9b2f30a",
+      "name": "Lending - Loan - Request",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bfa8d6d8-509e-4360-b1ec-8316b8d7a39c",
+          "name": "Create a lending request",
+          "request": {
+            "name": "Create a lending request",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creditCheckPermission",
+                  "value": "<boolean>",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataPrivacyConsent",
+                  "value": "<boolean>",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "loan",
+                  "value": "{\"amount\":\"<double>\",\"currencyISOCode\":\"<string>\",\"purpose\":\"<string>\",\"maturity\":\"<integer>\",\"productType\":\"<string>\",\"documents\":[{\"base64\":\"<string>\",\"name\":\"<string>\"},{\"base64\":\"<string>\",\"name\":\"<string>\"}],\"preferredRepaymentTerms\":\"<double>\"}",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "{\"id\":\"<string>\",\"name\":\"<string>\",\"currencyISOCode\":\"<string>\",\"accountNumber\":\"<string>\",\"sortCode\":\"<string>\",\"iban\":\"<string>\",\"bic\":\"<string>\"}",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "merchant",
+                  "value": "{\"id\":\"<string>\",\"name\":\"<string>\",\"type\":\"<string>\",\"countryISOCode\":\"<string>\",\"registeredAddress\":\"<string>\",\"monthsTrading\":\"<string>\",\"keyContactName\":\"<string>\",\"keyContactPhoneNumber\":{\"phoneNumber\":\"<string>\",\"countryISOCode\":\"<string>\",\"intnlPhoneNumber\":\"<string>\"},\"keyContactEmailAddress\":\"<string>\",\"significantPeople\":[{\"id\":\"<string>\",\"firstName\":\"<string>\",\"lastName\":\"<string>\",\"type\":\"<string>\",\"address\":\"<string>\",\"dateOfBirth\":\"<string>\",\"emailAddress\":\"<string>\",\"phone\":{\"phoneNumber\":\"<string>\",\"countryISOCode\":\"<string>\",\"intnlPhoneNumber\":\"<string>\"},\"nationality\":\"<string>\",\"documentNumber\":\"<string>\"},{\"id\":\"<string>\",\"firstName\":\"<string>\",\"lastName\":\"<string>\",\"type\":\"<string>\",\"address\":\"<string>\",\"dateOfBirth\":\"<string>\",\"emailAddress\":\"<string>\",\"phone\":{\"phoneNumber\":\"<string>\",\"countryISOCode\":\"<string>\",\"intnlPhoneNumber\":\"<string>\"},\"nationality\":\"<string>\",\"documentNumber\":\"<string>\"}],\"sales\":{\"base64\":\"<string>\",\"name\":\"<string>\"}}",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "submissionDate",
+                  "value": "<string>",
+                  "description": "(Required) Lending request request. Cannot be null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d57b783d-0c7d-48cc-93de-7efc090946c7",
+              "name": "Lending request created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creditCheckPermission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataPrivacyConsent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "loan",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "account",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "submissionDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"creditCheckPermission\": \"<boolean>\",\n    \"dataPrivacyConsent\": \"<boolean>\",\n    \"loan\": {\n      \"amount\": \"<double>\",\n      \"currencyISOCode\": \"<string>\",\n      \"purpose\": \"<string>\",\n      \"maturity\": \"<integer>\",\n      \"productType\": \"<string>\",\n      \"documents\": [\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preferredRepaymentTerms\": \"<double>\"\n    },\n    \"account\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currencyISOCode\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"bic\": \"<string>\"\n    },\n    \"merchant\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"registeredAddress\": \"<string>\",\n      \"monthsTrading\": \"<string>\",\n      \"keyContactName\": \"<string>\",\n      \"keyContactPhoneNumber\": {\n        \"phoneNumber\": \"<string>\",\n        \"countryISOCode\": \"<string>\",\n        \"intnlPhoneNumber\": \"<string>\"\n      },\n      \"keyContactEmailAddress\": \"<string>\",\n      \"significantPeople\": [\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        }\n      ],\n      \"sales\": {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    },\n    \"submissionDate\": \"<string>\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6325af7f-eb12-4d37-83fe-764a1304fc2d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creditCheckPermission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataPrivacyConsent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "loan",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "account",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "submissionDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5c332a92-03e1-46f2-9b43-b55a65bc52b3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creditCheckPermission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataPrivacyConsent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "loan",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "account",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "submissionDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e3ebccc-5e37-4eb5-869c-a6a2b4617279",
+          "name": "Get a lending request",
+          "request": {
+            "name": "Get a lending request",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "requests",
+                ":lendingRequestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lendingRequestId",
+                  "description": "(Required) Lending request ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab3b0856-e8ad-4335-89ce-7f7343805e03",
+              "name": "Lending request retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    ":lendingRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lendingRequestId",
+                      "description": "(Required) Lending request ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"creditCheckPermission\": \"<boolean>\",\n    \"dataPrivacyConsent\": \"<boolean>\",\n    \"loan\": {\n      \"amount\": \"<double>\",\n      \"currencyISOCode\": \"<string>\",\n      \"purpose\": \"<string>\",\n      \"maturity\": \"<integer>\",\n      \"productType\": \"<string>\",\n      \"documents\": [\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preferredRepaymentTerms\": \"<double>\"\n    },\n    \"account\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currencyISOCode\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"bic\": \"<string>\"\n    },\n    \"merchant\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"registeredAddress\": \"<string>\",\n      \"monthsTrading\": \"<string>\",\n      \"keyContactName\": \"<string>\",\n      \"keyContactPhoneNumber\": {\n        \"phoneNumber\": \"<string>\",\n        \"countryISOCode\": \"<string>\",\n        \"intnlPhoneNumber\": \"<string>\"\n      },\n      \"keyContactEmailAddress\": \"<string>\",\n      \"significantPeople\": [\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        }\n      ],\n      \"sales\": {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    },\n    \"submissionDate\": \"<string>\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39c9c574-e6d8-4fd0-aee2-7273876cb97c",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    ":lendingRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lendingRequestId",
+                      "description": "(Required) Lending request ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dbf49812-5634-42ca-9964-e8241d2ebe4f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    ":lendingRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lendingRequestId",
+                      "description": "(Required) Lending request ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "202e866b-d7c8-4187-ab65-62410793ee7c",
+          "name": "Update a lending request",
+          "request": {
+            "name": "Update a lending request",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "requests",
+                ":lendingRequestId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "creditCheckPermission",
+                  "value": "<boolean>",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "dataPrivacyConsent",
+                  "value": "<boolean>",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "loan",
+                  "value": "{\"amount\":\"<double>\",\"currencyISOCode\":\"<string>\",\"purpose\":\"<string>\",\"maturity\":\"<integer>\",\"productType\":\"<string>\",\"documents\":[{\"base64\":\"<string>\",\"name\":\"<string>\"},{\"base64\":\"<string>\",\"name\":\"<string>\"}],\"preferredRepaymentTerms\":\"<double>\"}",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "account",
+                  "value": "{\"id\":\"<string>\",\"name\":\"<string>\",\"currencyISOCode\":\"<string>\",\"accountNumber\":\"<string>\",\"sortCode\":\"<string>\",\"iban\":\"<string>\",\"bic\":\"<string>\"}",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "merchant",
+                  "value": "{\"id\":\"<string>\",\"name\":\"<string>\",\"type\":\"<string>\",\"countryISOCode\":\"<string>\",\"registeredAddress\":\"<string>\",\"monthsTrading\":\"<string>\",\"keyContactName\":\"<string>\",\"keyContactPhoneNumber\":{\"phoneNumber\":\"<string>\",\"countryISOCode\":\"<string>\",\"intnlPhoneNumber\":\"<string>\"},\"keyContactEmailAddress\":\"<string>\",\"significantPeople\":[{\"id\":\"<string>\",\"firstName\":\"<string>\",\"lastName\":\"<string>\",\"type\":\"<string>\",\"address\":\"<string>\",\"dateOfBirth\":\"<string>\",\"emailAddress\":\"<string>\",\"phone\":{\"phoneNumber\":\"<string>\",\"countryISOCode\":\"<string>\",\"intnlPhoneNumber\":\"<string>\"},\"nationality\":\"<string>\",\"documentNumber\":\"<string>\"},{\"id\":\"<string>\",\"firstName\":\"<string>\",\"lastName\":\"<string>\",\"type\":\"<string>\",\"address\":\"<string>\",\"dateOfBirth\":\"<string>\",\"emailAddress\":\"<string>\",\"phone\":{\"phoneNumber\":\"<string>\",\"countryISOCode\":\"<string>\",\"intnlPhoneNumber\":\"<string>\"},\"nationality\":\"<string>\",\"documentNumber\":\"<string>\"}],\"sales\":{\"base64\":\"<string>\",\"name\":\"<string>\"}}",
+                  "description": "(Required) Lending request request. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "submissionDate",
+                  "value": "<string>",
+                  "description": "(Required) Lending request request. Cannot be null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "lendingRequestId",
+                  "description": "(Required) Lending request ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5da33fe1-850d-4d0c-8ad9-ef17f2991bdd",
+              "name": "Lending request updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    ":lendingRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creditCheckPermission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataPrivacyConsent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "loan",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "account",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "submissionDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lendingRequestId",
+                      "description": "(Required) Lending request ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"creditCheckPermission\": \"<boolean>\",\n    \"dataPrivacyConsent\": \"<boolean>\",\n    \"loan\": {\n      \"amount\": \"<double>\",\n      \"currencyISOCode\": \"<string>\",\n      \"purpose\": \"<string>\",\n      \"maturity\": \"<integer>\",\n      \"productType\": \"<string>\",\n      \"documents\": [\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preferredRepaymentTerms\": \"<double>\"\n    },\n    \"account\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currencyISOCode\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"bic\": \"<string>\"\n    },\n    \"merchant\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"registeredAddress\": \"<string>\",\n      \"monthsTrading\": \"<string>\",\n      \"keyContactName\": \"<string>\",\n      \"keyContactPhoneNumber\": {\n        \"phoneNumber\": \"<string>\",\n        \"countryISOCode\": \"<string>\",\n        \"intnlPhoneNumber\": \"<string>\"\n      },\n      \"keyContactEmailAddress\": \"<string>\",\n      \"significantPeople\": [\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        }\n      ],\n      \"sales\": {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    },\n    \"submissionDate\": \"<string>\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfecf2ab-2f7c-4236-9c25-0db77002aeb2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    ":lendingRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creditCheckPermission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataPrivacyConsent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "loan",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "account",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "submissionDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lendingRequestId",
+                      "description": "(Required) Lending request ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6df8defc-328c-43dd-a1e3-01685e4ac491",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    ":lendingRequestId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "creditCheckPermission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "dataPrivacyConsent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "loan",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "account",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "merchant",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "submissionDate",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "lendingRequestId",
+                      "description": "(Required) Lending request ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"creditCheckPermission\": \"<boolean>\",\n  \"dataPrivacyConsent\": \"<boolean>\",\n  \"loan\": {\n    \"amount\": \"<double>\",\n    \"currencyISOCode\": \"<string>\",\n    \"purpose\": \"<string>\",\n    \"maturity\": \"<integer>\",\n    \"productType\": \"<string>\",\n    \"documents\": [\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      },\n      {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    ],\n    \"preferredRepaymentTerms\": \"<double>\"\n  },\n  \"account\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"currencyISOCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"sortCode\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\"\n  },\n  \"merchant\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"countryISOCode\": \"<string>\",\n    \"registeredAddress\": \"<string>\",\n    \"monthsTrading\": \"<string>\",\n    \"keyContactName\": \"<string>\",\n    \"keyContactPhoneNumber\": {\n      \"phoneNumber\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"intnlPhoneNumber\": \"<string>\"\n    },\n    \"keyContactEmailAddress\": \"<string>\",\n    \"significantPeople\": [\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      },\n      {\n        \"id\": \"<string>\",\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"type\": \"<string>\",\n        \"address\": \"<string>\",\n        \"dateOfBirth\": \"<string>\",\n        \"emailAddress\": \"<string>\",\n        \"phone\": {\n          \"phoneNumber\": \"<string>\",\n          \"countryISOCode\": \"<string>\",\n          \"intnlPhoneNumber\": \"<string>\"\n        },\n        \"nationality\": \"<string>\",\n        \"documentNumber\": \"<string>\"\n      }\n    ],\n    \"sales\": {\n      \"base64\": \"<string>\",\n      \"name\": \"<string>\"\n    }\n  },\n  \"submissionDate\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80e6646b-95df-41ab-aa2e-ce096ab76176",
+          "name": "Get lending requests by filter",
+          "request": {
+            "name": "Get lending requests by filter",
+            "description": {
+              "content": "",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerId",
+                "lending",
+                "requests",
+                "find"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "productType",
+                  "value": "<string>",
+                  "description": "(Required) Lending request filter. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "(Required) Lending request filter. Cannot be null."
+                },
+                {
+                  "disabled": false,
+                  "key": "merchantId",
+                  "value": "<string>",
+                  "description": "(Required) Lending request filter. Cannot be null."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerId",
+                  "description": "(Required) Customer ID. Cannot be null or empty."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67fc8935-9058-4c3e-b96f-4ebd6296c43e",
+              "name": "Lending requests retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"creditCheckPermission\": \"<boolean>\",\n    \"dataPrivacyConsent\": \"<boolean>\",\n    \"loan\": {\n      \"amount\": \"<double>\",\n      \"currencyISOCode\": \"<string>\",\n      \"purpose\": \"<string>\",\n      \"maturity\": \"<integer>\",\n      \"productType\": \"<string>\",\n      \"documents\": [\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        },\n        {\n          \"base64\": \"<string>\",\n          \"name\": \"<string>\"\n        }\n      ],\n      \"preferredRepaymentTerms\": \"<double>\"\n    },\n    \"account\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"currencyISOCode\": \"<string>\",\n      \"accountNumber\": \"<string>\",\n      \"sortCode\": \"<string>\",\n      \"iban\": \"<string>\",\n      \"bic\": \"<string>\"\n    },\n    \"merchant\": {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"countryISOCode\": \"<string>\",\n      \"registeredAddress\": \"<string>\",\n      \"monthsTrading\": \"<string>\",\n      \"keyContactName\": \"<string>\",\n      \"keyContactPhoneNumber\": {\n        \"phoneNumber\": \"<string>\",\n        \"countryISOCode\": \"<string>\",\n        \"intnlPhoneNumber\": \"<string>\"\n      },\n      \"keyContactEmailAddress\": \"<string>\",\n      \"significantPeople\": [\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"firstName\": \"<string>\",\n          \"lastName\": \"<string>\",\n          \"type\": \"<string>\",\n          \"address\": \"<string>\",\n          \"dateOfBirth\": \"<string>\",\n          \"emailAddress\": \"<string>\",\n          \"phone\": {\n            \"phoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"countryISOCode\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"intnlPhoneNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"nationality\": \"<string>\",\n          \"documentNumber\": \"<string>\"\n        }\n      ],\n      \"sales\": {\n        \"base64\": \"<string>\",\n        \"name\": \"<string>\"\n      }\n    },\n    \"submissionDate\": \"<string>\"\n  },\n  \"code\": \"OK\",\n  \"errorSeverity\": \"NONE\",\n  \"message\": \"Ok\",\n  \"httpStatus\": 200,\n  \"requestId\": \"26b0f78a-79f9-426d-a20b-79841345ae51\",\n  \"date\": \"2024-08-01T00:00:00.000Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fdf70af-3285-4e12-b945-2c11e875fe97",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fea77ff8-a44e-452b-86a3-4451caff32ae",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerId",
+                    "lending",
+                    "requests",
+                    "find"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "productType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "merchantId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerId",
+                      "description": "(Required) Customer ID. Cannot be null or empty."
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productType\": \"<string>\",\n  \"status\": \"<string>\",\n  \"merchantId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sandbox.toq.io/wallet/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "af05b553-7621-4aa0-bf24-183f9d3fb0cb",
+    "name": "Accounts Account Lending - Loan - Request API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Endpoints to manage client accounts",
+      "type": "text/plain"
+    }
+  }
+}
