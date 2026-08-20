@@ -59,6 +59,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - Account Information
+  tags_raw:
   - Account information
   properties:
   - type: OpenAPI
@@ -240,6 +242,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - Customers
+  tags_raw:
   - Customer
   properties:
   - type: OpenAPI
@@ -260,6 +264,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - Direct Debit
+  tags_raw:
   - Direct debit
   properties:
   - type: OpenAPI
@@ -445,6 +451,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -526,6 +534,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - User Status
+  tags_raw:
   - User status
   properties:
   - type: OpenAPI
