@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Endpoints to manage client accounts
   version: v1.0.0
-  title: Accounts Account Custom Faculties API
+  title: Accounts Custom Faculties API
   license:
     name: license
 servers:

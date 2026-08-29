@@ -1,14 +1,11 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: Endpoints to manage client accounts
+  title: Custom Notifications Email Configuration API
   version: v1.0.0
-  title: Accounts Account Email Configuration API
-  license:
-    name: license
 servers:
-- url: https://api.sandbox.toq.io/wallet/api
+- url: https://core.sandbox.toq.io/
   description: Simulation environment
-- url: https://api.toq.io/wallet/api
+- url: https://core.toq.io/
   description: Production environment
 tags:
 - name: Email Configuration
@@ -178,23 +175,8 @@ components:
           tokenUrl: https://api.toq.io/iam/oauth/token
           scopes: {}
 x-source-pages:
-- https://platform.toq.io/reference/createaccountusingpost_1
-- https://platform.toq.io/reference/createdynamicaccountconfiguration
-- https://platform.toq.io/reference/createproduct
-- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
-- https://platform.toq.io/reference/deleteaccountviaapiusingput
-- https://platform.toq.io/reference/deletedynamicaccountconfiguration
-- https://platform.toq.io/reference/getaccountsusingget
-- https://platform.toq.io/reference/getaccountusingget
-- https://platform.toq.io/reference/getclientaccounts
-- https://platform.toq.io/reference/getcustomfaculties
-- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
-- https://platform.toq.io/reference/getledgertypetexts
-- https://platform.toq.io/reference/getpartnerproductsusingget_1
-- https://platform.toq.io/reference/getproducts
-- https://platform.toq.io/reference/updateaccountalias
-- https://platform.toq.io/reference/updateaccountreadonlystatus
-- https://platform.toq.io/reference/updatecustomfaculties
-- https://platform.toq.io/reference/updatedynamicaccountconfiguration
-- https://platform.toq.io/reference/updateledgertypetexts
-- https://platform.toq.io/reference/updateproduct
+- https://platform.toq.io/reference/createemailconfiguration
+- https://platform.toq.io/reference/deleteemailconfiguration
+- https://platform.toq.io/reference/getemailconfiguration
+- https://platform.toq.io/reference/send-custom-notifications
+- https://platform.toq.io/reference/updateemailconfiguration

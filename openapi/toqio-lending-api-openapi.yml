@@ -1,15 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: Endpoints to manage client accounts
-  version: v1.0.0
-  title: Accounts Account Lending API
-  license:
-    name: license
+  title: Toqio Integration Hub Lending API
+  version: v0
 servers:
-- url: https://api.sandbox.toq.io/wallet/api
-  description: Simulation environment
-- url: https://api.toq.io/wallet/api
-  description: Production environment
+- url: https://your_connector_url
+  description: This is an example url that you could use for testing purposes as this documentation describes the API that you must develop in your connector.
+security:
+- bearerAuth: []
 tags:
 - name: Lending
 paths:
@@ -74,30 +71,76 @@ components:
           type: number
           format: double
   securitySchemes:
-    clientCredentials:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://api.toq.io/iam/oauth/token
-          scopes: {}
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 x-source-pages:
-- https://platform.toq.io/reference/createaccountusingpost_1
-- https://platform.toq.io/reference/createdynamicaccountconfiguration
-- https://platform.toq.io/reference/createproduct
-- https://platform.toq.io/reference/deleteaccountstatusviaapiusingdelete
-- https://platform.toq.io/reference/deleteaccountviaapiusingput
-- https://platform.toq.io/reference/deletedynamicaccountconfiguration
-- https://platform.toq.io/reference/getaccountsusingget
-- https://platform.toq.io/reference/getaccountusingget
-- https://platform.toq.io/reference/getclientaccounts
-- https://platform.toq.io/reference/getcustomfaculties
-- https://platform.toq.io/reference/getdynamicaccountbuttonconfiguration
-- https://platform.toq.io/reference/getledgertypetexts
-- https://platform.toq.io/reference/getpartnerproductsusingget_1
-- https://platform.toq.io/reference/getproducts
-- https://platform.toq.io/reference/updateaccountalias
-- https://platform.toq.io/reference/updateaccountreadonlystatus
-- https://platform.toq.io/reference/updatecustomfaculties
-- https://platform.toq.io/reference/updatedynamicaccountconfiguration
-- https://platform.toq.io/reference/updateledgertypetexts
-- https://platform.toq.io/reference/updateproduct
+- https://integrate.toq.io/reference/acceptloanoffer-1
+- https://integrate.toq.io/reference/applydirectdebit-1
+- https://integrate.toq.io/reference/createaccount-1
+- https://integrate.toq.io/reference/createbeneficiary-1
+- https://integrate.toq.io/reference/createcustomer-1
+- https://integrate.toq.io/reference/createlenderconfiguration-1
+- https://integrate.toq.io/reference/createlendingrequest-1
+- https://integrate.toq.io/reference/createmerchant-1
+- https://integrate.toq.io/reference/deleteaccount-1
+- https://integrate.toq.io/reference/deletebeneficiary-1
+- https://integrate.toq.io/reference/deletemeawalletapiconfig-1
+- https://integrate.toq.io/reference/fetchtransactions-1
+- https://integrate.toq.io/reference/findaccounttransactionliststatement
+- https://integrate.toq.io/reference/findaccounttransactionliststatement_1
+- https://integrate.toq.io/reference/findbeneficiary-1
+- https://integrate.toq.io/reference/findcustomer-1
+- https://integrate.toq.io/reference/getaccount-1
+- https://integrate.toq.io/reference/getaccountownershipcertificate-1
+- https://integrate.toq.io/reference/getaccounts-1
+- https://integrate.toq.io/reference/getassettypes-1
+- https://integrate.toq.io/reference/getbankpaymentschemes-1
+- https://integrate.toq.io/reference/getbankstatementfooter-1
+- https://integrate.toq.io/reference/getbeneficiary-1
+- https://integrate.toq.io/reference/getbeneficiaryfilters-1
+- https://integrate.toq.io/reference/getbillingcurrencies-1
+- https://integrate.toq.io/reference/getcapabilities-1
+- https://integrate.toq.io/reference/getcompany-1
+- https://integrate.toq.io/reference/getcontract-1
+- https://integrate.toq.io/reference/getcustomerconnectionstatus-1
+- https://integrate.toq.io/reference/getdefaultrepaymentterms-1
+- https://integrate.toq.io/reference/getdynamicaccountbalances
+- https://integrate.toq.io/reference/getdynamicbuttonconfiguration-1
+- https://integrate.toq.io/reference/getlenderconfiguration-1
+- https://integrate.toq.io/reference/getlendingrequest-1
+- https://integrate.toq.io/reference/getlendingrequestsbyfilter-1
+- https://integrate.toq.io/reference/getloan-1
+- https://integrate.toq.io/reference/getloanoffer-1
+- https://integrate.toq.io/reference/getloansbyfilter-1
+- https://integrate.toq.io/reference/getloantransactions-1
+- https://integrate.toq.io/reference/getmandatedetail-1
+- https://integrate.toq.io/reference/getmandates-1
+- https://integrate.toq.io/reference/getmeawalletapiconfig-1
+- https://integrate.toq.io/reference/getpartnerproducts-1
+- https://integrate.toq.io/reference/getpaymentoptions
+- https://integrate.toq.io/reference/getproviderpartnerproducts-1
+- https://integrate.toq.io/reference/getquoteforcurrencypair-1
+- https://integrate.toq.io/reference/gettransactionstatus-1
+- https://integrate.toq.io/reference/hostedonboarding-1
+- https://integrate.toq.io/reference/notifycustomnotificationerrors-1
+- https://integrate.toq.io/reference/notifyproductchanges
+- https://integrate.toq.io/reference/resendotp-1
+- https://integrate.toq.io/reference/savetransfer-1
+- https://integrate.toq.io/reference/searchbeneficiaries-1
+- https://integrate.toq.io/reference/sendemailnotification-1
+- https://integrate.toq.io/reference/synctransactions-1
+- https://integrate.toq.io/reference/synctransactionstatus-1
+- https://integrate.toq.io/reference/synctransactionstatus_1-1
+- https://integrate.toq.io/reference/updateaccount-1
+- https://integrate.toq.io/reference/updatebeneficiary-1
+- https://integrate.toq.io/reference/updateenduser-1
+- https://integrate.toq.io/reference/updateenduserdirectors-1
+- https://integrate.toq.io/reference/updatelenderconfiguration-1
+- https://integrate.toq.io/reference/updatelendingrequest-1
+- https://integrate.toq.io/reference/updatemeawalletapiconfig-1
+- https://integrate.toq.io/reference/validatecompany-1
+- https://integrate.toq.io/reference/verifybeneficiarycompany
+- https://integrate.toq.io/reference/webhook_3-1
+- https://integrate.toq.io/reference/webhook_4-1

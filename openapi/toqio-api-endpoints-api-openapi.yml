@@ -1,14 +1,12 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: Endpoints to manage client accounts
+  title: Toqio API Endpoints API
   version: v1.0.0
-  title: Accounts Account API Endpoints API
-  license:
-    name: license
+  description: 'Operations tagged API Endpoints across 2 of this provider''s published API definitions: toqio-get-company-kyb-documents-openapi.yml, toqio-get-presigned-download-url-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
-- url: https://api.sandbox.toq.io/wallet/api
+- url: https://api.sandbox.toq.io/iam/api
   description: Simulation environment
-- url: https://api.toq.io/wallet/api
+- url: https://api.toq.io/iam/api
   description: Production environment
 tags:
 - name: API Endpoints
@@ -84,6 +82,11 @@ paths:
           description: Invalid input
         '500':
           description: Internal server error
+    servers:
+    - url: https://api.sandbox.toq.io/iam/api
+      description: Simulation environment
+    - url: https://api.toq.io/iam/api
+      description: Production environment
 components:
   schemas:
     KYXDocument:
@@ -124,13 +127,9 @@ components:
       properties:
         preSignedUrl:
           type: string
-  securitySchemes:
-    clientCredentials:
-      type: oauth2
-      flows:
-        clientCredentials:
-          tokenUrl: https://api.toq.io/iam/oauth/token
-          scopes: {}
+x-refined-from:
+- toqio-get-company-kyb-documents-openapi.yml
+- toqio-get-presigned-download-url-openapi.yml
 x-source-pages:
 - https://platform.toq.io/reference/createaccountusingpost_1
 - https://platform.toq.io/reference/createdynamicaccountconfiguration

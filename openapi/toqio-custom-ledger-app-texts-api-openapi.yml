@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Endpoints to manage client accounts
   version: v1.0.0
-  title: Accounts Account Custom Ledger App Texts API
+  title: Accounts Custom Ledger App Texts API
   license:
     name: license
 servers:
@@ -91,6 +91,32 @@ paths:
       deprecated: false
 components:
   schemas:
+    TextTranslation:
+      type: object
+      properties:
+        en:
+          type:
+          - string
+          - 'null'
+        es:
+          type:
+          - string
+          - 'null'
+        zh:
+          type:
+          - string
+          - 'null'
+    TextElements:
+      type: object
+      properties:
+        newAccountButton:
+          $ref: '#/components/schemas/TextTranslation'
+        appTitle:
+          $ref: '#/components/schemas/TextTranslation'
+        currentBalanceTooltip:
+          $ref: '#/components/schemas/TextTranslation'
+        currentBalanceTitle:
+          $ref: '#/components/schemas/TextTranslation'
     LedgerTypeTextsDTO:
       type: object
       required:
@@ -121,29 +147,6 @@ components:
             en: Current Balance
             es: Balance actual
             zh: null
-    TextTranslation:
-      type: object
-      properties:
-        en:
-          type: string
-          nullable: true
-        es:
-          type: string
-          nullable: true
-        zh:
-          type: string
-          nullable: true
-    TextElements:
-      type: object
-      properties:
-        newAccountButton:
-          $ref: '#/components/schemas/TextTranslation'
-        appTitle:
-          $ref: '#/components/schemas/TextTranslation'
-        currentBalanceTooltip:
-          $ref: '#/components/schemas/TextTranslation'
-        currentBalanceTitle:
-          $ref: '#/components/schemas/TextTranslation'
   securitySchemes:
     clientCredentials:
       type: oauth2

@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Endpoints to manage client accounts
   version: v1.0.0
-  title: Accounts Account Account information API
+  title: Accounts Account information API
   license:
     name: license
 servers:
@@ -544,6 +544,16 @@ components:
       - assetType
       - label
       - schemes
+    I18nLabel:
+      type: object
+      properties:
+        en:
+          type: string
+        es:
+          type: string
+        zh:
+          type: string
+      title: I18nLabel
     ProductDTO:
       type: object
       properties:
@@ -565,19 +575,6 @@ components:
           $ref: '#/components/schemas/I18nLabel'
         partnerProduct:
           $ref: '#/components/schemas/PartnerProductResponse'
-    UpdateProductRequest:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/I18nLabel'
-        description:
-          $ref: '#/components/schemas/I18nLabel'
-        visible:
-          type: boolean
-        productImageBase64:
-          type: string
-        productImageName:
-          type: string
     CreateProductDTO:
       type: object
       properties:
@@ -599,126 +596,6 @@ components:
           type: string
         productImageName:
           type: string
-    UpdateAccountAliasDataDTO:
-      type: object
-      title: UpdateAccountAliasDataDTO
-      required:
-      - alias
-      properties:
-        alias:
-          type: string
-          description: The new alias for the account.
-          minLength: 4
-          maxLength: 25
-    ViewAccountDTO:
-      type: object
-      properties:
-        accountId:
-          type: string
-        accountType:
-          type: string
-        address:
-          type: string
-        address2:
-          type: string
-        alias:
-          type: string
-        amount:
-          type: number
-          format: double
-        assetFlag:
-          type: string
-        assetSymbol:
-          type: string
-        assetType:
-          type: string
-        availableBalance:
-          type: number
-          format: double
-        bicSwift:
-          type: string
-        bicSwiftForSEPA:
-          type: string
-        bicSwiftForSWIFT:
-          type: string
-        canCancelAccount:
-          type: boolean
-        city:
-          type: string
-        correspondentBank:
-          type: string
-        correspondentBankAddress:
-          type: string
-        correspondentBankSWIFT:
-          type: string
-        countryCode:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        hasBillingPayment:
-          type: boolean
-        holderAddress:
-          type: string
-        holderBank:
-          type: string
-        holderBankAddress:
-          type: string
-        holderName:
-          type: string
-        iban:
-          type: string
-        id:
-          type: string
-        internationalEnabled:
-          type: boolean
-        main:
-          type: boolean
-        partnerProduct:
-          type: string
-        postalCode:
-          type: string
-        status:
-          type: string
-          enum:
-          - REMOVED
-          - CANCELLED
-          - ACTIVATED
-          - PENDING
-        totalBalance:
-          type: number
-          format: double
-        totalExpenses:
-          type: number
-          format: double
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        userId:
-          type: string
-        readOnly:
-          type: boolean
-        wireRoutingNumber:
-          type: string
-          description: This only affects to Currency Cloud users
-        achRoutingNumber:
-          type: string
-          description: This only affects to Currency Cloud users
-        ibanForSwift:
-          type: string
-          description: This only affects to Currency Cloud users
-      title: ViewAccountDTO
-    I18nLabel:
-      type: object
-      properties:
-        en:
-          type: string
-        es:
-          type: string
-        zh:
-          type: string
-      title: I18nLabel
     PartnerProductDTO:
       type: object
       properties:
@@ -861,6 +738,129 @@ components:
           type: string
           description: Identification of the product the account will belong to
       title: CreateAccountViaAPIDTO
+    UpdateProductRequest:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        description:
+          $ref: '#/components/schemas/I18nLabel'
+        visible:
+          type: boolean
+        productImageBase64:
+          type: string
+        productImageName:
+          type: string
+    ViewAccountDTO:
+      type: object
+      properties:
+        accountId:
+          type: string
+        accountType:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        alias:
+          type: string
+        amount:
+          type: number
+          format: double
+        assetFlag:
+          type: string
+        assetSymbol:
+          type: string
+        assetType:
+          type: string
+        availableBalance:
+          type: number
+          format: double
+        bicSwift:
+          type: string
+        bicSwiftForSEPA:
+          type: string
+        bicSwiftForSWIFT:
+          type: string
+        canCancelAccount:
+          type: boolean
+        city:
+          type: string
+        correspondentBank:
+          type: string
+        correspondentBankAddress:
+          type: string
+        correspondentBankSWIFT:
+          type: string
+        countryCode:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        hasBillingPayment:
+          type: boolean
+        holderAddress:
+          type: string
+        holderBank:
+          type: string
+        holderBankAddress:
+          type: string
+        holderName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        internationalEnabled:
+          type: boolean
+        main:
+          type: boolean
+        partnerProduct:
+          type: string
+        postalCode:
+          type: string
+        status:
+          type: string
+          enum:
+          - REMOVED
+          - CANCELLED
+          - ACTIVATED
+          - PENDING
+        totalBalance:
+          type: number
+          format: double
+        totalExpenses:
+          type: number
+          format: double
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        userId:
+          type: string
+        readOnly:
+          type: boolean
+        wireRoutingNumber:
+          type: string
+          description: This only affects to Currency Cloud users
+        achRoutingNumber:
+          type: string
+          description: This only affects to Currency Cloud users
+        ibanForSwift:
+          type: string
+          description: This only affects to Currency Cloud users
+      title: ViewAccountDTO
+    UpdateAccountAliasDataDTO:
+      type: object
+      title: UpdateAccountAliasDataDTO
+      required:
+      - alias
+      properties:
+        alias:
+          type: string
+          description: The new alias for the account.
+          minLength: 4
+          maxLength: 25
   securitySchemes:
     clientCredentials:
       type: oauth2

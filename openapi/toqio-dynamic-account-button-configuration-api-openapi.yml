@@ -1,8 +1,8 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Endpoints to manage client accounts
   version: v1.0.0
-  title: Accounts Account Dynamic Account Button Configuration API
+  title: Accounts Dynamic Account Button Configuration API
   license:
     name: license
 servers:
@@ -154,16 +154,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    I18nLabel:
-      type: object
-      properties:
-        en:
-          type: string
-        es:
-          type: string
-        zh:
-          type: string
-      title: I18nLabel
     DynamicAccountButtonDTO:
       type: object
       properties:
@@ -174,6 +164,16 @@ components:
       required:
       - texts
       - marketplaceKey
+    I18nLabel:
+      type: object
+      properties:
+        en:
+          type: string
+        es:
+          type: string
+        zh:
+          type: string
+      title: I18nLabel
   securitySchemes:
     clientCredentials:
       type: oauth2
