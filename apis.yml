@@ -16,6 +16,18 @@ x-backed-by:
 - speedinvest
 x-tier: profile
 x-tier-reason: enriched from portfolio lead — full developer surface harvested
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -551,6 +563,9 @@ apis:
   - type: OpenAPI
     url: openapi/toqio-webhook-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/toqio-capability-edges.yml
+  name: Toqio Business Capability Map
 - type: Overlay
   url: overlays/toqio-accounts-overlay.yaml
 - type: Website
