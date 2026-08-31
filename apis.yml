@@ -71,7 +71,7 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
-  - Account Information
+  - Account information
   tags_raw:
   - Account information
   properties:
@@ -276,7 +276,7 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
-  - Direct Debit
+  - Direct debit
   tags_raw:
   - Direct debit
   properties:
@@ -546,7 +546,7 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
-  - User Status
+  - User status
   tags_raw:
   - User status
   properties:
