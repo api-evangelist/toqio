@@ -53,6 +53,16 @@ tags:
 - Corporate Banking
 - Lending
 - Compliance
+- SME
+tags_raw:
+- Embedded Finance
+- Fintech
+- Banking as a Service
+- Payments
+- Cards
+- Corporate Banking
+- Lending
+- Compliance
 - SMEs
 apis:
 - aid: toqio:toqio-account-api
@@ -412,6 +422,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - Merchants
+  tags_raw:
   - Merchant
   properties:
   - type: OpenAPI
@@ -475,6 +487,8 @@ apis:
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
   tags:
+  - Providers
+  tags_raw:
   - Provider
   properties:
   - type: OpenAPI
