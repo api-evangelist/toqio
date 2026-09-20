@@ -1,0 +1,240 @@
+slug: toqio
+provider: Toqio
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 22
+edges:
+- tag: Card Lifecycle
+  spec_file: toqio-card-lifecycle-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.92
+  evidence: POST /customers/{customerId}/cards  issueCard  Issue a new card"; "activateCard  Activate
+    card"; "suspendCard  Suspend card
+  reason: Issue, activate, suspend, cancel and update physical/virtual cards is plainly card issuance
+    lifecycle management.
+- tag: Card actions
+  spec_file: toqio-card-actions-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.9
+  evidence: POST /api/customers/{customerId}/cards  issueCardUsingPOST  Issue card"; "suspendCard  Suspend
+    card"; "activateCard  Activate card
+  reason: 'Same surface as card lifecycle: issuance, activation, suspension and cancellation of customer
+    cards.'
+- tag: Compliance
+  spec_file: toqio-compliance-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.9
+  evidence: Deletes a merchants KYB document"; "Update shareholder document status"; "Updates the compliance
+    status of a user or shareholder
+  reason: KYB document handling and per-provider compliance statuses for companies, users and shareholders
+    is customer due diligence / KYC onboarding compliance.
+- tag: Lending - Loan - Request
+  spec_file: toqio-lending-loan-request-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.85
+  evidence: POST /customers/{customerId}/lending/requests 'Create a lending request'; schemas LoanInformation,
+    SignificantPerson, LendingRequestBaseRequest
+  reason: Credit application intake and update for SME borrowers — classic credit origination workflow.
+- tag: Onboarding
+  spec_file: toqio-onboarding-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.85
+  evidence: POST /customers/{customerId}/onboarding/createMerchant 'Create Merchant'; 'Get Hosted Onboarding
+    Link for a Merchant'; 'Update Merchant Directors'; schema Director
+  reason: Onboarding of SME merchants including hosted onboarding flow and director details — banking
+    customer onboarding / account opening.
+- tag: compliance-controller
+  spec_file: toqio-compliance-controller-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.85
+  evidence: '''Upload KYB documents for a merchant''; description ''UPLOAD KYB DOCUMENTS''; schemas UploadKYBDocumentsPayload'
+  reason: KYB (know-your-business) document submission for a merchant is customer due diligence evidence
+    collection within banking customer onboarding/KYC.
+- tag: Create transaction
+  spec_file: toqio-create-transaction-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.82
+  evidence: POST /customers/{customerId}/transactions  createTransactionUsingPOST  Create Transaction";
+    schemas "IssuePaymentDTO", "BankPaymentScheme
+  reason: Creating a transaction with an IssuePaymentDTO and bank payment scheme is payment instruction
+    capture/initiation.
+- tag: onboarding-controller
+  spec_file: toqio-onboarding-controller-api-openapi.yml
+  capability_id: BC-1300.10
+  capability_id_l1: BC-1300
+  capability_name: Customer Onboarding Management
+  confidence: 0.82
+  evidence: '''Create Client Lead Via API''; schemas CreateCompanyLeadViaApiDTO, OnboardingClientDTO,
+    Shareholder, DirectorDTO, KYX, ComplianceStatusDTO'
+  reason: Creates the onboarding record for a corporate client including shareholders, directors and compliance/KYX
+    status — banking customer onboarding intake for the embedded-finance platform.
+- tag: Direct debit
+  spec_file: toqio-direct-debit-api-openapi.yml
+  capability_id: BC-1340
+  capability_id_l1: BC-1340
+  capability_name: Payments & Card Management
+  confidence: 0.8
+  evidence: 'POST /customers/{customerId}/directDebit  applyDirectDebit  Apply Direct Debit; GET /accounts/{accountId}/mandates  getMandates;
+    schemas: Mandate, MandateDetail'
+  reason: Applying direct debits and managing mandates is payment instruction/collection handling on bank
+    accounts; L1 payments is well supported but the evidence does not clearly pick a sub-capability (initiation
+    vs clearing/settlement).
+- tag: Lending - Loan
+  spec_file: toqio-lending-loan-api-openapi.yml
+  capability_id: BC-1320.30
+  capability_id_l1: BC-1320
+  capability_name: Loan Servicing Management
+  confidence: 0.8
+  evidence: GET /customers/{customerId}/lending/loans/{loanId} getLoan 'Get a loan'; 'Get loan transactions';
+    schemas RepaymentTerms, LoanTransactionResponse
+  reason: Read/servicing surface over existing loans — loan detail, contract document, repayment terms
+    and loan transactions — which is loan servicing within credit & lending, not origination.
+- tag: Security
+  spec_file: toqio-security-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.8
+  evidence: PUT /customers/{customerId}/cards/{cardId}/activate 'Activate card'; 'Get card PIN'; 'Suspend
+    card'; description 'managing customer cards including physical and virtual cards ... with full lifecycle
+    management'
+  reason: Despite the generic 'Security' tag, operations perform card activation, PAN/PIN retrieval and
+    suspension — card issuance and activation lifecycle.
+- tag: Card Details
+  spec_file: toqio-card-details-api-openapi.yml
+  capability_id: BC-1340.60
+  capability_id_l1: BC-1340
+  capability_name: Card Issuance Management
+  confidence: 0.75
+  evidence: POST /customers/{customerId}/cards/{cardId}/pan  getPan  Get card PAN (Primary Account Number)",
+    "getPin  Get card PIN
+  reason: Retrieval of card PAN, PIN, settings and card image for issued cards is card personalisation/servicing
+    within card issuance management, not transaction switching.
+- tag: Delete Account
+  spec_file: toqio-delete-account-api-openapi.yml
+  capability_id: BC-1330.40
+  capability_id_l1: BC-1330
+  capability_name: Account Lifecycle Operations Management
+  confidence: 0.75
+  evidence: Allows cancelling or removing a specified account. A cancelled account remains visible in
+    the UI, while a removed account is no longer shown
+  reason: Single operation performs account cancellation/removal on a client bank account, i.e. account
+    lifecycle closure operations within an accounts API ('Endpoints to manage client accounts').
+- tag: Transaction
+  spec_file: toqio-transaction-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.75
+  evidence: POST /customers/{customerId}/transactions saveTransfer 'Save Transfer'; 'Get bank payment
+    schemes'; 'Get quote for currency pair'; schema BeneficiaryBankPaymentScheme
+  reason: Operations capture and submit payment transfers, list bank payment schemes, obtain FX quotes
+    and check transaction status for an embedded-finance banking product — payment initiation/processing,
+    not a generic ledger. L2 initiation is the best fit for the transfer-capture surface, though processing/cross-border
+    elements also appear.
+- tag: Transactions information
+  spec_file: toqio-transactions-information-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.75
+  evidence: '''Cancel Transfer''; ''Execute Four-Eyes Payment''; ''Get Bank Payment Schemes''; description
+    ''Transactions endpoints to manage the transactions of a customer'''
+  reason: 'Payment instruction lifecycle for a banking customer: retrieve, cancel, and dual-authorise
+    (four-eyes) payments plus payment statements — payment initiation and authorisation within Payments
+    & Card Management.'
+- tag: User credentials
+  spec_file: toqio-user-credentials-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: '''Create password'', ''Create username'', ''Create security code'', ''Create security questions'';
+    schemas UserCredentialPasswordDTO, UserCredentialSecurityQuestionsDTO'
+  reason: Purely credential issuance and authentication-factor setup for users — identity and access management
+    plumbing rather than a banking business capability.
+- tag: API Endpoints
+  spec_file: toqio-api-endpoints-api-openapi.yml
+  capability_id: BC-1300.20
+  capability_id_l1: BC-1300
+  capability_name: KYC & Customer Due Diligence Management
+  confidence: 0.7
+  evidence: getKYBDocumentsPerCompany 'Get KYB Documents Per Company' with path .../provider/{complianceProvider}/companyDocuments;
+    schema KYXDocument
+  reason: Generic tag, but the operations retrieve KYB/KYX compliance documents held per company against
+    a compliance provider — customer due diligence evidence retrieval. The second operation is document-download
+    plumbing, which lowers confidence.
+- tag: Account
+  spec_file: toqio-account-api-openapi.yml
+  capability_id: BC-1330.10
+  capability_id_l1: BC-1330
+  capability_name: Deposit Account Management
+  confidence: 0.7
+  evidence: POST '.../accounts  createAccount  Create account'; 'Get account ownership certificate'; 'Get
+    Dynamic Account Balances'; 'Find account transaction list statement' (bankStatement)
+  reason: 'Lifecycle and servicing of embedded-finance bank accounts: creation, update, deletion, balances,
+    statements and ownership certificates. Deposit account management is the best fit; some overlap with
+    account lifecycle operations.'
+- tag: Fees
+  spec_file: toqio-fees-api-openapi.yml
+  capability_id: BC-1310
+  capability_id_l1: BC-1310
+  capability_name: Banking Product Management
+  confidence: 0.7
+  evidence: GET /customers/{customerId}/client/{clientId}/card/fees/{currency}  getCardFees  Get card
+    fees; getNewAccountFees  Get account fees; TransactionFeeUsingPOST  Transaction fee
+  reason: Operations expose fee amounts for cards, accounts and transactions per currency — banking product
+    fee/pricing parameters. Evidence supports the L1 product factory but does not clearly separate pricing
+    from parameter configuration.
+- tag: Lending
+  spec_file: toqio-lending-api-openapi.yml
+  capability_id: BC-1320
+  capability_id_l1: BC-1320
+  capability_name: Credit & Lending Management
+  confidence: 0.7
+  evidence: GET /customers/{customerId}/lending/default-repayment-terms  getDefaultRepaymentTerms  Get
+    default repayment terms
+  reason: Exposes lending repayment terms, clearly within credit & lending; a single read of default terms
+    is too thin to choose between loan servicing and product parameter sub-capabilities.
+- tag: Lending - Lender
+  spec_file: toqio-lending-lender-api-openapi.yml
+  capability_id: BC-1320
+  capability_id_l1: BC-1320
+  capability_name: Credit & Lending Management
+  confidence: 0.7
+  evidence: POST /customers/{customerId}/lending/lender  createLenderConfiguration  Create a lender configuration
+  reason: CRUD over lender configuration for the lending product line — part of credit & lending management;
+    the configuration nature does not pinpoint a specific L2.
+- tag: Lending - Loan - Offer
+  spec_file: toqio-lending-loan-offer-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.7
+  evidence: PUT /customers/{customerId}/lending/loans/offers/{loanOfferId}/accept 'Accept a loan offer';
+    schema LoanOfferResponse, LoanFee
+  reason: Presenting and accepting a loan offer is part of the credit origination flow; some ambiguity
+    between origination and decisioning, hence moderate confidence.
