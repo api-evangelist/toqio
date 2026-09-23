@@ -191,49 +191,20 @@ paths:
           description: Bank not found
 components:
   schemas:
-    ViewCustomerBaseResponse:
+    PaymentProvider:
+      deprecated: true
       type: object
       properties:
-        id:
+        customerId:
           type: string
-        apiKey:
+        paymentProviderType:
           type: string
-        provider:
+        key:
           type: string
-        superCustomerId:
+        loginId:
           type: string
-        paymentProvider:
-          $ref: '#/components/schemas/PaymentProvider'
-        commercialName:
+        hmacKey:
           type: string
-        availableCurrencies:
-          type: array
-          items:
-            type: string
-    ToqioHttpOkCapabilityResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Capability'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     CustomException:
       type: object
       properties:
@@ -434,14 +405,11 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkCustomerConnectionStatusResponse:
+    ToqioHttpOkViewCustomerBaseResponse:
       type: object
       properties:
         data:
-          type: string
-          enum:
-          - CONNECTED
-          - FAILED
+          $ref: '#/components/schemas/ViewCustomerBaseResponse'
         code:
           type: string
           example: OK
@@ -461,21 +429,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
     SaveCustomerRequest:
       required:
       - id
@@ -500,9 +453,83 @@ components:
           type: array
           items:
             type: string
-    DocumentNotFoundException:
+    I18nLabel:
       type: object
       properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    ViewCustomerBaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        apiKey:
+          type: string
+        provider:
+          type: string
+        superCustomerId:
+          type: string
+        paymentProvider:
+          $ref: '#/components/schemas/PaymentProvider'
+        commercialName:
+          type: string
+        availableCurrencies:
+          type: array
+          items:
+            type: string
+    Capability:
+      type: object
+      properties:
+        hasOwnOTP:
+          type: boolean
+        canResendOTP:
+          type: boolean
+        canRetrievePan:
+          type: boolean
+        allowSixMonthsStatements:
+          type: boolean
+        allowVirtualCards:
+          type: boolean
+        allowEditBeneficiaries:
+          type: boolean
+        hasSecurityQuestions:
+          type: boolean
+        hasPhysicalCardVerificationNumber:
+          type: boolean
+        hasMeaWalletConfig:
+          type: boolean
+        hasBusinessCode:
+          type: boolean
+        hasToCreateEndUserKYC:
+          type: boolean
+        canCancelAccounts:
+          type: boolean
+        canRemoveAccounts:
+          type: boolean
+        hasAccountPurposes:
+          type: boolean
+        hasExpectedVolume:
+          type: boolean
+        needAccountSignature:
+          type: boolean
+        canRunCompliance:
+          type: boolean
+          description: Indicates if the bank needs to run compliance checks before creating an account
+    ToqioHttpOkCapabilityResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Capability'
         code:
           type: string
           example: OK
@@ -522,8 +549,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
     ToqioHttpOkAssetTypeResponse:
       type: object
       properties:
@@ -589,63 +614,38 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    Capability:
+    DocumentNotFoundException:
       type: object
       properties:
-        hasOwnOTP:
-          type: boolean
-        canResendOTP:
-          type: boolean
-        canRetrievePan:
-          type: boolean
-        allowSixMonthsStatements:
-          type: boolean
-        allowVirtualCards:
-          type: boolean
-        allowEditBeneficiaries:
-          type: boolean
-        hasSecurityQuestions:
-          type: boolean
-        hasPhysicalCardVerificationNumber:
-          type: boolean
-        hasMeaWalletConfig:
-          type: boolean
-        hasBusinessCode:
-          type: boolean
-        hasToCreateEndUserKYC:
-          type: boolean
-        canCancelAccounts:
-          type: boolean
-        canRemoveAccounts:
-          type: boolean
-        hasAccountPurposes:
-          type: boolean
-        hasExpectedVolume:
-          type: boolean
-        needAccountSignature:
-          type: boolean
-        canRunCompliance:
-          type: boolean
-          description: Indicates if the bank needs to run compliance checks before creating an account
-    PaymentProvider:
-      deprecated: true
-      type: object
-      properties:
-        customerId:
+        code:
           type: string
-        paymentProviderType:
+          example: OK
+        errorSeverity:
           type: string
-        key:
+          example: NONE
+        message:
           type: string
-        loginId:
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
           type: string
-        hmacKey:
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
           type: string
-    ToqioHttpOkViewCustomerBaseResponse:
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    ToqioHttpOkCustomerConnectionStatusResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ViewCustomerBaseResponse'
+          type: string
+          enum:
+          - CONNECTED
+          - FAILED
         code:
           type: string
           example: OK

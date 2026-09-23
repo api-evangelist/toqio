@@ -8,12 +8,12 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: Direct debit
+- name: Direct Debit
 paths:
   /customers/{customerId}/directDebit:
     post:
       tags:
-      - Direct debit
+      - Direct Debit
       summary: Apply Direct Debit
       description: ''
       operationId: applyDirectDebit
@@ -43,7 +43,7 @@ paths:
   /customers/{customerId}/accounts/{accountId}/mandates/{mandateId}:
     get:
       tags:
-      - Direct debit
+      - Direct Debit
       summary: Get Mandate Detail
       description: ''
       operationId: getMandateDetail
@@ -75,7 +75,7 @@ paths:
   /accounts/{accountId}/mandates:
     get:
       tags:
-      - Direct debit
+      - Direct Debit
       summary: Get Mandates
       description: ''
       operationId: getMandates
@@ -98,11 +98,6 @@ paths:
           description: ACCOUNT_ID_NOT_FOUND
 components:
   schemas:
-    DirectDebitFilter:
-      type: object
-      properties:
-        assetType:
-          type: string
     Mandate:
       type: object
       properties:
@@ -175,6 +170,61 @@ components:
         amount:
           type: number
           format: double
+    DirectDebitFilter:
+      type: object
+      properties:
+        assetType:
+          type: string
+    ToqioHttpOkMandateResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Mandate'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkMandateDetailResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/MandateDetail'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     MandateDetail:
       type: object
       properties:
@@ -207,56 +257,6 @@ components:
       properties:
         data:
           type: boolean
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkMandateResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Mandate'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkMandateDetailResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/MandateDetail'
         code:
           type: string
           example: OK

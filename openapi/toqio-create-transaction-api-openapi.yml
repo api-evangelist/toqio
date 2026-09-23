@@ -54,196 +54,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    InvoiceLineDTO:
-      title: InvoiceLineDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        description:
-          type: string
-        id:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-    AccountDetailsDTO:
-      title: AccountDetailsDTO
-      description: This object is REQUIRED if beneficiaryAccountId is empty
-      type: object
-      properties:
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        assetType:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        bankCountry:
-          type: string
-        bicSwift:
-          type: string
-        firstName:
-          type: string
-          description: This field is REQUIRED if the beneficiary type is PERSON.
-        iban:
-          type: string
-        lastName:
-          type: string
-          description: This field is REQUIRED if the beneficiary type is PERSON.
-        name:
-          type: string
-          description: This field is REQUIRED if the beneficiary type is COMPANY.
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-    TransactionFileDTO:
-      title: TransactionFileDTO
-      type: object
-      properties:
-        extension:
-          type: string
-        fileUrl:
-          type: string
-        id:
-          type: string
-        invoiceId:
-          type: string
-        key:
-          type: string
-        mime:
-          type: string
-        name:
-          type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
-          type: string
-    BankPaymentScheme:
-      title: BankPaymentScheme
-      type: object
-      additionalProperties: true
-      properties:
-        code:
-          type: string
-          enum:
-          - SEPA
-          - SEPA_INSTANT
-          - INTERLEDGER
-          - SWIFT
-          - UK_FASTER_PAYMENTS
-          - CHAPS
-          - FX
-          - BACS
-          - TARGET2
-          - SPEI
-          - AUS_PAY_NET
-          - EFT
-          - NCS
-          - CERTIS
-          - STRAKSCLEARING_INSTANT
-          - INTRADAGCLEARING
-          - CHATS
-          - GIRO_ZRT
-          - IMPS
-          - NEFT
-          - SKN
-          - IBG
-          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
-          - PESONET
-          - ELIXIR
-          - TRANSFOND_SENT_ACH
-          - FAST
-          - INTERNAL_TRANSFER
-          - RIX
-          - FEDACH
-          - FEDWIRE
-          - CHIPS
-        name:
-          type: string
-    InvoiceDataDTO:
-      title: InvoiceDataDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        cif:
-          type: string
-        discountAmount:
-          type: number
-          format: double
-        discountPercentage:
-          type: number
-          format: double
-        dueDate:
-          type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionFileDTO'
-        hasInvoice:
-          type: boolean
-        id:
-          type: string
-        invoiceDate:
-          type: string
-        invoiceNumber:
-          type: string
-        isTotalWithoutVatEdited:
-          type: boolean
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceLineDTO'
-        postalCode:
-          type: string
-        supplier:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-    TagDTO:
-      title: TagDTO
-      type: object
-      properties:
-        id:
-          type: string
-          description: Tag ID
-          example: 5c473c5046e0fb0005c436af
-        name:
-          type: string
-          description: Tag name
-          example: My tag
     ViewTransactionDetailDTO:
       title: ViewTransactionDetailDTO
       type: object
@@ -451,6 +261,258 @@ components:
             settlementDate:
               type: string
               format: date-time
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        id:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
+          type: string
+        fileUrl:
+          type: string
+        id:
+          type: string
+        invoiceId:
+          type: string
+        key:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+    TxAccount:
+      title: TxAccount
+      type: object
+      properties:
+        accountAlias:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        ifsc:
+          type: string
+        name:
+          type: string
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
+    TransferConfigDTO:
+      title: TransferConfigDTO
+      type: object
+      properties:
+        endDate:
+          type: string
+          format: date-time
+        repeatCount:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          format: date-time
+        timeInterval:
+          type: integer
+          format: int32
+        unit:
+          type: string
+          enum:
+          - MILLISECOND
+          - SECOND
+          - MINUTE
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+    TranslateLabel:
+      title: TranslateLabel
+      type: object
+      properties:
+        de:
+          type: string
+        en:
+          type: string
+        es:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    AccountDetailsDTO:
+      title: AccountDetailsDTO
+      description: This object is REQUIRED if beneficiaryAccountId is empty
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bankCountry:
+          type: string
+        bicSwift:
+          type: string
+        firstName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        iban:
+          type: string
+        lastName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        name:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is COMPANY.
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+    BankPaymentScheme:
+      title: BankPaymentScheme
+      type: object
+      additionalProperties: true
+      properties:
+        code:
+          type: string
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        name:
+          type: string
     IssuePaymentDTO:
       title: IssuePaymentDTO
       required:
@@ -568,125 +630,63 @@ components:
           format: double
         userId:
           type: string
-    TranslateLabel:
-      title: TranslateLabel
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
       type: object
       properties:
-        de:
+        amount:
+          type: number
+          format: double
+        cif:
           type: string
-        en:
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
           type: string
-        es:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
-    TransferConfigDTO:
-      title: TransferConfigDTO
-      type: object
-      properties:
-        endDate:
-          type: string
-          format: date-time
-        repeatCount:
-          type: integer
-          format: int32
-        startDate:
-          type: string
-          format: date-time
-        timeInterval:
-          type: integer
-          format: int32
-        unit:
-          type: string
-          enum:
-          - MILLISECOND
-          - SECOND
-          - MINUTE
-          - HOUR
-          - DAY
-          - WEEK
-          - MONTH
-          - YEAR
-    TxAccount:
-      title: TxAccount
-      type: object
-      properties:
-        accountAlias:
-          type: string
-        accountNumber:
-          type: string
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        bank:
-          type: string
-        bicSwift:
-          type: string
-        bsbCode:
-          type: string
-        caRoutingNumber:
-          type: string
-        clabe:
-          type: string
-        cnaps:
-          type: string
-        fullName:
-          type: string
-        iban:
-          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
         id:
           type: string
-        ifsc:
+        invoiceDate:
           type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    TagDTO:
+      title: TagDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
         name:
           type: string
-        routingNumber:
-          type: string
-        type:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        purposeCode:
-          type: string
-        paymentProviderDetails:
-          type: object
-          properties:
-            shortReference:
-              type: string
-            internalReference:
-              type: string
-            paymentId:
-              type: string
-            conversionId:
-              type: string
-            rate:
-              type: string
-            settlementDate:
-              type: string
-              format: date-time
+          description: Tag name
+          example: My tag
   securitySchemes:
     clientCredentials:
       type: oauth2

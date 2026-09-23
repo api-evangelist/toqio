@@ -157,45 +157,6 @@ paths:
           description: PIN retrieval initiated
 components:
   schemas:
-    ToqioResponsePinResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pin:
-              type: string
-              description: Card PIN
-              example: '1234'
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PIN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
     ToqioResponseCardPanResponse:
       type: object
       properties:
@@ -243,13 +204,16 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
-    ToqioResponseString:
+    ToqioResponsePinResponse:
       type: object
       properties:
         data:
-          type: string
-          description: Response data as string
-          example: https://cdn.provider.com/resource
+          type: object
+          properties:
+            pin:
+              type: string
+              description: Card PIN
+              example: '1234'
         code:
           type: string
           description: Response code
@@ -265,7 +229,7 @@ components:
         message:
           type: string
           description: Human-readable response message
-          example: Resource retrieved successfully
+          example: Card PIN retrieved successfully
         httpStatus:
           type: integer
           description: HTTP status code
@@ -315,15 +279,43 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
+    ToqioResponseString:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Response data as string
+          example: https://cdn.provider.com/resource
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Resource retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
   parameters:
-    customerId:
-      name: customerId
-      in: path
-      description: Unique identifier of the customer
-      required: true
-      schema:
-        type: string
-      example: cust-123
     cardId:
       name: cardId
       in: path
@@ -332,6 +324,14 @@ components:
       schema:
         type: string
       example: card-abc123
+    customerId:
+      name: customerId
+      in: path
+      description: Unique identifier of the customer
+      required: true
+      schema:
+        type: string
+      example: cust-123
 x-source-pages:
 - https://integrate.toq.io/reference/activatecard
 - https://integrate.toq.io/reference/activatecardotp

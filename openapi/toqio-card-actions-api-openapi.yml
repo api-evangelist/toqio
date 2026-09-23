@@ -500,209 +500,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    CardAddress:
-      title: CardAddress
-      description: Required for physical cards. Physical card will be shipped to this address.
-      type: object
-      properties:
-        addressCity:
-          maxLength: 100
-          type: string
-        addressIsoCountry:
-          maxLength: 100
-          type: string
-        addressNumber:
-          maxLength: 100
-          type: string
-        addressPostalCode:
-          maxLength: 100
-          type: string
-        addressRefinement:
-          maxLength: 1000
-          type: string
-        addressRegion:
-          maxLength: 100
-          type: string
-        addressStreet:
-          maxLength: 1000
-          type: string
-    AuthenticationResponse:
-      type: object
-      description: Only available for Modulr users.
-      properties:
-        knowledgeBaseStatus:
-          type: string
-          enum:
-          - NOT_ENROLLED
-          - ENROLLED
-          - UNENROLLED
-        otpSmsStatus:
-          type: string
-          enum:
-          - NOT_ENROLLED
-          - ENROLLED
-          - UNENROLLED
-      title: AuthenticationResponse
-    UpdateCardDTO:
-      title: Update card
-      type: object
-      properties:
-        lifetimeSpendLimit:
-          description: Lifetime limit of the card. Only apply to Modulr cards.
-          type: number
-          example: 100
-        cardLimitTransaction:
-          description: Limit per transaction of a card
-          type: integer
-          example: 100
-        cardLimitMonthly:
-          description: Monthly limit of a card
-          type: integer
-          example: 5000
-        cardLimitDaily:
-          description: Daily limit of a card
-          type: integer
-          example: 100
-        cardLimitPurchasesDaily:
-          description: Purchases daily limit of a card
-          type: integer
-          example: 100
-        cardLimitPurchasesMonthly:
-          description: Purchases monthly limit of a card
-          type: integer
-          example: 100
-        cardLimitATMDaily:
-          description: ATM daily limit of a card
-          type: integer
-          example: 100
-        cardLimitATMMonthly:
-          description: ATM monthly limit of a card
-          type: integer
-          example: 100
-        cardLimitATMOperations:
-          description: ATM operations limit of a card
-          type: integer
-          example: 100
-        cardLimitPurchasesOperations:
-          description: Purchases operations limit of a card
-          type: integer
-          example: 100
-    IssueCardViaAPIDTO:
-      title: IssueCardViaAPIDTO
-      required:
-      - accountId
-      - companyId
-      - userId
-      - nameOnCard
-      type: object
-      properties:
-        accountId:
-          type: string
-        cardDeliveryAddress:
-          $ref: '#/components/schemas/CardAddress'
-        cardDeliveryName:
-          maxLength: 50
-          type: string
-          description: Delivery name for shipping the physical card
-        companyId:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-        email:
-          type: string
-        fundingType:
-          type: string
-          description: Funding type of the card. Defaults to DEBIT when omitted. Extensible; current supported values are DEBIT and CREDIT.
-          enum:
-          - DEBIT
-          - CREDIT
-          default: DEBIT
-        nameOnCard:
-          maxLength: 20
-          pattern: 0-9a-zA-Z\s
-          type: string
-          description: Card holder name
-        physical:
-          type: boolean
-          description: true if its a physical card, false if virtual
-        telephone:
-          type: string
-        userId:
-          type: string
-          description: User to whom the card will be created for
-        cardProgramme:
-          type: string
-          description: The card programme to issue the card against
-        cardDesign:
-          type: string
-          description: Card design that will be used when it's issued
-        cardLimitDaily:
-          type: integer
-          description: Maximum daily limit for Railsr customers. Can be configured in GBP or EUR. Required.
-          example: 1000
-        cardLimitMonthly:
-          type: integer
-          description: Maximum monthly limit for Railsr customers. Can be configured in GBP or EUR. Required.
-          example: 50000
-        cardLimitTransaction:
-          type: integer
-          description: Maximum transaction limit for Railsr and Modulr customers. Can be configured in GBP or EUR. For Railsr is required.
-          example: 100
-        cardMinLimitTransaction:
-          type: integer
-          description: Maximum limit of the card per transaction. Can be configured in GBP or EUR. Available for Modulr users.
-          example: '1000'
-        lifetimeSpendLimit:
-          type: integer
-          description: Maximum limit of the lifetime of the cards. Once the limit is reached, the card can't be used. Can be configured in GBP or EUR. Only available for Modulr clients. Required.
-          example: '10000'
-        cardLimitPurchasesDaily:
-          description: Maximum purchases daily limit for Loomis customers
-          type: integer
-          example: 100
-        cardLimitPurchasesMonthly:
-          description: Maximum purchases monthly limit for Loomis customers
-          type: integer
-          example: 100
-        cardLimitATMDaily:
-          description: Maximum ATM daily limit for Loomis customers
-          type: integer
-          example: 100
-        cardLimitATMMonthly:
-          description: Maximum ATM monthly limit for Loomis customers
-          type: integer
-          example: 100
-        cardLimitATMOperations:
-          description: Maximum ATM operations limit for Loomis customers
-          type: integer
-          example: 100
-        cardLimitPurchasesOperations:
-          description: Maximum purchases operations limit for Loomis customers
-          type: integer
-          example: 100
-        securityQuestions:
-          description: Security questions that Modulr users will need to answer before issuing a card. Users must answer at least one question. Answers are case sensitive.
-          $ref: '#/components/schemas/SecurityQuestionDTO'
-        billingAccountId:
-          type: string
-          description: Identifier of the alternative billing account used to deduct card issuance fees if the card-linked account has insufficient funds. This field is required only when a billing model is enabled. The billing account must have sufficient funds available and match the currency of the card being issued.
-    CardMask:
-      title: CardMask
-      type: object
-      properties:
-        maxX:
-          type: integer
-          format: int32
-        maxY:
-          type: integer
-          format: int32
-        minX:
-          type: integer
-          format: int32
-        minY:
-          type: integer
-          format: int32
     ViewCardDTO:
       title: ViewCardDTO
       type: object
@@ -813,6 +610,260 @@ components:
           type: string
         cardDesign:
           type: string
+    AuthenticationResponse:
+      type: object
+      description: Only available for Modulr users.
+      properties:
+        knowledgeBaseStatus:
+          type: string
+          enum:
+          - NOT_ENROLLED
+          - ENROLLED
+          - UNENROLLED
+        otpSmsStatus:
+          type: string
+          enum:
+          - NOT_ENROLLED
+          - ENROLLED
+          - UNENROLLED
+      title: AuthenticationResponse
+    CardAddress:
+      title: CardAddress
+      description: Required for physical cards. Physical card will be shipped to this address.
+      type: object
+      properties:
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressNumber:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressRefinement:
+          maxLength: 1000
+          type: string
+        addressRegion:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
+    UpdateCardDTO:
+      title: Update card
+      type: object
+      properties:
+        lifetimeSpendLimit:
+          description: Lifetime limit of the card. Only apply to Modulr cards.
+          type: number
+          example: 100
+        cardLimitTransaction:
+          description: Limit per transaction of a card
+          type: integer
+          example: 100
+        cardLimitMonthly:
+          description: Monthly limit of a card
+          type: integer
+          example: 5000
+        cardLimitDaily:
+          description: Daily limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesDaily:
+          description: Purchases daily limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesMonthly:
+          description: Purchases monthly limit of a card
+          type: integer
+          example: 100
+        cardLimitATMDaily:
+          description: ATM daily limit of a card
+          type: integer
+          example: 100
+        cardLimitATMMonthly:
+          description: ATM monthly limit of a card
+          type: integer
+          example: 100
+        cardLimitATMOperations:
+          description: ATM operations limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesOperations:
+          description: Purchases operations limit of a card
+          type: integer
+          example: 100
+    AccountSummaryDTO:
+      title: AccountSummaryDTO
+      type: object
+      properties:
+        accountLine:
+          type: string
+        alias:
+          type: string
+        assetFlag:
+          type: string
+        assetSymbol:
+          type: string
+        assetType:
+          type: string
+        bicSwift:
+          type: string
+        iban:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+    SecurityQuestionDTO:
+      type: object
+      description: Users must answer at least one question. Answers are case sensitive
+      properties:
+        cityParentsMet:
+          type: string
+          description: In which city did your parents meet?
+        favoriteChildhoodFriend:
+          type: string
+          description: Who was your favorite childhood friend?
+        firstCar:
+          type: string
+          description: What was your first car?
+        firstPetName:
+          type: string
+          description: What was the name of your first pet?
+        maternalGrandmotherMaidenName:
+          type: string
+          description: What is your maternal grandmother maiden name?
+      title: SecurityQuestionDTO
+    CardDesignDTO:
+      title: CardDesignDTO
+      type: object
+      properties:
+        cardNumber:
+          $ref: '#/components/schemas/CardMask'
+        cvv:
+          $ref: '#/components/schemas/CardMask'
+        expiration:
+          $ref: '#/components/schemas/CardMask'
+        nameOnCard:
+          $ref: '#/components/schemas/CardMask'
+        templateUrl:
+          type: string
+        textColor:
+          type: string
+        token:
+          $ref: '#/components/schemas/CardMask'
+    IssueCardViaAPIDTO:
+      title: IssueCardViaAPIDTO
+      required:
+      - accountId
+      - companyId
+      - userId
+      - nameOnCard
+      type: object
+      properties:
+        accountId:
+          type: string
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        cardDeliveryName:
+          maxLength: 50
+          type: string
+          description: Delivery name for shipping the physical card
+        companyId:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+        email:
+          type: string
+        fundingType:
+          type: string
+          description: Funding type of the card. Defaults to DEBIT when omitted. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+          default: DEBIT
+        nameOnCard:
+          maxLength: 20
+          pattern: 0-9a-zA-Z\s
+          type: string
+          description: Card holder name
+        physical:
+          type: boolean
+          description: true if its a physical card, false if virtual
+        telephone:
+          type: string
+        userId:
+          type: string
+          description: User to whom the card will be created for
+        cardProgramme:
+          type: string
+          description: The card programme to issue the card against
+        cardDesign:
+          type: string
+          description: Card design that will be used when it's issued
+        cardLimitDaily:
+          type: integer
+          description: Maximum daily limit for Railsr customers. Can be configured in GBP or EUR. Required.
+          example: 1000
+        cardLimitMonthly:
+          type: integer
+          description: Maximum monthly limit for Railsr customers. Can be configured in GBP or EUR. Required.
+          example: 50000
+        cardLimitTransaction:
+          type: integer
+          description: Maximum transaction limit for Railsr and Modulr customers. Can be configured in GBP or EUR. For Railsr is required.
+          example: 100
+        cardMinLimitTransaction:
+          type: integer
+          description: Maximum limit of the card per transaction. Can be configured in GBP or EUR. Available for Modulr users.
+          example: '1000'
+        lifetimeSpendLimit:
+          type: integer
+          description: Maximum limit of the lifetime of the cards. Once the limit is reached, the card can't be used. Can be configured in GBP or EUR. Only available for Modulr clients. Required.
+          example: '10000'
+        cardLimitPurchasesDaily:
+          description: Maximum purchases daily limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitPurchasesMonthly:
+          description: Maximum purchases monthly limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitATMDaily:
+          description: Maximum ATM daily limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitATMMonthly:
+          description: Maximum ATM monthly limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitATMOperations:
+          description: Maximum ATM operations limit for Loomis customers
+          type: integer
+          example: 100
+        cardLimitPurchasesOperations:
+          description: Maximum purchases operations limit for Loomis customers
+          type: integer
+          example: 100
+        securityQuestions:
+          description: Security questions that Modulr users will need to answer before issuing a card. Users must answer at least one question. Answers are case sensitive.
+          $ref: '#/components/schemas/SecurityQuestionDTO'
+        billingAccountId:
+          type: string
+          description: Identifier of the alternative billing account used to deduct card issuance fees if the card-linked account has insufficient funds. This field is required only when a billing model is enabled. The billing account must have sufficient funds available and match the currency of the card being issued.
     ApiCardDTO:
       title: ApiCardDTO
       type: object
@@ -908,6 +959,22 @@ components:
           type: string
         cardDesign:
           type: string
+    CardMask:
+      title: CardMask
+      type: object
+      properties:
+        maxX:
+          type: integer
+          format: int32
+        maxY:
+          type: integer
+          format: int32
+        minX:
+          type: integer
+          format: int32
+        minY:
+          type: integer
+          format: int32
     FreezeReasonDTO:
       title: FreezeReasonDTO
       type: object
@@ -925,44 +992,6 @@ components:
           - COMPANY_REJECTED
           - USER_DISABLED
           - CUSTOMER_REJECTED
-    CardDesignDTO:
-      title: CardDesignDTO
-      type: object
-      properties:
-        cardNumber:
-          $ref: '#/components/schemas/CardMask'
-        cvv:
-          $ref: '#/components/schemas/CardMask'
-        expiration:
-          $ref: '#/components/schemas/CardMask'
-        nameOnCard:
-          $ref: '#/components/schemas/CardMask'
-        templateUrl:
-          type: string
-        textColor:
-          type: string
-        token:
-          $ref: '#/components/schemas/CardMask'
-    SecurityQuestionDTO:
-      type: object
-      description: Users must answer at least one question. Answers are case sensitive
-      properties:
-        cityParentsMet:
-          type: string
-          description: In which city did your parents meet?
-        favoriteChildhoodFriend:
-          type: string
-          description: Who was your favorite childhood friend?
-        firstCar:
-          type: string
-          description: What was your first car?
-        firstPetName:
-          type: string
-          description: What was the name of your first pet?
-        maternalGrandmotherMaidenName:
-          type: string
-          description: What is your maternal grandmother maiden name?
-      title: SecurityQuestionDTO
     CardTokenDTO:
       title: CardTokenDTO
       type: object
@@ -972,35 +1001,6 @@ components:
           description: This field is only required for Railsr Customers
         securityCode:
           type: string
-    AccountSummaryDTO:
-      title: AccountSummaryDTO
-      type: object
-      properties:
-        accountLine:
-          type: string
-        alias:
-          type: string
-        assetFlag:
-          type: string
-        assetSymbol:
-          type: string
-        assetType:
-          type: string
-        bicSwift:
-          type: string
-        iban:
-          type: string
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
   securitySchemes:
     bearer-jwt:
       type: oauth2

@@ -271,7 +271,17 @@ paths:
       tags:
       - Card Lifecycle
       summary: Update card details and limits
-      description: "Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.\n\n**Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.\n\n**Important**: \n- This endpoint extends AdditionalParams, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover which custom limits are available in your system.\n- To update card alias, use the dedicated endpoint PUT /customers/{customerId}/cards/{cardId}/alias instead."
+      description: 'Updates card spending limits. This endpoint supports dynamic limit types via AdditionalParams.
+
+
+        **Business Context**: Called when adjusting spending limits displayed in the frontend. For customers with enabled limit management, this endpoint allows updating daily, monthly, transaction, and lifetime limits. Additional custom limits (e.g., ATM limits, purchase limits) can be included via additionalProperties.
+
+
+        **Important**:
+
+        - This endpoint extends AdditionalParams, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover which custom limits are available in your system.
+
+        - To update card alias, use the dedicated endpoint PUT /customers/{customerId}/cards/{cardId}/alias instead.'
       operationId: updateCard
       parameters:
       - $ref: '#/components/parameters/customerId'
@@ -306,7 +316,15 @@ paths:
       tags:
       - Card Lifecycle
       summary: Update card alias
-      description: "Updates the friendly name (alias) of a specific card. This endpoint allows modifying only the card's display name without affecting other card properties.\n\n**Business Context**: Called when a user wants to rename their card for easier identification in the frontend application. The updated alias is displayed across all card views and helps users distinguish between multiple cards.\n\n**Important**: \n- This endpoint will only be called if the integration has the capability `hasCardAlias` set to `true`. If this capability is not enabled, the platform will not invoke this endpoint."
+      description: 'Updates the friendly name (alias) of a specific card. This endpoint allows modifying only the card''s display name without affecting other card properties.
+
+
+        **Business Context**: Called when a user wants to rename their card for easier identification in the frontend application. The updated alias is displayed across all card views and helps users distinguish between multiple cards.
+
+
+        **Important**:
+
+        - This endpoint will only be called if the integration has the capability `hasCardAlias` set to `true`. If this capability is not enabled, the platform will not invoke this endpoint.'
       operationId: updateCardAlias
       parameters:
       - $ref: '#/components/parameters/customerId'
@@ -360,6 +378,17 @@ paths:
           description: Card read-only status updated
 components:
   schemas:
+    PhoneDTO:
+      type: object
+      properties:
+        countryCode:
+          type: string
+          description: International dialing code (e.g., +44, +1)
+          example: '+44'
+        number:
+          type: string
+          description: Phone number without country code
+          example: '7700900000'
     UpdateCardRequest:
       allOf:
       - $ref: '#/components/schemas/LimitFields'
@@ -383,6 +412,64 @@ components:
             $ref: '#/components/schemas/CardOTP'
       description: Request to update card details. Extends LimitFields with AdditionalParams support, allowing custom limit fields to be passed. Query GET /customers/{customerId}/availableCardLimits to discover available custom limits.
       additionalProperties: true
+    CardOTP:
+      type: object
+      description: OTP information for card operations
+      properties:
+        baasOTP:
+          type: string
+          description: Banking-as-a-Service OTP code
+        operationId:
+          type: string
+          description: Unique operation identifier
+        userId:
+          type: string
+          description: User identifier
+        cardTokenRequest:
+          $ref: '#/components/schemas/CardTokenRequest'
+    LimitFields:
+      type: object
+      description: Base limit fields that can be set on cards. This extends AdditionalParams, allowing additional custom limit properties.
+      properties:
+        cardLimitDaily:
+          type: integer
+          format: int32
+          description: Daily spending limit - STANDARD PROPERTY
+        cardLimitMonthly:
+          type: integer
+          format: int32
+          description: Monthly spending limit - STANDARD PROPERTY
+        cardLimitTransaction:
+          type: number
+          description: Per-transaction spending limit - STANDARD PROPERTY
+        lifetimeSpendLimit:
+          type: number
+          format: double
+          description: Total lifetime spending limit - STANDARD PROPERTY
+        cardMinLimitTransaction:
+          type: number
+          format: double
+          description: Minimum transaction limit - STANDARD PROPERTY
+        cardMinLimitTransactionForPhysicalBusiness:
+          type: number
+          format: double
+          description: Minimum transaction limit for physical business cards - STANDARD PROPERTY
+      additionalProperties:
+        oneOf:
+        - type: number
+        - type: integer
+        - type: string
+        description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic limit properties based on system configuration. Common examples: purchasesDailyLimit, purchasesMonthlyLimit, atmDailyLimit, atmMonthlyLimit, atmOperationsLimit, purchasesOperationsLimit, and any other custom limits configured in your system.'
+    UpdateCardAliasRequest:
+      type: object
+      required:
+      - alias
+      properties:
+        alias:
+          type: string
+          maxLength: 25
+          description: Friendly name/alias for the card
+      description: Request to update only the card alias
     Address:
       type: object
       properties:
@@ -407,100 +494,15 @@ components:
         addressRefinement:
           type: string
           description: Additional address details (apt, suite, etc.)
-    ToqioHttpOkVoidResponse:
+    ToqioResponseCardResponse:
       type: object
       properties:
         data:
-          type: object
-          writeOnly: true
+          $ref: '#/components/schemas/CardResponse'
         code:
           type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    CardResponse:
-      type: object
-      description: Card details response
-      properties:
-        id:
-          type: string
-          description: Unique card identifier
-        token:
-          type: string
-          description: Card security token
-        status:
-          type: string
-          description: Current card status
-          enum:
-          - PENDING
-          - ACTIVE
-          - SUSPENDED
-          - CANCELLED
-          - CLOSED
-        fundingType:
-          type: string
-          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
-          enum:
-          - DEBIT
-          - CREDIT
-        provider:
-          type: string
-          description: Banking provider name
-        nameOnCard:
-          type: string
-          description: Cardholder name on the card
-        truncatedPan:
-          type: string
-          description: Last 4 digits of PAN
-        expiryDate:
-          type: string
-          description: Card expiry date (MM/YY)
-        cardDeliveryAddress:
-          $ref: '#/components/schemas/Address'
-        cardDeliveryMethod:
-          type: string
-          description: Card delivery method
-        spend:
-          type: number
-          format: double
-          description: Total amount spent
-        limit:
-          type: number
-          format: double
-          description: Current spending limit
-        cardProgramme:
-          type: string
-          description: Card programme/tier
-        externalId:
-          type: string
-          description: External system identifier
-        showCustomCardDesign:
-          type: boolean
-          description: Whether custom design is enabled
-        activationCodeLength:
-          type: integer
-          description: Length of activation code
-    ToqioErrorResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: Error code
-          example: '400'
+          description: Response code
+          example: '200'
         errorSeverity:
           type: string
           enum:
@@ -508,20 +510,19 @@ components:
           - WARNING
           - ERROR
           - FATAL
-          description: Severity level of the error
-          example: ERROR
+          description: Severity level of the response (only present on errors)
+          example: INFO
         message:
           type: string
-          description: Human-readable error message
-          example: Invalid card limit values provided
+          description: Human-readable response message
+          example: Card operation completed successfully
         httpStatus:
           type: integer
           description: HTTP status code
-          example: 400
+          example: 200
         debugTrace:
           type: string
-          description: Debug trace information for troubleshooting
-          example: ValidationException at CardService.updateCard:145
+          description: Debug trace information (only present on errors)
         requestId:
           type: string
           description: Unique request identifier for tracing
@@ -533,8 +534,7 @@ components:
           example: 1736935800000
         errorOrigin:
           type: string
-          description: Origin system where the error occurred
-          example: INTEGRATION_HUB
+          description: Origin of error if applicable (only present on errors)
     IssueCardRequest:
       allOf:
       - $ref: '#/components/schemas/LimitFields'
@@ -605,39 +605,117 @@ components:
             type: string
             description: Billing account ID for credit cards
       description: Request to issue a new card. Extends LimitFields to support card limit configuration during issuance.
-    LimitFields:
+    CardResponse:
       type: object
-      description: Base limit fields that can be set on cards. This extends AdditionalParams, allowing additional custom limit properties.
+      description: Card details response
       properties:
-        cardLimitDaily:
+        id:
+          type: string
+          description: Unique card identifier
+        token:
+          type: string
+          description: Card security token
+        status:
+          type: string
+          description: Current card status
+          enum:
+          - PENDING
+          - ACTIVE
+          - SUSPENDED
+          - CANCELLED
+          - CLOSED
+        fundingType:
+          type: string
+          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+        provider:
+          type: string
+          description: Banking provider name
+        nameOnCard:
+          type: string
+          description: Cardholder name on the card
+        truncatedPan:
+          type: string
+          description: Last 4 digits of PAN
+        expiryDate:
+          type: string
+          description: Card expiry date (MM/YY)
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/Address'
+        cardDeliveryMethod:
+          type: string
+          description: Card delivery method
+        spend:
+          type: number
+          format: double
+          description: Total amount spent
+        limit:
+          type: number
+          format: double
+          description: Current spending limit
+        cardProgramme:
+          type: string
+          description: Card programme/tier
+        externalId:
+          type: string
+          description: External system identifier
+        showCustomCardDesign:
+          type: boolean
+          description: Whether custom design is enabled
+        activationCodeLength:
           type: integer
-          format: int32
-          description: Daily spending limit - STANDARD PROPERTY
-        cardLimitMonthly:
+          description: Length of activation code
+    CardTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Activation token
+        securityCode:
+          $ref: '#/components/schemas/EncryptedSecurityCode'
+    ToqioErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          example: '400'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the error
+          example: ERROR
+        message:
+          type: string
+          description: Human-readable error message
+          example: Invalid card limit values provided
+        httpStatus:
           type: integer
-          format: int32
-          description: Monthly spending limit - STANDARD PROPERTY
-        cardLimitTransaction:
-          type: number
-          description: Per-transaction spending limit - STANDARD PROPERTY
-        lifetimeSpendLimit:
-          type: number
-          format: double
-          description: Total lifetime spending limit - STANDARD PROPERTY
-        cardMinLimitTransaction:
-          type: number
-          format: double
-          description: Minimum transaction limit - STANDARD PROPERTY
-        cardMinLimitTransactionForPhysicalBusiness:
-          type: number
-          format: double
-          description: Minimum transaction limit for physical business cards - STANDARD PROPERTY
-      additionalProperties:
-        oneOf:
-        - type: number
-        - type: integer
-        - type: string
-        description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic limit properties based on system configuration. Common examples: purchasesDailyLimit, purchasesMonthlyLimit, atmDailyLimit, atmMonthlyLimit, atmOperationsLimit, purchasesOperationsLimit, and any other custom limits configured in your system.'
+          description: HTTP status code
+          example: 400
+        debugTrace:
+          type: string
+          description: Debug trace information for troubleshooting
+          example: ValidationException at CardService.updateCard:145
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+        errorOrigin:
+          type: string
+          description: Origin system where the error occurred
+          example: INTEGRATION_HUB
     EncryptedSecurityCode:
       type: object
       description: RSA-encrypted security verification
@@ -651,108 +729,68 @@ components:
         tag:
           type: string
           description: Authentication tag
-    PhoneDTO:
-      type: object
-      properties:
-        countryCode:
-          type: string
-          description: International dialing code (e.g., +44, +1)
-          example: '+44'
-        number:
-          type: string
-          description: Phone number without country code
-          example: '7700900000'
-    CardOTP:
-      type: object
-      description: OTP information for card operations
-      properties:
-        baasOTP:
-          type: string
-          description: Banking-as-a-Service OTP code
-        operationId:
-          type: string
-          description: Unique operation identifier
-        userId:
-          type: string
-          description: User identifier
-        cardTokenRequest:
-          $ref: '#/components/schemas/CardTokenRequest'
-    ToqioResponseCardResponse:
+    ToqioHttpOkVoidResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/CardResponse'
+          type: object
+          writeOnly: true
         code:
           type: string
-          description: Response code
-          example: '200'
+          example: OK
         errorSeverity:
           type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-          example: INFO
+          example: NONE
         message:
           type: string
-          description: Human-readable response message
-          example: Card operation completed successfully
+          example: Ok
         httpStatus:
           type: integer
-          description: HTTP status code
+          format: int32
           example: 200
-        debugTrace:
-          type: string
-          description: Debug trace information (only present on errors)
         requestId:
           type: string
-          description: Unique request identifier for tracing
           example: 26b0f78a-79f9-426d-a20b-79841345ae51
         date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
-        errorOrigin:
           type: string
-          description: Origin of error if applicable (only present on errors)
-    CardTokenRequest:
-      type: object
-      properties:
-        token:
-          type: string
-          description: Activation token
-        securityCode:
-          $ref: '#/components/schemas/EncryptedSecurityCode'
-    UpdateCardAliasRequest:
-      type: object
-      required:
-      - alias
-      properties:
-        alias:
-          type: string
-          maxLength: 25
-          description: Friendly name/alias for the card
-      description: Request to update only the card alias
-  parameters:
-    cardId:
-      name: cardId
-      in: path
-      description: Unique identifier of the card
-      required: true
-      schema:
-        type: string
-      example: card-abc123
-    customerId:
-      name: customerId
-      in: path
-      description: Unique identifier of the customer
-      required: true
-      schema:
-        type: string
-      example: cust-123
+          example: '2024-08-01T00:00:00.000Z'
+  responses:
+    BadRequest:
+      description: Bad request - Invalid input parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToqioErrorResponse'
+          example:
+            code: '400'
+            errorSeverity: ERROR
+            message: Invalid card limit values
+            httpStatus: 400
+            requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
+            date: 1736935800000
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToqioErrorResponse'
+          example:
+            code: '500'
+            errorSeverity: FATAL
+            message: Internal server error occurred
+            httpStatus: 500
+            debugTrace: Stack trace information
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToqioErrorResponse'
+          example:
+            code: '404'
+            errorSeverity: ERROR
+            message: Card not found
+            httpStatus: 404
   requestBodies:
     UpdateCardRequest:
       description: Card update request containing the card details to be updated. This object extends AdditionalParams, allowing you to pass any custom card limits that are defined in your system. To discover available custom limits, use the GET /customers/{customerId}/availableCardLimits endpoint.
@@ -794,43 +832,23 @@ components:
                   baasOTP: '123456'
                   operationId: op-update-789
                   userId: user-456
-  responses:
-    NotFound:
-      description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ToqioErrorResponse'
-          example:
-            code: '404'
-            errorSeverity: ERROR
-            message: Card not found
-            httpStatus: 404
-    BadRequest:
-      description: Bad request - Invalid input parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ToqioErrorResponse'
-          example:
-            code: '400'
-            errorSeverity: ERROR
-            message: Invalid card limit values
-            httpStatus: 400
-            requestId: 26b0f78a-79f9-426d-a20b-79841345ae51
-            date: 1736935800000
-    InternalServerError:
-      description: Internal server error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/ToqioErrorResponse'
-          example:
-            code: '500'
-            errorSeverity: FATAL
-            message: Internal server error occurred
-            httpStatus: 500
-            debugTrace: Stack trace information
+  parameters:
+    cardId:
+      name: cardId
+      in: path
+      description: Unique identifier of the card
+      required: true
+      schema:
+        type: string
+      example: card-abc123
+    customerId:
+      name: customerId
+      in: path
+      description: Unique identifier of the customer
+      required: true
+      schema:
+        type: string
+      example: cust-123
 x-source-pages:
 - https://integrate.toq.io/reference/activatecard
 - https://integrate.toq.io/reference/activatecardotp

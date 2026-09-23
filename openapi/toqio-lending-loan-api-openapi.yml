@@ -136,30 +136,34 @@ paths:
           description: Internal server error
 components:
   schemas:
-    ToqioHttpOkDocumentResponse:
+    LoanFilter:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/Document'
-        code:
+        productType:
           type: string
-          example: OK
-        errorSeverity:
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        fundingDate:
           type: string
-          example: NONE
-        message:
+        status:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
+          enum:
+          - PENDING_TO_BE_FUNDED
+          - FUNDED
+          - REPAID
+          - IN_DEFAULT
+        merchantId:
           type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
+        customerId:
           type: string
-          example: '2024-08-01T00:00:00.000Z'
+    Document:
+      type: object
+      properties:
+        base64:
+          type: string
+        name:
+          type: string
     LoanTransactionResponse:
       type: object
       properties:
@@ -173,23 +177,6 @@ components:
         date:
           type: string
         loanId:
-          type: string
-    RepaymentTerms:
-      type: object
-      properties:
-        basisPoint:
-          type: number
-          format: double
-        estimatedDays:
-          type: integer
-          format: int32
-        thresholdAmount:
-          type: number
-          format: double
-        thresholdDuration:
-          type: integer
-          format: int32
-        startsAt:
           type: string
     ToqioHttpOkLoanResponse:
       type: object
@@ -215,6 +202,47 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkDocumentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Document'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    RepaymentTerms:
+      type: object
+      properties:
+        basisPoint:
+          type: number
+          format: double
+        estimatedDays:
+          type: integer
+          format: int32
+        thresholdAmount:
+          type: number
+          format: double
+        thresholdDuration:
+          type: integer
+          format: int32
+        startsAt:
+          type: string
     LoanResponse:
       type: object
       properties:
@@ -303,34 +331,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    Document:
-      type: object
-      properties:
-        base64:
-          type: string
-        name:
-          type: string
-    LoanFilter:
-      type: object
-      properties:
-        productType:
-          type: string
-          enum:
-          - CASH_ADVANCE
-          - SHORT_TERM_LOAN
-        fundingDate:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING_TO_BE_FUNDED
-          - FUNDED
-          - REPAID
-          - IN_DEFAULT
-        merchantId:
-          type: string
-        customerId:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

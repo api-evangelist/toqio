@@ -146,7 +146,8 @@
     "toqio-upload-kyb-documents-openapi.yml: declared missing tag: compliance-controller",
     "tag 'Fees' spans 2 source specs (toqio-clients-openapi.yml, toqio-fees-openapi.yml): per-path servers applied",
     "tag 'Custom Notifications' spans 2 source specs (toqio-custom-notifications-openapi.yml, toqio-integration-hub-api-openapi.yml): per-path servers applied",
-    "tag 'API Endpoints' spans 2 source specs (toqio-get-company-kyb-documents-openapi.yml, toqio-get-presigned-download-url-openapi.yml): per-path servers applied"
+    "tag 'API Endpoints' spans 2 source specs (toqio-get-company-kyb-documents-openapi.yml, toqio-get-presigned-download-url-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "toqio-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",

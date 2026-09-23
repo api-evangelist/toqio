@@ -109,6 +109,24 @@ paths:
           description: Internal server error
 components:
   schemas:
+    LenderConfigurationBaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        productTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - CASH_ADVANCE
+            - SHORT_TERM_LOAN
+        privacyUrl:
+          type: string
+        webhookUrl:
+          type: string
+        key:
+          type: string
     ToqioHttpOkLenderConfigurationBaseResponse:
       type: object
       properties:
@@ -133,24 +151,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    LenderConfigurationBaseResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        productTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - CASH_ADVANCE
-            - SHORT_TERM_LOAN
-        privacyUrl:
-          type: string
-        webhookUrl:
-          type: string
-        key:
-          type: string
     LenderConfigurationBaseRequest:
       type: object
       properties:

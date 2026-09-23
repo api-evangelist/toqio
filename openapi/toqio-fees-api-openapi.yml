@@ -23,7 +23,7 @@ paths:
       - Fees
       operationId: getCardFees
       summary: Get card fees
-      description: This endpoint is deprecated. You should use <a href="https://docs.toq.io/reference/getcardfees"><u>Card Fees</u></a>
+      description: This endpoint is deprecated. You should use Card Fees
       parameters:
       - name: customerId
         in: path

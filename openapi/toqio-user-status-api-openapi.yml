@@ -9,12 +9,12 @@ servers:
 - url: https://api.toq.io/iam/api
   description: Production environment
 tags:
-- name: User status
+- name: User Status
 paths:
   /iam/api/customers/{customerId}/merchant/{clientId}/provider/{complianceProvider}/user/{userId}/status/{status}:
     put:
       tags:
-      - User status
+      - User Status
       summary: Update user status
       description: This endpoint allows to update user status
       operationId: updateUserStatus

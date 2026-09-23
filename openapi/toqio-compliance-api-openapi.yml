@@ -438,6 +438,307 @@ paths:
       - clientCredentials: []
 components:
   schemas:
+    UpdateComplianceDTO:
+      type: object
+      properties:
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    ComplianceStatusDTO:
+      type: object
+      properties:
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    UpdateCompanyKyxDocumentsDTO:
+      title: UpdateCompanyKyxDocumentsDTO
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
+    ComplianceStatusUpdateDTO:
+      title: ComplianceStatusUpdateDTO
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        accountId:
+          type: integer
+        directors:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectorDTO'
+        finalisedManually:
+          type: boolean
+        clientId:
+          type: string
+          description: Client id
+    StatusDocumentDTO:
+      title: StatusDocumentDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: id of the document
+        externalId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        errorMessage:
+          type: string
+    DeleteKYBDocumentDTO:
+      type: object
+      properties:
+        deleteDocumentMessage:
+          type: string
+          description: Message indicating if the document was deleted successfully
+    UpdateShareholderDocumentDTO:
+      title: UpdateShareholderDocumentDTO
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: external id of the identification document
+        frontSideDocStatus:
+          type: string
+          description: front status of the identification document
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        backSideDocStatus:
+          type: string
+          description: back status of the identification document
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        errorMessage:
+          type: string
+          description: errorMessage of the identification document
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
+    ComplianceUserStatusUpdateDTO:
+      title: ComplianceUserStatusUpdateDTO
+      type: object
+      properties:
+        userId:
+          type: string
+          description: user id
+        customerId:
+          type: string
+          description: customer id
+        clientId:
+          type: string
+          description: client id
+        status:
+          type: string
+          description: user compliance status
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    DirectorDTO:
+      title: DirectorDTO
+      type: object
+      properties:
+        userId:
+          type: string
+          description: User id
+        status:
+          type: string
+          description: User compliance status
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+    UpdateUserDocumentsDTO:
+      title: UpdateUserDocumentsDTO
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
     ComplianceResponseDTO:
       title: ComplianceResponseDTO
       type: object
@@ -543,307 +844,6 @@ components:
               type: array
               items:
                 type: string
-    DirectorDTO:
-      title: DirectorDTO
-      type: object
-      properties:
-        userId:
-          type: string
-          description: User id
-        status:
-          type: string
-          description: User compliance status
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-    UpdateComplianceDTO:
-      type: object
-      properties:
-        businessDetailsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        supportingDocumentsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        boardOfDirectorsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        shareholdersStatus:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - COMPLETED
-        overallComplianceStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-    UpdateShareholderDocumentDTO:
-      title: UpdateShareholderDocumentDTO
-      type: object
-      properties:
-        externalId:
-          type: string
-          description: external id of the identification document
-        frontSideDocStatus:
-          type: string
-          description: front status of the identification document
-          enum:
-          - IN_PROGRESS
-          - UNDER_REVIEW
-          - COMPLETED
-          - DECLINED
-        backSideDocStatus:
-          type: string
-          description: back status of the identification document
-          enum:
-          - IN_PROGRESS
-          - UNDER_REVIEW
-          - COMPLETED
-          - DECLINED
-        errorMessage:
-          type: string
-          description: errorMessage of the identification document
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/StatusDocumentDTO'
-    DeleteKYBDocumentDTO:
-      type: object
-      properties:
-        deleteDocumentMessage:
-          type: string
-          description: Message indicating if the document was deleted successfully
-    UpdateUserDocumentsDTO:
-      title: UpdateUserDocumentsDTO
-      type: object
-      properties:
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/StatusDocumentDTO'
-    UpdateCompanyKyxDocumentsDTO:
-      title: UpdateCompanyKyxDocumentsDTO
-      type: object
-      properties:
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/StatusDocumentDTO'
-    ComplianceStatusUpdateDTO:
-      title: ComplianceStatusUpdateDTO
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        accountId:
-          type: integer
-        directors:
-          type: array
-          items:
-            $ref: '#/components/schemas/DirectorDTO'
-        finalisedManually:
-          type: boolean
-        clientId:
-          type: string
-          description: Client id
-    ComplianceStatusDTO:
-      type: object
-      properties:
-        businessDetailsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        supportingDocumentsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        boardOfDirectorsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        shareholdersStatus:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - COMPLETED
-        overallComplianceStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-    StatusDocumentDTO:
-      title: StatusDocumentDTO
-      type: object
-      properties:
-        id:
-          type: string
-          description: id of the document
-        externalId:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - UNDER_REVIEW
-          - COMPLETED
-          - DECLINED
-        errorMessage:
-          type: string
-    ComplianceUserStatusUpdateDTO:
-      title: ComplianceUserStatusUpdateDTO
-      type: object
-      properties:
-        userId:
-          type: string
-          description: user id
-        customerId:
-          type: string
-          description: customer id
-        clientId:
-          type: string
-          description: client id
-        status:
-          type: string
-          description: user compliance status
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
   securitySchemes:
     clientCredentials:
       type: oauth2

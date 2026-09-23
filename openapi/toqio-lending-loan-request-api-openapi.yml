@@ -159,59 +159,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    AccountInformation:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        currencyISOCode:
-          type: string
-        accountNumber:
-          type: string
-        sortCode:
-          type: string
-        iban:
-          type: string
-        bic:
-          type: string
-    Phone:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        countryISOCode:
-          type: string
-        intnlPhoneNumber:
-          type: string
-    SignificantPerson:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        type:
-          type: string
-          enum:
-          - DIRECTOR
-          - SHAREHOLDER
-          - BENEFICIAL_OWNER
-        address:
-          type: string
-        dateOfBirth:
-          type: string
-        emailAddress:
-          type: string
-        phone:
-          $ref: '#/components/schemas/Phone'
-        nationality:
-          type: string
-        documentNumber:
-          type: string
     LendingRequestFilter:
       type: object
       properties:
@@ -235,60 +182,13 @@ components:
           - CONTRACT_SIGNED
         merchantId:
           type: string
-    MerchantInformation:
+    Document:
       type: object
       properties:
-        id:
+        base64:
           type: string
         name:
           type: string
-        type:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-        countryISOCode:
-          type: string
-        registeredAddress:
-          type: string
-        monthsTrading:
-          type: string
-        keyContactName:
-          type: string
-        keyContactPhoneNumber:
-          $ref: '#/components/schemas/Phone'
-        keyContactEmailAddress:
-          type: string
-        significantPeople:
-          type: array
-          items:
-            $ref: '#/components/schemas/SignificantPerson'
-        sales:
-          $ref: '#/components/schemas/Document'
-    ToqioHttpOkLendingRequestBaseResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/LendingRequestBaseRequest'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     LoanInformation:
       type: object
       properties:
@@ -329,12 +229,112 @@ components:
           $ref: '#/components/schemas/MerchantInformation'
         submissionDate:
           type: string
-    Document:
+    Phone:
       type: object
       properties:
-        base64:
+        phoneNumber:
+          type: string
+        countryISOCode:
+          type: string
+        intnlPhoneNumber:
+          type: string
+    SignificantPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        type:
+          type: string
+          enum:
+          - DIRECTOR
+          - SHAREHOLDER
+          - BENEFICIAL_OWNER
+        address:
+          type: string
+        dateOfBirth:
+          type: string
+        emailAddress:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Phone'
+        nationality:
+          type: string
+        documentNumber:
+          type: string
+    ToqioHttpOkLendingRequestBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LendingRequestBaseRequest'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    MerchantInformation:
+      type: object
+      properties:
+        id:
           type: string
         name:
+          type: string
+        type:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        countryISOCode:
+          type: string
+        registeredAddress:
+          type: string
+        monthsTrading:
+          type: string
+        keyContactName:
+          type: string
+        keyContactPhoneNumber:
+          $ref: '#/components/schemas/Phone'
+        keyContactEmailAddress:
+          type: string
+        significantPeople:
+          type: array
+          items:
+            $ref: '#/components/schemas/SignificantPerson'
+        sales:
+          $ref: '#/components/schemas/Document'
+    AccountInformation:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        currencyISOCode:
+          type: string
+        accountNumber:
+          type: string
+        sortCode:
+          type: string
+        iban:
+          type: string
+        bic:
           type: string
   securitySchemes:
     bearerAuth:

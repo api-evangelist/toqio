@@ -319,120 +319,6 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    UpdateBeneficiaryViaAPI:
-      title: UpdateBeneficiaryViaAPI
-      type: object
-      description: 'Request body for the Update Beneficiary operation. Identical to SaveBeneficiaryViaAPI except that all bank-account detail fields are read-only: they are captured at creation and cannot be modified on update. Any value supplied for a read-only field is ignored and the stored value is preserved.'
-      properties:
-        companyId:
-          type: string
-          description: The id of the client
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-        addressCity:
-          maxLength: 100
-          type: string
-        addressIsoCountry:
-          maxLength: 100
-          type: string
-        addressPostalCode:
-          maxLength: 100
-          type: string
-        addressStreet:
-          maxLength: 1000
-          type: string
-        assetType:
-          type: string
-          readOnly: true
-          description: Immutable. Set at creation and ignored on update.
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        bank:
-          type: string
-          readOnly: true
-          description: Immutable. Name of the beneficiary bank, set at creation and ignored on update.
-        bankCountry:
-          type: string
-          readOnly: true
-          description: Immutable. Country of the beneficiary bank, set at creation and ignored on update.
-        bicSwift:
-          type: string
-          readOnly: true
-          description: Immutable. Set at creation and ignored on update.
-        accountNumber:
-          type: string
-          readOnly: true
-          description: Immutable. For US, Australian and Canadian accounts. Set at creation and ignored on update.
-        bsbCode:
-          type: string
-          readOnly: true
-          description: Immutable. Just for Australian accounts. Set at creation and ignored on update.
-        caRoutingNumber:
-          type: string
-          readOnly: true
-          description: Immutable. Just for Canadian accounts. Set at creation and ignored on update.
-        iban:
-          type: string
-          readOnly: true
-          description: Immutable. Set at creation and ignored on update.
-        routingNumber:
-          type: string
-          readOnly: true
-          description: Immutable. Just for US accounts. Set at creation and ignored on update.
-        clabe:
-          type: string
-          readOnly: true
-          description: Immutable. Mexican CLABE (18 digits), required for Mexican accounts (bankCountry MX). Set at creation and ignored on update.
-        ifsc:
-          type: string
-          readOnly: true
-          description: Immutable. Indian IFSC code, required for Indian accounts (bankCountry IN). Set at creation and ignored on update.
-        cnaps:
-          type: string
-          readOnly: true
-          description: Immutable. Chinese CNAPS code for Chinese accounts (bankCountry CN). Set at creation and ignored on update.
-        ukAccountNumber:
-          pattern: ^(\d){7,8}$
-          type: string
-          readOnly: true
-          description: Immutable. Just for UK accounts. Set at creation and ignored on update.
-        ukSortCode:
-          pattern: ^[0-9]{6}$
-          type: string
-          readOnly: true
-          description: Immutable. Just for UK accounts. Set at creation and ignored on update.
-        firstName:
-          maxLength: 100
-          pattern: ^[ÑA-Zña-z0-9.\s-]+$
-          type: string
-          description: required if type is PERSON
-        lastName:
-          maxLength: 100
-          pattern: ^[ÑA-Zña-z0-9.\s-]+$
-          type: string
-          description: required if type is PERSON
-        name:
-          maxLength: 60
-          type: string
-          description: required if type is COMPANY
-        visible:
-          type: boolean
-          description: allows a user to display or not a beneficiary. True by default
-          default: true
-          example: true
     SaveBeneficiaryViaAPI:
       title: SaveBeneficiaryViaAPI
       required:
@@ -614,6 +500,120 @@ components:
         cnaps:
           type: string
           description: This field only affects Currencycloud user
+    UpdateBeneficiaryViaAPI:
+      title: UpdateBeneficiaryViaAPI
+      type: object
+      description: 'Request body for the Update Beneficiary operation. Identical to SaveBeneficiaryViaAPI except that all bank-account detail fields are read-only: they are captured at creation and cannot be modified on update. Any value supplied for a read-only field is ignored and the stored value is preserved.'
+      properties:
+        companyId:
+          type: string
+          description: The id of the client
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
+        assetType:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bank:
+          type: string
+          readOnly: true
+          description: Immutable. Name of the beneficiary bank, set at creation and ignored on update.
+        bankCountry:
+          type: string
+          readOnly: true
+          description: Immutable. Country of the beneficiary bank, set at creation and ignored on update.
+        bicSwift:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        accountNumber:
+          type: string
+          readOnly: true
+          description: Immutable. For US, Australian and Canadian accounts. Set at creation and ignored on update.
+        bsbCode:
+          type: string
+          readOnly: true
+          description: Immutable. Just for Australian accounts. Set at creation and ignored on update.
+        caRoutingNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Just for Canadian accounts. Set at creation and ignored on update.
+        iban:
+          type: string
+          readOnly: true
+          description: Immutable. Set at creation and ignored on update.
+        routingNumber:
+          type: string
+          readOnly: true
+          description: Immutable. Just for US accounts. Set at creation and ignored on update.
+        clabe:
+          type: string
+          readOnly: true
+          description: Immutable. Mexican CLABE (18 digits), required for Mexican accounts (bankCountry MX). Set at creation and ignored on update.
+        ifsc:
+          type: string
+          readOnly: true
+          description: Immutable. Indian IFSC code, required for Indian accounts (bankCountry IN). Set at creation and ignored on update.
+        cnaps:
+          type: string
+          readOnly: true
+          description: Immutable. Chinese CNAPS code for Chinese accounts (bankCountry CN). Set at creation and ignored on update.
+        ukAccountNumber:
+          pattern: ^(\d){7,8}$
+          type: string
+          readOnly: true
+          description: Immutable. Just for UK accounts. Set at creation and ignored on update.
+        ukSortCode:
+          pattern: ^[0-9]{6}$
+          type: string
+          readOnly: true
+          description: Immutable. Just for UK accounts. Set at creation and ignored on update.
+        firstName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        lastName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        name:
+          maxLength: 60
+          type: string
+          description: required if type is COMPANY
+        visible:
+          type: boolean
+          description: allows a user to display or not a beneficiary. True by default
+          default: true
+          example: true
   securitySchemes:
     clientCredentials:
       type: oauth2

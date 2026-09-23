@@ -11,12 +11,12 @@ servers:
 - url: https://api.toq.io/wallet/api
   description: Production environment
 tags:
-- name: Account information
+- name: Account Information
 paths:
   /customers/{customerId}/accounts:
     post:
       tags:
-      - Account information
+      - Account Information
       summary: Create account
       description: Allows to create a new account
       operationId: createAccountUsingPOST_1
@@ -55,7 +55,7 @@ paths:
   /customers/{customerId}/products:
     post:
       tags:
-      - Account information
+      - Account Information
       summary: Create product
       description: Creates a new product for the customer, optionally linked to a banking provider, a ledger type and a marketplace. Products are the catalog entries clients are enrolled in and define which partner products and account types are available to them.
       operationId: createProduct
@@ -88,7 +88,7 @@ paths:
       deprecated: false
     get:
       tags:
-      - Account information
+      - Account Information
       summary: Get products
       description: Returns the list of products for the customer, optionally filtered by banking provider, visibility flag, ledger type or marketplace key. All filter parameters are optional; when omitted, the full catalog visible to the customer is returned.
       operationId: getProducts
@@ -138,7 +138,7 @@ paths:
   /customers/{customerId}/accounts/{accountId}:
     put:
       tags:
-      - Account information
+      - Account Information
       summary: Cancel account
       description: Allows to cancel a given account
       operationId: deleteAccountViaAPIUsingPUT
@@ -175,7 +175,7 @@ paths:
       deprecated: true
     get:
       tags:
-      - Account information
+      - Account Information
       summary: Get account
       description: Allows to get the details of an account for a given client
       operationId: getAccountUsingGET
@@ -209,7 +209,7 @@ paths:
   /customers/{customerId}/clients/{clientId}/partnerProducts:
     get:
       tags:
-      - Account information
+      - Account Information
       summary: Get partner products
       description: Allows to get the partner products of a given client
       operationId: getPartnerProductsUsingGET_1
@@ -258,7 +258,7 @@ paths:
   /customers/{customerId}/merchant/{companyId}/accounts/{accountId}/alias:
     put:
       tags:
-      - Account information
+      - Account Information
       summary: Update account alias
       description: Updates the alias of an account for a specific merchant.
       operationId: updateAccountAlias
@@ -307,7 +307,7 @@ paths:
   /customers/{customerId}/accounts/{accountId}/readOnly/{readOnly}:
     put:
       tags:
-      - Account information
+      - Account Information
       summary: Update Account Read Only
       description: Allows to update a certain account to readOnly
       operationId: updateAccountReadOnlyStatus
@@ -351,7 +351,7 @@ paths:
   /customers/{customerId}/products/{productId}:
     put:
       tags:
-      - Account information
+      - Account Information
       summary: Update product details
       description: Updates the metadata of an existing product (name, description, image, visibility). Products group the partner products that a client can be enrolled in and drive the catalog displayed in the onboarding and account-opening flows.
       operationId: updateProduct
@@ -391,6 +391,124 @@ paths:
       deprecated: false
 components:
   schemas:
+    UpdateProductRequest:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        description:
+          $ref: '#/components/schemas/I18nLabel'
+        visible:
+          type: boolean
+        productImageBase64:
+          type: string
+        productImageName:
+          type: string
+    PartnerProductDTO:
+      type: object
+      properties:
+        assetType:
+          deprecated: true
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+          - CZK
+          - DKK
+          - HUF
+          - PLN
+          - RON
+        assetTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - aud
+            - chf
+            - cad
+            - sek
+            - usd
+            - nok
+            - jpy
+            - nzd
+            - gold
+            - gbp
+            - eur
+            - czk
+            - dkk
+            - huf
+            - pln
+            - ron
+            - ils
+            - rub
+            - bhd
+            - sar
+            - bgn
+            - kes
+            - sgd
+            - kwd
+            - zar
+            - cny
+            - myr
+            - hrk
+            - mxn
+            - thb
+            - try
+            - omr
+            - ugx
+            - hkd
+            - php
+            - aed
+            - inr
+            - qar
+            - idr
+            - points
+        code:
+          type: string
+        correspondentBank:
+          type: string
+        correspondentBankAddress:
+          type: string
+        correspondentBankSWIFT:
+          type: string
+        holderBank:
+          type: string
+        holderBankAddress:
+          type: string
+        holderBankSWIFT:
+          type: string
+        label:
+          type: object
+          properties:
+            de:
+              type: string
+            default:
+              type: string
+            en:
+              type: string
+            es:
+              type: string
+          title: I18nLabel
+        schemes:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+            title: BankPaymentScheme
+      title: PartnerProductDTO
     PartnerProductResponse:
       type: object
       properties:
@@ -544,37 +662,6 @@ components:
       - assetType
       - label
       - schemes
-    I18nLabel:
-      type: object
-      properties:
-        en:
-          type: string
-        es:
-          type: string
-        zh:
-          type: string
-      title: I18nLabel
-    ProductDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        bankingProvider:
-          type: string
-        customerId:
-          type: string
-        ledgerTypeId:
-          type: string
-        visible:
-          type: boolean
-        marketplaceKey:
-          type: string
-        name:
-          $ref: '#/components/schemas/I18nLabel'
-        description:
-          $ref: '#/components/schemas/I18nLabel'
-        partnerProduct:
-          $ref: '#/components/schemas/PartnerProductResponse'
     CreateProductDTO:
       type: object
       properties:
@@ -596,161 +683,27 @@ components:
           type: string
         productImageName:
           type: string
-    PartnerProductDTO:
+    I18nLabel:
       type: object
       properties:
-        assetType:
-          deprecated: true
+        en:
           type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-          - CZK
-          - DKK
-          - HUF
-          - PLN
-          - RON
-        assetTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - aud
-            - chf
-            - cad
-            - sek
-            - usd
-            - nok
-            - jpy
-            - nzd
-            - gold
-            - gbp
-            - eur
-            - czk
-            - dkk
-            - huf
-            - pln
-            - ron
-            - ils
-            - rub
-            - bhd
-            - sar
-            - bgn
-            - kes
-            - sgd
-            - kwd
-            - zar
-            - cny
-            - myr
-            - hrk
-            - mxn
-            - thb
-            - try
-            - omr
-            - ugx
-            - hkd
-            - php
-            - aed
-            - inr
-            - qar
-            - idr
-            - points
-        code:
+        es:
           type: string
-        correspondentBank:
+        zh:
           type: string
-        correspondentBankAddress:
-          type: string
-        correspondentBankSWIFT:
-          type: string
-        holderBank:
-          type: string
-        holderBankAddress:
-          type: string
-        holderBankSWIFT:
-          type: string
-        label:
-          type: object
-          properties:
-            de:
-              type: string
-            default:
-              type: string
-            en:
-              type: string
-            es:
-              type: string
-          title: I18nLabel
-        schemes:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              name:
-                type: string
-            title: BankPaymentScheme
-      title: PartnerProductDTO
-    CreateAccountDTO:
+      title: I18nLabel
+    UpdateAccountAliasDataDTO:
       type: object
+      title: UpdateAccountAliasDataDTO
       required:
       - alias
-      - assetType
-      - companyId
-      - userId
-      - bankingProvider
-      - productId
       properties:
-        accountType:
-          type: string
-          description: Account type refers to the partner product of the account. To see available partner products use the partner product endpoint detailed in this documentation
-          deprecated: true
         alias:
           type: string
-          description: Account alias
-          maximum: 25
-        assetType:
-          type: string
-          description: Currency of your account
-          example: GBP
-        readOnly:
-          type: boolean
-        companyId:
-          type: string
-          description: Identification of the company the account will belong to
-        userId:
-          type: string
-          description: Identification of the user
-        bankingProvider:
-          type: string
-          description: 'Banking provider of the account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD'
-        productId:
-          type: string
-          description: Identification of the product the account will belong to
-      title: CreateAccountViaAPIDTO
-    UpdateProductRequest:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/I18nLabel'
-        description:
-          $ref: '#/components/schemas/I18nLabel'
-        visible:
-          type: boolean
-        productImageBase64:
-          type: string
-        productImageName:
-          type: string
+          description: The new alias for the account.
+          minLength: 4
+          maxLength: 25
     ViewAccountDTO:
       type: object
       properties:
@@ -850,17 +803,64 @@ components:
           type: string
           description: This only affects to Currency Cloud users
       title: ViewAccountDTO
-    UpdateAccountAliasDataDTO:
+    CreateAccountDTO:
       type: object
-      title: UpdateAccountAliasDataDTO
       required:
       - alias
+      - assetType
+      - companyId
+      - userId
+      - bankingProvider
+      - productId
       properties:
+        accountType:
+          type: string
+          description: Account type refers to the partner product of the account. To see available partner products use the partner product endpoint detailed in this documentation
+          deprecated: true
         alias:
           type: string
-          description: The new alias for the account.
-          minLength: 4
-          maxLength: 25
+          description: Account alias
+          maximum: 25
+        assetType:
+          type: string
+          description: Currency of your account
+          example: GBP
+        readOnly:
+          type: boolean
+        companyId:
+          type: string
+          description: Identification of the company the account will belong to
+        userId:
+          type: string
+          description: Identification of the user
+        bankingProvider:
+          type: string
+          description: 'Banking provider of the account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD'
+        productId:
+          type: string
+          description: Identification of the product the account will belong to
+      title: CreateAccountViaAPIDTO
+    ProductDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        bankingProvider:
+          type: string
+        customerId:
+          type: string
+        ledgerTypeId:
+          type: string
+        visible:
+          type: boolean
+        marketplaceKey:
+          type: string
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        description:
+          $ref: '#/components/schemas/I18nLabel'
+        partnerProduct:
+          $ref: '#/components/schemas/PartnerProductResponse'
   securitySchemes:
     clientCredentials:
       type: oauth2

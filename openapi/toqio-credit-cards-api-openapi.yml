@@ -299,33 +299,33 @@ paths:
                     $ref: '#/components/schemas/ScheduledCreditPaymentIdResponse'
 components:
   schemas:
+    CreditStatementResponse:
+      type: object
+      description: Credit card billing statement
+    ExternalAccountLinkBodyRequest:
+      type: object
+      description: Request to link external account
+    SchedulePaymentCardRequest:
+      type: object
+      description: Request to schedule credit card payment
+    ScheduleAutopayRequest:
+      type: object
+      description: Request to set up automatic payments
+    ScheduledCreditPaymentIdResponse:
+      type: object
+      description: Scheduled payment identifier
     ExternalAccountsResponse:
       type: object
       description: External bank account linked to credit card
     CreditDetailsRequest:
       type: object
       description: Credit card account details
-    ExternalAccountLinkBodyRequest:
-      type: object
-      description: Request to link external account
-    ScheduledCreditPaymentIdResponse:
-      type: object
-      description: Scheduled payment identifier
-    SchedulePaymentCardRequest:
-      type: object
-      description: Request to schedule credit card payment
-    CreditStatementResponse:
-      type: object
-      description: Credit card billing statement
-    ScheduleAutopayRequest:
-      type: object
-      description: Request to set up automatic payments
-    ScheduledCreditPaymentsResponse:
-      type: object
-      description: Scheduled credit card payment
     PartnerTokenResponse:
       type: object
       description: Partner integration token
+    ScheduledCreditPaymentsResponse:
+      type: object
+      description: Scheduled credit card payment
   parameters:
     customerId:
       name: customerId

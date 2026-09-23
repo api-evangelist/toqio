@@ -768,210 +768,6 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    ViewFileDTO:
-      title: ViewFileDTO
-      type: object
-      properties:
-        data:
-          type: string
-        mime:
-          type: string
-        name:
-          type: string
-    InvoiceLineDTO:
-      title: InvoiceLineDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        description:
-          type: string
-        id:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-    PageAndSort:
-      title: PageAndSort
-      type: object
-      properties:
-        hasNextPage:
-          type: boolean
-        hasPreviousPage:
-          type: boolean
-        pageNumber:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        sortingCriteria:
-          type: string
-        totalNumberOfPages:
-          type: integer
-          format: int32
-        totalNumberOfRecords:
-          type: integer
-          format: int64
-    QuoteRequestDTO:
-      title: QuoteRequestDTO
-      type: object
-      required:
-      - amount
-      - beneficiaryCurrency
-      - fixedSide
-      - sourceCurrency
-      properties:
-        amount:
-          type: number
-          format: double
-          example: 3.45
-        beneficiaryCurrency:
-          type: string
-          example: EUR
-        fixedSide:
-          type: string
-          enum:
-          - BENEFICIARY
-          - SENDER
-        sourceCurrency:
-          type: string
-          example: GBP
-    ExecuteFourEyesDTO:
-      title: ExecuteFourEyesDTO
-      type: object
-      required:
-      - transactionId
-      properties:
-        transactionId:
-          type: string
-          description: Identifier of the pending-approval transaction to execute
-    TransactionFileDTO:
-      title: TransactionFileDTO
-      type: object
-      properties:
-        extension:
-          type: string
-        fileUrl:
-          type: string
-        id:
-          type: string
-        invoiceId:
-          type: string
-        key:
-          type: string
-        mime:
-          type: string
-        name:
-          type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
-          type: string
-    BankPaymentScheme:
-      title: BankPaymentScheme
-      type: object
-      additionalProperties: true
-      properties:
-        code:
-          type: string
-          enum:
-          - SEPA
-          - SEPA_INSTANT
-          - INTERLEDGER
-          - SWIFT
-          - UK_FASTER_PAYMENTS
-          - CHAPS
-          - FX
-          - BACS
-          - TARGET2
-          - SPEI
-          - AUS_PAY_NET
-          - EFT
-          - NCS
-          - CERTIS
-          - STRAKSCLEARING_INSTANT
-          - INTRADAGCLEARING
-          - CHATS
-          - GIRO_ZRT
-          - IMPS
-          - NEFT
-          - SKN
-          - IBG
-          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
-          - PESONET
-          - ELIXIR
-          - TRANSFOND_SENT_ACH
-          - FAST
-          - INTERNAL_TRANSFER
-          - RIX
-          - FEDACH
-          - FEDWIRE
-          - CHIPS
-        name:
-          type: string
-    InvoiceDataDTO:
-      title: InvoiceDataDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        cif:
-          type: string
-        discountAmount:
-          type: number
-          format: double
-        discountPercentage:
-          type: number
-          format: double
-        dueDate:
-          type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionFileDTO'
-        hasInvoice:
-          type: boolean
-        id:
-          type: string
-        invoiceDate:
-          type: string
-        invoiceNumber:
-          type: string
-        isTotalWithoutVatEdited:
-          type: boolean
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceLineDTO'
-        postalCode:
-          type: string
-        supplier:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-    TagDTO:
-      title: TagDTO
-      type: object
-      properties:
-        id:
-          type: string
-          description: Tag ID
-          example: 5c473c5046e0fb0005c436af
-        name:
-          type: string
-          description: Tag name
-          example: My tag
     ViewTransactionDetailDTO:
       title: ViewTransactionDetailDTO
       type: object
@@ -1179,6 +975,23 @@ components:
             settlementDate:
               type: string
               format: date-time
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        id:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
     QuoteCurrencyPairDTO:
       title: QuoteCurrencyPairDTO
       type: object
@@ -1196,111 +1009,6 @@ components:
         sourceCurrencyAmount:
           type: number
           format: double
-    TranslateLabel:
-      title: TranslateLabel
-      type: object
-      properties:
-        de:
-          type: string
-        en:
-          type: string
-        es:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
-    PaginatedTransactionDTO:
-      title: PaginatedTransactionDTO
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionListItemDTO'
-        paging:
-          $ref: '#/components/schemas/PageAndSort'
-        total:
-          type: number
-          format: double
-    TxAccount:
-      title: TxAccount
-      type: object
-      properties:
-        accountAlias:
-          type: string
-        accountNumber:
-          type: string
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        bank:
-          type: string
-        bicSwift:
-          type: string
-        bsbCode:
-          type: string
-        caRoutingNumber:
-          type: string
-        clabe:
-          type: string
-        cnaps:
-          type: string
-        fullName:
-          type: string
-        iban:
-          type: string
-        id:
-          type: string
-        ifsc:
-          type: string
-        name:
-          type: string
-        routingNumber:
-          type: string
-        type:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        purposeCode:
-          type: string
-        paymentProviderDetails:
-          type: object
-          properties:
-            shortReference:
-              type: string
-            internalReference:
-              type: string
-            paymentId:
-              type: string
-            conversionId:
-              type: string
-            rate:
-              type: string
-            settlementDate:
-              type: string
-              format: date-time
     TransactionListItemDTO:
       title: TransactionListItemDTO
       type: object
@@ -1490,6 +1198,298 @@ components:
         billedTxId:
           type: string
           description: If billingTx is set to true, this field will appear in the tx
+    TxAccount:
+      title: TxAccount
+      type: object
+      properties:
+        accountAlias:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        ifsc:
+          type: string
+        name:
+          type: string
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
+          type: string
+        fileUrl:
+          type: string
+        id:
+          type: string
+        invoiceId:
+          type: string
+        key:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+    TranslateLabel:
+      title: TranslateLabel
+      type: object
+      properties:
+        de:
+          type: string
+        en:
+          type: string
+        es:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    BankPaymentScheme:
+      title: BankPaymentScheme
+      type: object
+      additionalProperties: true
+      properties:
+        code:
+          type: string
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        name:
+          type: string
+    ExecuteFourEyesDTO:
+      title: ExecuteFourEyesDTO
+      type: object
+      required:
+      - transactionId
+      properties:
+        transactionId:
+          type: string
+          description: Identifier of the pending-approval transaction to execute
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        cif:
+          type: string
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
+        id:
+          type: string
+        invoiceDate:
+          type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    ViewFileDTO:
+      title: ViewFileDTO
+      type: object
+      properties:
+        data:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+    QuoteRequestDTO:
+      title: QuoteRequestDTO
+      type: object
+      required:
+      - amount
+      - beneficiaryCurrency
+      - fixedSide
+      - sourceCurrency
+      properties:
+        amount:
+          type: number
+          format: double
+          example: 3.45
+        beneficiaryCurrency:
+          type: string
+          example: EUR
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        sourceCurrency:
+          type: string
+          example: GBP
+    PageAndSort:
+      title: PageAndSort
+      type: object
+      properties:
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        sortingCriteria:
+          type: string
+        totalNumberOfPages:
+          type: integer
+          format: int32
+        totalNumberOfRecords:
+          type: integer
+          format: int64
+    PaginatedTransactionDTO:
+      title: PaginatedTransactionDTO
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionListItemDTO'
+        paging:
+          $ref: '#/components/schemas/PageAndSort'
+        total:
+          type: number
+          format: double
+    TagDTO:
+      title: TagDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
+          type: string
+          description: Tag name
+          example: My tag
   securitySchemes:
     clientCredentials:
       type: oauth2

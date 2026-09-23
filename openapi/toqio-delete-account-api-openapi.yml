@@ -17,7 +17,7 @@ paths:
     delete:
       tags:
       - Delete Account
-      summary: Allows cancelling or removing a specified account. A cancelled account remains visible in the UI, while a removed account is no longer shown
+      summary: Allows cancelling or removing a specified account.
       description: Allows to cancel or delete a given account
       operationId: deleteAccountStatusViaAPIUsingDELETE
       parameters:

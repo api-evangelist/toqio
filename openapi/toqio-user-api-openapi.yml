@@ -196,7 +196,7 @@ paths:
       tags:
       - User
       summary: Create user
-      description: 'Allows to create a user under a client '
+      description: Allows to create a user under a client
       operationId: inviteUser
       parameters:
       - name: customerId
@@ -226,15 +226,6 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    TNCVersion:
-      type: object
-      properties:
-        dateUpdated:
-          type: string
-          format: date-time
-        version:
-          type: string
-      title: TNCVersion
     CardAddress:
       type: object
       properties:
@@ -395,23 +386,6 @@ components:
           type: string
         email:
           type: string
-    Firebase:
-      type: object
-      properties:
-        registrationToken:
-          type: string
-        updatedAt:
-          type: string
-          format: date-time
-    PushSettings:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        pendingActions:
-          type: boolean
-        suggestions:
-          type: boolean
     UserInviteDTO:
       type: object
       required:
@@ -518,6 +492,32 @@ components:
           type: boolean
         thirdParties:
           type: boolean
+    PushSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        pendingActions:
+          type: boolean
+        suggestions:
+          type: boolean
+    Firebase:
+      type: object
+      properties:
+        registrationToken:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+    TNCVersion:
+      type: object
+      properties:
+        dateUpdated:
+          type: string
+          format: date-time
+        version:
+          type: string
+      title: TNCVersion
   securitySchemes:
     clientCredentials:
       type: oauth2

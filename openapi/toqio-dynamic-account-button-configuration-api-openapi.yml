@@ -154,16 +154,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    DynamicAccountButtonDTO:
-      type: object
-      properties:
-        texts:
-          $ref: '#/components/schemas/I18nLabel'
-        marketplaceKey:
-          type: string
-      required:
-      - texts
-      - marketplaceKey
     I18nLabel:
       type: object
       properties:
@@ -174,6 +164,16 @@ components:
         zh:
           type: string
       title: I18nLabel
+    DynamicAccountButtonDTO:
+      type: object
+      properties:
+        texts:
+          $ref: '#/components/schemas/I18nLabel'
+        marketplaceKey:
+          type: string
+      required:
+      - texts
+      - marketplaceKey
   securitySchemes:
     clientCredentials:
       type: oauth2

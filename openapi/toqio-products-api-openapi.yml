@@ -120,6 +120,21 @@ components:
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
           type: string
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
     ProductChangeNotificationRequest:
       type: object
       description: Request payload for notifying product changes from Toqio to the integrations. This endpoint is called BY Integration Hub TO the banking provider integration to synchronize product information. The integration should implement this endpoint to receive product updates (upserts) and deletions.
@@ -155,46 +170,6 @@ components:
         deleteProductIds:
         - prod_old_123
         - prod_old_456
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     ProductNotificationItemDTO:
       type: object
       description: Individual product item in a product change notification. Contains essential product information needed for synchronization between Toqio and the connector. The integration should store these fields to maintain an accurate representation of the customer's products.
@@ -266,6 +241,31 @@ components:
         isCore: true
         productImageUrl: https://cdn.toqio.com/products/savings.png
         marketplaceKey: null
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http

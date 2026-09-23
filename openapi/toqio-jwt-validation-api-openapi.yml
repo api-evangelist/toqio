@@ -13,12 +13,12 @@ security:
   - read
   - write
 tags:
-- name: JWT validation
+- name: Jwt Validation
 paths:
   /customers/{customerId}/jwt/validate:
     post:
       tags:
-      - JWT validation
+      - Jwt Validation
       summary: Validate JWT token
       description: Validates a JWT token sent in the request body. Returns validation status and error message if invalid.
       operationId: validateJWTSecure
@@ -55,15 +55,6 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    JwtValidationRequestDTO:
-      title: JwtValidationRequestDTO
-      type: object
-      required:
-      - jwt
-      properties:
-        jwt:
-          type: string
-          description: The JWT token to validate
     JwtValidationDTO:
       title: JwtValidationDTO
       type: object
@@ -73,6 +64,15 @@ components:
         errorMessage:
           type: string
           description: errorMessage will only provide a value if valid is false
+    JwtValidationRequestDTO:
+      title: JwtValidationRequestDTO
+      type: object
+      required:
+      - jwt
+      properties:
+        jwt:
+          type: string
+          description: The JWT token to validate
   securitySchemes:
     bearer-jwt:
       type: oauth2

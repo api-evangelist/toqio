@@ -143,6 +143,54 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
+    ToqioHttpOkHostedOnboardingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/HostedOnboardingResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    Director:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
+        countryOfResidence:
+          type: string
+        postalCode:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        email:
+          type: string
+          format: email
     CustomException:
       type: object
       properties:
@@ -166,6 +214,49 @@ components:
           type: string
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
+          type: string
+    UpdateClientRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        cif:
+          type: string
+        industryCode:
+          type: string
+          deprecated: true
+        businessCode:
+          type: string
+        endUserId:
+          type: string
+        citizenship:
+          type: string
+        docIdType:
+          type: string
+        docIdIssuedAt:
+          type: string
+          format: date-time
+        docIdNumber:
+          type: string
+        docIdCountry:
+          type: string
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+    HostedOnboardingRequest:
+      type: object
+      properties:
+        locale:
+          type: string
+          example: en-GB
+        redirectUrl:
+          type: string
+    HostedOnboardingResponse:
+      type: object
+      properties:
+        link:
           type: string
     SignUpRequest:
       type: object
@@ -261,92 +352,6 @@ components:
       - email
       - endUserId
       - registrationDate
-    HostedOnboardingRequest:
-      type: object
-      properties:
-        locale:
-          type: string
-          example: en-GB
-        redirectUrl:
-          type: string
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkHostedOnboardingResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/HostedOnboardingResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    HostedOnboardingResponse:
-      type: object
-      properties:
-        link:
-          type: string
-    Director:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
-        countryOfResidence:
-          type: string
-        postalCode:
-          type: string
-        address:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        email:
-          type: string
-          format: email
     CreateMerchantRequest:
       type: object
       properties:
@@ -438,36 +443,31 @@ components:
       - cif
       - name
       - subOrganisationType
-    UpdateClientRequest:
+    ToqioHttpOkVoidResponse:
       type: object
       properties:
-        id:
+        data:
+          type: object
+          writeOnly: true
+        code:
           type: string
-        cif:
+          example: OK
+        errorSeverity:
           type: string
-        industryCode:
+          example: NONE
+        message:
           type: string
-          deprecated: true
-        businessCode:
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
           type: string
-        endUserId:
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
           type: string
-        citizenship:
-          type: string
-        docIdType:
-          type: string
-        docIdIssuedAt:
-          type: string
-          format: date-time
-        docIdNumber:
-          type: string
-        docIdCountry:
-          type: string
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
+          example: '2024-08-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http

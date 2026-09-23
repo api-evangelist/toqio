@@ -293,16 +293,140 @@ paths:
                 $ref: '#/components/schemas/NotImplementedException'
 components:
   schemas:
+    InvalidConfigurationException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
     Iban:
       type: object
       properties:
         iban:
           type: string
-    ToqioHttpOkPairResponse:
+    TranslateLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        zh:
+          type: string
+    Invoice:
+      type: object
+      properties:
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        document_id:
+          type: string
+    UltimateSender:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bic:
+          type: string
+        id:
+          type: string
+        issuer:
+          type: string
+        name:
+          type: string
+        scheme:
+          type: string
+        birth_city:
+          type: string
+        birth_country:
+          type: string
+        birth_date:
+          type: string
+        birth_province:
+          type: string
+        scheme_proprietary:
+          type: string
+    PaymentProviderDetails:
+      type: object
+      properties:
+        shortReference:
+          type: string
+        internalReference:
+          type: string
+        paymentId:
+          type: string
+        conversionId:
+          type: string
+        settlementDate:
+          type: string
+          format: date-time
+        rate:
+          type: number
+          format: double
+    DynamicButtonConfiguration:
+      type: object
+      properties:
+        marketplaceKey:
+          type: string
+        texts:
+          $ref: '#/components/schemas/TranslateLabel'
+      required:
+      - marketplaceKey
+      - texts
+    Bic:
+      type: object
+      properties:
+        bic:
+          type: string
+    ToqioHttpOkQuoteCurrencyPairResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/PairStringToqioTransactionStatus'
+          $ref: '#/components/schemas/QuoteCurrencyPairResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkSyncTransactionResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SyncTransactionResponse'
         code:
           type: string
           example: OK
@@ -347,494 +471,20 @@ components:
           type: string
         scheme_proprietary:
           type: string
-    ToqioHttpOkFetchAllTransactionsInSpecifiedTimeRangeResponse:
+    QuoteCurrencyPairResponse:
       type: object
       properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FetchAllTransactionsInSpecifiedTimeRangeResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    Payer:
-      type: object
-      description: This class encapsulates all the necessary details about the payer (the user doing the transaction), for transaction processing. The payer object is used only in FX transactions (beneficiaryAssetType field not equals currency field) if the payment is external (not between own accounts)
-      properties:
-        companyOrganisationType:
-          type: string
-          description: Type of organization for the company.
-          enum:
-          - SOLE_TRADER
-          - LIMITED
-          - PARTNERSHIP
-          - CHARITY
-          - PUBLIC_LIMITED
-          - ASSOCIATION
-          - SUPPORT_GROUP
-          - NON_REG_PARTNERSHIP
-          - NOT_YET_REGISTERED
-          - REGISTERED
-          - NON_REGISTERED
-        companyType:
-          description: 'Type of the company. Possible values: `BUSINESS`, `CONSUMER`.'
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-        companyName:
-          description: Name of the company. This field stores the official name of the company of the user that makes the payment.
-          type: string
-        companyCreatedAt:
-          description: Date when the company was created. This field represents the date on which the company was created in the system.
-          type: string
-          format: date-time
-        companyNumber:
-          description: Identification number of the company. This field stores the unique identifier assigned to the company, such as a registration number.
-          type: string
-        firstName:
-          description: First name of the payer. This field stores the first name of the user who is making the payment.
-          type: string
-        lastName:
-          description: Last name of the payer. This field stores the last name of the user who is making the payment.
-          type: string
-        city:
-          description: City of the payer. This field stores the city where the user resides.
-          type: string
-        address:
-          description: Address of the payer. This field stores the street address of the user.
-          type: string
-        postalCode:
-          description: Postal code of the payer. This field stores the postal code of the user's address.
-          type: string
-        country:
-          description: Country of the payer. This field stores the country where the user resides.
-          type: string
-        dateOfBirth:
-          description: Date of birth of the payer. This field stores the date of birth of the user who is making the payment.
-          type: string
-        identificationType:
-          description: Type of identification of the payer. This field specifies the type of identification document provided by the payer, such as PASSPORT, IDENTITY_CARD, ID, DNI, etc.
-          type: string
-        identificationValue:
-          description: Value of the identification of the payer. This field stores the unique value or number of the identification document provided by the payer.
-          type: string
-    BankPaymentSchemeExtended:
-      type: object
-      properties:
-        code:
-          type: string
-    TranslateLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        zh:
-          type: string
-    Address:
-      type: object
-      properties:
-        country:
-          type: string
-        lines:
-          type: string
-    ToqioHttpOkIntegerResponse:
-      type: object
-      properties:
-        data:
-          type: integer
-          format: int32
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    PaymentProviderDetails:
-      type: object
-      properties:
-        shortReference:
-          type: string
-        internalReference:
-          type: string
-        paymentId:
-          type: string
-        conversionId:
-          type: string
-        settlementDate:
-          type: string
-          format: date-time
-        rate:
+        sourceCurrencyAmount:
           type: number
           format: double
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    Invoice:
-      type: object
-      properties:
-        description:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        document_id:
-          type: string
-    BeneficiaryBankPaymentScheme:
-      type: object
-      properties:
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        iban:
-          type: string
-        bicSwift:
-          type: string
-        bank:
-          type: string
-        bsbCode:
-          type: string
-        routingNumber:
-          type: string
-        caRoutingNumber:
-          type: string
-        accountNumber:
-          type: string
-        clabe:
-          type: string
-        aba:
-          type: string
-          deprecated: true
-        cnaps:
-          type: string
-        ifsc:
-          type: string
-        bankCode:
-          type: string
-          deprecated: true
-        branchCode:
-          type: string
-          deprecated: true
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-        assetType:
-          type: string
-          enum:
-          - aud
-          - chf
-          - cad
-          - sek
-          - usd
-          - nok
-          - jpy
-          - nzd
-          - gold
-          - gbp
-          - eur
-          - czk
-          - dkk
-          - huf
-          - pln
-          - ron
-          - ils
-          - rub
-          - bhd
-          - sar
-          - bgn
-          - kes
-          - sgd
-          - kwd
-          - zar
-          - cny
-          - myr
-          - hrk
-          - mxn
-          - thb
-          - try
-          - omr
-          - ugx
-          - hkd
-          - php
-          - aed
-          - inr
-          - qar
-          - idr
-          - points
-        name:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        addressStreet:
-          type: string
-        addressPostalCode:
-          type: string
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        bankCountry:
-          type: string
-        id:
-          type: string
-        userId:
-          type: string
-        companyId:
-          type: string
-        beneficiaryAccountId:
-          type: string
-        visible:
-          type: boolean
-        bankingProviderBeneficiaryId:
-          type: string
-        baasOTP:
-          type: string
-        operationId:
-          type: string
-        sourceAccount:
-          type: string
-        customerId:
-          type: string
-        fullName:
-          type: string
-        nameOrFullName:
-          type: string
-        fullAddress:
-          type: string
-        addressLine:
-          type: string
-    ToqioHttpOkQuoteCurrencyPairResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/QuoteCurrencyPairResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    Sender:
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        bic:
-          type: string
-        id:
-          type: string
-        issuer:
-          type: string
-        name:
-          type: string
-        scheme:
-          type: string
-        birth_city:
-          type: string
-        birth_country:
-          type: string
-        birth_date:
-          type: string
-        birth_province:
-          type: string
-        scheme_proprietary:
-          type: string
-    InvalidConfigurationException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    DynamicButtonConfiguration:
-      type: object
-      properties:
-        marketplaceKey:
-          type: string
-        texts:
-          $ref: '#/components/schemas/TranslateLabel'
-      required:
-      - marketplaceKey
-      - texts
-    Bic:
-      type: object
-      properties:
-        bic:
-          type: string
-    ToqioHttpOkSyncTransactionResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/SyncTransactionResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkStringResponse:
-      type: object
-      properties:
-        data:
-          type: string
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    Receiver:
-      type: object
-      properties:
-        address:
-          $ref: '#/components/schemas/Address'
-        bic:
-          type: string
-        id:
-          type: string
-        issuer:
-          type: string
-        name:
-          type: string
-        scheme:
-          type: string
-        birth_city:
-          type: string
-        birth_country:
-          type: string
-        birth_date:
-          type: string
-        birth_province:
-          type: string
-        scheme_proprietary:
-          type: string
-    QuoteRequest:
-      type: object
-      properties:
-        sourceCurrency:
-          type: string
+        beneficiaryCurrencyAmount:
+          type: number
+          format: double
         beneficiaryCurrency:
           type: string
-        fixedSide:
+        sourceCurrency:
           type: string
-          enum:
-          - BENEFICIARY
-          - SENDER
-        amount:
+        fxRate:
           type: number
           format: double
     FetchAllTransactionsInSpecifiedTimeRangeResponse:
@@ -1200,103 +850,31 @@ components:
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
           type: string
-    PairStringToqioTransactionStatus:
+    ToqioHttpOkVoidResponse:
       type: object
       properties:
-        value:
-          type: string
-          enum:
-          - FAILED
-          - PENDING
-          - ACCEPTED
-          - CANCELLED
-          - AUTHORIZED
-          - POSTED
-          - DECLINED
-          - VOIDED
-          - EXPIRED
-        key:
-          type: string
-        left:
-          type: string
-        right:
-          type: string
-          enum:
-          - FAILED
-          - PENDING
-          - ACCEPTED
-          - CANCELLED
-          - AUTHORIZED
-          - POSTED
-          - DECLINED
-          - VOIDED
-          - EXPIRED
-    QuoteCurrencyPairResponse:
-      type: object
-      properties:
-        sourceCurrencyAmount:
-          type: number
-          format: double
-        beneficiaryCurrencyAmount:
-          type: number
-          format: double
-        beneficiaryCurrency:
-          type: string
-        sourceCurrency:
-          type: string
-        fxRate:
-          type: number
-          format: double
-    DocumentNotFoundException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    ToqioHttpOkBankPaymentSchemeResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
         data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BankPaymentSchemeExtended'
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     TransactionInfo:
       type: object
       properties:
@@ -1364,27 +942,14 @@ components:
           $ref: '#/components/schemas/UltimateReceiver'
         ultimate_sender:
           $ref: '#/components/schemas/UltimateSender'
-    BankPaymentSchemeRequest:
+    Address:
       type: object
       properties:
-        sourceAccountId:
+        country:
           type: string
-        beneficiaryAccountId:
+        lines:
           type: string
-        beneficiary:
-          $ref: '#/components/schemas/BeneficiaryBankPaymentScheme'
-        amount:
-          type: number
-          format: double
-        clientId:
-          type: string
-        isFxTransaction:
-          type: boolean
-        areOwnAccounts:
-          type: boolean
-        canSeeFxPayments:
-          type: boolean
-    UltimateSender:
+    Receiver:
       type: object
       properties:
         address:
@@ -1409,6 +974,56 @@ components:
           type: string
         scheme_proprietary:
           type: string
+    ToqioHttpOkPairResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/PairStringToqioTransactionStatus'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    SenderAccount:
+      type: object
+      properties:
+        iban:
+          type: string
+        bic:
+          type: string
+        uk_account_number:
+          type: string
+        uk_sort_code:
+          type: string
+    QuoteRequest:
+      type: object
+      properties:
+        sourceCurrency:
+          type: string
+        beneficiaryCurrency:
+          type: string
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        amount:
+          type: number
+          format: double
     SaveTransferBaseRequest:
       required:
       - amount
@@ -1507,6 +1122,373 @@ components:
           - OUTBOUND_BANK_TRANSFER_DIRECT_DEBIT
         isExpense:
           type: boolean
+    Sender:
+      type: object
+      properties:
+        address:
+          $ref: '#/components/schemas/Address'
+        bic:
+          type: string
+        id:
+          type: string
+        issuer:
+          type: string
+        name:
+          type: string
+        scheme:
+          type: string
+        birth_city:
+          type: string
+        birth_country:
+          type: string
+        birth_date:
+          type: string
+        birth_province:
+          type: string
+        scheme_proprietary:
+          type: string
+    BankPaymentSchemeRequest:
+      type: object
+      properties:
+        sourceAccountId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        beneficiary:
+          $ref: '#/components/schemas/BeneficiaryBankPaymentScheme'
+        amount:
+          type: number
+          format: double
+        clientId:
+          type: string
+        isFxTransaction:
+          type: boolean
+        areOwnAccounts:
+          type: boolean
+        canSeeFxPayments:
+          type: boolean
+    PairStringToqioTransactionStatus:
+      type: object
+      properties:
+        value:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        key:
+          type: string
+        left:
+          type: string
+        right:
+          type: string
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+    ToqioHttpOkIntegerResponse:
+      type: object
+      properties:
+        data:
+          type: integer
+          format: int32
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkFetchAllTransactionsInSpecifiedTimeRangeResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FetchAllTransactionsInSpecifiedTimeRangeResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkStringResponse:
+      type: object
+      properties:
+        data:
+          type: string
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    BeneficiaryBankPaymentScheme:
+      type: object
+      properties:
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        iban:
+          type: string
+        bicSwift:
+          type: string
+        bank:
+          type: string
+        bsbCode:
+          type: string
+        routingNumber:
+          type: string
+        caRoutingNumber:
+          type: string
+        accountNumber:
+          type: string
+        clabe:
+          type: string
+        aba:
+          type: string
+          deprecated: true
+        cnaps:
+          type: string
+        ifsc:
+          type: string
+        bankCode:
+          type: string
+          deprecated: true
+        branchCode:
+          type: string
+          deprecated: true
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        assetType:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        name:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        addressStreet:
+          type: string
+        addressPostalCode:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        bankCountry:
+          type: string
+        id:
+          type: string
+        userId:
+          type: string
+        companyId:
+          type: string
+        beneficiaryAccountId:
+          type: string
+        visible:
+          type: boolean
+        bankingProviderBeneficiaryId:
+          type: string
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        sourceAccount:
+          type: string
+        customerId:
+          type: string
+        fullName:
+          type: string
+        nameOrFullName:
+          type: string
+        fullAddress:
+          type: string
+        addressLine:
+          type: string
+    Payer:
+      type: object
+      description: This class encapsulates all the necessary details about the payer (the user doing the transaction), for transaction processing. The payer object is used only in FX transactions (beneficiaryAssetType field not equals currency field) if the payment is external (not between own accounts)
+      properties:
+        companyOrganisationType:
+          type: string
+          description: Type of organization for the company.
+          enum:
+          - SOLE_TRADER
+          - LIMITED
+          - PARTNERSHIP
+          - CHARITY
+          - PUBLIC_LIMITED
+          - ASSOCIATION
+          - SUPPORT_GROUP
+          - NON_REG_PARTNERSHIP
+          - NOT_YET_REGISTERED
+          - REGISTERED
+          - NON_REGISTERED
+        companyType:
+          description: 'Type of the company. Possible values: `BUSINESS`, `CONSUMER`.'
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        companyName:
+          description: Name of the company. This field stores the official name of the company of the user that makes the payment.
+          type: string
+        companyCreatedAt:
+          description: Date when the company was created. This field represents the date on which the company was created in the system.
+          type: string
+          format: date-time
+        companyNumber:
+          description: Identification number of the company. This field stores the unique identifier assigned to the company, such as a registration number.
+          type: string
+        firstName:
+          description: First name of the payer. This field stores the first name of the user who is making the payment.
+          type: string
+        lastName:
+          description: Last name of the payer. This field stores the last name of the user who is making the payment.
+          type: string
+        city:
+          description: City of the payer. This field stores the city where the user resides.
+          type: string
+        address:
+          description: Address of the payer. This field stores the street address of the user.
+          type: string
+        postalCode:
+          description: Postal code of the payer. This field stores the postal code of the user's address.
+          type: string
+        country:
+          description: Country of the payer. This field stores the country where the user resides.
+          type: string
+        dateOfBirth:
+          description: Date of birth of the payer. This field stores the date of birth of the user who is making the payment.
+          type: string
+        identificationType:
+          description: Type of identification of the payer. This field specifies the type of identification document provided by the payer, such as PASSPORT, IDENTITY_CARD, ID, DNI, etc.
+          type: string
+        identificationValue:
+          description: Value of the identification of the payer. This field stores the unique value or number of the identification document provided by the payer.
+          type: string
+    ToqioHttpOkBankPaymentSchemeResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BankPaymentSchemeExtended'
     SyncTransactionResponse:
       type: object
       properties:
@@ -1604,16 +1586,34 @@ components:
           format: double
         paymentProviderDetails:
           $ref: '#/components/schemas/PaymentProviderDetails'
-    SenderAccount:
+    DocumentNotFoundException:
       type: object
       properties:
-        iban:
+        code:
           type: string
-        bic:
+          example: OK
+        errorSeverity:
           type: string
-        uk_account_number:
+          example: NONE
+        message:
           type: string
-        uk_sort_code:
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    BankPaymentSchemeExtended:
+      type: object
+      properties:
+        code:
           type: string
   securitySchemes:
     bearerAuth:
