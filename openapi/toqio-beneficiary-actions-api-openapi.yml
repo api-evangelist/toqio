@@ -319,6 +319,87 @@ paths:
       - clientCredentials: []
 components:
   schemas:
+    ViewBeneficiaryDTO:
+      title: ViewBeneficiaryDTO
+      type: object
+      properties:
+        id:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bank:
+          type: string
+        bankCountry:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        iban:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        companyId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        firstName:
+          type: string
+          description: If type is PERSON
+        lastName:
+          type: string
+          description: If type is PERSON
+        fullName:
+          type: string
+        name:
+          type: string
+          description: If type is COMPANY
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        aba:
+          type: string
+          description: This field only affects Currencycloud user
+        clabe:
+          type: string
+          description: This field only affects Currencycloud user
+        ifsc:
+          type: string
+          description: This field only affects Currencycloud user
+        cnaps:
+          type: string
+          description: This field only affects Currencycloud user
     SaveBeneficiaryViaAPI:
       title: SaveBeneficiaryViaAPI
       required:
@@ -419,87 +500,6 @@ components:
           description: allows a user to display or not a beneficiary. True by default
           default: true
           example: true
-    ViewBeneficiaryDTO:
-      title: ViewBeneficiaryDTO
-      type: object
-      properties:
-        id:
-          type: string
-        accountNumber:
-          type: string
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        assetType:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        bank:
-          type: string
-        bankCountry:
-          type: string
-        bicSwift:
-          type: string
-        bsbCode:
-          type: string
-        caRoutingNumber:
-          type: string
-        iban:
-          type: string
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        companyId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        firstName:
-          type: string
-          description: If type is PERSON
-        lastName:
-          type: string
-          description: If type is PERSON
-        fullName:
-          type: string
-        name:
-          type: string
-          description: If type is COMPANY
-        routingNumber:
-          type: string
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-        aba:
-          type: string
-          description: This field only affects Currencycloud user
-        clabe:
-          type: string
-          description: This field only affects Currencycloud user
-        ifsc:
-          type: string
-          description: This field only affects Currencycloud user
-        cnaps:
-          type: string
-          description: This field only affects Currencycloud user
     UpdateBeneficiaryViaAPI:
       title: UpdateBeneficiaryViaAPI
       type: object

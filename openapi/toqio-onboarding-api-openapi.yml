@@ -143,42 +143,29 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
-    ToqioHttpOkHostedOnboardingResponse:
+    HostedOnboardingResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/HostedOnboardingResponse'
-        code:
+        link:
           type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    Director:
+    HostedOnboardingRequest:
       type: object
       properties:
-        firstName:
+        locale:
           type: string
-        lastName:
+          example: en-GB
+        redirectUrl:
           type: string
-        dateOfBirth:
+    CreateMerchantRequest:
+      type: object
+      properties:
+        id:
           type: string
-          format: date-time
-          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
-        countryOfResidence:
+        name:
+          type: string
+        cif:
+          type: string
+        countryCode:
           type: string
         postalCode:
           type: string
@@ -188,9 +175,78 @@ components:
           type: string
         city:
           type: string
-        email:
+        businessCode:
           type: string
-          format: email
+        currencies:
+          type: array
+          items:
+            type: string
+            enum:
+            - aud
+            - chf
+            - cad
+            - sek
+            - usd
+            - nok
+            - jpy
+            - nzd
+            - gold
+            - gbp
+            - eur
+            - czk
+            - dkk
+            - huf
+            - pln
+            - ron
+            - ils
+            - rub
+            - bhd
+            - sar
+            - bgn
+            - kes
+            - sgd
+            - kwd
+            - zar
+            - cny
+            - myr
+            - hrk
+            - mxn
+            - thb
+            - try
+            - omr
+            - ugx
+            - hkd
+            - php
+            - aed
+            - inr
+            - qar
+            - idr
+        subOrganisationType:
+          type: string
+          enum:
+          - SOLE_TRADER
+          - LIMITED
+          - PARTNERSHIP
+          - CHARITY
+          - PUBLIC_LIMITED
+          - ASSOCIATION
+          - SUPPORT_GROUP
+          - NON_REG_PARTNERSHIP
+          - NOT_YET_REGISTERED
+        directors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Director'
+        legalPhoneNumber:
+          type: string
+        statementDescriptor:
+          type: string
+          description: It will appear on the end customer's bank or card statement, if supported by the banking service provider, to help identifying a transaction.
+      required:
+      - id
+      - cif
+      - name
+      - subOrganisationType
     CustomException:
       type: object
       properties:
@@ -215,49 +271,30 @@ components:
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
           type: string
-    UpdateClientRequest:
+    Director:
       type: object
       properties:
-        id:
+        firstName:
           type: string
-        cif:
+        lastName:
           type: string
-        industryCode:
-          type: string
-          deprecated: true
-        businessCode:
-          type: string
-        endUserId:
-          type: string
-        citizenship:
-          type: string
-        docIdType:
-          type: string
-        docIdIssuedAt:
+        dateOfBirth:
           type: string
           format: date-time
-        docIdNumber:
+          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
+        countryOfResidence:
           type: string
-        docIdCountry:
+        postalCode:
           type: string
-        clientType:
+        address:
           type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-    HostedOnboardingRequest:
-      type: object
-      properties:
-        locale:
+        address2:
           type: string
-          example: en-GB
-        redirectUrl:
+        city:
           type: string
-    HostedOnboardingResponse:
-      type: object
-      properties:
-        link:
+        email:
           type: string
+          format: email
     SignUpRequest:
       type: object
       properties:
@@ -352,103 +389,66 @@ components:
       - email
       - endUserId
       - registrationDate
-    CreateMerchantRequest:
+    UpdateClientRequest:
       type: object
       properties:
         id:
           type: string
-        name:
-          type: string
         cif:
           type: string
-        countryCode:
+        industryCode:
           type: string
-        postalCode:
-          type: string
-        address:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
+          deprecated: true
         businessCode:
           type: string
-        currencies:
-          type: array
-          items:
-            type: string
-            enum:
-            - aud
-            - chf
-            - cad
-            - sek
-            - usd
-            - nok
-            - jpy
-            - nzd
-            - gold
-            - gbp
-            - eur
-            - czk
-            - dkk
-            - huf
-            - pln
-            - ron
-            - ils
-            - rub
-            - bhd
-            - sar
-            - bgn
-            - kes
-            - sgd
-            - kwd
-            - zar
-            - cny
-            - myr
-            - hrk
-            - mxn
-            - thb
-            - try
-            - omr
-            - ugx
-            - hkd
-            - php
-            - aed
-            - inr
-            - qar
-            - idr
-        subOrganisationType:
+        endUserId:
+          type: string
+        citizenship:
+          type: string
+        docIdType:
+          type: string
+        docIdIssuedAt:
+          type: string
+          format: date-time
+        docIdNumber:
+          type: string
+        docIdCountry:
+          type: string
+        clientType:
           type: string
           enum:
-          - SOLE_TRADER
-          - LIMITED
-          - PARTNERSHIP
-          - CHARITY
-          - PUBLIC_LIMITED
-          - ASSOCIATION
-          - SUPPORT_GROUP
-          - NON_REG_PARTNERSHIP
-          - NOT_YET_REGISTERED
-        directors:
-          type: array
-          items:
-            $ref: '#/components/schemas/Director'
-        legalPhoneNumber:
-          type: string
-        statementDescriptor:
-          type: string
-          description: It will appear on the end customer's bank or card statement, if supported by the banking service provider, to help identifying a transaction.
-      required:
-      - id
-      - cif
-      - name
-      - subOrganisationType
+          - BUSINESS
+          - CONSUMER
     ToqioHttpOkVoidResponse:
       type: object
       properties:
         data:
           type: object
           writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkHostedOnboardingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/HostedOnboardingResponse'
         code:
           type: string
           example: OK

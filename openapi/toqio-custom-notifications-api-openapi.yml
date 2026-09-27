@@ -123,38 +123,6 @@ paths:
       description: This is an example url that you could use for testing purposes as this documentation describes the API that you must develop in your connector.
 components:
   schemas:
-    Receivers:
-      type: object
-      properties:
-        merchantId:
-          type: string
-        userIds:
-          type: array
-          items:
-            type: string
-    TranslateLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        zh:
-          type: string
-    EmailConfigurationDTO:
-      type: object
-      properties:
-        customerId:
-          type: string
-          description: ''
-        type:
-          type: string
-          description: ''
-        sender:
-          type: string
-          description: ''
-      xml:
-        name: '##default'
     CustomNotification:
       type: object
       properties:
@@ -174,6 +142,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Receivers'
+    TranslateLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        zh:
+          type: string
+    Receivers:
+      type: object
+      properties:
+        merchantId:
+          type: string
+        userIds:
+          type: array
+          items:
+            type: string
+    EmailConfigurationDTO:
+      type: object
+      properties:
+        customerId:
+          type: string
+          description: ''
+        type:
+          type: string
+          description: ''
+        sender:
+          type: string
+          description: ''
+      xml:
+        name: '##default'
+    Notification:
+      type: object
+      properties:
+        variables:
+          type: object
+          additionalProperties:
+            type: object
+        receiver:
+          type: string
+        subject:
+          type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    Attachment:
+      type: object
+      properties:
+        name:
+          type: string
+        mime:
+          type: string
+        data:
+          type: string
+          format: byte
     CustomNotificationError:
       type: object
       properties:
@@ -253,31 +278,29 @@ components:
           - 509 BANDWIDTH_LIMIT_EXCEEDED
           - 510 NOT_EXTENDED
           - 511 NETWORK_AUTHENTICATION_REQUIRED
-    Attachment:
+    CustomNotification_2:
       type: object
       properties:
-        name:
+        externalId:
           type: string
-        mime:
-          type: string
+        titleI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        messageI18n:
+          $ref: '#/components/schemas/TranslateLabel'
         data:
-          type: string
-          format: byte
-    Notification:
-      type: object
-      properties:
-        variables:
           type: object
           additionalProperties:
             type: object
-        receiver:
+        externalType:
           type: string
-        subject:
-          type: string
-        attachments:
+        receivers:
           type: array
           items:
-            $ref: '#/components/schemas/Attachment'
+            $ref: '#/components/schemas/Receivers'
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomNotificationError'
     ToqioHttpOkVoidResponse:
       type: object
       properties:
@@ -314,29 +337,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Notification'
-    CustomNotification_2:
-      type: object
-      properties:
-        externalId:
-          type: string
-        titleI18n:
-          $ref: '#/components/schemas/TranslateLabel'
-        messageI18n:
-          $ref: '#/components/schemas/TranslateLabel'
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        externalType:
-          type: string
-        receivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Receivers'
-        errors:
-          type: array
-          items:
-            $ref: '#/components/schemas/CustomNotificationError'
   securitySchemes:
     clientCredentials:
       type: oauth2

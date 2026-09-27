@@ -386,6 +386,25 @@ components:
           type: string
         email:
           type: string
+    NotificationSettings:
+      type: object
+      properties:
+        push:
+          $ref: '#/components/schemas/PushSettings'
+        email:
+          type: boolean
+        commercial:
+          type: boolean
+        thirdParties:
+          type: boolean
+    Firebase:
+      type: object
+      properties:
+        registrationToken:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
     UserInviteDTO:
       type: object
       required:
@@ -481,34 +500,6 @@ components:
           additionalProperties: true
           description: Key→value map.<br/> • Must be an object<br/> • Cannot be a primitive
       description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. All the DIRECTORS of the company MUST be added and will be required to do a KYC validation process by sending a live photo of their personal documentation and a selfie or a video, depending on the legislationCountry selection (e.g., if legislationCountry is UK this will be a selfie, if legislationCountry ES it will be a video). These DIRECTORS, in addition to the main user created in the OnboardingUserDTO, will go through this process to be reviewed in our compliance partner (overrideCompliance false) OR just saved to collect the information provided (overrideCompliance true AND runKYC true).
-    NotificationSettings:
-      type: object
-      properties:
-        push:
-          $ref: '#/components/schemas/PushSettings'
-        email:
-          type: boolean
-        commercial:
-          type: boolean
-        thirdParties:
-          type: boolean
-    PushSettings:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        pendingActions:
-          type: boolean
-        suggestions:
-          type: boolean
-    Firebase:
-      type: object
-      properties:
-        registrationToken:
-          type: string
-        updatedAt:
-          type: string
-          format: date-time
     TNCVersion:
       type: object
       properties:
@@ -518,6 +509,15 @@ components:
         version:
           type: string
       title: TNCVersion
+    PushSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        pendingActions:
+          type: boolean
+        suggestions:
+          type: boolean
   securitySchemes:
     clientCredentials:
       type: oauth2

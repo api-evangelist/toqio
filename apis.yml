@@ -53,7 +53,7 @@ tags:
 - Corporate Banking
 - Lending
 - Compliance
-- SME
+- Small Business
 tags_raw:
 - Embedded Finance
 - Fintech
@@ -64,6 +64,7 @@ tags_raw:
 - Lending
 - Compliance
 - SMEs
+- SME
 apis:
 - aid: toqio:toqio-account-api
   name: Toqio Account API
@@ -199,7 +200,7 @@ apis:
   - type: OpenAPI
     url: openapi/toqio-compliance-api-openapi.yml
 - aid: toqio:toqio-compliance-controller-api
-  name: Toqio compliance-controller API
+  name: Toqio Compliance Controller API
   description: The compliance-controller API from Toqio — 1 operation(s) for compliance-controller.
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
@@ -439,7 +440,7 @@ apis:
   - type: OpenAPI
     url: openapi/toqio-onboarding-api-openapi.yml
 - aid: toqio:toqio-onboarding-controller-api
-  name: Toqio onboarding-controller API
+  name: Toqio Onboarding Controller API
   description: The onboarding-controller API from Toqio — 2 operation(s) for onboarding-controller.
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1
   baseURL: https://api.toq.io/wallet/api
@@ -459,7 +460,7 @@ apis:
   - type: OpenAPI
     url: openapi/toqio-otp-api-openapi.yml
 - aid: toqio:toqio-pre-signed-url-controller-api
-  name: Toqio pre-signed-url-controller API
+  name: Toqio Pre Signed URL Controller API
   description: >-
     The pre-signed-url-controller API from Toqio — 1 operation(s) for pre-signed-url-controller.
   humanURL: https://platform.toq.io/reference/createaccountusingpost_1

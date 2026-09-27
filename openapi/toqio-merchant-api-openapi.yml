@@ -127,21 +127,6 @@ components:
           - 10001+
         type:
           type: string
-    ValidateCompanyRequest:
-      type: object
-      properties:
-        accountPurposes:
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-        expectedVolume:
-          $ref: '#/components/schemas/ExpectedVolume'
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
     ClientResponse:
       type: object
       properties:
@@ -183,6 +168,21 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    ValidateCompanyRequest:
+      type: object
+      properties:
+        accountPurposes:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+        expectedVolume:
+          $ref: '#/components/schemas/ExpectedVolume'
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
     ToqioHttpOkVoidResponse:
       type: object
       properties:

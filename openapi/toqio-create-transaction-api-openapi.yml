@@ -54,6 +54,49 @@ paths:
       deprecated: false
 components:
   schemas:
+    TransferConfigDTO:
+      title: TransferConfigDTO
+      type: object
+      properties:
+        endDate:
+          type: string
+          format: date-time
+        repeatCount:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          format: date-time
+        timeInterval:
+          type: integer
+          format: int32
+        unit:
+          type: string
+          enum:
+          - MILLISECOND
+          - SECOND
+          - MINUTE
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
+    TranslateLabel:
+      title: TranslateLabel
+      type: object
+      properties:
+        de:
+          type: string
+        en:
+          type: string
+        es:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
     ViewTransactionDetailDTO:
       title: ViewTransactionDetailDTO
       type: object
@@ -261,46 +304,6 @@ components:
             settlementDate:
               type: string
               format: date-time
-    InvoiceLineDTO:
-      title: InvoiceLineDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        description:
-          type: string
-        id:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-    TransactionFileDTO:
-      title: TransactionFileDTO
-      type: object
-      properties:
-        extension:
-          type: string
-        fileUrl:
-          type: string
-        id:
-          type: string
-        invoiceId:
-          type: string
-        key:
-          type: string
-        mime:
-          type: string
-        name:
-          type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
-          type: string
     TxAccount:
       title: TxAccount
       type: object
@@ -377,48 +380,40 @@ components:
             settlementDate:
               type: string
               format: date-time
-    TransferConfigDTO:
-      title: TransferConfigDTO
+    TagDTO:
+      title: TagDTO
       type: object
       properties:
-        endDate:
+        id:
           type: string
-          format: date-time
-        repeatCount:
-          type: integer
-          format: int32
-        startDate:
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
           type: string
-          format: date-time
-        timeInterval:
-          type: integer
-          format: int32
-        unit:
-          type: string
-          enum:
-          - MILLISECOND
-          - SECOND
-          - MINUTE
-          - HOUR
-          - DAY
-          - WEEK
-          - MONTH
-          - YEAR
-    TranslateLabel:
-      title: TranslateLabel
+          description: Tag name
+          example: My tag
+    TransactionFileDTO:
+      title: TransactionFileDTO
       type: object
       properties:
-        de:
+        extension:
           type: string
-        en:
+        fileUrl:
           type: string
-        es:
+        id:
           type: string
-        it:
+        invoiceId:
           type: string
-        zh:
+        key:
           type: string
-        pt:
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
           type: string
     AccountDetailsDTO:
       title: AccountDetailsDTO
@@ -513,6 +508,23 @@ components:
           - CHIPS
         name:
           type: string
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+        id:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
     IssuePaymentDTO:
       title: IssuePaymentDTO
       required:
@@ -675,18 +687,6 @@ components:
         vatPercentage:
           type: number
           format: double
-    TagDTO:
-      title: TagDTO
-      type: object
-      properties:
-        id:
-          type: string
-          description: Tag ID
-          example: 5c473c5046e0fb0005c436af
-        name:
-          type: string
-          description: Tag name
-          example: My tag
   securitySchemes:
     clientCredentials:
       type: oauth2

@@ -438,6 +438,54 @@ paths:
       - clientCredentials: []
 components:
   schemas:
+    DeleteKYBDocumentDTO:
+      type: object
+      properties:
+        deleteDocumentMessage:
+          type: string
+          description: Message indicating if the document was deleted successfully
+    StatusDocumentDTO:
+      title: StatusDocumentDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: id of the document
+        externalId:
+          type: string
+        status:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - UNDER_REVIEW
+          - COMPLETED
+          - DECLINED
+        errorMessage:
+          type: string
+    DirectorDTO:
+      title: DirectorDTO
+      type: object
+      properties:
+        userId:
+          type: string
+          description: User id
+        status:
+          type: string
+          description: User compliance status
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
     UpdateComplianceDTO:
       type: object
       properties:
@@ -511,81 +559,8 @@ components:
           - CLOSE
           - OVERRIDE_COMPLIANCE
           - ADDED_BY_ADMIN
-    ComplianceStatusDTO:
-      type: object
-      properties:
-        businessDetailsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        supportingDocumentsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        boardOfDirectorsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-        shareholdersStatus:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - COMPLETED
-        overallComplianceStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-    UpdateCompanyKyxDocumentsDTO:
-      title: UpdateCompanyKyxDocumentsDTO
+    UpdateUserDocumentsDTO:
+      title: UpdateUserDocumentsDTO
       type: object
       properties:
         documents:
@@ -623,30 +598,6 @@ components:
         clientId:
           type: string
           description: Client id
-    StatusDocumentDTO:
-      title: StatusDocumentDTO
-      type: object
-      properties:
-        id:
-          type: string
-          description: id of the document
-        externalId:
-          type: string
-        status:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - UNDER_REVIEW
-          - COMPLETED
-          - DECLINED
-        errorMessage:
-          type: string
-    DeleteKYBDocumentDTO:
-      type: object
-      properties:
-        deleteDocumentMessage:
-          type: string
-          description: Message indicating if the document was deleted successfully
     UpdateShareholderDocumentDTO:
       title: UpdateShareholderDocumentDTO
       type: object
@@ -673,6 +624,14 @@ components:
         errorMessage:
           type: string
           description: errorMessage of the identification document
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatusDocumentDTO'
+    UpdateCompanyKyxDocumentsDTO:
+      title: UpdateCompanyKyxDocumentsDTO
+      type: object
+      properties:
         documents:
           type: array
           items:
@@ -707,38 +666,6 @@ components:
           - CLOSE
           - OVERRIDE_COMPLIANCE
           - ADDED_BY_ADMIN
-    DirectorDTO:
-      title: DirectorDTO
-      type: object
-      properties:
-        userId:
-          type: string
-          description: User id
-        status:
-          type: string
-          description: User compliance status
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-          - REFERRED
-          - ACCEPTED
-          - NOT_STARTED
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - ADDED_BY_ADMIN
-    UpdateUserDocumentsDTO:
-      title: UpdateUserDocumentsDTO
-      type: object
-      properties:
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/StatusDocumentDTO'
     ComplianceResponseDTO:
       title: ComplianceResponseDTO
       type: object
@@ -844,6 +771,79 @@ components:
               type: array
               items:
                 type: string
+    ComplianceStatusDTO:
+      type: object
+      properties:
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+          - REFERRED
+          - ACCEPTED
+          - NOT_STARTED
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - ADDED_BY_ADMIN
   securitySchemes:
     clientCredentials:
       type: oauth2

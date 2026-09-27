@@ -182,113 +182,6 @@ components:
           - CONTRACT_SIGNED
         merchantId:
           type: string
-    Document:
-      type: object
-      properties:
-        base64:
-          type: string
-        name:
-          type: string
-    LoanInformation:
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        currencyISOCode:
-          type: string
-        purpose:
-          type: string
-        maturity:
-          type: integer
-          format: int32
-        productType:
-          type: string
-          enum:
-          - CASH_ADVANCE
-          - SHORT_TERM_LOAN
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
-        preferredRepaymentTerms:
-          type: number
-          format: double
-    LendingRequestBaseRequest:
-      type: object
-      properties:
-        creditCheckPermission:
-          type: boolean
-        dataPrivacyConsent:
-          type: boolean
-        loan:
-          $ref: '#/components/schemas/LoanInformation'
-        account:
-          $ref: '#/components/schemas/AccountInformation'
-        merchant:
-          $ref: '#/components/schemas/MerchantInformation'
-        submissionDate:
-          type: string
-    Phone:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        countryISOCode:
-          type: string
-        intnlPhoneNumber:
-          type: string
-    SignificantPerson:
-      type: object
-      properties:
-        id:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        type:
-          type: string
-          enum:
-          - DIRECTOR
-          - SHAREHOLDER
-          - BENEFICIAL_OWNER
-        address:
-          type: string
-        dateOfBirth:
-          type: string
-        emailAddress:
-          type: string
-        phone:
-          $ref: '#/components/schemas/Phone'
-        nationality:
-          type: string
-        documentNumber:
-          type: string
-    ToqioHttpOkLendingRequestBaseResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/LendingRequestBaseRequest'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     MerchantInformation:
       type: object
       properties:
@@ -319,6 +212,21 @@ components:
             $ref: '#/components/schemas/SignificantPerson'
         sales:
           $ref: '#/components/schemas/Document'
+    LendingRequestBaseRequest:
+      type: object
+      properties:
+        creditCheckPermission:
+          type: boolean
+        dataPrivacyConsent:
+          type: boolean
+        loan:
+          $ref: '#/components/schemas/LoanInformation'
+        account:
+          $ref: '#/components/schemas/AccountInformation'
+        merchant:
+          $ref: '#/components/schemas/MerchantInformation'
+        submissionDate:
+          type: string
     AccountInformation:
       type: object
       properties:
@@ -336,6 +244,98 @@ components:
           type: string
         bic:
           type: string
+    Phone:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        countryISOCode:
+          type: string
+        intnlPhoneNumber:
+          type: string
+    ToqioHttpOkLendingRequestBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LendingRequestBaseRequest'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    Document:
+      type: object
+      properties:
+        base64:
+          type: string
+        name:
+          type: string
+    SignificantPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        type:
+          type: string
+          enum:
+          - DIRECTOR
+          - SHAREHOLDER
+          - BENEFICIAL_OWNER
+        address:
+          type: string
+        dateOfBirth:
+          type: string
+        emailAddress:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Phone'
+        nationality:
+          type: string
+        documentNumber:
+          type: string
+    LoanInformation:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currencyISOCode:
+          type: string
+        purpose:
+          type: string
+        maturity:
+          type: integer
+          format: int32
+        productType:
+          type: string
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+        preferredRepaymentTerms:
+          type: number
+          format: double
   securitySchemes:
     bearerAuth:
       type: http

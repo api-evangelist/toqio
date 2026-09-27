@@ -225,6 +225,37 @@ paths:
                 $ref: '#/components/schemas/ToqioResponseCardResponse'
 components:
   schemas:
+    PartnerTokenResponse:
+      type: object
+      description: Partner integration token
+    EncryptedSecurityCode:
+      type: object
+      description: RSA-encrypted security verification
+      properties:
+        encryptedSecurityCode:
+          type: string
+          description: RSA-encrypted security code
+        iv:
+          type: string
+          description: Initialization vector
+        tag:
+          type: string
+          description: Authentication tag
+    CardOTP:
+      type: object
+      description: OTP information for card operations
+      properties:
+        baasOTP:
+          type: string
+          description: Banking-as-a-Service OTP code
+        operationId:
+          type: string
+          description: Unique operation identifier
+        userId:
+          type: string
+          description: User identifier
+        cardTokenRequest:
+          $ref: '#/components/schemas/CardTokenRequest'
     Address:
       type: object
       properties:
@@ -249,21 +280,45 @@ components:
         addressRefinement:
           type: string
           description: Additional address details (apt, suite, etc.)
-    CardOTP:
+    ToqioResponsePinResponse:
       type: object
-      description: OTP information for card operations
       properties:
-        baasOTP:
+        data:
+          type: object
+          properties:
+            pin:
+              type: string
+              description: Card PIN
+              example: '1234'
+        code:
           type: string
-          description: Banking-as-a-Service OTP code
-        operationId:
+          description: Response code
+          example: '200'
+        errorSeverity:
           type: string
-          description: Unique operation identifier
-        userId:
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
           type: string
-          description: User identifier
-        cardTokenRequest:
-          $ref: '#/components/schemas/CardTokenRequest'
+          description: Human-readable response message
+          example: Card PIN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
     ToqioResponseCardResponse:
       type: object
       properties:
@@ -305,53 +360,6 @@ components:
         errorOrigin:
           type: string
           description: Origin of error if applicable (only present on errors)
-    ToqioResponseCardPanResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pan:
-              type: string
-              description: Full card number
-              example: '4111111111111111'
-            cvv:
-              type: string
-              description: CVV security code
-              example: '123'
-            expiryDate:
-              type: string
-              description: Expiry date
-              example: 12/27
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PAN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
     CardResponse:
       type: object
       description: Card details response
@@ -414,45 +422,6 @@ components:
         activationCodeLength:
           type: integer
           description: Length of activation code
-    ToqioResponsePinResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pin:
-              type: string
-              description: Card PIN
-              example: '1234'
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PIN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
     ToqioResponseString:
       type: object
       properties:
@@ -489,19 +458,6 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
-    EncryptedSecurityCode:
-      type: object
-      description: RSA-encrypted security verification
-      properties:
-        encryptedSecurityCode:
-          type: string
-          description: RSA-encrypted security code
-        iv:
-          type: string
-          description: Initialization vector
-        tag:
-          type: string
-          description: Authentication tag
     CardTokenRequest:
       type: object
       properties:
@@ -510,18 +466,54 @@ components:
           description: Activation token
         securityCode:
           $ref: '#/components/schemas/EncryptedSecurityCode'
-    PartnerTokenResponse:
+    ToqioResponseCardPanResponse:
       type: object
-      description: Partner integration token
+      properties:
+        data:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Full card number
+              example: '4111111111111111'
+            cvv:
+              type: string
+              description: CVV security code
+              example: '123'
+            expiryDate:
+              type: string
+              description: Expiry date
+              example: 12/27
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card PAN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
   parameters:
-    cardId:
-      name: cardId
-      in: path
-      description: Unique identifier of the card
-      required: true
-      schema:
-        type: string
-      example: card-abc123
     customerId:
       name: customerId
       in: path
@@ -530,6 +522,14 @@ components:
       schema:
         type: string
       example: cust-123
+    cardId:
+      name: cardId
+      in: path
+      description: Unique identifier of the card
+      required: true
+      schema:
+        type: string
+      example: card-abc123
 x-source-pages:
 - https://integrate.toq.io/reference/activatecard
 - https://integrate.toq.io/reference/activatecardotp
