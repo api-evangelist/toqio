@@ -37,6 +37,15 @@ paths:
           description: Internal server error
 components:
   schemas:
+    DefaultRepaymentTerms:
+      type: object
+      properties:
+        minDailyPercentage:
+          type: number
+          format: double
+        maxDailyPercentage:
+          type: number
+          format: double
     ToqioHttpOkDefaultRepaymentTermsResponse:
       type: object
       properties:
@@ -61,15 +70,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    DefaultRepaymentTerms:
-      type: object
-      properties:
-        minDailyPercentage:
-          type: number
-          format: double
-        maxDailyPercentage:
-          type: number
-          format: double
   securitySchemes:
     bearerAuth:
       type: http

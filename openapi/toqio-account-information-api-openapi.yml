@@ -391,16 +391,126 @@ paths:
       deprecated: false
 components:
   schemas:
-    I18nLabel:
+    ViewAccountDTO:
       type: object
       properties:
-        en:
+        accountId:
           type: string
-        es:
+        accountType:
           type: string
-        zh:
+        address:
           type: string
-      title: I18nLabel
+        address2:
+          type: string
+        alias:
+          type: string
+        amount:
+          type: number
+          format: double
+        assetFlag:
+          type: string
+        assetSymbol:
+          type: string
+        assetType:
+          type: string
+        availableBalance:
+          type: number
+          format: double
+        bicSwift:
+          type: string
+        bicSwiftForSEPA:
+          type: string
+        bicSwiftForSWIFT:
+          type: string
+        canCancelAccount:
+          type: boolean
+        city:
+          type: string
+        correspondentBank:
+          type: string
+        correspondentBankAddress:
+          type: string
+        correspondentBankSWIFT:
+          type: string
+        countryCode:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        hasBillingPayment:
+          type: boolean
+        holderAddress:
+          type: string
+        holderBank:
+          type: string
+        holderBankAddress:
+          type: string
+        holderName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        internationalEnabled:
+          type: boolean
+        main:
+          type: boolean
+        partnerProduct:
+          type: string
+        postalCode:
+          type: string
+        status:
+          type: string
+          enum:
+          - REMOVED
+          - CANCELLED
+          - ACTIVATED
+          - PENDING
+        totalBalance:
+          type: number
+          format: double
+        totalExpenses:
+          type: number
+          format: double
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        userId:
+          type: string
+        readOnly:
+          type: boolean
+        wireRoutingNumber:
+          type: string
+          description: This only affects to Currency Cloud users
+        achRoutingNumber:
+          type: string
+          description: This only affects to Currency Cloud users
+        ibanForSwift:
+          type: string
+          description: This only affects to Currency Cloud users
+      title: ViewAccountDTO
+    CreateProductDTO:
+      type: object
+      properties:
+        bankingProvider:
+          type: string
+        partnerProduct:
+          type: string
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        description:
+          $ref: '#/components/schemas/I18nLabel'
+        ledgerTypeId:
+          type: string
+        visible:
+          type: boolean
+        marketplaceKey:
+          type: string
+        productImageBase64:
+          type: string
+        productImageName:
+          type: string
     UpdateAccountAliasDataDTO:
       type: object
       title: UpdateAccountAliasDataDTO
@@ -412,6 +522,66 @@ components:
           description: The new alias for the account.
           minLength: 4
           maxLength: 25
+    I18nLabel:
+      type: object
+      properties:
+        en:
+          type: string
+        es:
+          type: string
+        zh:
+          type: string
+      title: I18nLabel
+    UpdateProductRequest:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        description:
+          $ref: '#/components/schemas/I18nLabel'
+        visible:
+          type: boolean
+        productImageBase64:
+          type: string
+        productImageName:
+          type: string
+    CreateAccountDTO:
+      type: object
+      required:
+      - alias
+      - assetType
+      - companyId
+      - userId
+      - bankingProvider
+      - productId
+      properties:
+        accountType:
+          type: string
+          description: Account type refers to the partner product of the account. To see available partner products use the partner product endpoint detailed in this documentation
+          deprecated: true
+        alias:
+          type: string
+          description: Account alias
+          maximum: 25
+        assetType:
+          type: string
+          description: Currency of your account
+          example: GBP
+        readOnly:
+          type: boolean
+        companyId:
+          type: string
+          description: Identification of the company the account will belong to
+        userId:
+          type: string
+          description: Identification of the user
+        bankingProvider:
+          type: string
+          description: 'Banking provider of the account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD'
+        productId:
+          type: string
+          description: Identification of the product the account will belong to
+      title: CreateAccountViaAPIDTO
     ProductDTO:
       type: object
       properties:
@@ -433,6 +603,111 @@ components:
           $ref: '#/components/schemas/I18nLabel'
         partnerProduct:
           $ref: '#/components/schemas/PartnerProductResponse'
+    PartnerProductDTO:
+      type: object
+      properties:
+        assetType:
+          deprecated: true
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+          - CZK
+          - DKK
+          - HUF
+          - PLN
+          - RON
+        assetTypes:
+          type: array
+          items:
+            type: string
+            enum:
+            - aud
+            - chf
+            - cad
+            - sek
+            - usd
+            - nok
+            - jpy
+            - nzd
+            - gold
+            - gbp
+            - eur
+            - czk
+            - dkk
+            - huf
+            - pln
+            - ron
+            - ils
+            - rub
+            - bhd
+            - sar
+            - bgn
+            - kes
+            - sgd
+            - kwd
+            - zar
+            - cny
+            - myr
+            - hrk
+            - mxn
+            - thb
+            - try
+            - omr
+            - ugx
+            - hkd
+            - php
+            - aed
+            - inr
+            - qar
+            - idr
+            - points
+        code:
+          type: string
+        correspondentBank:
+          type: string
+        correspondentBankAddress:
+          type: string
+        correspondentBankSWIFT:
+          type: string
+        holderBank:
+          type: string
+        holderBankAddress:
+          type: string
+        holderBankSWIFT:
+          type: string
+        label:
+          type: object
+          properties:
+            de:
+              type: string
+            default:
+              type: string
+            en:
+              type: string
+            es:
+              type: string
+          title: I18nLabel
+        schemes:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              name:
+                type: string
+            title: BankPaymentScheme
+      title: PartnerProductDTO
     PartnerProductResponse:
       type: object
       properties:
@@ -586,281 +861,6 @@ components:
       - assetType
       - label
       - schemes
-    ViewAccountDTO:
-      type: object
-      properties:
-        accountId:
-          type: string
-        accountType:
-          type: string
-        address:
-          type: string
-        address2:
-          type: string
-        alias:
-          type: string
-        amount:
-          type: number
-          format: double
-        assetFlag:
-          type: string
-        assetSymbol:
-          type: string
-        assetType:
-          type: string
-        availableBalance:
-          type: number
-          format: double
-        bicSwift:
-          type: string
-        bicSwiftForSEPA:
-          type: string
-        bicSwiftForSWIFT:
-          type: string
-        canCancelAccount:
-          type: boolean
-        city:
-          type: string
-        correspondentBank:
-          type: string
-        correspondentBankAddress:
-          type: string
-        correspondentBankSWIFT:
-          type: string
-        countryCode:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        hasBillingPayment:
-          type: boolean
-        holderAddress:
-          type: string
-        holderBank:
-          type: string
-        holderBankAddress:
-          type: string
-        holderName:
-          type: string
-        iban:
-          type: string
-        id:
-          type: string
-        internationalEnabled:
-          type: boolean
-        main:
-          type: boolean
-        partnerProduct:
-          type: string
-        postalCode:
-          type: string
-        status:
-          type: string
-          enum:
-          - REMOVED
-          - CANCELLED
-          - ACTIVATED
-          - PENDING
-        totalBalance:
-          type: number
-          format: double
-        totalExpenses:
-          type: number
-          format: double
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        userId:
-          type: string
-        readOnly:
-          type: boolean
-        wireRoutingNumber:
-          type: string
-          description: This only affects to Currency Cloud users
-        achRoutingNumber:
-          type: string
-          description: This only affects to Currency Cloud users
-        ibanForSwift:
-          type: string
-          description: This only affects to Currency Cloud users
-      title: ViewAccountDTO
-    UpdateProductRequest:
-      type: object
-      properties:
-        name:
-          $ref: '#/components/schemas/I18nLabel'
-        description:
-          $ref: '#/components/schemas/I18nLabel'
-        visible:
-          type: boolean
-        productImageBase64:
-          type: string
-        productImageName:
-          type: string
-    CreateAccountDTO:
-      type: object
-      required:
-      - alias
-      - assetType
-      - companyId
-      - userId
-      - bankingProvider
-      - productId
-      properties:
-        accountType:
-          type: string
-          description: Account type refers to the partner product of the account. To see available partner products use the partner product endpoint detailed in this documentation
-          deprecated: true
-        alias:
-          type: string
-          description: Account alias
-          maximum: 25
-        assetType:
-          type: string
-          description: Currency of your account
-          example: GBP
-        readOnly:
-          type: boolean
-        companyId:
-          type: string
-          description: Identification of the company the account will belong to
-        userId:
-          type: string
-          description: Identification of the user
-        bankingProvider:
-          type: string
-          description: 'Banking provider of the account, allowed value: RAILSBANK, MODULR, LOOMIS, CLEARBANK, CURRENCYCLOUD'
-        productId:
-          type: string
-          description: Identification of the product the account will belong to
-      title: CreateAccountViaAPIDTO
-    CreateProductDTO:
-      type: object
-      properties:
-        bankingProvider:
-          type: string
-        partnerProduct:
-          type: string
-        name:
-          $ref: '#/components/schemas/I18nLabel'
-        description:
-          $ref: '#/components/schemas/I18nLabel'
-        ledgerTypeId:
-          type: string
-        visible:
-          type: boolean
-        marketplaceKey:
-          type: string
-        productImageBase64:
-          type: string
-        productImageName:
-          type: string
-    PartnerProductDTO:
-      type: object
-      properties:
-        assetType:
-          deprecated: true
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-          - CZK
-          - DKK
-          - HUF
-          - PLN
-          - RON
-        assetTypes:
-          type: array
-          items:
-            type: string
-            enum:
-            - aud
-            - chf
-            - cad
-            - sek
-            - usd
-            - nok
-            - jpy
-            - nzd
-            - gold
-            - gbp
-            - eur
-            - czk
-            - dkk
-            - huf
-            - pln
-            - ron
-            - ils
-            - rub
-            - bhd
-            - sar
-            - bgn
-            - kes
-            - sgd
-            - kwd
-            - zar
-            - cny
-            - myr
-            - hrk
-            - mxn
-            - thb
-            - try
-            - omr
-            - ugx
-            - hkd
-            - php
-            - aed
-            - inr
-            - qar
-            - idr
-            - points
-        code:
-          type: string
-        correspondentBank:
-          type: string
-        correspondentBankAddress:
-          type: string
-        correspondentBankSWIFT:
-          type: string
-        holderBank:
-          type: string
-        holderBankAddress:
-          type: string
-        holderBankSWIFT:
-          type: string
-        label:
-          type: object
-          properties:
-            de:
-              type: string
-            default:
-              type: string
-            en:
-              type: string
-            es:
-              type: string
-          title: I18nLabel
-        schemes:
-          type: array
-          items:
-            type: object
-            properties:
-              code:
-                type: string
-              name:
-                type: string
-            title: BankPaymentScheme
-      title: PartnerProductDTO
   securitySchemes:
     clientCredentials:
       type: oauth2

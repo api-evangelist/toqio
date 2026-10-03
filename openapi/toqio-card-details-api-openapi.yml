@@ -156,71 +156,7 @@ paths:
         '202':
           description: PIN retrieval initiated
 components:
-  parameters:
-    customerId:
-      name: customerId
-      in: path
-      description: Unique identifier of the customer
-      required: true
-      schema:
-        type: string
-      example: cust-123
-    cardId:
-      name: cardId
-      in: path
-      description: Unique identifier of the card
-      required: true
-      schema:
-        type: string
-      example: card-abc123
   schemas:
-    ToqioResponseCardPanResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pan:
-              type: string
-              description: Full card number
-              example: '4111111111111111'
-            cvv:
-              type: string
-              description: CVV security code
-              example: '123'
-            expiryDate:
-              type: string
-              description: Expiry date
-              example: 12/27
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PAN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
     ToqioResponseCardSettingsResponse:
       type: object
       properties:
@@ -332,6 +268,70 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
+    ToqioResponseCardPanResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Full card number
+              example: '4111111111111111'
+            cvv:
+              type: string
+              description: CVV security code
+              example: '123'
+            expiryDate:
+              type: string
+              description: Expiry date
+              example: 12/27
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card PAN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+  parameters:
+    customerId:
+      name: customerId
+      in: path
+      description: Unique identifier of the customer
+      required: true
+      schema:
+        type: string
+      example: cust-123
+    cardId:
+      name: cardId
+      in: path
+      description: Unique identifier of the card
+      required: true
+      schema:
+        type: string
+      example: card-abc123
 x-source-pages:
 - https://integrate.toq.io/reference/activatecard
 - https://integrate.toq.io/reference/activatecardotp

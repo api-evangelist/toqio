@@ -62,6 +62,24 @@ paths:
       deprecated: false
 components:
   schemas:
+    GetPreSignedUrlResponse:
+      type: object
+      properties:
+        preSignedUrls:
+          type: array
+          items:
+            properties:
+              name:
+                type: string
+                description: The name of the document
+              preSignedUrl:
+                type: string
+                description: The aws pre-signed url where a PUT call should be made to save the document
+              key:
+                type: string
+                description: 'The path under which the document will be saved in aws. This key should be later on used to save the document in the toqio system by calling another endpoint depending on the case. For example: The uploadKybDocuments'
+      title: Get PreSignedUrls Response
+      description: The response of the get pre-signed urls
     GetPreSignedURLPayload:
       type: object
       properties:
@@ -106,24 +124,6 @@ components:
               description: Required only if the section SHAREHOLDER_DOCUMENTS is set
       title: Get PreSigned URL
       description: This is the payload to get an aws presigned urls to upload documents.
-    GetPreSignedUrlResponse:
-      type: object
-      properties:
-        preSignedUrls:
-          type: array
-          items:
-            properties:
-              name:
-                type: string
-                description: The name of the document
-              preSignedUrl:
-                type: string
-                description: The aws pre-signed url where a PUT call should be made to save the document
-              key:
-                type: string
-                description: 'The path under which the document will be saved in aws. This key should be later on used to save the document in the toqio system by calling another endpoint depending on the case. For example: The uploadKybDocuments'
-      title: Get PreSignedUrls Response
-      description: The response of the get pre-signed urls
   securitySchemes:
     OAuth2:
       type: oauth2

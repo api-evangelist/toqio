@@ -96,6 +96,105 @@ paths:
                 errorOrigin: INTEGRATION_HUB
 components:
   schemas:
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    ProductChangeNotificationRequest:
+      type: object
+      description: Request payload for notifying product changes from Toqio to the integrations. This endpoint is called BY Integration Hub TO the banking provider integration to synchronize product information. The integration should implement this endpoint to receive product updates (upserts) and deletions.
+      properties:
+        products:
+          type: array
+          description: List of products to create or update (upsert). Each product in this array should be processed idempotently - if a product with the given ID already exists in the connector, it should be updated; if it doesn't exist, it should be created. This array can be null or empty if there are only deletions to process.
+          items:
+            $ref: '#/components/schemas/ProductNotificationItemDTO'
+        deleteProductIds:
+          type: array
+          description: List of product IDs to delete from the connector. The connector should remove these products or mark them as inactive. These are product IDs that were previously sent in the 'products' array but should now be deleted. This array can be null or empty if there are only upserts to process.
+          items:
+            type: string
+            description: Unique identifier of the product to delete.
+      example:
+        products:
+        - id: prod_123
+          partnerProduct: EUR
+          bankingProvider: provider_xyz
+          name:
+            en: Current Account
+            es: Cuenta Corriente
+          description:
+            en: Standard current account for daily transactions
+            es: Cuenta corriente estándar para transacciones diarias
+          customerId: cust_456
+          ledgerTypeId: ledger_789
+          visible: true
+          isCore: true
+          productImageUrl: https://example.com/images/current-account.png
+          marketplaceKey: null
+        deleteProductIds:
+        - prod_old_123
+        - prod_old_456
     ProductNotificationItemDTO:
       type: object
       description: Individual product item in a product change notification. Contains essential product information needed for synchronization between Toqio and the connector. The integration should store these fields to maintain an accurate representation of the customer's products.
@@ -167,105 +266,6 @@ components:
         isCore: true
         productImageUrl: https://cdn.toqio.com/products/savings.png
         marketplaceKey: null
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
-    CustomException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    ProductChangeNotificationRequest:
-      type: object
-      description: Request payload for notifying product changes from Toqio to the integrations. This endpoint is called BY Integration Hub TO the banking provider integration to synchronize product information. The integration should implement this endpoint to receive product updates (upserts) and deletions.
-      properties:
-        products:
-          type: array
-          description: List of products to create or update (upsert). Each product in this array should be processed idempotently - if a product with the given ID already exists in the connector, it should be updated; if it doesn't exist, it should be created. This array can be null or empty if there are only deletions to process.
-          items:
-            $ref: '#/components/schemas/ProductNotificationItemDTO'
-        deleteProductIds:
-          type: array
-          description: List of product IDs to delete from the connector. The connector should remove these products or mark them as inactive. These are product IDs that were previously sent in the 'products' array but should now be deleted. This array can be null or empty if there are only upserts to process.
-          items:
-            type: string
-            description: Unique identifier of the product to delete.
-      example:
-        products:
-        - id: prod_123
-          partnerProduct: EUR
-          bankingProvider: provider_xyz
-          name:
-            en: Current Account
-            es: Cuenta Corriente
-          description:
-            en: Standard current account for daily transactions
-            es: Cuenta corriente estándar para transacciones diarias
-          customerId: cust_456
-          ledgerTypeId: ledger_789
-          visible: true
-          isCore: true
-          productImageUrl: https://example.com/images/current-account.png
-          marketplaceKey: null
-        deleteProductIds:
-        - prod_old_123
-        - prod_old_456
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http

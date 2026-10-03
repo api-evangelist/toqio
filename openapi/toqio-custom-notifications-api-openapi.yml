@@ -123,25 +123,6 @@ paths:
       description: This is an example url that you could use for testing purposes as this documentation describes the API that you must develop in your connector.
 components:
   schemas:
-    CustomNotification:
-      type: object
-      properties:
-        externalId:
-          type: string
-        titleI18n:
-          $ref: '#/components/schemas/TranslateLabel'
-        messageI18n:
-          $ref: '#/components/schemas/TranslateLabel'
-        data:
-          type: object
-          additionalProperties:
-            type: object
-        externalType:
-          type: string
-        receivers:
-          type: array
-          items:
-            $ref: '#/components/schemas/Receivers'
     TranslateLabel:
       type: object
       properties:
@@ -174,31 +155,50 @@ components:
           description: ''
       xml:
         name: '##default'
-    Notification:
+    CustomNotification:
       type: object
       properties:
-        variables:
+        externalId:
+          type: string
+        titleI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        messageI18n:
+          $ref: '#/components/schemas/TranslateLabel'
+        data:
           type: object
           additionalProperties:
             type: object
-        receiver:
+        externalType:
           type: string
-        subject:
-          type: string
-        attachments:
+        receivers:
           type: array
           items:
-            $ref: '#/components/schemas/Attachment'
-    Attachment:
+            $ref: '#/components/schemas/Receivers'
+    ToqioHttpOkVoidResponse:
       type: object
       properties:
-        name:
-          type: string
-        mime:
-          type: string
         data:
+          type: object
+          writeOnly: true
+        code:
           type: string
-          format: byte
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     CustomNotificationError:
       type: object
       properties:
@@ -301,31 +301,31 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CustomNotificationError'
-    ToqioHttpOkVoidResponse:
+    Notification:
       type: object
       properties:
-        data:
+        variables:
           type: object
-          writeOnly: true
-        code:
+          additionalProperties:
+            type: object
+        receiver:
           type: string
-          example: OK
-        errorSeverity:
+        subject:
           type: string
-          example: NONE
-        message:
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    Attachment:
+      type: object
+      properties:
+        name:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
+        mime:
           type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
+        data:
           type: string
-          example: '2024-08-01T00:00:00.000Z'
+          format: byte
     EmailNotification:
       type: object
       properties:

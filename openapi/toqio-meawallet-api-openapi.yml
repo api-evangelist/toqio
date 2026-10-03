@@ -100,17 +100,6 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
-    MeaConfigRequest:
-      type: object
-      properties:
-        apiKeyId:
-          type: string
-        apiKeyPlain:
-          type: string
-        totpKey:
-          type: string
-        totpKeyId:
-          type: string
     CustomException:
       type: object
       properties:
@@ -134,17 +123,6 @@ components:
           type: string
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
-          type: string
-    MeaConfigResponse:
-      type: object
-      properties:
-        apiKeyId:
-          type: string
-        apiKeyPlain:
-          type: string
-        totpKey:
-          type: string
-        totpKeyId:
           type: string
     ToqioHttpOkVoidResponse:
       type: object
@@ -171,6 +149,28 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    MeaConfigRequest:
+      type: object
+      properties:
+        apiKeyId:
+          type: string
+        apiKeyPlain:
+          type: string
+        totpKey:
+          type: string
+        totpKeyId:
+          type: string
+    MeaConfigResponse:
+      type: object
+      properties:
+        apiKeyId:
+          type: string
+        apiKeyPlain:
+          type: string
+        totpKey:
+          type: string
+        totpKeyId:
+          type: string
     ToqioHttpOkMeaConfigResponse:
       type: object
       properties:

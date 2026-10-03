@@ -449,11 +449,11 @@ components:
         - type: object
         - type: array
         description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic properties based on your system configuration. Common examples include: complianceCheckLevel (string), sanctionsScreening (boolean), pepCheck (boolean), fraudCheckEnabled (boolean), riskScore (number), verificationMethod (string), and any other custom validation parameters defined in your system.'
-    ToqioHttpOkBeneficiaryFilterResponse:
+    ToqioHttpOkViewPersonalAccountResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/BeneficiaryFilterResponse'
+          $ref: '#/components/schemas/ViewPersonalAccountResponse'
         code:
           type: string
           example: OK
@@ -472,7 +472,31 @@ components:
           example: 26b0f78a-79f9-426d-a20b-79841345ae51
         date:
           type: string
-          example: '2025-08-01T00:00:00.000Z'
+          example: '2024-08-01T00:00:00.000Z'
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
     UpdatePersonalAccountRequest:
       type: object
       description: 'Request body for the Update Beneficiary operation. Identical to SavePersonalAccountRequest except that all bank-account detail fields are read-only: they are captured at creation and cannot be modified on update. Any value supplied for a read-only field is ignored and the stored value is preserved before forwarding to the provider.'
@@ -626,6 +650,31 @@ components:
           type: string
         sourceAccount:
           type: string
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     SavePersonalAccountRequest:
       type: object
       properties:
@@ -744,6 +793,49 @@ components:
           type: string
         sourceAccount:
           type: string
+    ToqioHttpOkBeneficiaryFilterResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/BeneficiaryFilterResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2025-08-01T00:00:00.000Z'
+    CountryResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Two-letter country code
+          example: GB
+        isoCode:
+          type: string
+        name:
+          $ref: '#/components/schemas/I18nLabel'
+        prefix:
+          type: string
+        iban:
+          type: boolean
+        sendMoney:
+          type: boolean
+        sepa:
+          type: boolean
     I18nLabel:
       type: object
       properties:
@@ -759,43 +851,7 @@ components:
           type: string
         pt:
           type: string
-    AccountBankDetailsRequest:
-      type: object
-      properties:
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        iban:
-          type: string
-        bicSwift:
-          type: string
-        bank:
-          type: string
-        bsbCode:
-          type: string
-        routingNumber:
-          type: string
-        caRoutingNumber:
-          type: string
-        accountNumber:
-          type: string
-        clabe:
-          type: string
-        aba:
-          type: string
-          deprecated: true
-        cnaps:
-          type: string
-        ifsc:
-          type: string
-        bankCode:
-          type: string
-          deprecated: true
-        branchCode:
-          type: string
-          deprecated: true
-    CustomException:
+    DocumentNotFoundException:
       type: object
       properties:
         code:
@@ -819,6 +875,32 @@ components:
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
           type: string
+    ToqioHttpOkViewPersonalAccountsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewPersonalAccountResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     ViewPersonalAccountResponse:
       type: object
       properties:
@@ -951,178 +1033,42 @@ components:
           type: string
         addressLine:
           type: string
-    CountryResponse:
+    AccountBankDetailsRequest:
       type: object
       properties:
-        code:
+        ukAccountNumber:
           type: string
-          description: Two-letter country code
-          example: GB
-        isoCode:
-          type: string
-        name:
-          $ref: '#/components/schemas/I18nLabel'
-        prefix:
+        ukSortCode:
           type: string
         iban:
-          type: boolean
-        sendMoney:
-          type: boolean
-        sepa:
-          type: boolean
-    BeneficiaryFilterResponse:
-      type: object
-      properties:
-        assetTypes:
-          type: array
-          description: List of asset types (currencies) that are allowed for payments or beneficiary selection based on the source account characteristics and business rules
-          items:
-            type: string
-            enum:
-            - aud
-            - chf
-            - cad
-            - sek
-            - usd
-            - nok
-            - jpy
-            - nzd
-            - gold
-            - gbp
-            - eur
-            - czk
-            - dkk
-            - huf
-            - pln
-            - ron
-            - ils
-            - rub
-            - bhd
-            - sar
-            - bgn
-            - kes
-            - sgd
-            - kwd
-            - zar
-            - cny
-            - myr
-            - hrk
-            - mxn
-            - thb
-            - try
-            - omr
-            - ugx
-            - hkd
-            - php
-            - aed
-            - inr
-            - qar
-            - idr
-            - points
-        countries:
-          type: array
-          description: List of countries where beneficiaries can be created, based on the integration's supported regions and business rules
-          items:
-            $ref: '#/components/schemas/CountryResponse'
-    ToqioHttpOkViewPersonalAccountsResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewPersonalAccountResponse'
-        code:
           type: string
-          example: OK
-        errorSeverity:
+        bicSwift:
           type: string
-          example: NONE
-        message:
+        bank:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
+        bsbCode:
           type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
+        routingNumber:
           type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkVerifyBeneficiaryResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/VerifyBeneficiaryResponse'
-        code:
+        caRoutingNumber:
           type: string
-          example: OK
-        errorSeverity:
+        accountNumber:
           type: string
-          example: NONE
-        message:
+        clabe:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
+        aba:
           type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
+          deprecated: true
+        cnaps:
           type: string
-          example: '2024-11-01T00:00:00.000Z'
-    ToqioHttpOkViewPersonalAccountResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ViewPersonalAccountResponse'
-        code:
+        ifsc:
           type: string
-          example: OK
-        errorSeverity:
+        bankCode:
           type: string
-          example: NONE
-        message:
+          deprecated: true
+        branchCode:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
+          deprecated: true
     BeneficiaryFilterRequest:
       type: object
       properties:
@@ -1231,9 +1177,65 @@ components:
         - type: object
         - type: array
         description: 'ADDITIONAL CUSTOM PROPERTIES: Dynamic properties based on your system configuration. Common examples include: verificationId (string), verificationTimestamp (string/datetime), matchScore (number), complianceStatus (string), sanctionsMatch (boolean), pepMatch (boolean), fraudRiskLevel (string), verificationProvider (string), additionalChecksPerformed (array), expiryTimestamp (string/datetime), and any other custom verification metadata defined in your system.'
-    DocumentNotFoundException:
+    BeneficiaryFilterResponse:
       type: object
       properties:
+        assetTypes:
+          type: array
+          description: List of asset types (currencies) that are allowed for payments or beneficiary selection based on the source account characteristics and business rules
+          items:
+            type: string
+            enum:
+            - aud
+            - chf
+            - cad
+            - sek
+            - usd
+            - nok
+            - jpy
+            - nzd
+            - gold
+            - gbp
+            - eur
+            - czk
+            - dkk
+            - huf
+            - pln
+            - ron
+            - ils
+            - rub
+            - bhd
+            - sar
+            - bgn
+            - kes
+            - sgd
+            - kwd
+            - zar
+            - cny
+            - myr
+            - hrk
+            - mxn
+            - thb
+            - try
+            - omr
+            - ugx
+            - hkd
+            - php
+            - aed
+            - inr
+            - qar
+            - idr
+            - points
+        countries:
+          type: array
+          description: List of countries where beneficiaries can be created, based on the integration's supported regions and business rules
+          items:
+            $ref: '#/components/schemas/CountryResponse'
+    ToqioHttpOkVerifyBeneficiaryResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/VerifyBeneficiaryResponse'
         code:
           type: string
           example: OK
@@ -1252,9 +1254,7 @@ components:
           example: 26b0f78a-79f9-426d-a20b-79841345ae51
         date:
           type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
+          example: '2024-11-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http

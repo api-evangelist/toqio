@@ -34,21 +34,6 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
     ToqioHttpOkPartnerProductResponse:
       type: object
       properties:
@@ -249,6 +234,21 @@ components:
       - assetType
       - label
       - schemes
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

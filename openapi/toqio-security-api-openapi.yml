@@ -225,100 +225,6 @@ paths:
                 $ref: '#/components/schemas/ToqioResponseCardResponse'
 components:
   schemas:
-    PartnerTokenResponse:
-      type: object
-      description: Partner integration token
-    EncryptedSecurityCode:
-      type: object
-      description: RSA-encrypted security verification
-      properties:
-        encryptedSecurityCode:
-          type: string
-          description: RSA-encrypted security code
-        iv:
-          type: string
-          description: Initialization vector
-        tag:
-          type: string
-          description: Authentication tag
-    CardOTP:
-      type: object
-      description: OTP information for card operations
-      properties:
-        baasOTP:
-          type: string
-          description: Banking-as-a-Service OTP code
-        operationId:
-          type: string
-          description: Unique operation identifier
-        userId:
-          type: string
-          description: User identifier
-        cardTokenRequest:
-          $ref: '#/components/schemas/CardTokenRequest'
-    Address:
-      type: object
-      properties:
-        addressStreet:
-          type: string
-          description: Street name
-        addressNumber:
-          type: string
-          description: Street number
-        addressCity:
-          type: string
-          description: City
-        addressRegion:
-          type: string
-          description: State/Region/County
-        addressPostalCode:
-          type: string
-          description: Postal/ZIP code
-        addressIsoCountry:
-          type: string
-          description: Country code (ISO 3166-1 alpha-2)
-        addressRefinement:
-          type: string
-          description: Additional address details (apt, suite, etc.)
-    ToqioResponsePinResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pin:
-              type: string
-              description: Card PIN
-              example: '1234'
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PIN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
     ToqioResponseCardResponse:
       type: object
       properties:
@@ -360,6 +266,17 @@ components:
         errorOrigin:
           type: string
           description: Origin of error if applicable (only present on errors)
+    PartnerTokenResponse:
+      type: object
+      description: Partner integration token
+    CardTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Activation token
+        securityCode:
+          $ref: '#/components/schemas/EncryptedSecurityCode'
     CardResponse:
       type: object
       description: Card details response
@@ -458,14 +375,73 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
-    CardTokenRequest:
+    ToqioResponsePinResponse:
       type: object
       properties:
-        token:
+        data:
+          type: object
+          properties:
+            pin:
+              type: string
+              description: Card PIN
+              example: '1234'
+        code:
           type: string
-          description: Activation token
-        securityCode:
-          $ref: '#/components/schemas/EncryptedSecurityCode'
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card PIN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+    CardOTP:
+      type: object
+      description: OTP information for card operations
+      properties:
+        baasOTP:
+          type: string
+          description: Banking-as-a-Service OTP code
+        operationId:
+          type: string
+          description: Unique operation identifier
+        userId:
+          type: string
+          description: User identifier
+        cardTokenRequest:
+          $ref: '#/components/schemas/CardTokenRequest'
+    EncryptedSecurityCode:
+      type: object
+      description: RSA-encrypted security verification
+      properties:
+        encryptedSecurityCode:
+          type: string
+          description: RSA-encrypted security code
+        iv:
+          type: string
+          description: Initialization vector
+        tag:
+          type: string
+          description: Authentication tag
     ToqioResponseCardPanResponse:
       type: object
       properties:
@@ -513,6 +489,30 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
+    Address:
+      type: object
+      properties:
+        addressStreet:
+          type: string
+          description: Street name
+        addressNumber:
+          type: string
+          description: Street number
+        addressCity:
+          type: string
+          description: City
+        addressRegion:
+          type: string
+          description: State/Region/County
+        addressPostalCode:
+          type: string
+          description: Postal/ZIP code
+        addressIsoCountry:
+          type: string
+          description: Country code (ISO 3166-1 alpha-2)
+        addressRefinement:
+          type: string
+          description: Additional address details (apt, suite, etc.)
   parameters:
     customerId:
       name: customerId

@@ -127,28 +127,12 @@ components:
           - 10001+
         type:
           type: string
-    ClientResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        externalId:
-          type: string
-        customerId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-    ToqioHttpOkClientResponse:
+    ToqioHttpOkVoidResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/ClientResponse'
+          type: object
+          writeOnly: true
         code:
           type: string
           example: OK
@@ -183,12 +167,28 @@ components:
           enum:
           - BUSINESS
           - CONSUMER
-    ToqioHttpOkVoidResponse:
+    ClientResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        externalId:
+          type: string
+        customerId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+    ToqioHttpOkClientResponse:
       type: object
       properties:
         data:
-          type: object
-          writeOnly: true
+          $ref: '#/components/schemas/ClientResponse'
         code:
           type: string
           example: OK

@@ -191,6 +191,211 @@ paths:
                   $ref: '#/components/schemas/ViewRevenueReduceDTO'
 components:
   schemas:
+    RevenueError:
+      type: object
+      properties:
+        field:
+          type: string
+        errorType:
+          type: string
+          enum:
+          - INVALID_CLIENT_ID
+          - INVALID_CLIENT_NAME
+          - INVALID_CURRENCY
+          - EMPY_TEST
+          - ERROR_FORMAT
+    ViewRevenueReduceDTO:
+      required:
+      - clientId
+      - clientName
+      - invoiceAmount
+      - invoiceCurrency
+      - invoiceDueDate
+      - invoiceIssueDate
+      - invoiceNumber
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientName:
+          type: string
+        invoiceNumber:
+          type: string
+        invoiceAmount:
+          type: number
+          format: double
+        invoiceCurrency:
+          type: string
+        invoiceIssueDate:
+          type: string
+          format: date-time
+        invoiceDueDate:
+          type: string
+          format: date-time
+        lineNumber:
+          type: integer
+          format: int32
+        lineErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RevenueError'
+    TagDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    RevenueFilter:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - PAID
+          - UNPAID
+          - REJECTED
+          - NOT_SENT
+        merchantId:
+          type: string
+        collectionId:
+          type: string
+        collectionName:
+          type: string
+        amount:
+          type: number
+          format: double
+        fromInvoiceIssueDate:
+          type: string
+          format: date
+        toInvoiceIssueDate:
+          type: string
+          format: date
+        fromInvoiceDueDate:
+          type: string
+          format: date
+        toInvoiceDueDate:
+          type: string
+          format: date
+    DynamicFields:
+      type: object
+      properties:
+        id:
+          type: string
+        label:
+          type: object
+          additionalProperties:
+            type: string
+        valueId:
+          type: string
+        value:
+          type: string
+    RevenueCollectionResponseDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        clientsFail:
+          type: array
+          items:
+            type: string
+    ViewRevenueDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        group:
+          $ref: '#/components/schemas/RevenueCollection'
+        status:
+          type: string
+          enum:
+          - PAID
+          - UNPAID
+          - REJECTED
+          - NOT_SENT
+        clientId:
+          type: string
+        clientName:
+          type: string
+        invoiceNumber:
+          type: string
+        invoiceAmount:
+          type: number
+          format: double
+        invoiceCurrency:
+          type: string
+        invoiceIssueDate:
+          type: string
+          format: date-time
+        invoiceDueDate:
+          type: string
+          format: date-time
+        selectedOption:
+          oneOf:
+          - $ref: '#/components/schemas/RevenuePayOption'
+          - $ref: '#/components/schemas/FullAmountPayOption'
+          - $ref: '#/components/schemas/InstallmentsPayOption'
+    RevenueCollectionRequestDTO:
+      required:
+      - name
+      - revenueCollection
+      type: object
+      properties:
+        name:
+          type: string
+        paymentOptions:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/RevenuePayOption'
+            - $ref: '#/components/schemas/FullAmountPayOption'
+            - $ref: '#/components/schemas/InstallmentsPayOption'
+        revenueCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewRevenueReduceDTO'
+    InvoiceLineDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+        amount:
+          type: number
+          format: double
+    RevenueCollection:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        requestDate:
+          type: string
+          format: date-time
+        customerId:
+          type: string
+        paymentConfigurator:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/RevenuePayOption'
+            - $ref: '#/components/schemas/FullAmountPayOption'
+            - $ref: '#/components/schemas/InstallmentsPayOption'
     ViewTransactionDetailDTO:
       type: object
       properties:
@@ -471,42 +676,6 @@ components:
             $ref: '#/components/schemas/DynamicFields'
         internal:
           type: boolean
-    ViewRevenueDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        group:
-          $ref: '#/components/schemas/RevenueCollection'
-        status:
-          type: string
-          enum:
-          - PAID
-          - UNPAID
-          - REJECTED
-          - NOT_SENT
-        clientId:
-          type: string
-        clientName:
-          type: string
-        invoiceNumber:
-          type: string
-        invoiceAmount:
-          type: number
-          format: double
-        invoiceCurrency:
-          type: string
-        invoiceIssueDate:
-          type: string
-          format: date-time
-        invoiceDueDate:
-          type: string
-          format: date-time
-        selectedOption:
-          oneOf:
-          - $ref: '#/components/schemas/RevenuePayOption'
-          - $ref: '#/components/schemas/FullAmountPayOption'
-          - $ref: '#/components/schemas/InstallmentsPayOption'
     TranslateLabel:
       type: object
       properties:
@@ -522,79 +691,6 @@ components:
           type: string
         pt:
           type: string
-    RevenueCollection:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        requestDate:
-          type: string
-          format: date-time
-        customerId:
-          type: string
-        paymentConfigurator:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/RevenuePayOption'
-            - $ref: '#/components/schemas/FullAmountPayOption'
-            - $ref: '#/components/schemas/InstallmentsPayOption'
-    RevenueCollectionRequestDTO:
-      required:
-      - name
-      - revenueCollection
-      type: object
-      properties:
-        name:
-          type: string
-        paymentOptions:
-          type: array
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/RevenuePayOption'
-            - $ref: '#/components/schemas/FullAmountPayOption'
-            - $ref: '#/components/schemas/InstallmentsPayOption'
-        revenueCollection:
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewRevenueReduceDTO'
-    ViewRevenueReduceDTO:
-      required:
-      - clientId
-      - clientName
-      - invoiceAmount
-      - invoiceCurrency
-      - invoiceDueDate
-      - invoiceIssueDate
-      - invoiceNumber
-      type: object
-      properties:
-        clientId:
-          type: string
-        clientName:
-          type: string
-        invoiceNumber:
-          type: string
-        invoiceAmount:
-          type: number
-          format: double
-        invoiceCurrency:
-          type: string
-        invoiceIssueDate:
-          type: string
-          format: date-time
-        invoiceDueDate:
-          type: string
-          format: date-time
-        lineNumber:
-          type: integer
-          format: int32
-        lineErrors:
-          type: array
-          items:
-            $ref: '#/components/schemas/RevenueError'
     InvoiceDataDTO:
       type: object
       properties:
@@ -639,6 +735,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/InvoiceLineDTO'
+    FullAmountPayOption:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/RevenuePayOption'
+      - type: object
+        properties:
+          discount:
+            type: number
+            format: double
+    RevenuePayOption:
+      required:
+      - type
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+    TransactionFileDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        extension:
+          type: string
+        key:
+          type: string
+        name:
+          type: string
+        fileUrl:
+          type: string
+        mime:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+        invoiceId:
+          type: string
+    InstallmentsPayOption:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/RevenuePayOption'
+      - type: object
+        properties:
+          numberOfInstallments:
+            type: integer
+            format: int32
+          installmentFrequency:
+            type: string
+            enum:
+            - MONTHLY
+            - WEEKLY
+            - BIWEEKLY
     EncryptedSecurityCodeDTO:
       type: object
       properties:
@@ -652,6 +805,37 @@ components:
           type: string
         tag:
           type: string
+    RevenueCollectionPayRequestDTO:
+      required:
+      - sourceAccountId
+      type: object
+      properties:
+        sourceAccountId:
+          type: string
+        currency:
+          type: string
+        securityCode:
+          $ref: '#/components/schemas/EncryptedSecurityCodeDTO'
+        paymentOption:
+          oneOf:
+          - $ref: '#/components/schemas/RevenuePayOption'
+          - $ref: '#/components/schemas/FullAmountPayOption'
+          - $ref: '#/components/schemas/InstallmentsPayOption'
+        baasOTP:
+          type: string
+        operationId:
+          type: string
+        superCustomerId:
+          type: string
+        companyId:
+          type: string
+        userId:
+          type: string
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
     TxAccount:
       type: object
       properties:
@@ -737,123 +921,6 @@ components:
           type: string
         ledgerType:
           type: string
-    TransactionFileDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        extension:
-          type: string
-        key:
-          type: string
-        name:
-          type: string
-        fileUrl:
-          type: string
-        mime:
-          type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
-          type: string
-        invoiceId:
-          type: string
-    RevenueCollectionPayRequestDTO:
-      required:
-      - sourceAccountId
-      type: object
-      properties:
-        sourceAccountId:
-          type: string
-        currency:
-          type: string
-        securityCode:
-          $ref: '#/components/schemas/EncryptedSecurityCodeDTO'
-        paymentOption:
-          oneOf:
-          - $ref: '#/components/schemas/RevenuePayOption'
-          - $ref: '#/components/schemas/FullAmountPayOption'
-          - $ref: '#/components/schemas/InstallmentsPayOption'
-        baasOTP:
-          type: string
-        operationId:
-          type: string
-        superCustomerId:
-          type: string
-        companyId:
-          type: string
-        userId:
-          type: string
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-    InvoiceLineDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        description:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-        amount:
-          type: number
-          format: double
-    RevenueFilter:
-      type: object
-      properties:
-        id:
-          type: string
-        status:
-          type: string
-          enum:
-          - PAID
-          - UNPAID
-          - REJECTED
-          - NOT_SENT
-        merchantId:
-          type: string
-        collectionId:
-          type: string
-        collectionName:
-          type: string
-        amount:
-          type: number
-          format: double
-        fromInvoiceIssueDate:
-          type: string
-          format: date
-        toInvoiceIssueDate:
-          type: string
-          format: date
-        fromInvoiceDueDate:
-          type: string
-          format: date
-        toInvoiceDueDate:
-          type: string
-          format: date
-    InstallmentsPayOption:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/RevenuePayOption'
-      - type: object
-        properties:
-          numberOfInstallments:
-            type: integer
-            format: int32
-          installmentFrequency:
-            type: string
-            enum:
-            - MONTHLY
-            - WEEKLY
-            - BIWEEKLY
     PaymentProviderDetailsDTO:
       type: object
       properties:
@@ -871,73 +938,6 @@ components:
         settlementDate:
           type: string
           format: date-time
-    TagDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-    FullAmountPayOption:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/RevenuePayOption'
-      - type: object
-        properties:
-          discount:
-            type: number
-            format: double
-    RevenueError:
-      type: object
-      properties:
-        field:
-          type: string
-        errorType:
-          type: string
-          enum:
-          - INVALID_CLIENT_ID
-          - INVALID_CLIENT_NAME
-          - INVALID_CURRENCY
-          - EMPY_TEST
-          - ERROR_FORMAT
-    DynamicFields:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: object
-          additionalProperties:
-            type: string
-        valueId:
-          type: string
-        value:
-          type: string
-    RevenuePayOption:
-      required:
-      - type
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-    RevenueCollectionResponseDTO:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        requestDate:
-          type: string
-          format: date-time
-        clientsFail:
-          type: array
-          items:
-            type: string
 x-source-pages:
 - https://platform.toq.io/reference/changestatus_1
 - https://platform.toq.io/reference/createcustomeraccount_1

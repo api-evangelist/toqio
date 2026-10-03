@@ -143,19 +143,79 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
-    HostedOnboardingResponse:
+    CustomException:
       type: object
       properties:
-        link:
+        code:
           type: string
-    HostedOnboardingRequest:
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    ToqioHttpOkVoidResponse:
       type: object
       properties:
-        locale:
+        data:
+          type: object
+          writeOnly: true
+        code:
           type: string
-          example: en-GB
-        redirectUrl:
+          example: OK
+        errorSeverity:
           type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ToqioHttpOkHostedOnboardingResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/HostedOnboardingResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     CreateMerchantRequest:
       type: object
       properties:
@@ -247,54 +307,6 @@ components:
       - cif
       - name
       - subOrganisationType
-    CustomException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    Director:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
-        countryOfResidence:
-          type: string
-        postalCode:
-          type: string
-        address:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        email:
-          type: string
-          format: email
     SignUpRequest:
       type: object
       properties:
@@ -389,6 +401,11 @@ components:
       - email
       - endUserId
       - registrationDate
+    HostedOnboardingResponse:
+      type: object
+      properties:
+        link:
+          type: string
     UpdateClientRequest:
       type: object
       properties:
@@ -419,55 +436,38 @@ components:
           enum:
           - BUSINESS
           - CONSUMER
-    ToqioHttpOkVoidResponse:
+    Director:
       type: object
       properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
+        firstName:
           type: string
-          example: OK
-        errorSeverity:
+        lastName:
           type: string
-          example: NONE
-        message:
+        dateOfBirth:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
+          format: date-time
+          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
+        countryOfResidence:
           type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
+        postalCode:
           type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkHostedOnboardingResponse:
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        email:
+          type: string
+          format: email
+    HostedOnboardingRequest:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/HostedOnboardingResponse'
-        code:
+        locale:
           type: string
-          example: OK
-        errorSeverity:
+          example: en-GB
+        redirectUrl:
           type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http
