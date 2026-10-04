@@ -54,6 +54,51 @@ paths:
       deprecated: false
 components:
   schemas:
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        cif:
+          type: string
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
+        id:
+          type: string
+        invoiceDate:
+          type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
     AccountDetailsDTO:
       title: AccountDetailsDTO
       description: This object is REQUIRED if beneficiaryAccountId is empty
@@ -105,29 +150,94 @@ components:
           type: string
         ukSortCode:
           type: string
-    TransactionFileDTO:
-      title: TransactionFileDTO
+    TagDTO:
+      title: TagDTO
       type: object
       properties:
-        extension:
+        id:
           type: string
-        fileUrl:
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
+          type: string
+          description: Tag name
+          example: My tag
+    TxAccount:
+      title: TxAccount
+      type: object
+      properties:
+        accountAlias:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
           type: string
         id:
           type: string
-        invoiceId:
-          type: string
-        key:
-          type: string
-        mime:
+        ifsc:
           type: string
         name:
           type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
+        routingNumber:
           type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
     IssuePaymentDTO:
       title: IssuePaymentDTO
       required:
@@ -272,23 +382,6 @@ components:
           - WEEK
           - MONTH
           - YEAR
-    InvoiceLineDTO:
-      title: InvoiceLineDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        description:
-          type: string
-        id:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
     ViewTransactionDetailDTO:
       title: ViewTransactionDetailDTO
       type: object
@@ -496,97 +589,45 @@ components:
             settlementDate:
               type: string
               format: date-time
-    TxAccount:
-      title: TxAccount
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
       type: object
       properties:
-        accountAlias:
-          type: string
-        accountNumber:
-          type: string
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        bank:
-          type: string
-        bicSwift:
-          type: string
-        bsbCode:
-          type: string
-        caRoutingNumber:
-          type: string
-        clabe:
-          type: string
-        cnaps:
-          type: string
-        fullName:
-          type: string
-        iban:
+        amount:
+          type: number
+          format: double
+        description:
           type: string
         id:
           type: string
-        ifsc:
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
+          type: string
+        fileUrl:
+          type: string
+        id:
+          type: string
+        invoiceId:
+          type: string
+        key:
+          type: string
+        mime:
           type: string
         name:
           type: string
-        routingNumber:
-          type: string
-        type:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        purposeCode:
-          type: string
-        paymentProviderDetails:
-          type: object
-          properties:
-            shortReference:
-              type: string
-            internalReference:
-              type: string
-            paymentId:
-              type: string
-            conversionId:
-              type: string
-            rate:
-              type: string
-            settlementDate:
-              type: string
-              format: date-time
-    TranslateLabel:
-      title: TranslateLabel
-      type: object
-      properties:
-        de:
-          type: string
-        en:
-          type: string
-        es:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
           type: string
     BankPaymentScheme:
       title: BankPaymentScheme
@@ -630,63 +671,22 @@ components:
           - CHIPS
         name:
           type: string
-    TagDTO:
-      title: TagDTO
+    TranslateLabel:
+      title: TranslateLabel
       type: object
       properties:
-        id:
+        de:
           type: string
-          description: Tag ID
-          example: 5c473c5046e0fb0005c436af
-        name:
+        en:
           type: string
-          description: Tag name
-          example: My tag
-    InvoiceDataDTO:
-      title: InvoiceDataDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        cif:
+        es:
           type: string
-        discountAmount:
-          type: number
-          format: double
-        discountPercentage:
-          type: number
-          format: double
-        dueDate:
+        it:
           type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionFileDTO'
-        hasInvoice:
-          type: boolean
-        id:
+        zh:
           type: string
-        invoiceDate:
+        pt:
           type: string
-        invoiceNumber:
-          type: string
-        isTotalWithoutVatEdited:
-          type: boolean
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceLineDTO'
-        postalCode:
-          type: string
-        supplier:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
   securitySchemes:
     clientCredentials:
       type: oauth2

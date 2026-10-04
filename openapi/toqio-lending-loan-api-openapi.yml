@@ -136,51 +136,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    LoanTransactionResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        amount:
-          type: number
-          format: double
-        currencyISOCode:
-          type: string
-        date:
-          type: string
-        loanId:
-          type: string
-    ToqioHttpOkDocumentResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Document'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    Document:
-      type: object
-      properties:
-        base64:
-          type: string
-        name:
-          type: string
     LoanFilter:
       type: object
       properties:
@@ -202,22 +157,19 @@ components:
           type: string
         customerId:
           type: string
-    RepaymentTerms:
+    LoanTransactionResponse:
       type: object
       properties:
-        basisPoint:
+        id:
+          type: string
+        amount:
           type: number
           format: double
-        estimatedDays:
-          type: integer
-          format: int32
-        thresholdAmount:
-          type: number
-          format: double
-        thresholdDuration:
-          type: integer
-          format: int32
-        startsAt:
+        currencyISOCode:
+          type: string
+        date:
+          type: string
+        loanId:
           type: string
     LoanResponse:
       type: object
@@ -331,6 +283,54 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    Document:
+      type: object
+      properties:
+        base64:
+          type: string
+        name:
+          type: string
+    ToqioHttpOkDocumentResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Document'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    RepaymentTerms:
+      type: object
+      properties:
+        basisPoint:
+          type: number
+          format: double
+        estimatedDays:
+          type: integer
+          format: int32
+        thresholdAmount:
+          type: number
+          format: double
+        thresholdDuration:
+          type: integer
+          format: int32
+        startsAt:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

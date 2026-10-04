@@ -500,15 +500,53 @@ paths:
       deprecated: false
 components:
   schemas:
-    CardTokenDTO:
-      title: CardTokenDTO
+    CardDesignDTO:
+      title: CardDesignDTO
       type: object
       properties:
-        code:
+        cardNumber:
+          $ref: '#/components/schemas/CardMask'
+        cvv:
+          $ref: '#/components/schemas/CardMask'
+        expiration:
+          $ref: '#/components/schemas/CardMask'
+        nameOnCard:
+          $ref: '#/components/schemas/CardMask'
+        templateUrl:
           type: string
-          description: This field is only required for Railsr Customers
-        securityCode:
+        textColor:
           type: string
+        token:
+          $ref: '#/components/schemas/CardMask'
+    AccountSummaryDTO:
+      title: AccountSummaryDTO
+      type: object
+      properties:
+        accountLine:
+          type: string
+        alias:
+          type: string
+        assetFlag:
+          type: string
+        assetSymbol:
+          type: string
+        assetType:
+          type: string
+        bicSwift:
+          type: string
+        iban:
+          type: string
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
     ViewCardDTO:
       title: ViewCardDTO
       type: object
@@ -619,6 +657,117 @@ components:
           type: string
         cardDesign:
           type: string
+    CardMask:
+      title: CardMask
+      type: object
+      properties:
+        maxX:
+          type: integer
+          format: int32
+        maxY:
+          type: integer
+          format: int32
+        minX:
+          type: integer
+          format: int32
+        minY:
+          type: integer
+          format: int32
+    ApiCardDTO:
+      title: ApiCardDTO
+      type: object
+      properties:
+        accountId:
+          type: string
+        alias:
+          type: string
+        cancelled:
+          type: boolean
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        cardDeliveryMethodEnum:
+          type: string
+          enum:
+          - STANDARD_FIRST_CLASS
+          - INTERNATIONAL_MAIL
+          - DHL
+          - COURIER
+        cardLimitDaily:
+          type: integer
+          format: int32
+        cardLimitMonthly:
+          type: integer
+          format: int32
+        cardLimitTransaction:
+          type: integer
+          format: int32
+        cardMinLimitTransaction:
+          type: integer
+          format: int32
+        cardMinLimitTransactionForPhysicalBusiness:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+          format: date-time
+        expiryDate:
+          type: string
+        freezeReason:
+          type: string
+          enum:
+          - CARD_FROZEN_BY_OWNER
+          - CARD_FROZEN_BY_DIRECTOR
+          - CARD_FROZEN_BY_ADMIN
+          - CARD_CANCELLED
+          - COMPANY_FROZEN
+          - COMPANY_REJECTED
+          - USER_DISABLED
+          - CUSTOMER_REJECTED
+        fundingType:
+          type: string
+          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
+          enum:
+          - DEBIT
+          - CREDIT
+        id:
+          type: string
+        lifetimeSpendLimit:
+          type: integer
+          format: int32
+        name:
+          type: string
+        nameOnCard:
+          type: string
+        spend:
+          type: number
+          format: double
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - ACTIVATING
+          - AWAITING
+          - FAILED
+          - SUSPENDED
+          - CANCELLED
+        token:
+          type: string
+          example: '1234567'
+        truncatedPan:
+          type: string
+          description: Last 4 digits of the card.
+        type:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+        userId:
+          type: string
+        cardProgramme:
+          type: string
+        cardDesign:
+          type: string
     AuthenticationResponse:
       type: object
       description: Only available for Modulr users.
@@ -636,6 +785,122 @@ components:
           - ENROLLED
           - UNENROLLED
       title: AuthenticationResponse
+    UpdateCardDTO:
+      title: Update card
+      type: object
+      properties:
+        lifetimeSpendLimit:
+          description: Lifetime limit of the card. Only apply to Modulr cards.
+          type: number
+          example: 100
+        cardLimitTransaction:
+          description: Limit per transaction of a card
+          type: integer
+          example: 100
+        cardLimitMonthly:
+          description: Monthly limit of a card
+          type: integer
+          example: 5000
+        cardLimitDaily:
+          description: Daily limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesDaily:
+          description: Purchases daily limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesMonthly:
+          description: Purchases monthly limit of a card
+          type: integer
+          example: 100
+        cardLimitATMDaily:
+          description: ATM daily limit of a card
+          type: integer
+          example: 100
+        cardLimitATMMonthly:
+          description: ATM monthly limit of a card
+          type: integer
+          example: 100
+        cardLimitATMOperations:
+          description: ATM operations limit of a card
+          type: integer
+          example: 100
+        cardLimitPurchasesOperations:
+          description: Purchases operations limit of a card
+          type: integer
+          example: 100
+    CardTokenDTO:
+      title: CardTokenDTO
+      type: object
+      properties:
+        code:
+          type: string
+          description: This field is only required for Railsr Customers
+        securityCode:
+          type: string
+    SecurityQuestionDTO:
+      type: object
+      description: Users must answer at least one question. Answers are case sensitive
+      properties:
+        cityParentsMet:
+          type: string
+          description: In which city did your parents meet?
+        favoriteChildhoodFriend:
+          type: string
+          description: Who was your favorite childhood friend?
+        firstCar:
+          type: string
+          description: What was your first car?
+        firstPetName:
+          type: string
+          description: What was the name of your first pet?
+        maternalGrandmotherMaidenName:
+          type: string
+          description: What is your maternal grandmother maiden name?
+      title: SecurityQuestionDTO
+    FreezeReasonDTO:
+      title: FreezeReasonDTO
+      type: object
+      required:
+      - reason
+      properties:
+        reason:
+          type: string
+          enum:
+          - CARD_FROZEN_BY_OWNER
+          - CARD_FROZEN_BY_DIRECTOR
+          - CARD_FROZEN_BY_ADMIN
+          - CARD_CANCELLED
+          - COMPANY_FROZEN
+          - COMPANY_REJECTED
+          - USER_DISABLED
+          - CUSTOMER_REJECTED
+    CardAddress:
+      title: CardAddress
+      description: Required for physical cards. Physical card will be shipped to this address.
+      type: object
+      properties:
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressNumber:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressRefinement:
+          maxLength: 1000
+          type: string
+        addressRegion:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
     IssueCardViaAPIDTO:
       title: IssueCardViaAPIDTO
       required:
@@ -736,271 +1001,6 @@ components:
         billingAccountId:
           type: string
           description: Identifier of the alternative billing account used to deduct card issuance fees if the card-linked account has insufficient funds. This field is required only when a billing model is enabled. The billing account must have sufficient funds available and match the currency of the card being issued.
-    CardAddress:
-      title: CardAddress
-      description: Required for physical cards. Physical card will be shipped to this address.
-      type: object
-      properties:
-        addressCity:
-          maxLength: 100
-          type: string
-        addressIsoCountry:
-          maxLength: 100
-          type: string
-        addressNumber:
-          maxLength: 100
-          type: string
-        addressPostalCode:
-          maxLength: 100
-          type: string
-        addressRefinement:
-          maxLength: 1000
-          type: string
-        addressRegion:
-          maxLength: 100
-          type: string
-        addressStreet:
-          maxLength: 1000
-          type: string
-    ApiCardDTO:
-      title: ApiCardDTO
-      type: object
-      properties:
-        accountId:
-          type: string
-        alias:
-          type: string
-        cancelled:
-          type: boolean
-        cardDeliveryAddress:
-          $ref: '#/components/schemas/CardAddress'
-        cardDeliveryMethodEnum:
-          type: string
-          enum:
-          - STANDARD_FIRST_CLASS
-          - INTERNATIONAL_MAIL
-          - DHL
-          - COURIER
-        cardLimitDaily:
-          type: integer
-          format: int32
-        cardLimitMonthly:
-          type: integer
-          format: int32
-        cardLimitTransaction:
-          type: integer
-          format: int32
-        cardMinLimitTransaction:
-          type: integer
-          format: int32
-        cardMinLimitTransactionForPhysicalBusiness:
-          type: integer
-          format: int32
-        createdAt:
-          type: string
-          format: date-time
-        expiryDate:
-          type: string
-        freezeReason:
-          type: string
-          enum:
-          - CARD_FROZEN_BY_OWNER
-          - CARD_FROZEN_BY_DIRECTOR
-          - CARD_FROZEN_BY_ADMIN
-          - CARD_CANCELLED
-          - COMPANY_FROZEN
-          - COMPANY_REJECTED
-          - USER_DISABLED
-          - CUSTOMER_REJECTED
-        fundingType:
-          type: string
-          description: Funding type of the card. Extensible; current supported values are DEBIT and CREDIT.
-          enum:
-          - DEBIT
-          - CREDIT
-        id:
-          type: string
-        lifetimeSpendLimit:
-          type: integer
-          format: int32
-        name:
-          type: string
-        nameOnCard:
-          type: string
-        spend:
-          type: number
-          format: double
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - INACTIVE
-          - ACTIVATING
-          - AWAITING
-          - FAILED
-          - SUSPENDED
-          - CANCELLED
-        token:
-          type: string
-          example: '1234567'
-        truncatedPan:
-          type: string
-          description: Last 4 digits of the card.
-        type:
-          type: string
-          enum:
-          - PHYSICAL
-          - VIRTUAL
-        userId:
-          type: string
-        cardProgramme:
-          type: string
-        cardDesign:
-          type: string
-    CardMask:
-      title: CardMask
-      type: object
-      properties:
-        maxX:
-          type: integer
-          format: int32
-        maxY:
-          type: integer
-          format: int32
-        minX:
-          type: integer
-          format: int32
-        minY:
-          type: integer
-          format: int32
-    SecurityQuestionDTO:
-      type: object
-      description: Users must answer at least one question. Answers are case sensitive
-      properties:
-        cityParentsMet:
-          type: string
-          description: In which city did your parents meet?
-        favoriteChildhoodFriend:
-          type: string
-          description: Who was your favorite childhood friend?
-        firstCar:
-          type: string
-          description: What was your first car?
-        firstPetName:
-          type: string
-          description: What was the name of your first pet?
-        maternalGrandmotherMaidenName:
-          type: string
-          description: What is your maternal grandmother maiden name?
-      title: SecurityQuestionDTO
-    AccountSummaryDTO:
-      title: AccountSummaryDTO
-      type: object
-      properties:
-        accountLine:
-          type: string
-        alias:
-          type: string
-        assetFlag:
-          type: string
-        assetSymbol:
-          type: string
-        assetType:
-          type: string
-        bicSwift:
-          type: string
-        iban:
-          type: string
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        id:
-          type: string
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-    FreezeReasonDTO:
-      title: FreezeReasonDTO
-      type: object
-      required:
-      - reason
-      properties:
-        reason:
-          type: string
-          enum:
-          - CARD_FROZEN_BY_OWNER
-          - CARD_FROZEN_BY_DIRECTOR
-          - CARD_FROZEN_BY_ADMIN
-          - CARD_CANCELLED
-          - COMPANY_FROZEN
-          - COMPANY_REJECTED
-          - USER_DISABLED
-          - CUSTOMER_REJECTED
-    UpdateCardDTO:
-      title: Update card
-      type: object
-      properties:
-        lifetimeSpendLimit:
-          description: Lifetime limit of the card. Only apply to Modulr cards.
-          type: number
-          example: 100
-        cardLimitTransaction:
-          description: Limit per transaction of a card
-          type: integer
-          example: 100
-        cardLimitMonthly:
-          description: Monthly limit of a card
-          type: integer
-          example: 5000
-        cardLimitDaily:
-          description: Daily limit of a card
-          type: integer
-          example: 100
-        cardLimitPurchasesDaily:
-          description: Purchases daily limit of a card
-          type: integer
-          example: 100
-        cardLimitPurchasesMonthly:
-          description: Purchases monthly limit of a card
-          type: integer
-          example: 100
-        cardLimitATMDaily:
-          description: ATM daily limit of a card
-          type: integer
-          example: 100
-        cardLimitATMMonthly:
-          description: ATM monthly limit of a card
-          type: integer
-          example: 100
-        cardLimitATMOperations:
-          description: ATM operations limit of a card
-          type: integer
-          example: 100
-        cardLimitPurchasesOperations:
-          description: Purchases operations limit of a card
-          type: integer
-          example: 100
-    CardDesignDTO:
-      title: CardDesignDTO
-      type: object
-      properties:
-        cardNumber:
-          $ref: '#/components/schemas/CardMask'
-        cvv:
-          $ref: '#/components/schemas/CardMask'
-        expiration:
-          $ref: '#/components/schemas/CardMask'
-        nameOnCard:
-          $ref: '#/components/schemas/CardMask'
-        templateUrl:
-          type: string
-        textColor:
-          type: string
-        token:
-          $ref: '#/components/schemas/CardMask'
   securitySchemes:
     bearer-jwt:
       type: oauth2

@@ -243,138 +243,6 @@ components:
         version:
           type: string
       title: TNCVersion
-    NotificationSettings:
-      type: object
-      properties:
-        push:
-          $ref: '#/components/schemas/PushSettings'
-        email:
-          type: boolean
-        commercial:
-          type: boolean
-        thirdParties:
-          type: boolean
-    UserInviteDTO:
-      type: object
-      required:
-      - firstName
-      - lastName
-      - email
-      - phoneNumber
-      - phoneCountry
-      - role
-      - birthDate
-      - address
-      - city
-      - postalCode
-      - country
-      - sendInvite
-      properties:
-        firstName:
-          type: string
-          description: Minimum required informatiom to create a user.
-        lastName:
-          type: string
-          description: Minimum required informatiom to create a user.
-        email:
-          type: string
-        phoneNumber:
-          type: string
-          description: You MUST add a mobile phone. By adding a landline the request will be rejected.
-        phoneCountry:
-          type: string
-          description: You MUST add the country prefix. We will send an OTP SMS message when the user is setting up the credentials.
-        consultancy:
-          type: string
-        role:
-          type: string
-          enum:
-          - ROLE_DIRECTOR
-          - ROLE_COMPANY_ADMIN
-          - ROLE_EMPLOYEE
-          - ROLE_ACCOUNTANT
-          - ROLE_OWNER
-          - ROLE_BENEFICIARY
-          - ROLE_AGENT
-          description: 'SME roles: ROLE_DIRECTOR, ROLE_COMPANY_ADMIN, ROLE_EMPLOYEE, ROLE_ACCOUNTANT and ROLE_AGENT; Consumer roles: ROLE_OWNER and ROLE_BENEFICIARY.'
-        birthDate:
-          type: string
-          description: Minimum required informatiom to create a user.
-        country:
-          type: string
-        postalCode:
-          type: string
-        address:
-          maxLength: 1000
-          minLength: 0
-          type: string
-          description: Minimum required informatiom to create a user.
-        address2:
-          maxLength: 1000
-          minLength: 0
-          type: string
-          description: Minimum required informatiom to create a user.
-        city:
-          type: string
-        cardType:
-          type: string
-          enum:
-          - PHYSICAL
-          - VIRTUAL
-        cardDeliveryName:
-          type: string
-        cardDeliveryAddress:
-          $ref: '#/components/schemas/CardAddress'
-        nameOnCard:
-          type: string
-        otp:
-          type: string
-        personalIdentityNumber:
-          type: string
-        documentType:
-          type: string
-        documentNumber:
-          type: string
-        tin:
-          maxLength: 11
-          minLength: 0
-          type: string
-        documentIssueDate:
-          type: string
-        sendInvite:
-          type: boolean
-          description: When the 'sendInvite' parameter is set to 'true', the newly created user will receive an email invitation to set up their credentials. If 'sendInvite' is set to 'false', no email will be sent. If 'sendInvite' is left empty, the system will automatically set it to 'true' by default.
-        metadata:
-          type: object
-          additionalProperties: true
-          description: Key→value map.<br/> • Must be an object<br/> • Cannot be a primitive
-      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. All the DIRECTORS of the company MUST be added and will be required to do a KYC validation process by sending a live photo of their personal documentation and a selfie or a video, depending on the legislationCountry selection (e.g., if legislationCountry is UK this will be a selfie, if legislationCountry ES it will be a video). These DIRECTORS, in addition to the main user created in the OnboardingUserDTO, will go through this process to be reviewed in our compliance partner (overrideCompliance false) OR just saved to collect the information provided (overrideCompliance true AND runKYC true).
-    CardAddress:
-      type: object
-      properties:
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressNumber:
-          type: string
-        addressPostalCode:
-          type: string
-        addressRefinement:
-          type: string
-        addressRegion:
-          type: string
-        addressStreet:
-          type: string
-    PushSettings:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        pendingActions:
-          type: boolean
-        suggestions:
-          type: boolean
     UserDTO:
       type: object
       properties:
@@ -518,6 +386,138 @@ components:
           type: string
         email:
           type: string
+    PushSettings:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        pendingActions:
+          type: boolean
+        suggestions:
+          type: boolean
+    NotificationSettings:
+      type: object
+      properties:
+        push:
+          $ref: '#/components/schemas/PushSettings'
+        email:
+          type: boolean
+        commercial:
+          type: boolean
+        thirdParties:
+          type: boolean
+    CardAddress:
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressNumber:
+          type: string
+        addressPostalCode:
+          type: string
+        addressRefinement:
+          type: string
+        addressRegion:
+          type: string
+        addressStreet:
+          type: string
+    UserInviteDTO:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      - phoneNumber
+      - phoneCountry
+      - role
+      - birthDate
+      - address
+      - city
+      - postalCode
+      - country
+      - sendInvite
+      properties:
+        firstName:
+          type: string
+          description: Minimum required informatiom to create a user.
+        lastName:
+          type: string
+          description: Minimum required informatiom to create a user.
+        email:
+          type: string
+        phoneNumber:
+          type: string
+          description: You MUST add a mobile phone. By adding a landline the request will be rejected.
+        phoneCountry:
+          type: string
+          description: You MUST add the country prefix. We will send an OTP SMS message when the user is setting up the credentials.
+        consultancy:
+          type: string
+        role:
+          type: string
+          enum:
+          - ROLE_DIRECTOR
+          - ROLE_COMPANY_ADMIN
+          - ROLE_EMPLOYEE
+          - ROLE_ACCOUNTANT
+          - ROLE_OWNER
+          - ROLE_BENEFICIARY
+          - ROLE_AGENT
+          description: 'SME roles: ROLE_DIRECTOR, ROLE_COMPANY_ADMIN, ROLE_EMPLOYEE, ROLE_ACCOUNTANT and ROLE_AGENT; Consumer roles: ROLE_OWNER and ROLE_BENEFICIARY.'
+        birthDate:
+          type: string
+          description: Minimum required informatiom to create a user.
+        country:
+          type: string
+        postalCode:
+          type: string
+        address:
+          maxLength: 1000
+          minLength: 0
+          type: string
+          description: Minimum required informatiom to create a user.
+        address2:
+          maxLength: 1000
+          minLength: 0
+          type: string
+          description: Minimum required informatiom to create a user.
+        city:
+          type: string
+        cardType:
+          type: string
+          enum:
+          - PHYSICAL
+          - VIRTUAL
+        cardDeliveryName:
+          type: string
+        cardDeliveryAddress:
+          $ref: '#/components/schemas/CardAddress'
+        nameOnCard:
+          type: string
+        otp:
+          type: string
+        personalIdentityNumber:
+          type: string
+        documentType:
+          type: string
+        documentNumber:
+          type: string
+        tin:
+          maxLength: 11
+          minLength: 0
+          type: string
+        documentIssueDate:
+          type: string
+        sendInvite:
+          type: boolean
+          description: When the 'sendInvite' parameter is set to 'true', the newly created user will receive an email invitation to set up their credentials. If 'sendInvite' is set to 'false', no email will be sent. If 'sendInvite' is left empty, the system will automatically set it to 'true' by default.
+        metadata:
+          type: object
+          additionalProperties: true
+          description: Key→value map.<br/> • Must be an object<br/> • Cannot be a primitive
+      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. All the DIRECTORS of the company MUST be added and will be required to do a KYC validation process by sending a live photo of their personal documentation and a selfie or a video, depending on the legislationCountry selection (e.g., if legislationCountry is UK this will be a selfie, if legislationCountry ES it will be a video). These DIRECTORS, in addition to the main user created in the OnboardingUserDTO, will go through this process to be reviewed in our compliance partner (overrideCompliance false) OR just saved to collect the information provided (overrideCompliance true AND runKYC true).
   securitySchemes:
     clientCredentials:
       type: oauth2

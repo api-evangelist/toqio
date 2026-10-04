@@ -191,14 +191,116 @@ paths:
           description: Bank not found
 components:
   schemas:
-    ToqioHttpOkCustomerConnectionStatusResponse:
+    Capability:
+      type: object
+      properties:
+        hasOwnOTP:
+          type: boolean
+        canResendOTP:
+          type: boolean
+        canRetrievePan:
+          type: boolean
+        allowSixMonthsStatements:
+          type: boolean
+        allowVirtualCards:
+          type: boolean
+        allowEditBeneficiaries:
+          type: boolean
+        hasSecurityQuestions:
+          type: boolean
+        hasPhysicalCardVerificationNumber:
+          type: boolean
+        hasMeaWalletConfig:
+          type: boolean
+        hasBusinessCode:
+          type: boolean
+        hasToCreateEndUserKYC:
+          type: boolean
+        canCancelAccounts:
+          type: boolean
+        canRemoveAccounts:
+          type: boolean
+        hasAccountPurposes:
+          type: boolean
+        hasExpectedVolume:
+          type: boolean
+        needAccountSignature:
+          type: boolean
+        canRunCompliance:
+          type: boolean
+          description: Indicates if the bank needs to run compliance checks before creating an account
+    ToqioHttpOkCapabilityResponse:
       type: object
       properties:
         data:
+          $ref: '#/components/schemas/Capability'
+        code:
           type: string
-          enum:
-          - CONNECTED
-          - FAILED
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    DocumentNotFoundException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
+    ViewCustomerBaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        apiKey:
+          type: string
+        provider:
+          type: string
+        superCustomerId:
+          type: string
+        paymentProvider:
+          $ref: '#/components/schemas/PaymentProvider'
+        commercialName:
+          type: string
+        availableCurrencies:
+          type: array
+          items:
+            type: string
+    ToqioHttpOkViewCustomerBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ViewCustomerBaseResponse'
         code:
           type: string
           example: OK
@@ -266,11 +368,14 @@ components:
           type: array
           items:
             type: string
-    ToqioHttpOkCapabilityResponse:
+    ToqioHttpOkCustomerConnectionStatusResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/Capability'
+          type: string
+          enum:
+          - CONNECTED
+          - FAILED
         code:
           type: string
           example: OK
@@ -290,166 +395,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkViewCustomerBaseResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ViewCustomerBaseResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
-    DocumentNotFoundException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    PaymentProvider:
-      deprecated: true
-      type: object
-      properties:
-        customerId:
-          type: string
-        paymentProviderType:
-          type: string
-        key:
-          type: string
-        loginId:
-          type: string
-        hmacKey:
-          type: string
-    Capability:
-      type: object
-      properties:
-        hasOwnOTP:
-          type: boolean
-        canResendOTP:
-          type: boolean
-        canRetrievePan:
-          type: boolean
-        allowSixMonthsStatements:
-          type: boolean
-        allowVirtualCards:
-          type: boolean
-        allowEditBeneficiaries:
-          type: boolean
-        hasSecurityQuestions:
-          type: boolean
-        hasPhysicalCardVerificationNumber:
-          type: boolean
-        hasMeaWalletConfig:
-          type: boolean
-        hasBusinessCode:
-          type: boolean
-        hasToCreateEndUserKYC:
-          type: boolean
-        canCancelAccounts:
-          type: boolean
-        canRemoveAccounts:
-          type: boolean
-        hasAccountPurposes:
-          type: boolean
-        hasExpectedVolume:
-          type: boolean
-        needAccountSignature:
-          type: boolean
-        canRunCompliance:
-          type: boolean
-          description: Indicates if the bank needs to run compliance checks before creating an account
-    ToqioHttpOkPartnerProductResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/PartnerProductResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ViewCustomerBaseResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        apiKey:
-          type: string
-        provider:
-          type: string
-        superCustomerId:
-          type: string
-        paymentProvider:
-          $ref: '#/components/schemas/PaymentProvider'
-        commercialName:
-          type: string
-        availableCurrencies:
-          type: array
-          items:
-            type: string
     PartnerProductResponse:
       type: object
       properties:
@@ -600,6 +545,32 @@ components:
       - assetType
       - label
       - schemes
+    ToqioHttpOkPartnerProductResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerProductResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     ToqioHttpOkAssetTypeResponse:
       type: object
       properties:
@@ -665,6 +636,35 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    PaymentProvider:
+      deprecated: true
+      type: object
+      properties:
+        customerId:
+          type: string
+        paymentProviderType:
+          type: string
+        key:
+          type: string
+        loginId:
+          type: string
+        hmacKey:
+          type: string
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

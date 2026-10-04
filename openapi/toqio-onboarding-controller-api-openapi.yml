@@ -91,57 +91,42 @@ paths:
       deprecated: false
 components:
   schemas:
-    Journey:
+    CreateCompanyLeadViaApiDTO:
       type: object
       properties:
-        id:
-          type: integer
-          format: int32
-        name:
+        customerId:
           type: string
-      title: Journey
-    CreateShareholderDTO:
-      type: object
-      required:
-      - address
-      - city
-      - country
-      - documentType
-      - frontSideBase64
-      - postalCode
-      - name
-      - surname
-      - percentageOfShares
-      - birthDate
-      properties:
-        name:
+          description: We will provide you with a costumer id to be placed in this field. If you don't have it, please get in touch with customer_success@toq.io
+        client:
+          $ref: '#/components/schemas/OnboardingClientDTO'
+        user:
+          $ref: '#/components/schemas/OnboardingUserDTO'
+        overrideCompliance:
+          type: boolean
+          description: Select true if you don't need the client going over the compliance process. This will only work for compliance providers that permit the use of the override process. Use carefully and only if you already have run a compliance process over the client.
+        runKYC:
+          type: boolean
+          description: Works only for TRUNARRATIVE compliance process. If in the field above, overrideCompliance, you have selected true, you still can ask the user for company and personal information to be collected for monitoring. When selecting this option as true, the client will be asked for the compliance information but won't go thru a compliance process and will be automatically onboarded.
+        sendInvite:
+          type: boolean
+          description: Select true if you want to send an invite to the main user of the client. If you select false, it will store the data and you could invite the lead later at your convenience from the admin portal.
+        billingModelId:
           type: string
-        surname:
-          type: string
-        birthDate:
-          type: string
-        percentageOfShares:
-          type: string
-        documentType:
-          type: string
-          description: The available values for this field are PASSPORT or ID
-        frontSideBase64:
-          type: string
-        backSideBase64:
-          type: string
-          description: If the documentType is PersonalId you will have to fulfill this field beside the frontSideBase64 field
-        address:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        country:
-          type: string
-        postalCode:
-          type: string
-      title: CreateShareholderDTO
-      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED and NON_REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. To create and send a shareholder you will need to add some data beside the full name or number of shares, to run a proper validation process such as a personal ID and the Date of Birth. All the Ultimate Business Owners with at least a 25% of the shares should be sent to ensure the compliance process is properly run.
+          description: Add the id of the billing model you want to apply to the customer.
+        directors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInviteDTO'
+        shareholders:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateShareholderDTO'
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+      title: Create Client Lead
+      description: This is the main endpoint to create a new lead.
     ThirdParty:
       type: object
       properties:
@@ -157,6 +142,35 @@ components:
         name:
           type: string
       title: ThirdParty
+    Shareholder:
+      type: object
+      properties:
+        address:
+          type: string
+        address2:
+          type: string
+        birthDate:
+          type: string
+          format: date-time
+        city:
+          type: string
+        country:
+          type: string
+        id:
+          type: string
+        kyc:
+          $ref: '#/components/schemas/KYX'
+        name:
+          type: string
+        percentageOfShares:
+          type: string
+        postalCode:
+          type: string
+        s3DocumentURL:
+          type: string
+        surname:
+          type: string
+      title: Shareholder
     OnboardingUserDTO:
       type: object
       required:
@@ -213,15 +227,111 @@ components:
           type: string
       title: OnboardingUserDTO
       description: This is the information you must provide for the main user of the client. This is mandatory for any organisationType, regardless of being SME or CONSUMER.
-    JourneyType:
+    CreateCompanyLeadViaApiStatus:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/ApiResponseItem'
+        billing:
+          $ref: '#/components/schemas/ApiResponseItem'
+        client:
+          $ref: '#/components/schemas/ApiResponseItem'
+        directors:
+          $ref: '#/components/schemas/ApiResponseItem'
+        documents:
+          $ref: '#/components/schemas/ApiResponseItem'
+        kyb:
+          $ref: '#/components/schemas/ApiResponseItem'
+        shareholders:
+          $ref: '#/components/schemas/ApiResponseItem'
+        user:
+          $ref: '#/components/schemas/ApiResponseItem'
+      title: CreateCompanyLeadViaApiStatus
+    CreateCompanyLeadViaApiResponseDTO:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ViewCompanyDTO'
+        status:
+          $ref: '#/components/schemas/CreateCompanyLeadViaApiStatus'
+      title: CreateCompanyLeadViaApiResponseDTO
+    ComplianceStatusDTO:
+      type: object
+      properties:
+        boardOfDirectorsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+        businessDetailsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+        overallComplianceStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+        shareholdersStatus:
+          type: string
+          enum:
+          - PENDING
+          - IN_PROGRESS
+          - COMPLETED
+        supportingDocumentsStatus:
+          type: string
+          enum:
+          - IN_PROGRESS
+          - COMPLETED
+          - UNDER_REVIEW
+          - DECLINED
+          - PENDING
+          - VERIFYING
+          - VERIFIED
+      title: ComplianceStatusDTO
+    Journey:
       type: object
       properties:
         id:
           type: integer
           format: int32
-        label:
+        name:
           type: string
-      title: JourneyType
+      title: Journey
+    Document:
+      type: object
+      required:
+      - documentPageBase64EncodedString
+      - documentType
+      - name
+      properties:
+        documentPageBase64EncodedString:
+          type: string
+          description: Send the file in base64
+        documentType:
+          type: string
+          description: The document type will depend on the legislationCountry value. If GB the available documentType are PROOF_OF_SHAREHOLDER_STRUCTURE, PREVIOUS_YEAR_ACCOUNTS and PROOF_OF_TRADING_ADDRESS. If the legislationCountry is ES the available documentType are ESCRITURAS, CIF and CERTIFICADO_DE_TITULARIDAD_REAL.
+        name:
+          type: string
+          description: The name of the document.
+      title: Document
+      description: You can send, when creating a lead, some documentation related to the company to speed up the compliance process or just for recording that information about the business. This applies to SME REGISTERED clients ONLY. As you can see below, in the documentType field, in the basis of the legislationCountry selected there are a number of documents you can send.
     ViewCompanyDTO:
       type: object
       properties:
@@ -349,6 +459,150 @@ components:
           type: string
           description: '[Deprecated] Trunarrative account id.'
       title: ViewCompanyDTO
+    DirectorDTO:
+      type: object
+      properties:
+        alias:
+          type: string
+        cards:
+          type: array
+          items:
+            type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        id:
+          type: string
+        intnlPhoneNumber:
+          type: string
+        kycStatus:
+          type: string
+          enum:
+          - AWAITING_RESPONSE
+          - REFERRED
+          - COMPLETE
+          - PENDING_EXTERNAL_APPROVAL
+          - ACCEPT
+          - DECLINE
+          - CLOSE
+          - OVERRIDE_COMPLIANCE
+          - REFQUE
+          - STADEC
+          - STACLR
+        lastName:
+          type: string
+        locale:
+          type: string
+        onboardedAt:
+          type: string
+          format: date-time
+        onboardingStatus:
+          type: string
+          enum:
+          - INCOMPLETE
+          - NOT_ONBOARDING
+          - PENDING_KYC_RESULT
+          - PENDING_KYB_RESULTS
+          - PENDING_KYC_DOCUMENTS
+          - PENDING_KYB_DATA
+          - PENDING_KYB
+          - PENDING_ACCOUNT
+          - COMPLETED
+          - DECLINED
+          - PENDING_USER_INFO
+          - PENDING_KYC
+        phoneCountry:
+          type: string
+        phoneNumber:
+          type: string
+        pushEnabled:
+          type: boolean
+        truNarrativeLink:
+          type: string
+        enabled:
+          type: boolean
+          description: This field indicating whether the user is enabled or disabled to use the platform.
+          default: true
+        tin:
+          type: string
+          description: '[Deprecated] Type of Nominal Interest, used by Crealsa'
+      title: DirectorDTO
+    ExpectedVolumeDTO:
+      properties:
+        currency:
+          type: string
+          description: Select the currency
+          default: GBP
+          enum:
+          - GBP
+          - EUR
+        range:
+          type: string
+          description: 'Allowed values: ```1-5000``` ```5001-10000``` ```10001+```'
+          default: 5001-10000
+          enum:
+          - 1-5000
+          - 5001-10000
+          - 10001+
+        type:
+          type: string
+          description: Monthly amount
+          default: monthly
+          enum:
+          - monthly
+    UserInviteDTO:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      - phoneCountry
+      - phoneNumber
+      - address
+      - birthDate
+      - city
+      - country
+      - postalCode
+      - role
+      properties:
+        role:
+          type: string
+          enum:
+          - ROLE_DIRECTOR
+          - ROLE_COMPANY_ADMIN
+          - ROLE_EMPLOYEE
+          - ROLE_ACCOUNTANT
+          - ROLE_OWNER
+          - ROLE_BENEFICIARY
+          - ROLE_AGENT
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneCountry:
+          type: string
+          description: You MUST add the country prefix. We will send an OTP SMS message when the user is setting up the credentials.
+        phoneNumber:
+          type: string
+          description: You MUST add a mobile phone. By adding a landline the request will be rejected.
+        birthDate:
+          type: string
+          example: yyyy-MM-dd
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        postalCode:
+          type: string
+      title: UserInviteDTO
+      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. All the DIRECTORS of the company MUST be added and will be required to do a KYC validation process by sending a live photo of their personal documentation and a selfie or a video, depending on the legislationCountry selection (e.g., if legislationCountry is GB this will be a selfie, if legislationCountry ES it will be a video). These DIRECTORS, in addition to the main user created in the OnboardingUserDTO, will go through this process to be reviewed in our compliance partner (overrideCompliance false) OR just saved to collect the information provided (overrideCompliance true AND runKYC true).
     OnboardingClientDTO:
       type: object
       required:
@@ -497,82 +751,36 @@ components:
           $ref: '#/components/schemas/ExpectedVolumeDTO'
       title: OnboardingClientDTO
       description: A client is the top object, containing users. It can be a corporate or an individual, in the case of consumer users or sole traders. A client has a main user which must be created at the time of creating the client. This main user will be invited to set up the credentials and join the application.
-    CreateCompanyLeadViaApiDTO:
-      type: object
-      properties:
-        customerId:
-          type: string
-          description: We will provide you with a costumer id to be placed in this field. If you don't have it, please get in touch with customer_success@toq.io
-        client:
-          $ref: '#/components/schemas/OnboardingClientDTO'
-        user:
-          $ref: '#/components/schemas/OnboardingUserDTO'
-        overrideCompliance:
-          type: boolean
-          description: Select true if you don't need the client going over the compliance process. This will only work for compliance providers that permit the use of the override process. Use carefully and only if you already have run a compliance process over the client.
-        runKYC:
-          type: boolean
-          description: Works only for TRUNARRATIVE compliance process. If in the field above, overrideCompliance, you have selected true, you still can ask the user for company and personal information to be collected for monitoring. When selecting this option as true, the client will be asked for the compliance information but won't go thru a compliance process and will be automatically onboarded.
-        sendInvite:
-          type: boolean
-          description: Select true if you want to send an invite to the main user of the client. If you select false, it will store the data and you could invite the lead later at your convenience from the admin portal.
-        billingModelId:
-          type: string
-          description: Add the id of the billing model you want to apply to the customer.
-        directors:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserInviteDTO'
-        shareholders:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateShareholderDTO'
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
-      title: Create Client Lead
-      description: This is the main endpoint to create a new lead.
-    UserInviteDTO:
+    CreateShareholderDTO:
       type: object
       required:
-      - firstName
-      - lastName
-      - email
-      - phoneCountry
-      - phoneNumber
       - address
-      - birthDate
       - city
       - country
+      - documentType
+      - frontSideBase64
       - postalCode
-      - role
+      - name
+      - surname
+      - percentageOfShares
+      - birthDate
       properties:
-        role:
+        name:
           type: string
-          enum:
-          - ROLE_DIRECTOR
-          - ROLE_COMPANY_ADMIN
-          - ROLE_EMPLOYEE
-          - ROLE_ACCOUNTANT
-          - ROLE_OWNER
-          - ROLE_BENEFICIARY
-          - ROLE_AGENT
-        firstName:
+        surname:
           type: string
-        lastName:
-          type: string
-        email:
-          type: string
-        phoneCountry:
-          type: string
-          description: You MUST add the country prefix. We will send an OTP SMS message when the user is setting up the credentials.
-        phoneNumber:
-          type: string
-          description: You MUST add a mobile phone. By adding a landline the request will be rejected.
         birthDate:
           type: string
-          example: yyyy-MM-dd
+        percentageOfShares:
+          type: string
+        documentType:
+          type: string
+          description: The available values for this field are PASSPORT or ID
+        frontSideBase64:
+          type: string
+        backSideBase64:
+          type: string
+          description: If the documentType is PersonalId you will have to fulfill this field beside the frontSideBase64 field
         address:
           type: string
         address2:
@@ -583,224 +791,8 @@ components:
           type: string
         postalCode:
           type: string
-      title: UserInviteDTO
-      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. All the DIRECTORS of the company MUST be added and will be required to do a KYC validation process by sending a live photo of their personal documentation and a selfie or a video, depending on the legislationCountry selection (e.g., if legislationCountry is GB this will be a selfie, if legislationCountry ES it will be a video). These DIRECTORS, in addition to the main user created in the OnboardingUserDTO, will go through this process to be reviewed in our compliance partner (overrideCompliance false) OR just saved to collect the information provided (overrideCompliance true AND runKYC true).
-    CreateCompanyLeadViaApiResponseDTO:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ViewCompanyDTO'
-        status:
-          $ref: '#/components/schemas/CreateCompanyLeadViaApiStatus'
-      title: CreateCompanyLeadViaApiResponseDTO
-    DirectorDTO:
-      type: object
-      properties:
-        alias:
-          type: string
-        cards:
-          type: array
-          items:
-            type: string
-        email:
-          type: string
-        firstName:
-          type: string
-        id:
-          type: string
-        intnlPhoneNumber:
-          type: string
-        kycStatus:
-          type: string
-          enum:
-          - AWAITING_RESPONSE
-          - REFERRED
-          - COMPLETE
-          - PENDING_EXTERNAL_APPROVAL
-          - ACCEPT
-          - DECLINE
-          - CLOSE
-          - OVERRIDE_COMPLIANCE
-          - REFQUE
-          - STADEC
-          - STACLR
-        lastName:
-          type: string
-        locale:
-          type: string
-        onboardedAt:
-          type: string
-          format: date-time
-        onboardingStatus:
-          type: string
-          enum:
-          - INCOMPLETE
-          - NOT_ONBOARDING
-          - PENDING_KYC_RESULT
-          - PENDING_KYB_RESULTS
-          - PENDING_KYC_DOCUMENTS
-          - PENDING_KYB_DATA
-          - PENDING_KYB
-          - PENDING_ACCOUNT
-          - COMPLETED
-          - DECLINED
-          - PENDING_USER_INFO
-          - PENDING_KYC
-        phoneCountry:
-          type: string
-        phoneNumber:
-          type: string
-        pushEnabled:
-          type: boolean
-        truNarrativeLink:
-          type: string
-        enabled:
-          type: boolean
-          description: This field indicating whether the user is enabled or disabled to use the platform.
-          default: true
-        tin:
-          type: string
-          description: '[Deprecated] Type of Nominal Interest, used by Crealsa'
-      title: DirectorDTO
-    Document:
-      type: object
-      required:
-      - documentPageBase64EncodedString
-      - documentType
-      - name
-      properties:
-        documentPageBase64EncodedString:
-          type: string
-          description: Send the file in base64
-        documentType:
-          type: string
-          description: The document type will depend on the legislationCountry value. If GB the available documentType are PROOF_OF_SHAREHOLDER_STRUCTURE, PREVIOUS_YEAR_ACCOUNTS and PROOF_OF_TRADING_ADDRESS. If the legislationCountry is ES the available documentType are ESCRITURAS, CIF and CERTIFICADO_DE_TITULARIDAD_REAL.
-        name:
-          type: string
-          description: The name of the document.
-      title: Document
-      description: You can send, when creating a lead, some documentation related to the company to speed up the compliance process or just for recording that information about the business. This applies to SME REGISTERED clients ONLY. As you can see below, in the documentType field, in the basis of the legislationCountry selected there are a number of documents you can send.
-    ExpectedVolumeDTO:
-      properties:
-        currency:
-          type: string
-          description: Select the currency
-          default: GBP
-          enum:
-          - GBP
-          - EUR
-        range:
-          type: string
-          description: 'Allowed values: ```1-5000``` ```5001-10000``` ```10001+```'
-          default: 5001-10000
-          enum:
-          - 1-5000
-          - 5001-10000
-          - 10001+
-        type:
-          type: string
-          description: Monthly amount
-          default: monthly
-          enum:
-          - monthly
-    CreateBasicCompanyLeadViaApiDTO:
-      type: object
-      properties:
-        customerId:
-          type: string
-          description: We will provide you with a costumer id to be placed in this field. If you don't have it, please get in touch with customer_success@toq.io
-        client:
-          $ref: '#/components/schemas/OnboardingClientDTO'
-        user:
-          $ref: '#/components/schemas/OnboardingUserDTO'
-        overrideCompliance:
-          type: boolean
-          description: Select true if you don't need the client going over the compliance process. This will only work for compliance providers that permit the use of the override process. Use carefully and only if you already have run a compliance process over the client.
-        billingModelId:
-          type: string
-          description: Add the id of the billing model you want to apply to the customer.
-      title: Create Client Lead
-      description: This is the main endpoint to create a new lead.
-    CreateCompanyLeadViaApiStatus:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/ApiResponseItem'
-        billing:
-          $ref: '#/components/schemas/ApiResponseItem'
-        client:
-          $ref: '#/components/schemas/ApiResponseItem'
-        directors:
-          $ref: '#/components/schemas/ApiResponseItem'
-        documents:
-          $ref: '#/components/schemas/ApiResponseItem'
-        kyb:
-          $ref: '#/components/schemas/ApiResponseItem'
-        shareholders:
-          $ref: '#/components/schemas/ApiResponseItem'
-        user:
-          $ref: '#/components/schemas/ApiResponseItem'
-      title: CreateCompanyLeadViaApiStatus
-    ComplianceStatusDTO:
-      type: object
-      properties:
-        boardOfDirectorsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-        businessDetailsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-        overallComplianceStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-        shareholdersStatus:
-          type: string
-          enum:
-          - PENDING
-          - IN_PROGRESS
-          - COMPLETED
-        supportingDocumentsStatus:
-          type: string
-          enum:
-          - IN_PROGRESS
-          - COMPLETED
-          - UNDER_REVIEW
-          - DECLINED
-          - PENDING
-          - VERIFYING
-          - VERIFIED
-      title: ComplianceStatusDTO
-    ApiResponseItem:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: string
-        success:
-          type: boolean
-      title: ApiResponseItem
+      title: CreateShareholderDTO
+      description: When selecting overrideCompliance true OR overrideCompliance false and runKYC true for SME REGISTERED and NON_REGISTERED clients, you can provide some information if you have it in advance about the company you want to onboard. To create and send a shareholder you will need to add some data beside the full name or number of shares, to run a proper validation process such as a personal ID and the Date of Birth. All the Ultimate Business Owners with at least a 25% of the shares should be sent to ensure the compliance process is properly run.
     KYX:
       type: object
       properties:
@@ -865,35 +857,43 @@ components:
           type: string
           format: date-time
       title: KYX
-    Shareholder:
+    ApiResponseItem:
       type: object
       properties:
-        address:
-          type: string
-        address2:
-          type: string
-        birthDate:
-          type: string
-          format: date-time
-        city:
-          type: string
-        country:
-          type: string
+        errors:
+          type: array
+          items:
+            type: string
+        success:
+          type: boolean
+      title: ApiResponseItem
+    JourneyType:
+      type: object
+      properties:
         id:
+          type: integer
+          format: int32
+        label:
           type: string
-        kyc:
-          $ref: '#/components/schemas/KYX'
-        name:
+      title: JourneyType
+    CreateBasicCompanyLeadViaApiDTO:
+      type: object
+      properties:
+        customerId:
           type: string
-        percentageOfShares:
+          description: We will provide you with a costumer id to be placed in this field. If you don't have it, please get in touch with customer_success@toq.io
+        client:
+          $ref: '#/components/schemas/OnboardingClientDTO'
+        user:
+          $ref: '#/components/schemas/OnboardingUserDTO'
+        overrideCompliance:
+          type: boolean
+          description: Select true if you don't need the client going over the compliance process. This will only work for compliance providers that permit the use of the override process. Use carefully and only if you already have run a compliance process over the client.
+        billingModelId:
           type: string
-        postalCode:
-          type: string
-        s3DocumentURL:
-          type: string
-        surname:
-          type: string
-      title: Shareholder
+          description: Add the id of the billing model you want to apply to the customer.
+      title: Create Client Lead
+      description: This is the main endpoint to create a new lead.
   securitySchemes:
     OAuth2:
       type: oauth2

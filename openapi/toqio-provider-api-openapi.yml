@@ -34,6 +34,21 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
     ToqioHttpOkPartnerProductResponse:
       type: object
       properties:
@@ -60,30 +75,6 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    CustomException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
     PartnerProductResponse:
       type: object
       properties:
@@ -234,20 +225,29 @@ components:
       - assetType
       - label
       - schemes
-    I18nLabel:
+    CustomException:
       type: object
       properties:
-        es:
+        code:
           type: string
-        en:
+          example: OK
+        errorSeverity:
           type: string
-        de:
+          example: NONE
+        message:
           type: string
-        it:
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
           type: string
-        zh:
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
           type: string
-        pt:
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
           type: string
   securitySchemes:
     bearerAuth:

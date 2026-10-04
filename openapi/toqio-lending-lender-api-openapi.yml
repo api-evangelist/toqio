@@ -109,6 +109,30 @@ paths:
           description: Internal server error
 components:
   schemas:
+    ToqioHttpOkLenderConfigurationBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LenderConfigurationBaseResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     LenderConfigurationBaseResponse:
       type: object
       properties:
@@ -145,30 +169,6 @@ components:
           type: string
         key:
           type: string
-    ToqioHttpOkLenderConfigurationBaseResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/LenderConfigurationBaseResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http

@@ -225,11 +225,45 @@ paths:
                 $ref: '#/components/schemas/ToqioResponseCardResponse'
 components:
   schemas:
-    ToqioResponseCardResponse:
+    CardTokenRequest:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Activation token
+        securityCode:
+          $ref: '#/components/schemas/EncryptedSecurityCode'
+    EncryptedSecurityCode:
+      type: object
+      description: RSA-encrypted security verification
+      properties:
+        encryptedSecurityCode:
+          type: string
+          description: RSA-encrypted security code
+        iv:
+          type: string
+          description: Initialization vector
+        tag:
+          type: string
+          description: Authentication tag
+    ToqioResponseCardPanResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/CardResponse'
+          type: object
+          properties:
+            pan:
+              type: string
+              description: Full card number
+              example: '4111111111111111'
+            cvv:
+              type: string
+              description: CVV security code
+              example: '123'
+            expiryDate:
+              type: string
+              description: Expiry date
+              example: 12/27
         code:
           type: string
           description: Response code
@@ -242,18 +276,14 @@ components:
           - ERROR
           - FATAL
           description: Severity level of the response (only present on errors)
-          example: INFO
         message:
           type: string
           description: Human-readable response message
-          example: Card operation completed successfully
+          example: Card PAN retrieved successfully
         httpStatus:
           type: integer
           description: HTTP status code
           example: 200
-        debugTrace:
-          type: string
-          description: Debug trace information (only present on errors)
         requestId:
           type: string
           description: Unique request identifier for tracing
@@ -263,20 +293,81 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
-        errorOrigin:
-          type: string
-          description: Origin of error if applicable (only present on errors)
-    PartnerTokenResponse:
-      type: object
-      description: Partner integration token
-    CardTokenRequest:
+    ToqioResponsePinResponse:
       type: object
       properties:
-        token:
+        data:
+          type: object
+          properties:
+            pin:
+              type: string
+              description: Card PIN
+              example: '1234'
+        code:
           type: string
-          description: Activation token
-        securityCode:
-          $ref: '#/components/schemas/EncryptedSecurityCode'
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card PIN retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
+    ToqioResponseString:
+      type: object
+      properties:
+        data:
+          type: string
+          description: Response data as string
+          example: https://cdn.provider.com/resource
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Resource retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
     CardResponse:
       type: object
       description: Card details response
@@ -339,13 +430,14 @@ components:
         activationCodeLength:
           type: integer
           description: Length of activation code
-    ToqioResponseString:
+    PartnerTokenResponse:
+      type: object
+      description: Partner integration token
+    ToqioResponseCardResponse:
       type: object
       properties:
         data:
-          type: string
-          description: Response data as string
-          example: https://cdn.provider.com/resource
+          $ref: '#/components/schemas/CardResponse'
         code:
           type: string
           description: Response code
@@ -358,14 +450,18 @@ components:
           - ERROR
           - FATAL
           description: Severity level of the response (only present on errors)
+          example: INFO
         message:
           type: string
           description: Human-readable response message
-          example: Resource retrieved successfully
+          example: Card operation completed successfully
         httpStatus:
           type: integer
           description: HTTP status code
           example: 200
+        debugTrace:
+          type: string
+          description: Debug trace information (only present on errors)
         requestId:
           type: string
           description: Unique request identifier for tracing
@@ -375,45 +471,9 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
-    ToqioResponsePinResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pin:
-              type: string
-              description: Card PIN
-              example: '1234'
-        code:
+        errorOrigin:
           type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PIN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
+          description: Origin of error if applicable (only present on errors)
     CardOTP:
       type: object
       description: OTP information for card operations
@@ -429,66 +489,6 @@ components:
           description: User identifier
         cardTokenRequest:
           $ref: '#/components/schemas/CardTokenRequest'
-    EncryptedSecurityCode:
-      type: object
-      description: RSA-encrypted security verification
-      properties:
-        encryptedSecurityCode:
-          type: string
-          description: RSA-encrypted security code
-        iv:
-          type: string
-          description: Initialization vector
-        tag:
-          type: string
-          description: Authentication tag
-    ToqioResponseCardPanResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pan:
-              type: string
-              description: Full card number
-              example: '4111111111111111'
-            cvv:
-              type: string
-              description: CVV security code
-              example: '123'
-            expiryDate:
-              type: string
-              description: Expiry date
-              example: 12/27
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PAN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
     Address:
       type: object
       properties:

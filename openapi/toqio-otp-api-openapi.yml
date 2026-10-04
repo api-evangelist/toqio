@@ -42,13 +42,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    ResendOtpResponse:
-      type: object
-      properties:
-        requestId:
-          type: string
-        date:
-          type: string
     ToqioHttpOkResendOtpResponse:
       type: object
       properties:
@@ -73,6 +66,13 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    ResendOtpResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+        date:
+          type: string
   securitySchemes:
     bearerAuth:
       type: http

@@ -768,260 +768,44 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    ViewFileDTO:
-      title: ViewFileDTO
-      type: object
-      properties:
-        data:
-          type: string
-        mime:
-          type: string
-        name:
-          type: string
-    TransactionFileDTO:
-      title: TransactionFileDTO
-      type: object
-      properties:
-        extension:
-          type: string
-        fileUrl:
-          type: string
-        id:
-          type: string
-        invoiceId:
-          type: string
-        key:
-          type: string
-        mime:
-          type: string
-        name:
-          type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
-          type: string
-    PageAndSort:
-      title: PageAndSort
-      type: object
-      properties:
-        hasNextPage:
-          type: boolean
-        hasPreviousPage:
-          type: boolean
-        pageNumber:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        sortingCriteria:
-          type: string
-        totalNumberOfPages:
-          type: integer
-          format: int32
-        totalNumberOfRecords:
-          type: integer
-          format: int64
-    TransactionListItemDTO:
-      title: TransactionListItemDTO
-      type: object
-      properties:
-        accountAlias:
-          type: string
-          description: Alias of the account where the transaction is done
-          example: My account
-        accountId:
-          type: string
-          description: Id of the account where the transaction is done
-        balance:
-          type: number
-          description: The account balance after this transaction was created.
-          format: double
-          example: 1500.45
-        baseCurrency:
-          type: string
-          description: Base currency (ISO 4217 code) of the bank account.
-          example: GBP
-        baseTotal:
-          type: number
-          description: Transaction amount in the same currency as the bank account
-          format: double
-          example: 45.05
-        card:
-          type: boolean
-          description: True if it is a card payment (payType==CARD). False otherwise.
-        categoryCode:
-          type: string
-          description: Category code.
-          enum:
-          - uncategorised
-          - it_licenses
-          - cleaning
-          - flight
-          - accountancy
-          - meals
-          - taxi
-          - other_office
-          - advertising
-          - suspense
-          - direct_costs
-          - meals_int
-          - subscriptions
-          - insurance
-          - legal
-          - purchases
-          - electricity
-          - taxes
-          - client_entertainment
-          - train
-          - flight_int
-          - postage
-          - bank_fees
-          - petrol
-        categoryLabel:
-          $ref: '#/components/schemas/TranslateLabel'
-        concept:
-          type: string
-        confirmed:
-          type: boolean
-          description: True if status==ACCEPTED. False otherwise.
-        currency:
-          type: string
-          description: Currency (ISO 4217 code) in which the payment was made.
-          example: GBP
-        executionDate:
-          type: string
-          format: date-time
-        date:
-          type: string
-          description: Creation date
-          format: date-time
-        day:
-          type: string
-          description: Day when the transaction was created
-          example: 7 March
-        directDebit:
-          type: boolean
-          example: 'false'
-        group:
-          type: string
-          description: Account movement direction
-          enum:
-          - INBOUND
-          - OUTBOUND
-        id:
-          type: string
-          description: Transaction id
-          example: 5c8133ecc9e77c0005751963
-        managementStatus:
-          type: string
-          enum:
-          - UNPAID
-          - DENIED
-          - PAID
-        localDate:
-          type: string
-          description: Creation date (ISO-8601 string with timezone)
-          example: '2019-02-09T05:58:38.022'
-        payable:
-          type: boolean
-        paidBy:
-          type: string
-        payType:
-          type: string
-          description: Pay type
-          enum:
-          - CARD
-          - INBOUND_BANK_TRANSFER
-          - OUTBOUND_BANK_TRANSFER
-          - MANUAL
-        profileImage:
-          type: string
-          description: Link to the profile image of the transaction owner.
-          example: https://s3-eu-west-1.amazonaws.com/olivo-public/profile_images/5c348eb84cedfd000567a6be.jpg
-        receipt:
-          type: boolean
-          description: True if it has any receipt attached. False otherwise.
-        refund:
-          type: boolean
-          description: Whether if the transaction is a refund (money returned) or not.
-        status:
-          type: string
-          description: Transaction status
-          enum:
-          - FAILED
-          - PENDING
-          - ACCEPTED
-          - CANCELLED
-          - PENDING_APPROVAL
-          - AUTHORIZED
-          - POSTED
-          - DECLINED
-          - VOIDED
-          - EXPIRED
-        tagged:
-          type: boolean
-          description: True if it has tags assigned. False otherwise.
-        time:
-          type: string
-          description: Time when the transaction was created
-          example: '15:08'
-        timeZone:
-          type: string
-          description: Zone offset
-          example: +00:00
-        total:
-          type: number
-          description: Transaction amount in local currency
-          format: double
-          example: 45.05
-        transactionNumber:
-          type: string
-          example: bf9-34a1120864f0
-        triggerType:
-          type: string
-          enum:
-          - IMMEDIATELY
-          - ONCE_FUTURE_DATE
-          - RECURRING
-        txTitle:
-          type: string
-          description: card (merchant), outboundTransfer (beneficiary), inboundTransfer (source)
-          example: Starbucks
-        type:
-          type: string
-          description: Transaction type
-          enum:
-          - EXPENSE
-          - PAYMENT
-          - PURCHASE
-          - TAX
-          - INBOUND
-        unreadComments:
-          type: boolean
-          description: Whether if the transaction has unread comments by the user issuing the request or not.
-        userName:
-          type: string
-          description: Username of the transaction owner.
-          example: Howard Hamlin
-        billingTx:
-          type: boolean
-          description: If set to true, indicates is a billing transaction
-          example: false
-        billedTxId:
-          type: string
-          description: If billingTx is set to true, this field will appear in the tx
-    InvoiceLineDTO:
-      title: InvoiceLineDTO
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
       type: object
       properties:
         amount:
           type: number
           format: double
-        description:
+        cif:
           type: string
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
         id:
+          type: string
+        invoiceDate:
+          type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
           type: string
         totalWithoutVat:
           type: number
@@ -1042,6 +826,94 @@ components:
         total:
           type: number
           format: double
+    TagDTO:
+      title: TagDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
+          type: string
+          description: Tag name
+          example: My tag
+    TxAccount:
+      title: TxAccount
+      type: object
+      properties:
+        accountAlias:
+          type: string
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        ifsc:
+          type: string
+        name:
+          type: string
+        routingNumber:
+          type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
     ViewTransactionDetailDTO:
       title: ViewTransactionDetailDTO
       type: object
@@ -1249,115 +1121,267 @@ components:
             settlementDate:
               type: string
               format: date-time
-    QuoteCurrencyPairDTO:
-      title: QuoteCurrencyPairDTO
-      type: object
-      properties:
-        beneficiaryCurrency:
-          type: string
-        beneficiaryCurrencyAmount:
-          type: number
-          format: double
-        fxRate:
-          type: number
-          format: double
-        sourceCurrency:
-          type: string
-        sourceCurrencyAmount:
-          type: number
-          format: double
-    TxAccount:
-      title: TxAccount
+    TransactionListItemDTO:
+      title: TransactionListItemDTO
       type: object
       properties:
         accountAlias:
           type: string
-        accountNumber:
+          description: Alias of the account where the transaction is done
+          example: My account
+        accountId:
           type: string
-        addressCity:
+          description: Id of the account where the transaction is done
+        balance:
+          type: number
+          description: The account balance after this transaction was created.
+          format: double
+          example: 1500.45
+        baseCurrency:
           type: string
-        addressIsoCountry:
+          description: Base currency (ISO 4217 code) of the bank account.
+          example: GBP
+        baseTotal:
+          type: number
+          description: Transaction amount in the same currency as the bank account
+          format: double
+          example: 45.05
+        card:
+          type: boolean
+          description: True if it is a card payment (payType==CARD). False otherwise.
+        categoryCode:
           type: string
-        addressPostalCode:
+          description: Category code.
+          enum:
+          - uncategorised
+          - it_licenses
+          - cleaning
+          - flight
+          - accountancy
+          - meals
+          - taxi
+          - other_office
+          - advertising
+          - suspense
+          - direct_costs
+          - meals_int
+          - subscriptions
+          - insurance
+          - legal
+          - purchases
+          - electricity
+          - taxes
+          - client_entertainment
+          - train
+          - flight_int
+          - postage
+          - bank_fees
+          - petrol
+        categoryLabel:
+          $ref: '#/components/schemas/TranslateLabel'
+        concept:
           type: string
-        addressStreet:
+        confirmed:
+          type: boolean
+          description: True if status==ACCEPTED. False otherwise.
+        currency:
           type: string
-        bank:
+          description: Currency (ISO 4217 code) in which the payment was made.
+          example: GBP
+        executionDate:
           type: string
-        bicSwift:
+          format: date-time
+        date:
           type: string
-        bsbCode:
+          description: Creation date
+          format: date-time
+        day:
           type: string
-        caRoutingNumber:
+          description: Day when the transaction was created
+          example: 7 March
+        directDebit:
+          type: boolean
+          example: 'false'
+        group:
           type: string
-        clabe:
-          type: string
-        cnaps:
-          type: string
-        fullName:
-          type: string
-        iban:
-          type: string
+          description: Account movement direction
+          enum:
+          - INBOUND
+          - OUTBOUND
         id:
           type: string
-        ifsc:
+          description: Transaction id
+          example: 5c8133ecc9e77c0005751963
+        managementStatus:
+          type: string
+          enum:
+          - UNPAID
+          - DENIED
+          - PAID
+        localDate:
+          type: string
+          description: Creation date (ISO-8601 string with timezone)
+          example: '2019-02-09T05:58:38.022'
+        payable:
+          type: boolean
+        paidBy:
+          type: string
+        payType:
+          type: string
+          description: Pay type
+          enum:
+          - CARD
+          - INBOUND_BANK_TRANSFER
+          - OUTBOUND_BANK_TRANSFER
+          - MANUAL
+        profileImage:
+          type: string
+          description: Link to the profile image of the transaction owner.
+          example: https://s3-eu-west-1.amazonaws.com/olivo-public/profile_images/5c348eb84cedfd000567a6be.jpg
+        receipt:
+          type: boolean
+          description: True if it has any receipt attached. False otherwise.
+        refund:
+          type: boolean
+          description: Whether if the transaction is a refund (money returned) or not.
+        status:
+          type: string
+          description: Transaction status
+          enum:
+          - FAILED
+          - PENDING
+          - ACCEPTED
+          - CANCELLED
+          - PENDING_APPROVAL
+          - AUTHORIZED
+          - POSTED
+          - DECLINED
+          - VOIDED
+          - EXPIRED
+        tagged:
+          type: boolean
+          description: True if it has tags assigned. False otherwise.
+        time:
+          type: string
+          description: Time when the transaction was created
+          example: '15:08'
+        timeZone:
+          type: string
+          description: Zone offset
+          example: +00:00
+        total:
+          type: number
+          description: Transaction amount in local currency
+          format: double
+          example: 45.05
+        transactionNumber:
+          type: string
+          example: bf9-34a1120864f0
+        triggerType:
+          type: string
+          enum:
+          - IMMEDIATELY
+          - ONCE_FUTURE_DATE
+          - RECURRING
+        txTitle:
+          type: string
+          description: card (merchant), outboundTransfer (beneficiary), inboundTransfer (source)
+          example: Starbucks
+        type:
+          type: string
+          description: Transaction type
+          enum:
+          - EXPENSE
+          - PAYMENT
+          - PURCHASE
+          - TAX
+          - INBOUND
+        unreadComments:
+          type: boolean
+          description: Whether if the transaction has unread comments by the user issuing the request or not.
+        userName:
+          type: string
+          description: Username of the transaction owner.
+          example: Howard Hamlin
+        billingTx:
+          type: boolean
+          description: If set to true, indicates is a billing transaction
+          example: false
+        billedTxId:
+          type: string
+          description: If billingTx is set to true, this field will appear in the tx
+    ViewFileDTO:
+      title: ViewFileDTO
+      type: object
+      properties:
+        data:
+          type: string
+        mime:
           type: string
         name:
           type: string
-        routingNumber:
-          type: string
-        type:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        purposeCode:
-          type: string
-        paymentProviderDetails:
-          type: object
-          properties:
-            shortReference:
-              type: string
-            internalReference:
-              type: string
-            paymentId:
-              type: string
-            conversionId:
-              type: string
-            rate:
-              type: string
-            settlementDate:
-              type: string
-              format: date-time
-    TranslateLabel:
-      title: TranslateLabel
+    InvoiceLineDTO:
+      title: InvoiceLineDTO
       type: object
       properties:
-        de:
+        amount:
+          type: number
+          format: double
+        description:
           type: string
-        en:
+        id:
           type: string
-        es:
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
           type: string
-        it:
+        fileUrl:
           type: string
-        zh:
+        id:
           type: string
-        pt:
+        invoiceId:
           type: string
+        key:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+    PageAndSort:
+      title: PageAndSort
+      type: object
+      properties:
+        hasNextPage:
+          type: boolean
+        hasPreviousPage:
+          type: boolean
+        pageNumber:
+          type: integer
+          format: int32
+        pageSize:
+          type: integer
+          format: int32
+        sortingCriteria:
+          type: string
+        totalNumberOfPages:
+          type: integer
+          format: int32
+        totalNumberOfRecords:
+          type: integer
+          format: int64
     BankPaymentScheme:
       title: BankPaymentScheme
       type: object
@@ -1400,18 +1424,31 @@ components:
           - CHIPS
         name:
           type: string
-    TagDTO:
-      title: TagDTO
+    TranslateLabel:
+      title: TranslateLabel
       type: object
       properties:
-        id:
+        de:
           type: string
-          description: Tag ID
-          example: 5c473c5046e0fb0005c436af
-        name:
+        en:
           type: string
-          description: Tag name
-          example: My tag
+        es:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
+          type: string
+    ExecuteFourEyesDTO:
+      title: ExecuteFourEyesDTO
+      type: object
+      required:
+      - transactionId
+      properties:
+        transactionId:
+          type: string
+          description: Identifier of the pending-approval transaction to execute
     QuoteRequestDTO:
       title: QuoteRequestDTO
       type: object
@@ -1436,58 +1473,21 @@ components:
         sourceCurrency:
           type: string
           example: GBP
-    ExecuteFourEyesDTO:
-      title: ExecuteFourEyesDTO
-      type: object
-      required:
-      - transactionId
-      properties:
-        transactionId:
-          type: string
-          description: Identifier of the pending-approval transaction to execute
-    InvoiceDataDTO:
-      title: InvoiceDataDTO
+    QuoteCurrencyPairDTO:
+      title: QuoteCurrencyPairDTO
       type: object
       properties:
-        amount:
+        beneficiaryCurrency:
+          type: string
+        beneficiaryCurrencyAmount:
           type: number
           format: double
-        cif:
-          type: string
-        discountAmount:
+        fxRate:
           type: number
           format: double
-        discountPercentage:
-          type: number
-          format: double
-        dueDate:
+        sourceCurrency:
           type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionFileDTO'
-        hasInvoice:
-          type: boolean
-        id:
-          type: string
-        invoiceDate:
-          type: string
-        invoiceNumber:
-          type: string
-        isTotalWithoutVatEdited:
-          type: boolean
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceLineDTO'
-        postalCode:
-          type: string
-        supplier:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
+        sourceCurrencyAmount:
           type: number
           format: double
   securitySchemes:

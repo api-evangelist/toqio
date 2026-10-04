@@ -157,13 +157,24 @@ paths:
           description: PIN retrieval initiated
 components:
   schemas:
-    ToqioResponseCardSettingsResponse:
+    ToqioResponseCardPanResponse:
       type: object
       properties:
         data:
           type: object
-          description: Card settings from provider
-          additionalProperties: true
+          properties:
+            pan:
+              type: string
+              description: Full card number
+              example: '4111111111111111'
+            cvv:
+              type: string
+              description: CVV security code
+              example: '123'
+            expiryDate:
+              type: string
+              description: Expiry date
+              example: 12/27
         code:
           type: string
           description: Response code
@@ -179,7 +190,7 @@ components:
         message:
           type: string
           description: Human-readable response message
-          example: Card settings retrieved successfully
+          example: Card PAN retrieved successfully
         httpStatus:
           type: integer
           description: HTTP status code
@@ -229,6 +240,42 @@ components:
           format: int64
           description: Timestamp as epoch milliseconds
           example: 1736935800000
+    ToqioResponseCardSettingsResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: Card settings from provider
+          additionalProperties: true
+        code:
+          type: string
+          description: Response code
+          example: '200'
+        errorSeverity:
+          type: string
+          enum:
+          - INFO
+          - WARNING
+          - ERROR
+          - FATAL
+          description: Severity level of the response (only present on errors)
+        message:
+          type: string
+          description: Human-readable response message
+          example: Card settings retrieved successfully
+        httpStatus:
+          type: integer
+          description: HTTP status code
+          example: 200
+        requestId:
+          type: string
+          description: Unique request identifier for tracing
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: integer
+          format: int64
+          description: Timestamp as epoch milliseconds
+          example: 1736935800000
     ToqioResponsePinResponse:
       type: object
       properties:
@@ -255,53 +302,6 @@ components:
           type: string
           description: Human-readable response message
           example: Card PIN retrieved successfully
-        httpStatus:
-          type: integer
-          description: HTTP status code
-          example: 200
-        requestId:
-          type: string
-          description: Unique request identifier for tracing
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: integer
-          format: int64
-          description: Timestamp as epoch milliseconds
-          example: 1736935800000
-    ToqioResponseCardPanResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            pan:
-              type: string
-              description: Full card number
-              example: '4111111111111111'
-            cvv:
-              type: string
-              description: CVV security code
-              example: '123'
-            expiryDate:
-              type: string
-              description: Expiry date
-              example: 12/27
-        code:
-          type: string
-          description: Response code
-          example: '200'
-        errorSeverity:
-          type: string
-          enum:
-          - INFO
-          - WARNING
-          - ERROR
-          - FATAL
-          description: Severity level of the response (only present on errors)
-        message:
-          type: string
-          description: Human-readable response message
-          example: Card PAN retrieved successfully
         httpStatus:
           type: integer
           description: HTTP status code

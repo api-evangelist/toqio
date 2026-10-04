@@ -159,6 +159,70 @@ paths:
           description: Internal server error
 components:
   schemas:
+    AccountInformation:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        currencyISOCode:
+          type: string
+        accountNumber:
+          type: string
+        sortCode:
+          type: string
+        iban:
+          type: string
+        bic:
+          type: string
+    LendingRequestBaseRequest:
+      type: object
+      properties:
+        creditCheckPermission:
+          type: boolean
+        dataPrivacyConsent:
+          type: boolean
+        loan:
+          $ref: '#/components/schemas/LoanInformation'
+        account:
+          $ref: '#/components/schemas/AccountInformation'
+        merchant:
+          $ref: '#/components/schemas/MerchantInformation'
+        submissionDate:
+          type: string
+    LendingRequestFilter:
+      type: object
+      properties:
+        productType:
+          type: string
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        status:
+          type: string
+          enum:
+          - CREATED
+          - SUBMITTED
+          - APPROVED
+          - REJECTED
+          - MORE_INFORMATION_REQUIRED
+          - CANCELLED
+          - LOAN_OFFER_PROVIDED
+          - LOAN_OFFER_ACCEPTED
+          - LOAN_OFFER_CANCELLED
+          - CONTRACT_SIGNED
+        merchantId:
+          type: string
+    Phone:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        countryISOCode:
+          type: string
+        intnlPhoneNumber:
+          type: string
     Document:
       type: object
       properties:
@@ -166,6 +230,30 @@ components:
           type: string
         name:
           type: string
+    ToqioHttpOkLendingRequestBaseResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/LendingRequestBaseRequest'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     SignificantPerson:
       type: object
       properties:
@@ -193,53 +281,6 @@ components:
           type: string
         documentNumber:
           type: string
-    LendingRequestFilter:
-      type: object
-      properties:
-        productType:
-          type: string
-          enum:
-          - CASH_ADVANCE
-          - SHORT_TERM_LOAN
-        status:
-          type: string
-          enum:
-          - CREATED
-          - SUBMITTED
-          - APPROVED
-          - REJECTED
-          - MORE_INFORMATION_REQUIRED
-          - CANCELLED
-          - LOAN_OFFER_PROVIDED
-          - LOAN_OFFER_ACCEPTED
-          - LOAN_OFFER_CANCELLED
-          - CONTRACT_SIGNED
-        merchantId:
-          type: string
-    LendingRequestBaseRequest:
-      type: object
-      properties:
-        creditCheckPermission:
-          type: boolean
-        dataPrivacyConsent:
-          type: boolean
-        loan:
-          $ref: '#/components/schemas/LoanInformation'
-        account:
-          $ref: '#/components/schemas/AccountInformation'
-        merchant:
-          $ref: '#/components/schemas/MerchantInformation'
-        submissionDate:
-          type: string
-    Phone:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        countryISOCode:
-          type: string
-        intnlPhoneNumber:
-          type: string
     LoanInformation:
       type: object
       properties:
@@ -265,47 +306,6 @@ components:
         preferredRepaymentTerms:
           type: number
           format: double
-    AccountInformation:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        currencyISOCode:
-          type: string
-        accountNumber:
-          type: string
-        sortCode:
-          type: string
-        iban:
-          type: string
-        bic:
-          type: string
-    ToqioHttpOkLendingRequestBaseResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/LendingRequestBaseRequest'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     MerchantInformation:
       type: object
       properties:

@@ -73,6 +73,87 @@ paths:
           description: Internal server error
 components:
   schemas:
+    ValidateCompanyRequest:
+      type: object
+      properties:
+        accountPurposes:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+        expectedVolume:
+          $ref: '#/components/schemas/ExpectedVolume'
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ClientResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        externalId:
+          type: string
+        customerId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+    ToqioHttpOkClientResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/ClientResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
     ExpectedVolume:
       type: object
       properties:
@@ -127,87 +208,6 @@ components:
           - 10001+
         type:
           type: string
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ValidateCompanyRequest:
-      type: object
-      properties:
-        accountPurposes:
-          uniqueItems: true
-          type: array
-          items:
-            type: string
-        expectedVolume:
-          $ref: '#/components/schemas/ExpectedVolume'
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-    ClientResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        externalId:
-          type: string
-        customerId:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-    ToqioHttpOkClientResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ClientResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
   securitySchemes:
     bearerAuth:
       type: http

@@ -55,15 +55,6 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    JwtValidationDTO:
-      title: JwtValidationDTO
-      type: object
-      properties:
-        valid:
-          type: boolean
-        errorMessage:
-          type: string
-          description: errorMessage will only provide a value if valid is false
     JwtValidationRequestDTO:
       title: JwtValidationRequestDTO
       type: object
@@ -73,6 +64,15 @@ components:
         jwt:
           type: string
           description: The JWT token to validate
+    JwtValidationDTO:
+      title: JwtValidationDTO
+      type: object
+      properties:
+        valid:
+          type: boolean
+        errorMessage:
+          type: string
+          description: errorMessage will only provide a value if valid is false
   securitySchemes:
     bearer-jwt:
       type: oauth2

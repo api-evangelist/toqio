@@ -74,6 +74,14 @@ paths:
           description: Internal server error
 components:
   schemas:
+    LoanFee:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currencyISOCode:
+          type: string
     ToqioHttpOkLoanOfferResponse:
       type: object
       properties:
@@ -98,13 +106,22 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    LoanFee:
+    RepaymentTerms:
       type: object
       properties:
-        amount:
+        basisPoint:
           type: number
           format: double
-        currencyISOCode:
+        estimatedDays:
+          type: integer
+          format: int32
+        thresholdAmount:
+          type: number
+          format: double
+        thresholdDuration:
+          type: integer
+          format: int32
+        startsAt:
           type: string
     LoanOfferResponse:
       type: object
@@ -157,23 +174,6 @@ components:
         thresholdAmountReached:
           type: number
           format: double
-    RepaymentTerms:
-      type: object
-      properties:
-        basisPoint:
-          type: number
-          format: double
-        estimatedDays:
-          type: integer
-          format: int32
-        thresholdAmount:
-          type: number
-          format: double
-        thresholdDuration:
-          type: integer
-          format: int32
-        startsAt:
-          type: string
   securitySchemes:
     bearerAuth:
       type: http

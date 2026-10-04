@@ -319,106 +319,6 @@ paths:
       - clientCredentials: []
 components:
   schemas:
-    SaveBeneficiaryViaAPI:
-      title: SaveBeneficiaryViaAPI
-      required:
-      - addressIsoCountry
-      - bankCountry
-      type: object
-      properties:
-        companyId:
-          type: string
-          description: The id of the client
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-        addressCity:
-          maxLength: 100
-          type: string
-        addressIsoCountry:
-          maxLength: 100
-          type: string
-        addressPostalCode:
-          maxLength: 100
-          type: string
-        addressStreet:
-          maxLength: 1000
-          type: string
-        assetType:
-          type: string
-          description: The asset of the beneficiary
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        bank:
-          type: string
-          description: Name of the beneficiary bank
-        bankCountry:
-          type: string
-          description: Country of the beneficiary bank
-        bicSwift:
-          type: string
-        accountNumber:
-          type: string
-          description: For US, Australian and Canadian accounts
-        bsbCode:
-          type: string
-          description: Just for Australian accounts
-        caRoutingNumber:
-          type: string
-          description: Just for Canadian accounts
-        iban:
-          type: string
-        routingNumber:
-          type: string
-          description: Just for US accounts
-        clabe:
-          type: string
-          description: Mexican CLABE (18 digits). Required for Mexican accounts (bankCountry MX)
-        ifsc:
-          type: string
-          description: Indian IFSC code. Required for Indian accounts (bankCountry IN)
-        cnaps:
-          type: string
-          description: Chinese CNAPS code. For Chinese accounts (bankCountry CN)
-        ukAccountNumber:
-          pattern: ^(\d){7,8}$
-          type: string
-          description: Just for UK accounts
-        ukSortCode:
-          pattern: ^[0-9]{6}$
-          type: string
-          description: Just for UK accounts
-        firstName:
-          maxLength: 100
-          pattern: ^[ÑA-Zña-z0-9.\s-]+$
-          type: string
-          description: required if type is PERSON
-        lastName:
-          maxLength: 100
-          pattern: ^[ÑA-Zña-z0-9.\s-]+$
-          type: string
-          description: required if type is PERSON
-        name:
-          maxLength: 60
-          type: string
-          description: required if type is COMPANY
-        visible:
-          type: boolean
-          description: allows a user to display or not a beneficiary. True by default
-          default: true
-          example: true
     UpdateBeneficiaryViaAPI:
       title: UpdateBeneficiaryViaAPI
       type: object
@@ -514,6 +414,106 @@ components:
           type: string
           readOnly: true
           description: Immutable. Just for UK accounts. Set at creation and ignored on update.
+        firstName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        lastName:
+          maxLength: 100
+          pattern: ^[ÑA-Zña-z0-9.\s-]+$
+          type: string
+          description: required if type is PERSON
+        name:
+          maxLength: 60
+          type: string
+          description: required if type is COMPANY
+        visible:
+          type: boolean
+          description: allows a user to display or not a beneficiary. True by default
+          default: true
+          example: true
+    SaveBeneficiaryViaAPI:
+      title: SaveBeneficiaryViaAPI
+      required:
+      - addressIsoCountry
+      - bankCountry
+      type: object
+      properties:
+        companyId:
+          type: string
+          description: The id of the client
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        addressCity:
+          maxLength: 100
+          type: string
+        addressIsoCountry:
+          maxLength: 100
+          type: string
+        addressPostalCode:
+          maxLength: 100
+          type: string
+        addressStreet:
+          maxLength: 1000
+          type: string
+        assetType:
+          type: string
+          description: The asset of the beneficiary
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bank:
+          type: string
+          description: Name of the beneficiary bank
+        bankCountry:
+          type: string
+          description: Country of the beneficiary bank
+        bicSwift:
+          type: string
+        accountNumber:
+          type: string
+          description: For US, Australian and Canadian accounts
+        bsbCode:
+          type: string
+          description: Just for Australian accounts
+        caRoutingNumber:
+          type: string
+          description: Just for Canadian accounts
+        iban:
+          type: string
+        routingNumber:
+          type: string
+          description: Just for US accounts
+        clabe:
+          type: string
+          description: Mexican CLABE (18 digits). Required for Mexican accounts (bankCountry MX)
+        ifsc:
+          type: string
+          description: Indian IFSC code. Required for Indian accounts (bankCountry IN)
+        cnaps:
+          type: string
+          description: Chinese CNAPS code. For Chinese accounts (bankCountry CN)
+        ukAccountNumber:
+          pattern: ^(\d){7,8}$
+          type: string
+          description: Just for UK accounts
+        ukSortCode:
+          pattern: ^[0-9]{6}$
+          type: string
+          description: Just for UK accounts
         firstName:
           maxLength: 100
           pattern: ^[ÑA-Zña-z0-9.\s-]+$

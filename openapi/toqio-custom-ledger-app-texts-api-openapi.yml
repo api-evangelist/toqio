@@ -89,32 +89,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    TextTranslation:
-      type: object
-      properties:
-        en:
-          type:
-          - string
-          - 'null'
-        es:
-          type:
-          - string
-          - 'null'
-        zh:
-          type:
-          - string
-          - 'null'
-    TextElements:
-      type: object
-      properties:
-        newAccountButton:
-          $ref: '#/components/schemas/TextTranslation'
-        appTitle:
-          $ref: '#/components/schemas/TextTranslation'
-        currentBalanceTooltip:
-          $ref: '#/components/schemas/TextTranslation'
-        currentBalanceTitle:
-          $ref: '#/components/schemas/TextTranslation'
     LedgerTypeTextsDTO:
       type: object
       required:
@@ -145,6 +119,32 @@ components:
             en: Current Balance
             es: Balance actual
             zh: null
+    TextTranslation:
+      type: object
+      properties:
+        en:
+          type:
+          - string
+          - 'null'
+        es:
+          type:
+          - string
+          - 'null'
+        zh:
+          type:
+          - string
+          - 'null'
+    TextElements:
+      type: object
+      properties:
+        newAccountButton:
+          $ref: '#/components/schemas/TextTranslation'
+        appTitle:
+          $ref: '#/components/schemas/TextTranslation'
+        currentBalanceTooltip:
+          $ref: '#/components/schemas/TextTranslation'
+        currentBalanceTitle:
+          $ref: '#/components/schemas/TextTranslation'
   securitySchemes:
     clientCredentials:
       type: oauth2
