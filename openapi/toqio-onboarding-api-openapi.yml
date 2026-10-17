@@ -143,11 +143,189 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
+    HostedOnboardingResponse:
+      type: object
+      properties:
+        link:
+          type: string
+    SignUpRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        cif:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+        partnerProduct:
+          type: string
+          enum:
+          - Railsbank-Direct-Debit-1
+          - Railsbank-KYC-5
+          - PayrNet-Multi-CCY-1
+          - Goldbloc-Conversion-1
+          - Railsbank-AML-Screening-1
+          - Onfido-IDV-1
+          - Railsbank-Debit-Card-1
+          - Railsbank-Debit-Card-2
+          - Railsbank-Virtual-1
+          - Railsbank-Identity-and-Verification-Service-1
+          - ExampleBank-Direct-Debit-1
+          - PayrNet-FX-1
+          - Railsbank-Debit-Card-3
+          - Railsbank-Credit-Card-1
+          - Railsbank-Conversion-1
+          - Banking-EU-1
+          - ExampleBank-EUR-1
+          - ExampleBank-FX-1
+          - ExampleBank-GBP-1
+          - ExampleBank-GBP-2
+          - PayrNet-EUR-1
+          - PayrNet-EUR-3
+          - PayrNet-GBP-1
+          - PayrNet-GBP-2
+          - PFS-EUR
+          - MODULR-GBP
+          - MODULR-EUR
+          - CLEARBANK_GBP
+          - CLEARBANK_EUR
+          - CLEARBANK_CHF
+          - CLEARBANK_CZK
+          - CLEARBANK_DKK
+          - CLEARBANK_HUF
+          - CLEARBANK_NOK
+          - CLEARBANK_PLN
+          - CLEARBANK_RON
+          - CLEARBANK_SEK
+          - CLEARBANK_USD
+          - Railsbank-USD-Credit-1
+          - Railsbank-KYC-1
+          - Railsbank-KYC-2
+          - Railsbank-Rewards-1
+          - LOOMIS_EUR
+        countryCode:
+          type: string
+        postalCode:
+          type: string
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        subOrganisationType:
+          type: string
+          enum:
+          - SOLE_TRADER
+          - LIMITED
+          - PARTNERSHIP
+          - CHARITY
+          - PUBLIC_LIMITED
+          - ASSOCIATION
+          - SUPPORT_GROUP
+          - NON_REG_PARTNERSHIP
+          - NOT_YET_REGISTERED
+      required:
+      - id
+      - email
+      - endUserId
+      - registrationDate
+    UpdateClientRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        cif:
+          type: string
+        industryCode:
+          type: string
+          deprecated: true
+        businessCode:
+          type: string
+        endUserId:
+          type: string
+        citizenship:
+          type: string
+        docIdType:
+          type: string
+        docIdIssuedAt:
+          type: string
+          format: date-time
+        docIdNumber:
+          type: string
+        docIdCountry:
+          type: string
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
     ToqioHttpOkHostedOnboardingResponse:
       type: object
       properties:
         data:
           $ref: '#/components/schemas/HostedOnboardingResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    Director:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date-time
+          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
+        countryOfResidence:
+          type: string
+        postalCode:
+          type: string
+        address:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        email:
+          type: string
+          format: email
+    ToqioHttpOkVoidResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          writeOnly: true
         code:
           type: string
           example: OK
@@ -258,10 +436,13 @@ components:
       - cif
       - name
       - subOrganisationType
-    HostedOnboardingResponse:
+    HostedOnboardingRequest:
       type: object
       properties:
-        link:
+        locale:
+          type: string
+          example: en-GB
+        redirectUrl:
           type: string
     CustomException:
       type: object
@@ -286,187 +467,6 @@ components:
           type: string
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
-          type: string
-    Director:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-          description: yyyy-MM-dd'T'HH:mm:ss.SSS'Z
-        countryOfResidence:
-          type: string
-        postalCode:
-          type: string
-        address:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        email:
-          type: string
-          format: email
-    SignUpRequest:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        cif:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        dateOfBirth:
-          type: string
-          format: date-time
-        partnerProduct:
-          type: string
-          enum:
-          - Railsbank-Direct-Debit-1
-          - Railsbank-KYC-5
-          - PayrNet-Multi-CCY-1
-          - Goldbloc-Conversion-1
-          - Railsbank-AML-Screening-1
-          - Onfido-IDV-1
-          - Railsbank-Debit-Card-1
-          - Railsbank-Debit-Card-2
-          - Railsbank-Virtual-1
-          - Railsbank-Identity-and-Verification-Service-1
-          - ExampleBank-Direct-Debit-1
-          - PayrNet-FX-1
-          - Railsbank-Debit-Card-3
-          - Railsbank-Credit-Card-1
-          - Railsbank-Conversion-1
-          - Banking-EU-1
-          - ExampleBank-EUR-1
-          - ExampleBank-FX-1
-          - ExampleBank-GBP-1
-          - ExampleBank-GBP-2
-          - PayrNet-EUR-1
-          - PayrNet-EUR-3
-          - PayrNet-GBP-1
-          - PayrNet-GBP-2
-          - PFS-EUR
-          - MODULR-GBP
-          - MODULR-EUR
-          - CLEARBANK_GBP
-          - CLEARBANK_EUR
-          - CLEARBANK_CHF
-          - CLEARBANK_CZK
-          - CLEARBANK_DKK
-          - CLEARBANK_HUF
-          - CLEARBANK_NOK
-          - CLEARBANK_PLN
-          - CLEARBANK_RON
-          - CLEARBANK_SEK
-          - CLEARBANK_USD
-          - Railsbank-USD-Credit-1
-          - Railsbank-KYC-1
-          - Railsbank-KYC-2
-          - Railsbank-Rewards-1
-          - LOOMIS_EUR
-        countryCode:
-          type: string
-        postalCode:
-          type: string
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-        address:
-          type: string
-        address2:
-          type: string
-        city:
-          type: string
-        subOrganisationType:
-          type: string
-          enum:
-          - SOLE_TRADER
-          - LIMITED
-          - PARTNERSHIP
-          - CHARITY
-          - PUBLIC_LIMITED
-          - ASSOCIATION
-          - SUPPORT_GROUP
-          - NON_REG_PARTNERSHIP
-          - NOT_YET_REGISTERED
-      required:
-      - id
-      - email
-      - endUserId
-      - registrationDate
-    ToqioHttpOkVoidResponse:
-      type: object
-      properties:
-        data:
-          type: object
-          writeOnly: true
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    UpdateClientRequest:
-      type: object
-      properties:
-        id:
-          type: string
-        cif:
-          type: string
-        industryCode:
-          type: string
-          deprecated: true
-        businessCode:
-          type: string
-        endUserId:
-          type: string
-        citizenship:
-          type: string
-        docIdType:
-          type: string
-        docIdIssuedAt:
-          type: string
-          format: date-time
-        docIdNumber:
-          type: string
-        docIdCountry:
-          type: string
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-    HostedOnboardingRequest:
-      type: object
-      properties:
-        locale:
-          type: string
-          example: en-GB
-        redirectUrl:
           type: string
   securitySchemes:
     bearerAuth:

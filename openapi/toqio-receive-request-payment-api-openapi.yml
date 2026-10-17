@@ -61,6 +61,61 @@ paths:
                   $ref: '#/components/schemas/CustomerAccountDTO'
 components:
   schemas:
+    CreateCustomerAccountDTO:
+      type: object
+      properties:
+        ukAccountNumber:
+          pattern: ^(\d){7,8}$
+          type: string
+        ukSortCode:
+          pattern: \D{6}$
+          type: string
+        iban:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - gbp
+          - eur
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - points
+          - nok
+          - jpy
+          - sgd
+          - nzd
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+        bankCountry:
+          type: string
     CustomerAccountDTO:
       type: object
       properties:
@@ -126,61 +181,6 @@ components:
           type: string
           enum:
           - REVENUE
-    CreateCustomerAccountDTO:
-      type: object
-      properties:
-        ukAccountNumber:
-          pattern: ^(\d){7,8}$
-          type: string
-        ukSortCode:
-          pattern: \D{6}$
-          type: string
-        iban:
-          type: string
-        assetType:
-          type: string
-          enum:
-          - gbp
-          - eur
-          - aud
-          - chf
-          - cad
-          - sek
-          - usd
-          - points
-          - nok
-          - jpy
-          - sgd
-          - nzd
-          - czk
-          - dkk
-          - huf
-          - pln
-          - ron
-          - ils
-          - rub
-          - bhd
-          - sar
-          - bgn
-          - kes
-          - kwd
-          - zar
-          - cny
-          - myr
-          - hrk
-          - mxn
-          - thb
-          - try
-          - omr
-          - ugx
-          - hkd
-          - php
-          - aed
-          - inr
-          - qar
-          - idr
-        bankCountry:
-          type: string
 x-source-pages:
 - https://platform.toq.io/reference/changestatus_1
 - https://platform.toq.io/reference/createcustomeraccount_1

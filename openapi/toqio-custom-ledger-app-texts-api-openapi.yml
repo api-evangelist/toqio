@@ -89,6 +89,17 @@ paths:
       deprecated: false
 components:
   schemas:
+    TextElements:
+      type: object
+      properties:
+        newAccountButton:
+          $ref: '#/components/schemas/TextTranslation'
+        appTitle:
+          $ref: '#/components/schemas/TextTranslation'
+        currentBalanceTooltip:
+          $ref: '#/components/schemas/TextTranslation'
+        currentBalanceTitle:
+          $ref: '#/components/schemas/TextTranslation'
     LedgerTypeTextsDTO:
       type: object
       required:
@@ -134,17 +145,6 @@ components:
           type:
           - string
           - 'null'
-    TextElements:
-      type: object
-      properties:
-        newAccountButton:
-          $ref: '#/components/schemas/TextTranslation'
-        appTitle:
-          $ref: '#/components/schemas/TextTranslation'
-        currentBalanceTooltip:
-          $ref: '#/components/schemas/TextTranslation'
-        currentBalanceTitle:
-          $ref: '#/components/schemas/TextTranslation'
   securitySchemes:
     clientCredentials:
       type: oauth2

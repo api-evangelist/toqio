@@ -98,107 +98,6 @@ paths:
           description: ACCOUNT_ID_NOT_FOUND
 components:
   schemas:
-    DirectDebitFilter:
-      type: object
-      properties:
-        assetType:
-          type: string
-    Mandate:
-      type: object
-      properties:
-        mandateId:
-          type: string
-        merchantName:
-          type: string
-        merchantAccountNumber:
-          type: string
-        merchantSortCode:
-          type: string
-        merchantIban:
-          type: string
-        mandateStatus:
-          type: string
-        frequency:
-          type: string
-          enum:
-          - ONCE
-          - MONTHLY
-          - QUARTERLY
-          - SEMI_ANNUALLY
-          - ANNUALLY
-          - WEEKLY
-          - EVERY_TWO_WEEKS
-          - EVERY_FOUR_WEEKS
-        currency:
-          type: string
-          enum:
-          - aud
-          - chf
-          - cad
-          - sek
-          - usd
-          - nok
-          - jpy
-          - nzd
-          - gold
-          - gbp
-          - eur
-          - czk
-          - dkk
-          - huf
-          - pln
-          - ron
-          - ils
-          - rub
-          - bhd
-          - sar
-          - bgn
-          - kes
-          - sgd
-          - kwd
-          - zar
-          - cny
-          - myr
-          - hrk
-          - mxn
-          - thb
-          - try
-          - omr
-          - ugx
-          - hkd
-          - php
-          - aed
-          - inr
-          - qar
-          - idr
-          - points
-        amount:
-          type: number
-          format: double
-    ToqioHttpOkBooleanResponse:
-      type: object
-      properties:
-        data:
-          type: boolean
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     ToqioHttpOkMandateResponse:
       type: object
       properties:
@@ -276,6 +175,107 @@ components:
         nextPaymentDate:
           type: string
           format: date-time
+    DirectDebitFilter:
+      type: object
+      properties:
+        assetType:
+          type: string
+    ToqioHttpOkBooleanResponse:
+      type: object
+      properties:
+        data:
+          type: boolean
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    Mandate:
+      type: object
+      properties:
+        mandateId:
+          type: string
+        merchantName:
+          type: string
+        merchantAccountNumber:
+          type: string
+        merchantSortCode:
+          type: string
+        merchantIban:
+          type: string
+        mandateStatus:
+          type: string
+        frequency:
+          type: string
+          enum:
+          - ONCE
+          - MONTHLY
+          - QUARTERLY
+          - SEMI_ANNUALLY
+          - ANNUALLY
+          - WEEKLY
+          - EVERY_TWO_WEEKS
+          - EVERY_FOUR_WEEKS
+        currency:
+          type: string
+          enum:
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
+        amount:
+          type: number
+          format: double
   securitySchemes:
     bearerAuth:
       type: http

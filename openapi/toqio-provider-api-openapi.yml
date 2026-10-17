@@ -34,21 +34,6 @@ paths:
                 $ref: '#/components/schemas/CustomException'
 components:
   schemas:
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
-          type: string
     ToqioHttpOkPartnerProductResponse:
       type: object
       properties:
@@ -248,6 +233,21 @@ components:
           type: string
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
+          type: string
+    I18nLabel:
+      type: object
+      properties:
+        es:
+          type: string
+        en:
+          type: string
+        de:
+          type: string
+        it:
+          type: string
+        zh:
+          type: string
+        pt:
           type: string
   securitySchemes:
     bearerAuth:

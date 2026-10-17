@@ -111,54 +111,17 @@ components:
           type: string
         totpKeyId:
           type: string
-    CustomException:
+    MeaConfigResponse:
       type: object
       properties:
-        code:
+        apiKeyId:
           type: string
-          example: OK
-        errorSeverity:
+        apiKeyPlain:
           type: string
-          example: NONE
-        message:
+        totpKey:
           type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
+        totpKeyId:
           type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    ToqioHttpOkMeaConfigResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/MeaConfigResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
     ToqioHttpOkVoidResponse:
       type: object
       properties:
@@ -184,16 +147,53 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    MeaConfigResponse:
+    ToqioHttpOkMeaConfigResponse:
       type: object
       properties:
-        apiKeyId:
+        data:
+          $ref: '#/components/schemas/MeaConfigResponse'
+        code:
           type: string
-        apiKeyPlain:
+          example: OK
+        errorSeverity:
           type: string
-        totpKey:
+          example: NONE
+        message:
           type: string
-        totpKeyId:
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
           type: string
   securitySchemes:
     bearerAuth:

@@ -68,6 +68,30 @@ paths:
       deprecated: false
 components:
   schemas:
+    UploadKYBDocumentsPayload:
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            properties:
+              documentType:
+                type: string
+                description: The type of the document, depends on the compliance provider.
+              name:
+                type: string
+                description: The name of the document
+              key:
+                type: string
+                description: The aws key of the document retrieved from the get pre-signed url endpoint
+              status:
+                type: string
+                description: The status of the document
+                enum:
+                - IN_PROGRESS
+                - UNDER_REVIEW
+      title: Upload KYB Documents
+      description: This is the payload to upload kyb documents for a merchant
     UploadKYBDocumentsResponse:
       type: array
       items:
@@ -96,30 +120,6 @@ components:
             default: true
       title: Upload KYB documents Response
       description: The response of the upload KYB documents
-    UploadKYBDocumentsPayload:
-      type: object
-      properties:
-        documents:
-          type: array
-          items:
-            properties:
-              documentType:
-                type: string
-                description: The type of the document, depends on the compliance provider.
-              name:
-                type: string
-                description: The name of the document
-              key:
-                type: string
-                description: The aws key of the document retrieved from the get pre-signed url endpoint
-              status:
-                type: string
-                description: The status of the document
-                enum:
-                - IN_PROGRESS
-                - UNDER_REVIEW
-      title: Upload KYB Documents
-      description: This is the payload to upload kyb documents for a merchant
   securitySchemes:
     OAuth2:
       type: oauth2

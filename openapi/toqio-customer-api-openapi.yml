@@ -191,6 +191,57 @@ paths:
           description: Bank not found
 components:
   schemas:
+    ToqioHttpOkCustomerConnectionStatusResponse:
+      type: object
+      properties:
+        data:
+          type: string
+          enum:
+          - CONNECTED
+          - FAILED
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    SaveCustomerRequest:
+      required:
+      - id
+      - apiKey
+      type: object
+      properties:
+        id:
+          type: string
+        apiKey:
+          type: string
+        providerConfigId:
+          type: string
+          deprecated: true
+        provider:
+          type: string
+        paymentProvider:
+          $ref: '#/components/schemas/PaymentProvider'
+          deprecated: true
+        commercialName:
+          type: string
+        availableCurrencies:
+          type: array
+          items:
+            type: string
     Capability:
       type: object
       properties:
@@ -229,11 +280,13 @@ components:
         canRunCompliance:
           type: boolean
           description: Indicates if the bank needs to run compliance checks before creating an account
-    ToqioHttpOkCapabilityResponse:
+    ToqioHttpOkPartnerProductResponse:
       type: object
       properties:
         data:
-          $ref: '#/components/schemas/Capability'
+          type: array
+          items:
+            $ref: '#/components/schemas/PartnerProductResponse'
         code:
           type: string
           example: OK
@@ -277,105 +330,67 @@ components:
           example: '2024-08-01T00:00:00.000Z'
         errorOrigin:
           type: string
-    ViewCustomerBaseResponse:
+    I18nLabel:
       type: object
       properties:
-        id:
+        es:
           type: string
-        apiKey:
+        en:
           type: string
-        provider:
+        de:
           type: string
-        superCustomerId:
+        it:
           type: string
-        paymentProvider:
-          $ref: '#/components/schemas/PaymentProvider'
-        commercialName:
+        zh:
           type: string
-        availableCurrencies:
-          type: array
-          items:
-            type: string
-    ToqioHttpOkViewCustomerBaseResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/ViewCustomerBaseResponse'
-        code:
+        pt:
           type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    CustomException:
-      type: object
-      properties:
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-        errorOrigin:
-          type: string
-    SaveCustomerRequest:
-      required:
-      - id
-      - apiKey
-      type: object
-      properties:
-        id:
-          type: string
-        apiKey:
-          type: string
-        providerConfigId:
-          type: string
-          deprecated: true
-        provider:
-          type: string
-        paymentProvider:
-          $ref: '#/components/schemas/PaymentProvider'
-          deprecated: true
-        commercialName:
-          type: string
-        availableCurrencies:
-          type: array
-          items:
-            type: string
-    ToqioHttpOkCustomerConnectionStatusResponse:
+    ToqioHttpOkAssetTypeResponse:
       type: object
       properties:
         data:
           type: string
           enum:
-          - CONNECTED
-          - FAILED
+          - aud
+          - chf
+          - cad
+          - sek
+          - usd
+          - nok
+          - jpy
+          - nzd
+          - gold
+          - gbp
+          - eur
+          - czk
+          - dkk
+          - huf
+          - pln
+          - ron
+          - ils
+          - rub
+          - bhd
+          - sar
+          - bgn
+          - kes
+          - sgd
+          - kwd
+          - zar
+          - cny
+          - myr
+          - hrk
+          - mxn
+          - thb
+          - try
+          - omr
+          - ugx
+          - hkd
+          - php
+          - aed
+          - inr
+          - qar
+          - idr
+          - points
         code:
           type: string
           example: OK
@@ -545,78 +560,54 @@ components:
       - assetType
       - label
       - schemes
-    ToqioHttpOkPartnerProductResponse:
+    ToqioHttpOkViewCustomerBaseResponse:
       type: object
       properties:
         data:
+          $ref: '#/components/schemas/ViewCustomerBaseResponse'
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+    ViewCustomerBaseResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        apiKey:
+          type: string
+        provider:
+          type: string
+        superCustomerId:
+          type: string
+        paymentProvider:
+          $ref: '#/components/schemas/PaymentProvider'
+        commercialName:
+          type: string
+        availableCurrencies:
           type: array
           items:
-            $ref: '#/components/schemas/PartnerProductResponse'
-        code:
-          type: string
-          example: OK
-        errorSeverity:
-          type: string
-          example: NONE
-        message:
-          type: string
-          example: Ok
-        httpStatus:
-          type: integer
-          format: int32
-          example: 200
-        requestId:
-          type: string
-          example: 26b0f78a-79f9-426d-a20b-79841345ae51
-        date:
-          type: string
-          example: '2024-08-01T00:00:00.000Z'
-    ToqioHttpOkAssetTypeResponse:
+            type: string
+    ToqioHttpOkCapabilityResponse:
       type: object
       properties:
         data:
-          type: string
-          enum:
-          - aud
-          - chf
-          - cad
-          - sek
-          - usd
-          - nok
-          - jpy
-          - nzd
-          - gold
-          - gbp
-          - eur
-          - czk
-          - dkk
-          - huf
-          - pln
-          - ron
-          - ils
-          - rub
-          - bhd
-          - sar
-          - bgn
-          - kes
-          - sgd
-          - kwd
-          - zar
-          - cny
-          - myr
-          - hrk
-          - mxn
-          - thb
-          - try
-          - omr
-          - ugx
-          - hkd
-          - php
-          - aed
-          - inr
-          - qar
-          - idr
-          - points
+          $ref: '#/components/schemas/Capability'
         code:
           type: string
           example: OK
@@ -636,6 +627,30 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
+    CustomException:
+      type: object
+      properties:
+        code:
+          type: string
+          example: OK
+        errorSeverity:
+          type: string
+          example: NONE
+        message:
+          type: string
+          example: Ok
+        httpStatus:
+          type: integer
+          format: int32
+          example: 200
+        requestId:
+          type: string
+          example: 26b0f78a-79f9-426d-a20b-79841345ae51
+        date:
+          type: string
+          example: '2024-08-01T00:00:00.000Z'
+        errorOrigin:
+          type: string
     PaymentProvider:
       deprecated: true
       type: object
@@ -649,21 +664,6 @@ components:
         loginId:
           type: string
         hmacKey:
-          type: string
-    I18nLabel:
-      type: object
-      properties:
-        es:
-          type: string
-        en:
-          type: string
-        de:
-          type: string
-        it:
-          type: string
-        zh:
-          type: string
-        pt:
           type: string
   securitySchemes:
     bearerAuth:

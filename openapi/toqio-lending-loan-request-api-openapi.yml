@@ -159,77 +159,6 @@ paths:
           description: Internal server error
 components:
   schemas:
-    AccountInformation:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        currencyISOCode:
-          type: string
-        accountNumber:
-          type: string
-        sortCode:
-          type: string
-        iban:
-          type: string
-        bic:
-          type: string
-    LendingRequestBaseRequest:
-      type: object
-      properties:
-        creditCheckPermission:
-          type: boolean
-        dataPrivacyConsent:
-          type: boolean
-        loan:
-          $ref: '#/components/schemas/LoanInformation'
-        account:
-          $ref: '#/components/schemas/AccountInformation'
-        merchant:
-          $ref: '#/components/schemas/MerchantInformation'
-        submissionDate:
-          type: string
-    LendingRequestFilter:
-      type: object
-      properties:
-        productType:
-          type: string
-          enum:
-          - CASH_ADVANCE
-          - SHORT_TERM_LOAN
-        status:
-          type: string
-          enum:
-          - CREATED
-          - SUBMITTED
-          - APPROVED
-          - REJECTED
-          - MORE_INFORMATION_REQUIRED
-          - CANCELLED
-          - LOAN_OFFER_PROVIDED
-          - LOAN_OFFER_ACCEPTED
-          - LOAN_OFFER_CANCELLED
-          - CONTRACT_SIGNED
-        merchantId:
-          type: string
-    Phone:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        countryISOCode:
-          type: string
-        intnlPhoneNumber:
-          type: string
-    Document:
-      type: object
-      properties:
-        base64:
-          type: string
-        name:
-          type: string
     ToqioHttpOkLendingRequestBaseResponse:
       type: object
       properties:
@@ -254,58 +183,36 @@ components:
         date:
           type: string
           example: '2024-08-01T00:00:00.000Z'
-    SignificantPerson:
+    Document:
       type: object
       properties:
-        id:
+        base64:
           type: string
-        firstName:
+        name:
           type: string
-        lastName:
-          type: string
-        type:
-          type: string
-          enum:
-          - DIRECTOR
-          - SHAREHOLDER
-          - BENEFICIAL_OWNER
-        address:
-          type: string
-        dateOfBirth:
-          type: string
-        emailAddress:
-          type: string
-        phone:
-          $ref: '#/components/schemas/Phone'
-        nationality:
-          type: string
-        documentNumber:
-          type: string
-    LoanInformation:
+    LendingRequestFilter:
       type: object
       properties:
-        amount:
-          type: number
-          format: double
-        currencyISOCode:
-          type: string
-        purpose:
-          type: string
-        maturity:
-          type: integer
-          format: int32
         productType:
           type: string
           enum:
           - CASH_ADVANCE
           - SHORT_TERM_LOAN
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
-        preferredRepaymentTerms:
-          type: number
-          format: double
+        status:
+          type: string
+          enum:
+          - CREATED
+          - SUBMITTED
+          - APPROVED
+          - REJECTED
+          - MORE_INFORMATION_REQUIRED
+          - CANCELLED
+          - LOAN_OFFER_PROVIDED
+          - LOAN_OFFER_ACCEPTED
+          - LOAN_OFFER_CANCELLED
+          - CONTRACT_SIGNED
+        merchantId:
+          type: string
     MerchantInformation:
       type: object
       properties:
@@ -336,6 +243,99 @@ components:
             $ref: '#/components/schemas/SignificantPerson'
         sales:
           $ref: '#/components/schemas/Document'
+    AccountInformation:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        currencyISOCode:
+          type: string
+        accountNumber:
+          type: string
+        sortCode:
+          type: string
+        iban:
+          type: string
+        bic:
+          type: string
+    SignificantPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        type:
+          type: string
+          enum:
+          - DIRECTOR
+          - SHAREHOLDER
+          - BENEFICIAL_OWNER
+        address:
+          type: string
+        dateOfBirth:
+          type: string
+        emailAddress:
+          type: string
+        phone:
+          $ref: '#/components/schemas/Phone'
+        nationality:
+          type: string
+        documentNumber:
+          type: string
+    Phone:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        countryISOCode:
+          type: string
+        intnlPhoneNumber:
+          type: string
+    LendingRequestBaseRequest:
+      type: object
+      properties:
+        creditCheckPermission:
+          type: boolean
+        dataPrivacyConsent:
+          type: boolean
+        loan:
+          $ref: '#/components/schemas/LoanInformation'
+        account:
+          $ref: '#/components/schemas/AccountInformation'
+        merchant:
+          $ref: '#/components/schemas/MerchantInformation'
+        submissionDate:
+          type: string
+    LoanInformation:
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        currencyISOCode:
+          type: string
+        purpose:
+          type: string
+        maturity:
+          type: integer
+          format: int32
+        productType:
+          type: string
+          enum:
+          - CASH_ADVANCE
+          - SHORT_TERM_LOAN
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/Document'
+        preferredRepaymentTerms:
+          type: number
+          format: double
   securitySchemes:
     bearerAuth:
       type: http

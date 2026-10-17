@@ -54,334 +54,6 @@ paths:
       deprecated: false
 components:
   schemas:
-    InvoiceDataDTO:
-      title: InvoiceDataDTO
-      type: object
-      properties:
-        amount:
-          type: number
-          format: double
-        cif:
-          type: string
-        discountAmount:
-          type: number
-          format: double
-        discountPercentage:
-          type: number
-          format: double
-        dueDate:
-          type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionFileDTO'
-        hasInvoice:
-          type: boolean
-        id:
-          type: string
-        invoiceDate:
-          type: string
-        invoiceNumber:
-          type: string
-        isTotalWithoutVatEdited:
-          type: boolean
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/InvoiceLineDTO'
-        postalCode:
-          type: string
-        supplier:
-          type: string
-        totalWithoutVat:
-          type: number
-          format: double
-        vatPercentage:
-          type: number
-          format: double
-    AccountDetailsDTO:
-      title: AccountDetailsDTO
-      description: This object is REQUIRED if beneficiaryAccountId is empty
-      type: object
-      properties:
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        assetType:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        bankCountry:
-          type: string
-        bicSwift:
-          type: string
-        firstName:
-          type: string
-          description: This field is REQUIRED if the beneficiary type is PERSON.
-        iban:
-          type: string
-        lastName:
-          type: string
-          description: This field is REQUIRED if the beneficiary type is PERSON.
-        name:
-          type: string
-          description: This field is REQUIRED if the beneficiary type is COMPANY.
-        type:
-          type: string
-          enum:
-          - PERSON
-          - COMPANY
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-    TagDTO:
-      title: TagDTO
-      type: object
-      properties:
-        id:
-          type: string
-          description: Tag ID
-          example: 5c473c5046e0fb0005c436af
-        name:
-          type: string
-          description: Tag name
-          example: My tag
-    TxAccount:
-      title: TxAccount
-      type: object
-      properties:
-        accountAlias:
-          type: string
-        accountNumber:
-          type: string
-        addressCity:
-          type: string
-        addressIsoCountry:
-          type: string
-        addressPostalCode:
-          type: string
-        addressStreet:
-          type: string
-        bank:
-          type: string
-        bicSwift:
-          type: string
-        bsbCode:
-          type: string
-        caRoutingNumber:
-          type: string
-        clabe:
-          type: string
-        cnaps:
-          type: string
-        fullName:
-          type: string
-        iban:
-          type: string
-        id:
-          type: string
-        ifsc:
-          type: string
-        name:
-          type: string
-        routingNumber:
-          type: string
-        type:
-          type: string
-          enum:
-          - GBP
-          - EUR
-          - AUD
-          - CHF
-          - CAD
-          - SEK
-          - USD
-          - NOK
-          - JPY
-          - SGD
-          - NZD
-        ukAccountNumber:
-          type: string
-        ukSortCode:
-          type: string
-        purposeCode:
-          type: string
-        paymentProviderDetails:
-          type: object
-          properties:
-            shortReference:
-              type: string
-            internalReference:
-              type: string
-            paymentId:
-              type: string
-            conversionId:
-              type: string
-            rate:
-              type: string
-            settlementDate:
-              type: string
-              format: date-time
-    IssuePaymentDTO:
-      title: IssuePaymentDTO
-      required:
-      - amount
-      - concept
-      - sourceAccountId
-      - companyId
-      type: object
-      properties:
-        advancedInvoiceId:
-          type: string
-          description: If the payment is related to an advanced invoice, the id of it.
-        amount:
-          type: number
-          format: double
-        bankPaymentScheme:
-          type: string
-          description: For Railsr customers this field is REQUIRED except for FX payments. Accepted codes vary by provider and currency; call GET /customers/{customerId}/clients/{clientId}/provider/{provider}/transactions/bankPaymentSchemes to obtain the schemes available for a given source/beneficiary pair.
-          enum:
-          - SEPA
-          - SEPA_INSTANT
-          - INTERLEDGER
-          - SWIFT
-          - UK_FASTER_PAYMENTS
-          - CHAPS
-          - FX
-          - BACS
-          - TARGET2
-          - SPEI
-          - AUS_PAY_NET
-          - EFT
-          - NCS
-          - CERTIS
-          - STRAKSCLEARING_INSTANT
-          - INTRADAGCLEARING
-          - CHATS
-          - GIRO_ZRT
-          - IMPS
-          - NEFT
-          - SKN
-          - IBG
-          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
-          - PESONET
-          - ELIXIR
-          - TRANSFOND_SENT_ACH
-          - FAST
-          - INTERNAL_TRANSFER
-          - RIX
-          - FEDACH
-          - FEDWIRE
-          - CHIPS
-        beneficiaryAccount:
-          $ref: '#/components/schemas/AccountDetailsDTO'
-        beneficiaryAccountId:
-          description: This field is REQUIRED if beneficiaryAccount object is empty.
-          type: string
-        beneficiaryAssetType:
-          type: string
-        billing:
-          type: boolean
-          description: Indicates if a payment is a billing fee
-          default: false
-        clientType:
-          type: string
-          enum:
-          - BUSINESS
-          - CONSUMER
-          description: This field is REQUIRED if beneficiaryAccountId is empty.
-        companyId:
-          type: string
-          description: Client ID assgined by TOQIO system
-        concept:
-          pattern: ^[a-zA-Z0-9\s]{1,18}$
-          type: string
-          description: Reference to be used for the Payment. If your provider is Railsbank , Min 1 to max 18 characters; If your provider is Modulr, Min 1 to max 18 characters that are not all the same (up to 140 characters for currencies other than GBP).
-        currency:
-          type: string
-        emails:
-          type: string
-          description: list of emails separated by comma
-        fixedSide:
-          type: string
-          enum:
-          - BENEFICIARY
-          - SENDER
-        frequency:
-          type: string
-          enum:
-          - CUSTOM
-          - LAST_DAY_OF_MONTH
-          - WEEKLY
-          - EVERY_OTHER_WEEK
-          - MONTHLY
-        meta:
-          type: object
-          additionalProperties:
-            type: string
-        reason:
-          type: string
-        reference:
-          type: string
-          description: for FX payments
-        sourceAccountId:
-          type: string
-        transferConfig:
-          $ref: '#/components/schemas/TransferConfigDTO'
-        triggerType:
-          type: string
-          enum:
-          - IMMEDIATELY
-          - ONCE_FUTURE_DATE
-          - RECURRING
-        txFee:
-          type: number
-          format: double
-        userId:
-          type: string
-    TransferConfigDTO:
-      title: TransferConfigDTO
-      type: object
-      properties:
-        endDate:
-          type: string
-          format: date-time
-        repeatCount:
-          type: integer
-          format: int32
-        startDate:
-          type: string
-          format: date-time
-        timeInterval:
-          type: integer
-          format: int32
-        unit:
-          type: string
-          enum:
-          - MILLISECOND
-          - SECOND
-          - MINUTE
-          - HOUR
-          - DAY
-          - WEEK
-          - MONTH
-          - YEAR
     ViewTransactionDetailDTO:
       title: ViewTransactionDetailDTO
       type: object
@@ -589,6 +261,102 @@ components:
             settlementDate:
               type: string
               format: date-time
+    InvoiceDataDTO:
+      title: InvoiceDataDTO
+      type: object
+      properties:
+        amount:
+          type: number
+          format: double
+        cif:
+          type: string
+        discountAmount:
+          type: number
+          format: double
+        discountPercentage:
+          type: number
+          format: double
+        dueDate:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/TransactionFileDTO'
+        hasInvoice:
+          type: boolean
+        id:
+          type: string
+        invoiceDate:
+          type: string
+        invoiceNumber:
+          type: string
+        isTotalWithoutVatEdited:
+          type: boolean
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvoiceLineDTO'
+        postalCode:
+          type: string
+        supplier:
+          type: string
+        totalWithoutVat:
+          type: number
+          format: double
+        vatPercentage:
+          type: number
+          format: double
+    AccountDetailsDTO:
+      title: AccountDetailsDTO
+      description: This object is REQUIRED if beneficiaryAccountId is empty
+      type: object
+      properties:
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        assetType:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        bankCountry:
+          type: string
+        bicSwift:
+          type: string
+        firstName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        iban:
+          type: string
+        lastName:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is PERSON.
+        name:
+          type: string
+          description: This field is REQUIRED if the beneficiary type is COMPANY.
+        type:
+          type: string
+          enum:
+          - PERSON
+          - COMPANY
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
     InvoiceLineDTO:
       title: InvoiceLineDTO
       type: object
@@ -606,29 +374,82 @@ components:
         vatPercentage:
           type: number
           format: double
-    TransactionFileDTO:
-      title: TransactionFileDTO
+    TxAccount:
+      title: TxAccount
       type: object
       properties:
-        extension:
+        accountAlias:
           type: string
-        fileUrl:
+        accountNumber:
+          type: string
+        addressCity:
+          type: string
+        addressIsoCountry:
+          type: string
+        addressPostalCode:
+          type: string
+        addressStreet:
+          type: string
+        bank:
+          type: string
+        bicSwift:
+          type: string
+        bsbCode:
+          type: string
+        caRoutingNumber:
+          type: string
+        clabe:
+          type: string
+        cnaps:
+          type: string
+        fullName:
+          type: string
+        iban:
           type: string
         id:
           type: string
-        invoiceId:
-          type: string
-        key:
-          type: string
-        mime:
+        ifsc:
           type: string
         name:
           type: string
-        size:
-          type: integer
-          format: int32
-        thumbnailUrl:
+        routingNumber:
           type: string
+        type:
+          type: string
+          enum:
+          - GBP
+          - EUR
+          - AUD
+          - CHF
+          - CAD
+          - SEK
+          - USD
+          - NOK
+          - JPY
+          - SGD
+          - NZD
+        ukAccountNumber:
+          type: string
+        ukSortCode:
+          type: string
+        purposeCode:
+          type: string
+        paymentProviderDetails:
+          type: object
+          properties:
+            shortReference:
+              type: string
+            internalReference:
+              type: string
+            paymentId:
+              type: string
+            conversionId:
+              type: string
+            rate:
+              type: string
+            settlementDate:
+              type: string
+              format: date-time
     BankPaymentScheme:
       title: BankPaymentScheme
       type: object
@@ -671,6 +492,185 @@ components:
           - CHIPS
         name:
           type: string
+    IssuePaymentDTO:
+      title: IssuePaymentDTO
+      required:
+      - amount
+      - concept
+      - sourceAccountId
+      - companyId
+      type: object
+      properties:
+        advancedInvoiceId:
+          type: string
+          description: If the payment is related to an advanced invoice, the id of it.
+        amount:
+          type: number
+          format: double
+        bankPaymentScheme:
+          type: string
+          description: For Railsr customers this field is REQUIRED except for FX payments. Accepted codes vary by provider and currency; call GET /customers/{customerId}/clients/{clientId}/provider/{provider}/transactions/bankPaymentSchemes to obtain the schemes available for a given source/beneficiary pair.
+          enum:
+          - SEPA
+          - SEPA_INSTANT
+          - INTERLEDGER
+          - SWIFT
+          - UK_FASTER_PAYMENTS
+          - CHAPS
+          - FX
+          - BACS
+          - TARGET2
+          - SPEI
+          - AUS_PAY_NET
+          - EFT
+          - NCS
+          - CERTIS
+          - STRAKSCLEARING_INSTANT
+          - INTRADAGCLEARING
+          - CHATS
+          - GIRO_ZRT
+          - IMPS
+          - NEFT
+          - SKN
+          - IBG
+          - NORWEGIAN_INTERBANK_CLEARING_SYSTEM
+          - PESONET
+          - ELIXIR
+          - TRANSFOND_SENT_ACH
+          - FAST
+          - INTERNAL_TRANSFER
+          - RIX
+          - FEDACH
+          - FEDWIRE
+          - CHIPS
+        beneficiaryAccount:
+          $ref: '#/components/schemas/AccountDetailsDTO'
+        beneficiaryAccountId:
+          description: This field is REQUIRED if beneficiaryAccount object is empty.
+          type: string
+        beneficiaryAssetType:
+          type: string
+        billing:
+          type: boolean
+          description: Indicates if a payment is a billing fee
+          default: false
+        clientType:
+          type: string
+          enum:
+          - BUSINESS
+          - CONSUMER
+          description: This field is REQUIRED if beneficiaryAccountId is empty.
+        companyId:
+          type: string
+          description: Client ID assgined by TOQIO system
+        concept:
+          pattern: ^[a-zA-Z0-9\s]{1,18}$
+          type: string
+          description: Reference to be used for the Payment. If your provider is Railsbank , Min 1 to max 18 characters; If your provider is Modulr, Min 1 to max 18 characters that are not all the same (up to 140 characters for currencies other than GBP).
+        currency:
+          type: string
+        emails:
+          type: string
+          description: list of emails separated by comma
+        fixedSide:
+          type: string
+          enum:
+          - BENEFICIARY
+          - SENDER
+        frequency:
+          type: string
+          enum:
+          - CUSTOM
+          - LAST_DAY_OF_MONTH
+          - WEEKLY
+          - EVERY_OTHER_WEEK
+          - MONTHLY
+        meta:
+          type: object
+          additionalProperties:
+            type: string
+        reason:
+          type: string
+        reference:
+          type: string
+          description: for FX payments
+        sourceAccountId:
+          type: string
+        transferConfig:
+          $ref: '#/components/schemas/TransferConfigDTO'
+        triggerType:
+          type: string
+          enum:
+          - IMMEDIATELY
+          - ONCE_FUTURE_DATE
+          - RECURRING
+        txFee:
+          type: number
+          format: double
+        userId:
+          type: string
+    TagDTO:
+      title: TagDTO
+      type: object
+      properties:
+        id:
+          type: string
+          description: Tag ID
+          example: 5c473c5046e0fb0005c436af
+        name:
+          type: string
+          description: Tag name
+          example: My tag
+    TransactionFileDTO:
+      title: TransactionFileDTO
+      type: object
+      properties:
+        extension:
+          type: string
+        fileUrl:
+          type: string
+        id:
+          type: string
+        invoiceId:
+          type: string
+        key:
+          type: string
+        mime:
+          type: string
+        name:
+          type: string
+        size:
+          type: integer
+          format: int32
+        thumbnailUrl:
+          type: string
+    TransferConfigDTO:
+      title: TransferConfigDTO
+      type: object
+      properties:
+        endDate:
+          type: string
+          format: date-time
+        repeatCount:
+          type: integer
+          format: int32
+        startDate:
+          type: string
+          format: date-time
+        timeInterval:
+          type: integer
+          format: int32
+        unit:
+          type: string
+          enum:
+          - MILLISECOND
+          - SECOND
+          - MINUTE
+          - HOUR
+          - DAY
+          - WEEK
+          - MONTH
+          - YEAR
     TranslateLabel:
       title: TranslateLabel
       type: object
